@@ -17,85 +17,116 @@
 </head>
 
 <body>
-    <div class="uk-container uk-margin-bottom>
-        <h2 class="uk-heading-line uk-text-center">
-            <span>Uitgelichte producten</span>
-        </h2>
+<div class="uk-card uk-card-default uk-card-body uk-width-1-5 uk-position-center-left">
+        <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+            <li class="uk-active"><a href="#">Active</a></li>
+            <li class="uk-parent">
+                <a href="#">Parent</a>
+                <ul class="uk-nav-sub">
+                    <li><a href="#">Sub item</a></li>
+                    <li><a href="#">Sub item</a></li>
+                </ul>
+            </li>
+            <li class="uk-parent">
+                <a href="#">Parent</a>
+                <ul class="uk-nav-sub">
+                    <li><a href="#">Sub item</a></li>
+                    <li><a href="#">Sub item</a></li>
+                </ul>
+            </li>
+            <li class="uk-parent">
+                <a href="#">Parent</a>
+                <ul class="uk-nav-sub">
+                    <li><a href="#">Sub item</a></li>
+                    <li><a href="#">Sub item</a></li>
+                </ul>
+            </li>
 
-        <div class="uk-column-1-3" id="uitgelicht">
-            <div class="uk-card uk-card-default">
-                <div class="uk-card-header">
-                    <h3 class="uk-card-title">
-                        placeholder
-                    </h3>
+            <li class="uk-parent">
+                <a href="#">Parent</a>
+                <ul class="uk-nav-sub">
+                    <li><a href="#">Sub item</a></li>
+                    <li><a href="#">Sub item</a></li>
+                </ul>
+            </li>
+
+            <li class="uk-parent">
+                <a href="#">Parent</a>
+                <ul class="uk-nav-sub">
+                    <li><a href="#">Sub item</a></li>
+                    <li><a href="#">Sub item</a></li>
+                </ul>
+            </li>
+
+            <li class="uk-parent">
+                <a href="#">Parent</a>
+                <ul class="uk-nav-sub">
+                    <li><a href="#">Sub item</a></li>
+                    <li><a href="#">Sub item</a></li>
+                </ul>
+            </li>
+
+            <li class="uk-parent">
+                <a href="#">Parent</a>
+                <ul class="uk-nav-sub">
+                    <li><a href="#">Sub item</a></li>
+                    <li><a href="#">Sub item</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="uk-container uk-width-3-5">
+        <h2>Highlights</h2>
+        <hr>
+        <div id="highlight_producten">
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
                 </div>
-                <div class="uk-card-body uk-flex uk-flex-center"">
-                    <img src=" afb/opelcorsa.jpg" atl="afbeelding">
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
                 </div>
-                <div class="uk-card-footer">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <a href=""><button class="uk-button uk-button-primary">Kopen</button></a>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
                 </div>
             </div>
-            <div class="uk-card uk-card-default">
-                <div class="uk-card-header">
-                    <h3 class="uk-card-title">
-                        "placeholder"
-                    </h3>
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
                 </div>
-                <div class="uk-card-body uk-flex uk-flex-center">
-                    <img src="afb/opelcorsa.jpg" atl="afbeelding">
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
                 </div>
-                <div class="uk-card-footer">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <a href=""><button class="uk-button uk-button-primary">Kopen</button></a>
-                </div>
-            </div>
-            <div class="uk-card uk-card-default">
-                <div class="uk-card-header">
-                    <h3 class="uk-card-title">
-                        "placeholder"
-                    </h3>
-                </div>
-                <div class="uk-card-body uk-flex uk-flex-center"">
-                    <img src=" afb/opelcorsa.jpg" atl="afbeelding">
-                </div>
-                <div class="uk-card-footer">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <a href=""><button class="uk-button uk-button-primary">Kopen</button></a>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="uk-container uk-margin-bottom">
-        <h2 class="uk-heading-line uk-text-center">
-            <span>Rubriekenboom</span>
-        </h2>
-
-        <ul uk-accordion>
-            <li>
-                <a class="uk-accordion-title" href="#">Auto's</a>
-                <div class="uk-accordion-content">
-                    <button class="uk-button uk-button-primary">Opel</button>
-                    <button class="uk-button uk-button-primary">Mercedes</button>
-                </div>
-            </li>
-            <li>
-                <a class="uk-accordion-title" href="#">Fietsen</a>
-                <div class="uk-accordion-content">
-                    <button class="uk-button uk-button-primary">Elektrische fietsen</button>
-                    <button class="uk-button uk-button-primary">Oma en opa fietsen</button>
-                </div>
-            </li>
-            <li>
-                <a class="uk-accordion-title" href="#">Elektronica</a>
-                <div class="uk-accordion-content">
-                    <button class="uk-button uk-button-primary">Laptops</button>
-                    <button class="uk-button uk-button-primary">Telefoons</button>
-                </div>
-            </li>
-        </ul>
+    <div class="uk-card uk-card-default uk-card-title uk-width-1-5 uk-position-center-right">
+        <div class="uk-card-header">
+            Uw veilingen
+        </div>
+        <div class="uk-card-body">
+            <ul class="uk-nav">
+                <li>voorbeeld1</li>
+                <li>voorbeeld2</li>
+            </ul>
+        </div>
+    </div>
+    <div class="uk-card uk-card-default uk-card-title uk-width-1-5 uk-position-bottom-right">
+        <div class="uk-card-header">
+            Uw biedingen
+        </div>
+        <div class="uk-card-body">
+            <ul class="uk-nav">
+                <li>voorbeeld1</li>
+                <li>voorbeeld2</li>
+            </ul>
+        </div>
     </div>
 </body>
 
