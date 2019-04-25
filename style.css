@@ -1,0 +1,7 @@
+@media screen and (max-width: 768px){
+    #uitgelicht{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
