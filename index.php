@@ -18,7 +18,7 @@
 
 <body>
     <div class="uk-card uk-card-default uk-card-body uk-width-1-5 uk-position-center-left">
-        <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+        <ul class="uk-nav-default uk-nav-parent-icon">
             <li class="uk-active"><a href="#">Active</a></li>
             <li class="uk-parent">
                 <a href="#">Parent</a>
