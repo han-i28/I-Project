@@ -1,7 +1,7 @@
 <?php
 //general functions
 
-function get_section($section_name){
+function generate_section($section_name){
     $html = '
         <div class="uk-container uk-width-3-5 uk-section">
             <h2>'.$section_name.'</h2>

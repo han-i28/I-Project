@@ -76,9 +76,9 @@
         </ul>
     </div>
 
-    <?php echo get_section('Highlights');?>
-    <?php echo get_section('Rubriek');?>
-    <?php echo get_section('Rubriek');?>
+    <?php echo generate_section('Highlights');?>
+    <?php echo generate_section('Rubriek');?>
+    <?php echo generate_section('Rubriek');?>
 
     <div class="uk-card uk-card-default uk-card-title uk-width-1-5 uk-position-center-right">
         <div class="uk-card-header">
