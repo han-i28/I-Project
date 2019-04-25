@@ -21,12 +21,12 @@ CREATE TABLE voorwerp(
 	betalingsinstructie CHAR(25) NULL,
 	plaatsnaam VARCHAR(255) NOT NULL,--!!!
 	land CHAR(50) NOT NULL,--!!!
-	looptijdBegin TIMESTAMP NOT NULL,
+	looptijdBegin DATETIME NOT NULL,
 	verzendkosten NUMERIC(19, 7) NOT NULL, 
 	verzendinstructies CHAR(27) NOT NULL,
 	verkoper CHAR(10) NOT NULL,
 	koper CHAR(10) NULL,
-	looptijdEinde TIMESTAMP NOT NULL,
+	looptijdEinde DATETIME NOT NULL,
 	veilingGesloten BIT NOT NULL,
 	verkoopprijs NUMERIC(19, 7) NULL,
 	CONSTRAINT PK_Voorwerpnummer PRIMARY KEY (voorwerpnummer)
