@@ -11,9 +11,9 @@ class Database
     public static function getBdd()
     {
         $hostname = "(local)";
-        $dbname = "deb107033n3_test";
-        $username = "deb107033n3_test";
-        $pw = "abc123";
+        $dbname = "";
+        $username = "";
+        $pw = "";
 
         if (is_null(self::$bdd)) {
             self::$bdd = new PDO("mysql:host=localhost;dbname=deb107033n3_test", 'deb107033n3_test', 'abc123');
