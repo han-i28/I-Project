@@ -115,14 +115,15 @@
                 <h2>'.$section_name.'</h2>
                 <hr>
                 <div class="items">'
-                .get_items($section_name).'
+                    .get_items($section_name).'
                 </div>
             </div>';
         return $html;
     }
 
     function get_items($item_type){
-        $html = '
+        $html = '';
+        $html_part = '
             <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
                 <div>
                     <div class="uk-card uk-card-default uk-card-body">Item</div>
@@ -137,7 +138,7 @@
         ';
         
         for($i = 0; $i < 2; $i++){
-            $html.=$html;
+            $html.=$html_part;
         }
 
         return $html;
