@@ -1,6 +1,5 @@
 <?php
-    include 'header.php';
-    include 'footer.php';
+    require 'header.php';
 ?>
 
 <html>
@@ -128,6 +127,7 @@
             </ul>
         </div>
     </div>
+    <?php require_once 'footer.php';?>
 </body>
 
 </html>
