@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<div class="uk-card uk-card-default uk-card-body uk-width-1-5 uk-position-center-left">
+    <div class="uk-card uk-card-default uk-card-body uk-width-1-5 uk-position-center-left">
         <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
             <li class="uk-active"><a href="#">Active</a></li>
             <li class="uk-parent">
@@ -76,7 +76,7 @@
 
     </div>
 
-    <div class="uk-container uk-width-3-5">
+    <div class="uk-container uk-width-3-5 uk-section">
         <h2>Highlights</h2>
         <hr>
         <div id="highlight_producten">
@@ -102,8 +102,133 @@
                     <div class="uk-card uk-card-default uk-card-body">Item</div>
                 </div>
             </div>
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+            </div>
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="uk-container uk-width-3-5 uk-section">
+        <h2>Rubriek</h2>
+        <hr>
+        <div id="highlight_producten">
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+            </div>
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+            </div>
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+            </div>
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-container uk-width-3-5 uk-section">
+        <h2>Rubriek</h2>
+        <hr>
+        <div id="highlight_producten">
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+            </div>
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+            </div>
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+            </div>
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
     <div class="uk-card uk-card-default uk-card-title uk-width-1-5 uk-position-center-right">
         <div class="uk-card-header">
