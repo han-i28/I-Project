@@ -12,18 +12,13 @@ GO
 USE [Ontwikkeldatabase Eenmaal Andermaal]
 GO
 
-CREATE TABLE [dbo].[Country](
-	Id [smallint] NOT NULL,
-	[Name] [varchar](255) NOT NULL,
-	[Code] [varchar](2) NOT NULL,
-	[Language] [varchar](3) NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-
+CREATE TABLE country(
+	id SMALLINT NOT NULL,
+	[name] VARCHAR(255) NOT NULL,
+	code CHAR(2) NOT NULL,
+	[language] VARCHAR(3) NOT NULL,
+	CONSTRAINT PK_Country_id PRIMARY KEY (id)
+);
 
 CREATE TABLE voorwerp(
 	voorwerpnummer NUMERIC(10) NOT NULL,
