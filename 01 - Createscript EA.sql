@@ -83,26 +83,6 @@ CREATE TABLE Feedback (
 	CONSTRAINT PK_Feedback_voorwerp_soortGebruiker PRIMARY KEY (voorwerp, soort_gebruiker)
 )
 
-CREATE TABLE gebruiker (
-	gebruikersnaam CHAR(20) NOT NULL,
-	voornaam CHAR(255) NOT NULL,
-	tussenvoegsel VARCHAR(10) NULL,
-	achternaam CHAR(255) NOT NULL,
-	adresregel_1 VARCHAR(50) NOT NULL,
-	adresregel_2 VARCHAR (50) NULL,
-	postcode CHAR(16) NOT NULL,--Montserrat zipcodes are 13 chars long: future proof with 16
-	plaatsnaam CHAR(100) NOT NULL,
-	land CHAR(255) NOT NULL,
-	geboortedatum DATE NOT NULL,
-	telefoon CHAR(15) NOT NULL,
-	mailbox VARCHAR(50) NOT NULL,--Create email check
-	wachtwoord BINARY(128) NOT NULL,--128 BINARY field for password hash
-	vraag INT NOT NULL,
-	antwoordtekst CHAR(20) NOT NULL,
-	is_verkoper BIT NOT NULL,
-	CONSTRAINT PK_Gebruiker PRIMARY KEY (gebruikersnaam)
-)
-
 CREATE TABLE rubriek(
 	rubrieknummer INT NOT NULL,
 	rubrieknaam CHAR(24) NOT NULL,
