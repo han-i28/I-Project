@@ -1,11 +1,9 @@
 <?php
 
-class Dispatcher
-{
+class Dispatcher {
     private $request;
 
-    public function dispatch()
-    {
+    public function dispatch() {
         $this->request = new Request();
         Router::parse($this->request->url, $this->request);
 
@@ -19,8 +17,7 @@ class Dispatcher
         }
     }
 
-    public function loadController()
-    {
+    public function loadController() {
         $name = $this->request->controller . "Controller";
         $file = 'Controllers/' . $name . '.php';
 

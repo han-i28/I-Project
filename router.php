@@ -1,9 +1,7 @@
 <?php
 
-class Router
-{
-    static public function parse($url, $request)
-    {
+class Router {
+    static public function parse($url, $request) {
         //www.voorbeeld.nl/controller/action/parameter
         $url = trim($url);
 

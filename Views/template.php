@@ -3,7 +3,7 @@
     include 'Includes/menu.inc.php';
 ?>
 <body>
-<main class=""> <!-- nog wijzigen -->
+<main>
     <?php
     include $this->vars['page'] . '.php';
     ?>

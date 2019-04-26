@@ -1,1 +1,1 @@
-<h1>404 not found, ape!</h1>
+<h1>404 not found!</h1>

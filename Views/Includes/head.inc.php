@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>Eenmaal Andermaal Veilingen</title>
+    <title><?php echo $this->vars['title']; ?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
