@@ -2,6 +2,7 @@
 
 class productController extends Controller
 {
+    //public = kan gezien worden op site, private = kan niet gezien worden op site en kan hier gebruikt worden.
     function index()
     {
         $data['page'] = "product";
@@ -10,7 +11,15 @@ class productController extends Controller
     }
 
     function view($par = null) {
-        echo $par;
+        print_R($_GET['test']);
+//        echo $par;
+        $data['page'] = "product";
+        $this->set($data);
+        $this->load_view("template");
+    }
+
+    private function show() {
+        echo '<br>cool';
     }
 }
 

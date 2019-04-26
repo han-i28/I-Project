@@ -33,7 +33,7 @@ class Controller
             $form[$key] = $this->secure_input($value);
         }
     }
-
+    
 }
 
 ?>

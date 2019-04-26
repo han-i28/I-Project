@@ -12,6 +12,8 @@ class Dispatcher
         $controller = $this->loadController();
 
         call_user_func_array([$controller, $this->request->action], $this->request->params);
+        //404 Als tweede verwijzing niet bestaat.
+        
         if(!method_exists($controller, $this->request->action)) {
             include '../Views/error_404.php';
         }
