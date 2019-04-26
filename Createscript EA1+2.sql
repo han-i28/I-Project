@@ -33,17 +33,15 @@ CREATE TABLE voorwerp(
 )
 
 
-
-/*
 CREATE TABLE gebruiker (
 	gebruikersnaam CHAR(20) NOT NULL,
 	voornaam CHAR(255) NOT NULL,
 	tussenvoegsel VARCHAR(10) NULL,
 	achternaam CHAR(255) NOT NULL,
-	adresregel_1 VARCHAR(50) NOT NULL,
-	adresregel_2 VARCHAR (50) NULL,
+	adresregel_1 VARCHAR(60) NOT NULL,
+	adresregel_2 VARCHAR (60) NULL,
 	postcode CHAR(16) NOT NULL,--Montserrat zipcodes are 13 chars long: future proof with 16
-	plaatsnaam CHAR(100) NOT NULL,
+	plaatsnaam CHAR(85) NOT NULL,
 	land CHAR(255) NOT NULL,
 	geboortedatum DATE NOT NULL,
 	telefoon CHAR(15) NOT NULL,
@@ -53,4 +51,5 @@ CREATE TABLE gebruiker (
 	antwoordtekst CHAR(20) NOT NULL,
 	is_verkoper BIT NOT NULL,
 	CONSTRAINT PK_Gebruiker PRIMARY KEY (gebruikersnaam)
-)*/
+)
+
