@@ -34,3 +34,5 @@ VALUES
 (24, 'helicarrier', 'Niet toegestaan om er mee te vliegen', 349000000.00, 'Paypall', 'Schiphol', 'Nederland', '2019-04-19 16:40:00',0, 'ophalen', 'Nick Fury','2019-06-19 12:00:00', 0);
 
 /*gebruiker*/
+INSERT INTO gebruiker(gebruikersnaam, voornaam, tussenvoegsel, achternaam, adresregel_1, adresregel_2, postcode, plaatsnaam, land_id, geboortedatum, telefoon, mailbox, wachtwoord, vraag, antwoordtekst, is_verkoper)
+VALUES
