@@ -12,6 +12,43 @@ GO
 USE [Ontwikkeldatabase Eenmaal Andermaal]
 GO
 
+CREATE TABLE [dbo].[Country](
+	Id [smallint] NOT NULL,
+	[Name] [varchar](255) NOT NULL,
+	[Code] [varchar](2) NOT NULL,
+	[Language] [varchar](3) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [dbo].[Region]    Script Date: 31-Dec-18 1:27:55 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Region](
+	[Id] [int] NOT NULL,
+	[Name] [varchar](255) NOT NULL,
+	[CountryId] [smallint] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Region]  WITH CHECK ADD  CONSTRAINT [FK_Region_Country] FOREIGN KEY([CountryId])
+REFERENCES [dbo].[Country] ([Id])
+GO
+
+ALTER TABLE [dbo].[Region] CHECK CONSTRAINT [FK_Region_Country]
+GO
+
 CREATE TABLE voorwerp(
 	voorwerpnummer NUMERIC(10) NOT NULL,
 	titel VARCHAR(100) NOT NULL,
