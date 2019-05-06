@@ -45,24 +45,13 @@ if(isset($_GET['minprice'])){
     <body>
         <!--Filters-->
         <div class="uk-width-1-4">
-            <form action="zoeken.php" method="get">
-                <div class="uk-grid-small uk-grid-margin" uk-grid>
-                <div class="uk-width-1-5">
-                        <legend class="uk-legend">&euro;</legend>
-                    </div>
-                    <div class="uk-width-1-5">
-                        <input type="text" name="minprice" id="minprice" class="uk-input" placeholder="10">
-                    </div>
-                    <div class="uk-width-1-5">
-                        <legend class="uk-legend"> tot: </legend>
-                    </div>
-                    <div class="uk-width-1-5">
-                            <input type="text" name="maxprice" id="maxprice" class="uk-input" placeholder="100">                
-                    </div>
-                    </div>
-                    <div class="uk-width-1-5">
-                        <button type="submit" class="uk-button-primary"><span uk-icon="icon: chevron-right"></span></button>
-                    </div>                
+            <form action="zoeken.php" method="get" class="uk-flex">
+                <div>
+                    <legend class="uk-legend">&euro;</legend>
+                    <input type="text" name="minprice" id="minprice" class="uk-input uk-width-1-5" placeholder="10">
+                    <legend class="uk-legend"> tot: </legend>
+                    <input type="text" name="maxprice" id="maxprice" class="uk-input uk-width-1-5" placeholder="100">                                
+                    <button type="submit" class="uk-button-primary"><span uk-icon="icon: chevron-right"></span></button>
                 </div>                    
             </form>
         </div>
