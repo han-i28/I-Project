@@ -32,7 +32,3 @@ VALUES
 (22, 'Mjolnir', 'Heb nu stormbreaker (hij ligt wel in stukjes)', 23.00, 'Ideal', 'Asgard', 'Nederland', '2019-04-18 14:20:00',0, 'ophalen', 'Thor Odinson','2019-06-18 12:00:00', 0),
 (23, 'eye of agamotto', 'losse ketting zonder steen', 25.00, 'Ideal', 'Amsterdam', 'Nederland', '2019-04-26 15:30:00',0, 'ophalen', 'Stephen strange','2019-06-26 12:00:00', 0),
 (24, 'helicarrier', 'Niet toegestaan om er mee te vliegen', 349000000.00, 'Paypall', 'Schiphol', 'Nederland', '2019-04-19 16:40:00',0, 'ophalen', 'Nick Fury','2019-06-19 12:00:00', 0);
-
-/*gebruiker*/
-INSERT INTO gebruiker(gebruikersnaam, voornaam, tussenvoegsel, achternaam, adresregel_1, adresregel_2, postcode, plaatsnaam, land_id, geboortedatum, telefoon, mailbox, wachtwoord, vraag, antwoordtekst, is_verkoper)
-VALUES
