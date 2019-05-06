@@ -1,19 +1,25 @@
 <h1 class="uk-heading-bullet">Eenmaal Andermaal</h1>
-    <nav class="uk-navbar-container" uk-navbar>
-        <div class="uk-navbar-left">
-            <form class="uk-search uk-search-navbar" action="zoeken.php" method="post">
-                <span uk-search-icon></span>
-                <input class="uk-search-input" name="search" type="search" placeholder="Zoeken..." />
-            </form>
-        </div>
-        <div class="uk-navbar-right">
-            <ul class="uk-navbar-nav">
-                <li><a href="#">Account</a></li>
-                <li><a href="inloggen.html">Inloggen</a></li>
-                <li><a href="registreren.html">Registreren</a></li>
-            </ul>
-        </div>
-        </div>
-    </nav>
 
-    <hr class="uk-divided-icon">
+<nav class="uk-navbar-container" uk-navbar="dropbar: true;">
+    <div class="uk-navbar-left">
+
+        <ul class="uk-navbar-nav">
+            <li>
+                <a uk-navbar-toggle-icon></a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="#">Acount</a></li>
+                        <li><a href="#">Inloggen</a></li>
+                        <li><a href="#">Registreren</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="uk-navbar-right uk-margin-right uk-margin-top">
+        <form action="">
+            <input type="search" name="" id="" class="uk-input" placeholder="Zoeken...">
+        </form>
+    </div>
+</nav>
+<hr class="uk-divided-icon">
