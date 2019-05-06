@@ -9,7 +9,7 @@
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
             <li><a href="#">Account</a></li>
-            <li><a href="inloggen.html">Inloggen</a></li>
+            <li><a href="userlogin.php">Inloggen</a></li>
             <li><a href="registreren.html">Registreren</a></li>
         </ul>
     </div>
