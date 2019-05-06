@@ -1,5 +1,7 @@
-<h1 class="uk-heading-bullet">Eenmaal Andermaal</h1>
-
+<div class="uk-flex uk-flex-center">
+    <img src="afb/logo.png" alt="Logo">
+</div>
+    
 <nav class="uk-navbar-container" uk-navbar="dropbar: true;">
     <div class="uk-navbar-left">
 
