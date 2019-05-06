@@ -17,8 +17,9 @@
         </ul>
     </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top">
-        <form action="">
+        <form action="" class="uk-flex">
             <input type="search" name="" id="" class="uk-input" placeholder="Zoeken...">
+            <button class="uk-button-primary" type="submit"><span class="uk-icon" uk-icon="icon: search"></span></button>
         </form>
     </div>
 </nav>
