@@ -1,10 +1,9 @@
 <div class="uk-flex uk-flex-center">
-    <img src="afb/logo.png" alt="Logo">
+    <a href="index.php"> <img src="afb/logo.png" alt="Logo"></a>
 </div>
     
 <nav class="uk-navbar-container" uk-navbar="dropbar: true;" uk-sticky="bottom: #offset">
     <div class="uk-navbar-left">
-
         <ul class="uk-navbar-nav">
             <li>
                 <a uk-navbar-toggle-icon></a>
@@ -13,6 +12,48 @@
                         <li><a href="#">Acount</a></li>
                         <li><a href="#">Inloggen</a></li>
                         <li><a href="#">Registreren</a></li>
+
+                        <div class="uk-hidden@s">
+                            <li class="uk-nav-divider"></li>
+                            <li class="uk-active"><a href="#">Categorieën</a></li>
+                            <li class="uk-parent">
+                                <a href="#">Parent</a>
+                                <ul class="uk-nav-sub">
+                                    <li><a href="#">Sub item</a></li>
+                                    <li><a href="#">Sub item</a></li>
+                                </ul>
+                            </li>
+                            <li class="uk-parent">
+                                <a href="#">Parent</a>
+                                <ul class="uk-nav-sub">
+                                    <li><a href="#">Sub item</a></li>
+                                    <li><a href="#">Sub item</a></li>
+                                </ul>
+                            </li>
+                            <li class="uk-parent">
+                                <a href="#">Parent</a>
+                                <ul class="uk-nav-sub">
+                                    <li><a href="#">Sub item</a></li>
+                                    <li><a href="#">Sub item</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="uk-parent">
+                                <a href="#">Parent</a>
+                                <ul class="uk-nav-sub">
+                                    <li><a href="#">Sub item</a></li>
+                                    <li><a href="#">Sub item</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="uk-parent">
+                                <a href="#">Parent</a>
+                                <ul class="uk-nav-sub">
+                                    <li><a href="#">Sub item</a></li>
+                                    <li><a href="#">Sub item</a></li>
+                                </ul>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </li>

@@ -3,7 +3,7 @@
 
 function generate_section($section_name){
     $html = '
-        <div class="uk-container uk-width-3-5 uk-section">
+        <div class="uk-container uk-width-3-5 uk-width-medium-2-4 uk-width-small-1-1 uk-section">
             <h2>'.$section_name.'</h2>
             <hr>
             <div class="items">'
