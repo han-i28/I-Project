@@ -29,7 +29,7 @@ if(isset($_GET['minprice'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,20 +44,22 @@ if(isset($_GET['minprice'])){
 </head>
     <body>
         <!--Filters-->
-        <div class="uk-width-1-4">
+        <div class="uk-width-1-6">
             <form action="zoeken.php" method="get" class="uk-flex">
                 <div>
                     <legend class="uk-legend">&euro;</legend>
-                    <input type="text" name="minprice" id="minprice" class="uk-input uk-width-1-5" placeholder="10">
+                    <input type="text" name="minprice" id="minprice" class="uk-input uk-width-1-3" placeholder="10">
                     <legend class="uk-legend"> tot: </legend>
-                    <input type="text" name="maxprice" id="maxprice" class="uk-input uk-width-1-5" placeholder="100">                                
+                    <input type="text" name="maxprice" id="maxprice" class="uk-input uk-width-1-3" placeholder="100">                                
                     <button type="submit" class="uk-button-primary"><span uk-icon="icon: chevron-right"></span></button>
                 </div>                    
             </form>
-        </div>
+        </div> 
         <!--Laat de resultaten zien-->
         <div class="uk-container" id="resultaten">
-        
+            <?php
+            // echo generate_shit();
+            ?>
         </div>
     </body>
 </html>
