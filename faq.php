@@ -18,8 +18,8 @@ include 'header.php';
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.2/css/uikit.min.css" />
     </head>
     <body>
-        <h1 class="uk-text-center">
-            Frequently asked questions
+        <h1 class="uk-heading-medium uk-heading-divider uk-text-center">
+            Veelgestelde vragen
         </h1>
 
         <div class="uk-container">
@@ -80,8 +80,54 @@ include 'header.php';
                         </p>
                     </div>
                 </li>
+
+                <li>
+                    <a href="" class="uk-accordion-title">Is er een verschil tussen een gebruiker- en verkoopaccount?</a>
+                    <div class="uk-accordion-content">
+                        <p>
+                            Ja, er is een verschil. Met een gebruikeraccount kan je op veilingen bieden maar zelf geen veilingen houden. Als verkoper
+                            kan je wel veilingen houden.
+                        </p>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="" class="uk-accordion-title">Werkt mijn site ook op mobiel?</a>
+                    <div class="uk-accordion-content">
+                        <p>
+                            Ja, onze site is gemaakt met 'mobile-first' in het achterhoofd. Dit houdt in dat onze site op al uw devices werkt.
+                        </p>
+                    </div>
+                </li>
+<!-- 
+                <li>
+                    <a href="" class="uk-accordion-title"></a>
+                    <div class="uk-accordion-content">
+                        <p>
+                            
+                        </p>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="" class="uk-accordion-title"></a>
+                    <div class="uk-accordion-content">
+                        <p>
+                            
+                        </p>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="" class="uk-accordion-title"></a>
+                    <div class="uk-accordion-content">
+                        <p>
+                            
+                        </p>
+                    </div>
+                </li>
             </ul>
-        </div>
+        </div> -->
 
         
     </body>
