@@ -8,7 +8,7 @@ class homeController extends Controller {
         $data['tasks'] = $homeModel->getAll();
 
         $data['title'] = "Eenmaal Andermaal - testtitle";
-        $data['page'] = "home";
+        $data['page'] = "index";
         $this->set($data);
         $this->load_view("template");
     }
