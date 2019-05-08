@@ -2,7 +2,7 @@
     <img src="afb/logo.png" alt="Logo">
 </div>
     
-<nav class="uk-navbar-container" uk-navbar="dropbar: true;">
+<nav class="uk-navbar-container" uk-navbar="dropbar: true;" uk-sticky="bottom: #offset">
     <div class="uk-navbar-left">
 
         <ul class="uk-navbar-nav">
