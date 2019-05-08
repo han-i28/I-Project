@@ -1,15 +1,12 @@
 <?php
 
-class homeModel extends Model {
+class loginModel extends Model {
 
     public function getUserAuthentication($username, $password) {
-        $sql = "SELECT username, password FROM Gebruiker WHERE username = (:username))";
+        $sql = "SELECT gebruikersnaam, wachtwoord FROM gebruikers WHERE gebruikersnaam = :gebruikersnaam";
         $req = Database::getBdd()->prepare($sql);
-        $req->execute(array(':username' => $username, ':password' => $password));
-        return $req->fetchAll();
-
-
-
+        $req->execute(array('gebruikersnaam' => $username));
+        return $req->fetch(PDO::FETCH_ASSOC);
     }
 }
 

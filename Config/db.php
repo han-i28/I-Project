@@ -3,20 +3,21 @@
 class Database {
     private static $bdd = null;
 
-    private function __construct() {
-    }
-
     public static function getBdd() {
         $hostname = "(local)";
-        $dbname = "";
-        $username = "";
-        $pw = "";
+        $dbname = "beroepsproduct";
+        $username = NULL;
+        $pw = NULL;
 
-        if (is_null(self::$bdd)) {
-            self::$bdd = new PDO("mysql:host=localhost;dbname=deb107033n3_test", 'deb107033n3_test', 'abc123');
-//            self::$bdd = new PDO ("sqlsrv:Server=$hostname;Database=$dbname;ConnectionPooling=0", "$username", "$pw");
+        try {
+            if (is_null(self::$bdd)) {
+                self::$bdd = new PDO ("sqlsrv:Server=$hostname;Database=$dbname;ConnectionPooling=0", $username, $pw);
+            }
+            return self::$bdd;
+        } catch(Exception $e) {
+//            echo $e->getMessage();
         }
-        return self::$bdd;
+
     }
 }
 

@@ -8,9 +8,15 @@
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-            <li><a href="#">Account</a></li>
-            <li><a href="userlogin.php">Inloggen</a></li>
-            <li><a href="registreren.html">Registreren</a></li>
+            <?php
+                if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == 1) {
+            ?>
+                <li><a href="#">Account</a></li>
+                <li><a href="login/logout">logout</a></li>
+            <?php }  else { ?>
+                <li><a href="login">Inloggen</a></li>
+                <li><a href="registreren.html">Registreren</a></li>
+            <?php } ?>
         </ul>
     </div>
     </div>

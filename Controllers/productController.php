@@ -8,7 +8,7 @@ class productController extends Controller {
     }
 
     function view($par = null) {
-
+        echo $par;
     }
 }
 
