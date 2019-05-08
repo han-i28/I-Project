@@ -80,28 +80,8 @@
     <?php echo generate_section('Rubriek');?>
     <?php echo generate_section('Rubriek');?>
 
-    <div class="uk-card uk-card-default uk-card-title uk-width-1-5 uk-position-center-right">
-        <div class="uk-card-header">
-            Uw veilingen
-        </div>
-        <div class="uk-card-body">
-            <ul class="uk-nav">
-                <li>voorbeeld1</li>
-                <li>voorbeeld2</li>
-            </ul>
-        </div>
-    </div>
-    <div class="uk-card uk-card-default uk-card-title uk-width-1-5 uk-position-bottom-right">
-        <div class="uk-card-header">
-            Uw biedingen
-        </div>
-        <div class="uk-card-body">
-            <ul class="uk-nav">
-                <li>voorbeeld1</li>
-                <li>voorbeeld2</li>
-            </ul>
-        </div>
-    </div>
+    <?php echo your_auctions()?>
+    <?php echo your_biddings()?>
     <?php require_once 'footer.php';?>
 </body>
 
