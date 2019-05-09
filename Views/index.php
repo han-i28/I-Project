@@ -1,6 +1,23 @@
-<div class="uk-card uk-card-default uk-card-body uk-width-1-5 uk-position-center-left uk-position-fixed uk-margin-large-top uk-visible@s">
-    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
-        <li class="uk-active"><a href="#">Categorieën</a></li>
+<div class="uk-card uk-card-default uk-card-body uk-position-fixed uk-width-1-5 uk-visible@s">
+    <h3>Categorie&euml;n</h3>
+    <hr></hr>
+    <ul uk-height-viewport="offset-top: true" class="uk-nav-default uk-nav-parent-icon uk-panel uk-panel-scrollable uk-height-viewport uk-overflow-auto"  uk-nav>
+        <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li>
+
+        <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li>
+
         <li class="uk-parent">
             <a href="#">Parent</a>
             <ul class="uk-nav-sub">
@@ -23,6 +40,86 @@
             </ul>
         </li>
 
+        <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li>
+        <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li>
+        <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li>
+
+        <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li>
+        <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li>
+        <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li>
+
+        <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li>
+
+        <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li>
+
+        <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li><li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li>
+        <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a></li>
+            </ul>
+        </li>
         <li class="uk-parent">
             <a href="#">Parent</a>
             <ul class="uk-nav-sub">
@@ -58,6 +155,14 @@
 </div>
 
 <?php echo generate_section('Highlights'); ?>
+<?php echo generate_section('Rubriek'); ?>
+<?php echo generate_section('Rubriek'); ?>
+<?php echo generate_section('Rubriek'); ?>
+<?php echo generate_section('Rubriek'); ?>
+<?php echo generate_section('Rubriek'); ?>
+<?php echo generate_section('Rubriek'); ?>
+<?php echo generate_section('Rubriek'); ?>
+<?php echo generate_section('Rubriek'); ?>
 <?php echo generate_section('Rubriek'); ?>
 <?php echo generate_section('Rubriek'); ?>
 
