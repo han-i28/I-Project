@@ -107,12 +107,16 @@
         <a href=""> <img style="max-height: 50px" src="afb/logo.png" alt="Logo"></a>
     </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-visible@s">
-        <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
-        <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: -100">
-            <form class="uk-search uk-search-navbar uk-width-1-1">
-                <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
-            </form>
-        </div>
+        <form action="" class="uk-flex">
+            <input type="search" name="" id="" class="uk-input" placeholder="Zoeken...">
+            <button class="uk-button-primary" type="submit"><span class="uk-icon" uk-icon="icon: search"></span></button>
+        </form>
+        <!--        <a class="uk-navbar-toggle" uk-search-icon href="#"></a>-->
+        <!--        <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: -20">-->
+        <!--            <form class="uk-search uk-search-navbar uk-width-1-1">-->
+        <!--                <input class="uk-search-input" type="search" placeholder="Search..." autofocus>-->
+        <!--            </form>-->
+        <!--        </div>-->
     </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-hidden@s">
         <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
