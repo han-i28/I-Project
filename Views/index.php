@@ -1,6 +1,6 @@
 <div class="uk-card uk-card-default uk-card-body uk-position-fixed uk-width-1-5 uk-visible@s">
     <h3>Categorie&euml;n</h3>
-    <hr></hr>
+    <hr>
     <ul uk-height-viewport="offset-top: true" class="uk-nav-default uk-nav-parent-icon uk-panel uk-panel-scrollable uk-height-viewport uk-overflow-auto"  uk-nav>
         <li class="uk-parent">
             <a href="#">Parent</a>
