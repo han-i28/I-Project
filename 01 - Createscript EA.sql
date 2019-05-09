@@ -21,7 +21,7 @@ CREATE TABLE country(
 );
 
 CREATE TABLE voorwerp(
-	voorwerpnummer NUMERIC(10) NOT NULL,
+	voorwerpnummer NUMERIC(14) IDENTITY NOT NULL,
 	titel VARCHAR(100) NOT NULL,
 	beschrijving VARCHAR(600) NOT NULL,
 	startprijs NUMERIC(19, 7) NOT NULL,
