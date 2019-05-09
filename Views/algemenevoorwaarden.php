@@ -1,3 +1,9 @@
+<?php
+
+require_once 'Includes/head.inc.php';
+require_once 'Includes/menu.inc.php';
+?>
+
 <html>
 
 <head>
@@ -905,3 +911,8 @@
 </body>
 
 </html>
+
+<?php
+
+require_once 'Includes/footer.inc.php';
+?>
