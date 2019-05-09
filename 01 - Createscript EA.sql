@@ -36,6 +36,7 @@ CREATE TABLE voorwerp(
 	koper CHAR(20) NULL,
 	looptijdEinde DATETIME NOT NULL,
 	veilingGesloten BIT NOT NULL,
+	verkoop_valuta CHAR(3) NOT NULL,
 	verkoopprijs NUMERIC(19, 7) NULL,
 	CONSTRAINT PK_Voorwerpnummer PRIMARY KEY (voorwerpnummer)
 )
