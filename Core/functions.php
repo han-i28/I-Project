@@ -7,13 +7,13 @@ function generate_section($section_name){
             <h2>'.$section_name.'</h2>
             <hr>
             <div class="items">'
-                .get_items($section_name).'
+                .get_item_html($section_name).'
             </div>
         </div>';
     return $html;
 }
 
-function get_items($item_type){
+function get_item_html($item){//parameter: item object
     $html = '';
     $html_part = '
         <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
@@ -28,11 +28,6 @@ function get_items($item_type){
             </div>
         </div>
     ';
-    
-    for($i = 0; $i < 2; $i++){
-        $html.=$html_part;
-    }
-
     return $html;
 }
 
