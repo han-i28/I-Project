@@ -8,6 +8,13 @@ class homeModel extends Model {
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getVoorwerp(){
+        $sql = "SELECT * FROM voorwerp";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>

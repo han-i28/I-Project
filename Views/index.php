@@ -9,7 +9,7 @@
                 <li><a href="#">Sub item</a></li>
             </ul>
         </li>
-
+        
         <li class="uk-parent">
             <a href="#">Parent</a>
             <ul class="uk-nav-sub">
@@ -154,17 +154,7 @@
     </ul>
 </div>
 
-<?php echo generate_section('Highlights'); ?>
-<?php echo generate_section('Rubriek'); ?>
-<?php echo generate_section('Rubriek'); ?>
-<?php echo generate_section('Rubriek'); ?>
-<?php echo generate_section('Rubriek'); ?>
-<?php echo generate_section('Rubriek'); ?>
-<?php echo generate_section('Rubriek'); ?>
-<?php echo generate_section('Rubriek'); ?>
-<?php echo generate_section('Rubriek'); ?>
-<?php echo generate_section('Rubriek'); ?>
-<?php echo generate_section('Rubriek'); ?>
+<?php echo $this->vars['html']; ?>
 
 <div class="uk-card uk-card-default uk-card-title uk-width-1-5 uk-position-center-right uk-visible@s">
     <div class="uk-card-header">

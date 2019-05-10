@@ -5,7 +5,7 @@ class Database {
 
     public static function getBdd() {
         $hostname = "(local)";
-        $dbname = "";
+        $dbname = "EA";
         $username = NULL;
         $pw = NULL;
 

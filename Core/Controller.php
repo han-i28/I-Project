@@ -25,5 +25,40 @@
             }
         }
 
+        function generate_section($section_name, $items){
+            $item_html = '';
+            foreach($items as $item) {
+                $item_html.= $this->get_item_html($item);
+            }
+
+            $html = '
+                <div class="uk-container uk-width-1-2 uk-width-medium-1-2 uk-width-small-1-1  uk-section">
+                    <h2>'.$section_name.'</h2>
+                    <hr>
+                    <div uk-slider>
+                        <div class="uk-position-relative uk-dark uk-visible-toggle tabindex="-1" uk-slider>
+                            <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid">
+                            ' . $item_html . '
+                            </ul>
+                            <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                            <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                        </div>
+                    </div>
+                </div>';
+            return $html;
+        }
+
+        function get_item_html($item){//parameter: item object
+            $html = '
+                <li class="uk-card uk-card-default uk-card-body">
+                <a href="product?nummer=' . $item['voorwerpnummer'] . '">
+                    <h3>' . $item['titel'] . '</h3>
+                    <img src="https://placeimg.com/250/150/any" alt="afbeelding">
+                    <h3>' . $item['verkoopprijs'] . '</h3>
+                </a>
+                </li>
+            ';
+            return $html;
+        }
     }
 ?>
