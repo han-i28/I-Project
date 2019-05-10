@@ -32,11 +32,11 @@
             }
 
             $html = '
-                <div class="uk-container uk-width-1-2 uk-width-medium-1-2 uk-width-small-1-1s uk-margin-small item-section">
-                    <h2>'.$section_name.'</h2>
-                    <div class="uk-position-relative">
+            <div class="uk-container uk-width-1-2 uk-width-medium-1-2 uk-width-small-1-1s uk-margin-small item-section">
+                <h2>'.$section_name.'</h2>
+                <div class="uk-position-relative">
                     <div uk-slider>
-                        <div class="uk-position-relative uk-dark uk-visible-toggle" tabindex="-1" uk-slider>
+                        <div class="uk-position-relative uk-dark uk-visible-toggle" tabindex="-1">
                             <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-3@m uk-child-width-1-2@s uk-grid uk-grid-small">
                             ' . $item_html . '
                             </ul>
@@ -44,8 +44,8 @@
                         <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
                         <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
                     </div>
-                    </div>
-                </div>';
+                </div>
+            </div>';
             return $html;
         }
 
@@ -55,7 +55,7 @@
                 <a href="product?nummer=' . $item['voorwerpnummer'] . '">
                     <h3>' . $item['titel'] . '</h3>
                     <img src="https://placeimg.com/250/150/any" alt="afbeelding">
-                    <h3>' . $item['verkoopprijs'] . '</h3>
+                    <h3>' . $item['voorwerpnummer'] . '</h3>
                 </a>
                 </li>
             ';
