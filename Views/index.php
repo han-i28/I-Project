@@ -1,156 +1,36 @@
-<div class="uk-card uk-card-default uk-card-body uk-position-fixed uk-width-1-5 uk-visible@s">
+<div class="uk-card uk-card-default uk-card-body uk-position-fixed uk-width-1-5 uk-visible@s uk-text-capitalize">
     <h3>Categorie&euml;n</h3>
     <hr>
     <ul uk-height-viewport="offset-top: true" class="uk-nav-default uk-nav-parent-icon uk-panel uk-panel-scrollable uk-height-viewport uk-overflow-auto"  uk-nav>
         <li class="uk-parent">
-            <a href="#">Parent</a>
+            <a href="#">spellen</a>
             <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
+                <li><a href="#">bordspellen</a></li>
+                <li><a href="#">Kaartspellen</a></li>
             </ul>
         </li>
         
         <li class="uk-parent">
-            <a href="#">Parent</a>
+            <a href="#">verzamelen</a>
             <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
+                <li><a href="#">postzegels</a></li>
+                <li><a href="#">buitenlandse valuta</a></li>
             </ul>
         </li>
 
         <li class="uk-parent">
-            <a href="#">Parent</a>
+            <a href="#">meubels</a>
             <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
+                <li><a href="#">stoelen</a></li>
+                <li><a href="#">tafels</a></li>
             </ul>
         </li>
         <li class="uk-parent">
-            <a href="#">Parent</a>
+            <a href="#">voertuigen</a>
             <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
+                <li><a href="#">motoren</a></li>
+                <li><a href="#">auto's</a></li>
             </ul>
-        </li>
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li><li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
     </ul>
 </div>
 
