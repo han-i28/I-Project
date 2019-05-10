@@ -53,7 +53,7 @@
             $html = '
                 <li class="uk-card uk-card-default uk-card-body">
                 <a href="product?nummer=' . $item['voorwerpnummer'] . '">
-                    <h3>' . $item['titel'] . '</h3>
+                    <h3 class="uk-text-truncate">' . $item['titel'] . '</h3>
                     <img src="https://placeimg.com/250/150/any" alt="afbeelding">
                     <h3>' . $item['verkoopprijs'] . '</h3>
                 </a>
