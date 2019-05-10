@@ -19,3 +19,16 @@ ul{
 hr{
     border-color: #5f4b8b;
 }
+
+.zoekbalk {
+    background-color: #5f4b8b;
+}
+
+.zoekbalk:hover {
+    background-color: #3c2e58;
+}
+
+#footer a {
+    color: #5f4b8b;
+    font-weight: bold;
+}
