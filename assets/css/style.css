@@ -10,3 +10,12 @@ ul{
     resize: none !important;
     border: none !important;
 }
+
+.item-section{
+    padding: 0px 10px;
+    border-bottom: 5px solid #5f4b8b;
+}
+
+hr{
+    border-color: #5f4b8b;
+}
