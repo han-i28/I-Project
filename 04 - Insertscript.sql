@@ -1,7 +1,7 @@
 /*insertscript
 
 voorwerp*/
-INSERT INTO voorwerp (voorwerpnummer, titel, beschrijving, startprijs, betalingswijze, plaatsnaam, land, looptijdBegin, 
+INSERT INTO voorwerp (voorwerpnummer, titel, beschrijving, startprijs, betalingswijze, plaatsnaam, land_id, looptijdBegin, 
 verzendkosten, verzendinstructies, verkoper, looptijdEinde, veilingGesloten)
 VALUES 
 (1, 'OPEL ASTRA TE KOOP', 'Mooie opel astra te koop, zo goed als nieuw. Hij gaat weg omdat ik het niet meer nodig heb.', 
