@@ -5,7 +5,12 @@ class homeController extends Controller {
         require('../Models/homeModel.php');
         $homeModel = new homeModel();
 
-        $data['tasks'] = $homeModel->getAll();
+       $data['html'] =  $this->generate_section("Voor jou", $homeModel->getVoorwerp());
+       $data['html'] .=  $this->generate_section("Auto's", $homeModel->getVoorwerp());
+       $data['html'] .=  $this->generate_section("Antiek", $homeModel->getVoorwerp());
+       $data['html'] .=  $this->generate_section("Fietsen", $homeModel->getVoorwerp());
+
+        
 
         $data['title'] = "Eenmaal Andermaal - testtitle";
         $data['page'] = "index";
