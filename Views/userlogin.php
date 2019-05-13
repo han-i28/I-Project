@@ -5,6 +5,10 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
     header('Location: home');
 }
 ?>
+
+<?php
+	require_once 'includes/head.inc.php';
+	require_once 'includes/menu.inc.php';
     <div class="container uk-position-center">
         <form action="login/userAuthentication" method="post" class="uk-form">
             <div class="uk-margin">
@@ -19,7 +23,7 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
                     <input id="password" name="wachtwoord" type="password" placeholder="wachtwoord" class="uk-input">
                 </div>
             </div>
-            <p class="uk-flex uk-flex-center"></p>Nog geen account? <a href="registreren.html">Registreer hier!</a></p>
+            <p class="uk-flex uk-flex-center"></p>Nog geen account? <a href="registreren.php">Registreer hier!</a></p>
             <div class="uk-flex uk-flex-center">
                 <button class="uk-button uk-button-primary uk-width" name="login_submit" type="submit">Log in!</button>
             </div>

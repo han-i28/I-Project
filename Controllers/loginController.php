@@ -18,7 +18,12 @@ class loginController extends Controller {
             echo $mailuid ."<br>";
             echo $password ."<br>";
             if (empty($mailuid) || empty($password)) {
-                echo 'empty';
+                //STANDAARD ERROR MESSAGE, UNSET NA ELKE MESSAGE VOOR HERGEBRUIK.
+				$_SESSION['ERROR'] = "U heeft &‌eacute;&‌eacute;n of meerdere velden opengelaten.";
+					
+                echo $_SESSION['ERROR'];
+					
+				unset($_SESSION['ERROR']);
                 //niet goed
             } else {
                 require('../Models/loginModel.php');
@@ -27,7 +32,12 @@ class loginController extends Controller {
                 $resultArray = $loginModel->getUserAuthentication($mailuid, $password);
                 print_R($resultArray);
                 if (empty($resultArray)) {
-                    echo 'empty';
+					//STANDAARD ERROR MESSAGE, UNSET NA ELKE MESSAGE VOOR HERGEBRUIK.
+					$_SESSION['ERROR'] = "U heeft &‌eacute;&‌eacute;n of meerdere velden opengelaten.";
+					
+                    echo $_SESSION['ERROR'];
+					
+					unset($_SESSION['ERROR']);
                     //niet goed
                 } else {
 
