@@ -1,5 +1,7 @@
 <?php
 
+
+
 class loginController extends Controller {
     function index() {
         $data['title'] = "Eenmaal Andermaal - testtitle";
@@ -15,11 +17,9 @@ class loginController extends Controller {
 
             $password = strip_tags((isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null));
 
-            echo $mailuid ."<br>";
-            echo $password ."<br>";
             if (empty($mailuid) || empty($password)) {
-                echo 'empty';
-                //niet goed
+                header("../userlogin.php?error=emptyfields&gebruikersnaam=" . $mailuid);
+                exit();
             } else {
                 require('../Models/loginModel.php');
                 $loginModel = new loginModel();
@@ -27,8 +27,8 @@ class loginController extends Controller {
                 $resultArray = $loginModel->getUserAuthentication($mailuid, $password);
                 print_R($resultArray);
                 if (empty($resultArray)) {
-                    echo 'empty';
-                    //niet goed
+                    header("../userlogin.php?error=sqlerror");
+                    exit();
                 } else {
 
                     $pwdCheck = password_verify($password, $resultArray['wachtwoord']);
