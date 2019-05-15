@@ -1,10 +1,3 @@
-<?php
-if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
-    header('Location: home');
-}
-
-?>
-
 <div class="container uk-position-center">
     <h1>Registratie</h1>
     <form action="signup/signupAuthentication" class="uk-form-horizontal uk-grid-small uk-margin-large" uk-grid>

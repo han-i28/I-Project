@@ -11,7 +11,7 @@
                         <li><a href="login">Inloggen</a></li>
                         <li><a href="signup">Registreren</a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="#">Uitloggen</a></li>
+                        <li><a href="login/logout">Uitloggen</a></li>
                     </ul>
                 </div>
             </li>
@@ -138,5 +138,4 @@
         </div>
     </div>
 </nav>
-<hr class="uk-divided-icon">
 
