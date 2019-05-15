@@ -1,6 +1,12 @@
 <?php
-session_start();
-print_R($_SESSION);
+	session_start();
+	
+	$link = $_SERVER['REQUEST_URI']; //bekijken welke pagina we op zitten
+	if ($link === "/I-Project/login") { //checken of we op de login pagina zitten als we ingelogd zijn
+		if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+			header('Location: home');
+		}
+	}
 ?>
 <!DOCTYPE html>
 <head>

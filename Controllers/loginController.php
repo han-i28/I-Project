@@ -1,7 +1,5 @@
 <?php
 
-
-
 class loginController extends Controller {
     function index() {
         $data['title'] = "Eenmaal Andermaal - testtitle";
@@ -25,12 +23,11 @@ class loginController extends Controller {
 				} else {
 					require('../Models/loginModel.php');
 					$loginModel = new loginModel();
-					$resultArray = $loginModel->getUserAuthentication($mailuid, $password);
-					print_R($resultArray);
+
+					$resultArray = $loginModel->getUserAuthentication($mailuid);
 					if (empty($resultArray)) {
 						header('Location: ../Login?error=wrongusernamepassword');
 					} else {
-						
 						$pwdCheck = password_verify($password, $resultArray['wachtwoord']);
 
 						if ($pwdCheck == false) {
@@ -59,7 +56,7 @@ class loginController extends Controller {
 				}
 			}
         } else {
-            header('Location: ../Home');
+            header('Location: ../home');
         }
     }
 
