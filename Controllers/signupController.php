@@ -93,6 +93,7 @@ class signupController extends Controller
         &adres_1=" . $adresregel_1 . "&adres_2=" . $adresregel_2 . "&postcode=" . $postcode . "&plaatsnaam=" . $plaatsnaam . "&land_id=" . $land_id . "&geboortedatum=" . $geboortedatum . "&telefoon=" . $telefoon . "
         &email=" . $mailbox . "&vraag=" . $vraag . "&antwoordtekst=" . $antwoordtekst);
                 exit();
+
             } else {
                 require('../Models/signupModel.php');
                 $signupModel = new signupModel();

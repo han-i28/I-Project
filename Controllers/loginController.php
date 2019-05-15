@@ -12,7 +12,10 @@ class loginController extends Controller {
 
     function userAuthentication() {
         if (isset($_POST['login_submit'])) {
-
+			if (empty($_POST['gebruikersnaam']) || empty($_POST['wachtwoord'])) {
+				header('Location: ../Login?error=emptyfields');
+			}
+			else {
             $mailuid = strip_tags((isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null));
 
             $password = strip_tags((isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null));
@@ -51,12 +54,9 @@ class loginController extends Controller {
                 }
 
             }
-
         } else {
-            //niet goed
+            header('Location: ../home');
         }
-
-
     }
 
     function logout() {

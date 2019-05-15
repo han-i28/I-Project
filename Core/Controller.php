@@ -1,8 +1,7 @@
 <?php
-    class Controller
-    {
+
+    class Controller {
         var $vars = [];
-        var $layout = "default";
 
         function set($d) {
             $this->vars = array_merge($this->vars, $d);

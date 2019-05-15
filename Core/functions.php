@@ -1,6 +1,5 @@
 <?php
 //general functions
-
 function generate_section($section_name){
     $html = '
         <div class="uk-container uk-width-3-5 uk-width-medium-2-4 uk-width-small-1-1 uk-section">
