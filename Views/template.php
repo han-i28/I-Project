@@ -8,6 +8,8 @@
     include $this->vars['page'] . '.php';
     ?>
 </main>
-<?php include 'Includes/footer.inc.php'; ?>
+<footer>
+    <?php include 'Includes/footer.inc.php'; ?>
+</footer>
 </body>
 </html>
