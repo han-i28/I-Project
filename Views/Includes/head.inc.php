@@ -6,6 +6,10 @@
 		if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
 			header('Location: home');
 		}
+	} elseif ($link === "/I-Project/signup") {
+		if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+			header('Location: home');
+		}
 	}
 	
 	if(isset($_SESSION['last_ip']) === false) {
