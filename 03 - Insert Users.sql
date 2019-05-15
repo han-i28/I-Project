@@ -1,4 +1,4 @@
-USE [Ontwikkeldatabase Eenmaal Andermaal]
+USE [EA]
 GO
 INSERT [dbo].[gebruiker]
     ([gebruikersnaam], [voornaam], [tussenvoegsel], [achternaam], [adresregel_1], [adresregel_2], [postcode], [plaatsnaam], [land_id], [geboortedatum], [telefoon], [mailbox], [wachtwoord], [vraag], [antwoordtekst], [is_verkoper])

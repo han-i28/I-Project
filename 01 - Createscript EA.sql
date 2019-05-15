@@ -3,13 +3,13 @@
 USE master
 GO
 
---DROP DATABASE [Ontwikkeldatabase Eenmaal Andermaal]
+--DROP DATABASE [EA]
 --GO
 
-CREATE DATABASE [Ontwikkeldatabase Eenmaal Andermaal]
+CREATE DATABASE [EA]
 GO
 
-USE [Ontwikkeldatabase Eenmaal Andermaal]
+USE [EA]
 GO
 
 CREATE TABLE country(

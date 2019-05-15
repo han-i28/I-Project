@@ -12,51 +12,55 @@ class loginController extends Controller {
 
     function userAuthentication() {
         if (isset($_POST['login_submit'])) {
-
+			if (empty($_POST['gebruikersnaam']) || empty($_POST['wachtwoord'])) {
+				header('Location: ../Login?error=emptyfields');
+			}
+			else {
             $mailuid = strip_tags((isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null));
 
             $password = strip_tags((isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null));
+			
+				if (empty($mailuid) || empty($password)) {
+					header('Location: ../Login?error=emptyfields');
+				} else {
+					require('../Models/loginModel.php');
+					$loginModel = new loginModel();
+					$resultArray = $loginModel->getUserAuthentication($mailuid, $password);
+					print_R($resultArray);
+					if (empty($resultArray)) {
+						header('Location: ../Login?error=wrongusernamepassword');
+					} else {
+						
+						$pwdCheck = password_verify($password, $resultArray['wachtwoord']);
 
-            if (empty($mailuid) || empty($password)) {
-                header("../userlogin.php?error=emptyfields&gebruikersnaam=" . $mailuid);
-                exit();
-            } else {
-                require('../Models/loginModel.php');
-                $loginModel = new loginModel();
+						if ($pwdCheck == false) {
+							header('Location: ../Login?error=wrongusernamepassword');
+						} else if ($pwdCheck == true) {
+							
+							ini_set('session.cookie_httponly', true); //Preventie van session hijacking door cookies niet door javascript te kunnen sturen
+							
+							session_start();
+							
+							if(isset($_SESSION['last_ip']) === false) {
+								$_SESSION['last_ip'] = $_SERVER['REMOTE_ADDR'];
+							}
 
-                $resultArray = $loginModel->getUserAuthentication($mailuid, $password);
-                print_R($resultArray);
-                if (empty($resultArray)) {
-                    header("../userlogin.php?error=sqlerror");
-                    exit();
-                } else {
-
-                    $pwdCheck = password_verify($password, $resultArray['wachtwoord']);
-
-                    if ($pwdCheck == false) {
-                        echo '<br>passwords dont match';
-                        echo password_hash($password, PASSWORD_DEFAULT);
-                        //do iets
-
-                    } else if ($pwdCheck == true) {
-
-                        session_start();
-
-                        $_SESSION['gebruikersnaam'] = $resultArray['gebruikersnaam'];
-                        $_SESSION['loggedIn'] = true;
-                        $_SESSION['time'] = time();//success
-                        header('Location: ../home');
-                    }
-
-                }
-
-            }
-
+							$_SESSION['gebruikersnaam'] = $resultArray['gebruikersnaam'];
+							$_SESSION['loggedIn'] = true;
+							$_SESSION['time'] = time();//success
+							
+							
+							unset($mailuid);
+							unset($password);
+							unset($resultArray);
+							header('Location: ../home');
+						}
+					}
+				}
+			}
         } else {
-            //niet goed
+            header('Location: ../Home');
         }
-
-
     }
 
     function logout() {

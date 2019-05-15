@@ -9,13 +9,8 @@ class Database {
         $username = NULL;
         $pw = NULL;
 
-        try {
-            if (is_null(self::$bdd)) {
-                self::$bdd = new PDO ("sqlsrv:Server=$hostname;Database=$dbname;ConnectionPooling=0", $username, $pw);
-            }
-            return self::$bdd;
-        } catch(Exception $e) {
-//            echo $e->getMessage();
+        if (is_null(self::$bdd)) {
+            self::$bdd = new PDO ("sqlsrv:Server=$hostname;Database=$dbname;ConnectionPooling=0", "$username", "$pw");
         }
 
     }
