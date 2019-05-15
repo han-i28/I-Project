@@ -1,5 +1,6 @@
 <?php
 	if (isset($_GET['error'])) {
+		echo '</br></br>';
 		if($_GET['error'] == 'emptyfields') {
 			echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Niet alle velden zijn ingevuld.</div>';
 		}
