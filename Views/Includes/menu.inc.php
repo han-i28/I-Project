@@ -15,7 +15,7 @@
                 <li><a href="login/logout">logout</a></li>
             <?php }  else { ?>
                 <li><a href="login">Inloggen</a></li>
-                <li><a href="registreren.html">Registreren</a></li>
+                <li><a href="signup">Registreren</a></li>
             <?php } ?>
         </ul>
     </div>

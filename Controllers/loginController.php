@@ -1,5 +1,7 @@
 <?php
 
+
+
 class loginController extends Controller {
     function index() {
         $data['title'] = "Eenmaal Andermaal - testtitle";
