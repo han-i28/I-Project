@@ -5,11 +5,18 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
     header('Location: home');
 }
 ?>
-
 <?php
-	require_once 'includes/head.inc.php';
-	require_once 'includes/menu.inc.php';
+	if (isset($_GET['error'])) {
+		if($_GET['error'] == 'emptyfields') {
+			echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Niet alle velden zijn ingevuld.</div>';
+		}
+		if($_GET['error'] == 'wrongusernamepassword') {
+			echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Één of meerdere velden zijn verkeerd ingevuld.</div>';
+		}
+	}
+?>
     <div class="container uk-position-center">
+		</br></br></br>
         <form action="login/userAuthentication" method="post" class="uk-form">
             <div class="uk-margin">
                 <div class="uk-inline">
