@@ -105,7 +105,8 @@ class signupController extends Controller
                 if (empty($resultArray)) {
                     $hashedPwd = password_hash($wachtwoord, PASSWORD_DEFAULT);
                     $signupModel->setSignupUser($gebruikersnaam, $voornaam, $tussenvoegsel, $achternaam, $adresregel_1, $adresregel_2, $postcode, $plaatsnaam, $land_id, $geboortedatum, $telefoon, $mailbox, $hashedPwd, $vraag, $antwoordtekst);
-
+                    header("Location: ../signup.php?signup=succes");
+                    exit();
                 } else {
                     header("Location: ../signup.php?error=uidtaken&uid=" . $voornaam . "&tussenvoegsel=" . $tussenvoegsel . "&achternaam=" . $achternaam . "
                    &adres_1=" . $adresregel_1 . "&adres_2=" . $adresregel_2 . "&postcode=" . $postcode . "&plaatsnaam=" . $plaatsnaam . "&land_id=" . $land_id . "&geboortedatum=" . $geboortedatum . "&telefoon=" . $telefoon . "

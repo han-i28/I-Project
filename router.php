@@ -6,7 +6,8 @@ class Router {
         $url = trim($url);
 
         //Default naar homepage wanneer geen extentie.
-        if ($url == "/I-Project/") {
+
+        if ($url == "/i-project/" || $url == "/I-Project/") {
             $request->controller = "home";
             $request->action = "index";
             $request->params = [];
