@@ -1,89 +1,90 @@
-<div class="container uk-position-center">
+<div class="container uk-position-center" uk-grid>
     <h1>Registratie</h1>
-    <form action="signup/signupAuthentication" class="uk-form-horizontal uk-grid-small uk-margin-large" uk-grid>
-        <label class="uk-form-label" for="form-horizontal-text">Gebruikersnaam</label>
-        <div class="uk-width-1-1">
+    <form action="signup/signupAuthentication" class="uk-form-horizontal uk-width-1-1 uk-margin-large" >
+        <label class="uk-form-label uk-margin-top" for="form-horizontal-text">Gebruikersnaam</label>
+        <div class="uk-width-1-1 uk-margin-top">
             <div class="uk-form-controls">
                 <input class="uk-input" id="uid" type="text" placeholder="Gebruikersnaam...">
             </div>
         </div>
-        <label class="uk-form-label" for="voornaam">Naam</label>
-        <div class="uk-width-1-3@s">
+        <label class="uk-form-label uk-margin-top" for="voornaam">Naam</label>
+        <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-3@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="voornaam" type="text" placeholder="Voornaam...">
             </div>
         </div>
-        <div class="uk-width-1-3@s">
+        <div class="uk-width-1-1"> <!--uk-width-1-3@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="tussenvoegsel" type="text" placeholder="Tussenvoegsel...">
             </div>
         </div>
-        <div class="uk-width-1-3@s">
+        <div class="uk-width-1-1"> <!--uk-width-1-3@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="achternaam" type="text" placeholder="Achternaam...">
             </div>
         </div>
-        <label class="uk-form-label" for="adres_1">Adres</label>
-        <div class="uk-width-1-2@s">
+        <label class="uk-form-label uk-margin-top" for="adres_1">Adres</label>
+        <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="adres_1" type="text" placeholder="Adres 1...">
             </div>
         </div>
-        <div class="uk-width-1-2@s">
+        <div class="uk-width-1-1"> <!--uk-width-1-2@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="adres_2" type="text" placeholder="Adres 2...">
             </div>
         </div>
-        <div class="uk-width-1-3@s">
+        <div class="uk-width-1-1"> <!--uk-width-1-3@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="postcode" type="text" placeholder="postcode...">
             </div>
         </div>
-        <div class="uk-width-1-3@s">
+        <div class="uk-width-1-1"> <!--uk-width-1-3@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="plaatsnaam" type="text" placeholder="plaatsnaam...">
             </div>
         </div>
-        <div class="uk-width-1-3@s">
+        <div class="uk-width-1-1"> <!--uk-width-1-3@s-->
             <div class="uk-form-controls">
                 <select name="countries" id="land_id">
-                    <option value="placeholder" title="">placeholder</option>;
+                    <option value="placeholder" title="">country placeholder</option>;
                 </select>
             </div>
         </div>
-        <label class="uk-form-label" for="geboortedatum">Geboortedatum</label>
-        <div class="uk-width-1-1">
+        <label class="uk-form-label uk-margin-top" for="geboortedatum">Geboortedatum</label>
+        <div class="uk-width-1-1 uk-margin-top">
             <div class="uk-form-controls">
                 <input class="uk-input" id="Geboortedatum" type="date">
             </div>
         </div>
-        <label class="uk-form-label" for="telefoon">Telefoon</label>
-        <div class="uk-width-1-1">
+        <label class="uk-form-label uk-margin-top" for="telefoon">Telefoon</label>
+        <div class="uk-width-1-1 uk-margin-top">
             <div class="uk-form-controls">
                 <input class="uk-input" id="telefoon" type="tel" placeholder="Telefoon...">
             </div>
         </div>
-        <label class="uk-form-label" for="email">Email</label>
-        <div class="uk-width-1-1">
+        <label class="uk-form-label uk-margin-top" for="email">Email</label>
+        <div class="uk-width-1-1 uk-margin-top">
             <div class="uk-form-controls">
-                <input class="uk-input" id="email" type="email" placeholder="name@adres.com...">
+                <input class="uk-input" id="email" type="email" placeholder="naam@adres.com...">
             </div>
         </div>
-        <label class="uk-form-controls" for="wachtwoord">Wachtwoord</label>
-        <div class="uk-width-1-2@s">
+        <label class="uk-form-label uk-margin-top" for="wachtwoord">Wachtwoord</label>
+        <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="wachtwoord" type="password" placeholder="Wachtwoord...">
             </div>
         </div>
-        <div class="uk-width-1-2@s">
+        <div class="uk-width-1-1"> <!--uk-width-1-2@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="wachtwoord_herhaal" type="password" placeholder="Herhaal wachtwoord...">
             </div>
         </div>
-        <label class="uk-form-label" for="vraag">Veiligheidsvraag</label>
-        <div class="uk-width-1-2@s">
+        <label class="uk-form-label uk-margin-top" for="vraag">Veiligheidsvraag</label>
+        <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
             <div uk-form-custom="target: > * > span:first-child">
                 <select>
+                    <option value="">Kies een vraag.</option>
                     <option value="1">1. Wat is je favoriete gerecht?</option>
                     <option value="2">2. Wat is je favoriete film?</option>
                     <option value="3">3. Wat is je favoriete boek?</option>
@@ -96,7 +97,7 @@
                 </button>
             </div>
         </div>
-        <div class="uk-width-1-2@s">
+        <div class="uk-width-1-1"> <!--uk-width-1-2@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="antwoordtekst" type="text" placeholder="antwoord...">
             </div>
