@@ -7,7 +7,7 @@
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                         <li class="uk-active"><a href="#">Profiel</a></li>
                         <li class="uk-nav-divider"></li>
-                        
+
                         <li><a href="#">Inloggen</a></li>
                         <li><a href="#">Registreren</a></li>
                         <li class="uk-nav-divider"></li>
