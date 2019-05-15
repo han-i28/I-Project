@@ -138,4 +138,3 @@
         </div>
     </div>
 </nav>
-<hr class="uk-divided-icon">
