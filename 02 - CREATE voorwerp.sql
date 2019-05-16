@@ -51,7 +51,7 @@ VALUES
 ('MTG black lotus', 'kaart gebruik ik niet meer (alpha played)', 10000.00, 'Ideal', 'Utrecht', 6030, '2019-04-25 13:30:00',0, 'ophalen', 'Josh kwai','2019-06-25 12:00:00', 0),
 ('comics', 'heb ze allemaal gelezen', 75.00, 'Ideal', 'Rotterdam', 6030, '2019-04-24 14:30:00',0, 'ophalen', 'Stan Lee','2019-06-24 12:00:00', 0),
 ('arc reactor', 'Niet meer nodig', 1050.00, 'Ideal', 'Den Haag', 6030, '2019-04-21 15:30:00',0, 'ophalen', 'Tony stark','2019-06-21 12:00:00', 0),
-('Schild', 'Heb een nieuwe', 15.00, 'contant', 'groningen', 6030, '2019-04-23 16:30:00',0, 'ophalen', 'Steve Rogers','2019-06-23 12:00:00', 0, ),
+('Schild', 'Heb een nieuwe', 15.00, 'contant', 'groningen', 6030, '2019-04-23 16:30:00',0, 'ophalen', 'Steve Rogers','2019-06-23 12:00:00', 0),
 ('Hoge Hakken', 'draag ze te weinig', 45.00, 'contant', 'maastricht', 6030, '2019-04-23 11:40:00',0, 'ophalen', 'Natasha Romanoff','2019-06-23 12:00:00', 0),
 ('gammastraling', 'wil het niet meer wordt er groot en boos van', 0.00, 'contant', 'groenlo', 6030, '2019-04-22 12:50:00',0, 'ophalen', 'Bruce Banner','2019-06-22 12:00:00', 0),
 ('Boog', 'Gebruik zwaarden', 75.00, 'Ideal', 'Eindhoven', 6030, '2019-04-20 13:10:00',0, 'ophalen', 'Clint Barton','2019-06-20 12:00:00', 0),
