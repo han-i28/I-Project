@@ -9,7 +9,7 @@ CREATE TABLE voorwerp(
 	betalingswijze CHAR(25) NOT NULL,
 	betalingsinstructie CHAR(25) NULL,
 	plaatsnaam VARCHAR(255) NOT NULL,
-	land_id SMALLINT NOT NULL,
+	GBA_CODE CHAR(4) NOT NULL,
 	looptijdBegin DATETIME NOT NULL,
 	verzendkosten NUMERIC(19, 7) NOT NULL, 
 	verzendinstructies CHAR(27) NOT NULL,
@@ -20,15 +20,15 @@ CREATE TABLE voorwerp(
 	verkoop_valuta CHAR(3) NOT NULL,
 	verkoopprijs NUMERIC(19, 7) NULL,
 	CONSTRAINT PK_Voorwerpnummer PRIMARY KEY (voorwerpnummer),
-	CONSTRAINT FK_Voorwerp_land_id FOREIGN KEY (land_id)
-		REFERENCES country (id)
+	CONSTRAINT FK_Voorwerp_GBA_CODE FOREIGN KEY (GBA_CODE)
+		REFERENCES tblIMAOLand (GBA_CODE)
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION
 )
 GO
 
 
-INSERT INTO voorwerp (titel, beschrijving, startprijs, betalingswijze, plaatsnaam, land_id, looptijdBegin, 
+INSERT INTO voorwerp (titel, beschrijving, startprijs, betalingswijze, plaatsnaam, GBA_CODE, looptijdBegin, 
 verzendkosten, verzendinstructies, verkoper, looptijdEinde, veilingGesloten, verkoop_valuta)
 VALUES 
 ('OPEL ASTRA TE KOOP', 'Mooie opel astra te koop, zo goed als nieuw. Hij gaat weg omdat ik het niet meer nodig heb.', 
