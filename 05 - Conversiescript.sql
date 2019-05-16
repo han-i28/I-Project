@@ -224,8 +224,7 @@ GO
 
 -- FILTERT HTML/CSS/JS ERUIT
 update Items --TABELNAAM
-set Beschrijving = dbo.udf_StripHTML(Beschrijving)
---KOLOMNAAM
+set Beschrijving = dbo.udf_StripHTML(Beschrijving)--KOLOMNAAM
 
 -- VERWIJDERT DE ONNODIGE SPACING AAN HET BEGIN VAN DE ZIN
 update Items --TABELNAAM
