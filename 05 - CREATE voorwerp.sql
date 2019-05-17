@@ -49,6 +49,9 @@ CREATE TABLE voorwerp(
 )
 GO
 
+CREATE INDEX IX_Voorwerp_categorie ON voorwerp (categorie)
+GO
+
 CREATE TABLE voorwerp_in_categorie(
 	voorwerp NUMERIC(14) NOT NULL,
 	categorie_op_laagste_niveau BIGINT NOT NULL,

@@ -57,6 +57,9 @@ CREATE TABLE categorie (
 )
 GO
 
+CREATE INDEX IX_Categorie_parent ON categorie (parent)
+GO
+
 CREATE TABLE Vraag (
 	ID INT NOT NULL,
 	Vraag varchar(100) NOT NULL
