@@ -73,7 +73,7 @@ CREATE TABLE bod     (
 	CONSTRAINT UNQ_Bod_voorwerp_bodDagEnTijdstip UNIQUE (gebruiker, bodDag, bodTijdstip)
 )
 
-CREATE TABLE Feedback (
+CREATE TABLE feedback (
 	voorwerp NUMERIC(10) NOT NULL,
 	soort_gebruiker CHAR(8) NOT NULL,
 	feedbacksoort CHAR(8) NOT NULL,
