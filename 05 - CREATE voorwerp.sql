@@ -24,11 +24,11 @@ CREATE TABLE voorwerp(
 		REFERENCES tblIMAOLand (GBA_CODE)
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION,
-	CONSTRAINT FK_Voorwerp_Conditie FOREIGN KEY (Conditie)
+	CONSTRAINT FK_Voorwerp_Conditie FOREIGN KEY (conditie)
 		REFERENCES conditie (ID)
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION,
-	CONSTRAINT FK_Voorwerp_Betalingswijze FOREIGN KEY (Betalingswijze) 
+	CONSTRAINT FK_Voorwerp_Betalingswijze FOREIGN KEY (betalingswijze) 
 		REFERENCES betalingswijze(ID) 
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION,
@@ -37,7 +37,7 @@ CREATE TABLE voorwerp(
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION,
 	CONSTRAINT FK_Voorwerp_Gebruiker_Koper FOREIGN KEY (koper)
-		REFERENCES gebruiker(koper)
+		REFERENCES gebruiker(gebruikersnaam)
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION,
 	CONSTRAINT FK_Voorwerp_Rubrieken FOREIGN KEY (voorwerpnummer)
