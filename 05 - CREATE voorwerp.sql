@@ -49,9 +49,6 @@ CREATE TABLE voorwerp(
 )
 GO
 
-CREATE INDEX IX_Voorwerp_categorie ON voorwerp (categorie)
-GO
-
 CREATE TABLE voorwerp_in_categorie(
 	voorwerp NUMERIC(14) NOT NULL,
 	categorie_op_laagste_niveau BIGINT NOT NULL,
@@ -65,3 +62,6 @@ CREATE TABLE voorwerp_in_categorie(
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
 )
+
+CREATE INDEX IX_Voorwerp_in_categorie ON voorwerp_in_categorie (categorie_op_laagste_niveau)
+GO
