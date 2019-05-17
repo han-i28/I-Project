@@ -4,20 +4,22 @@ GO
 CREATE TABLE betalingswijze (
 	ID INT NOT NULL,
 	Beschrijving VARCHAR(50) NOT NULL
+    CONSTRAINT PK_betalingswijze PRIMARY KEY (ID)
 )
 GO
 
 INSERT INTO betalingswijze 
 VALUES 
-(1, iDeal),
-(2, Contant),
-(3, Creditcard),
-(4, PayPal)
+(1, 'iDeal'),
+(2, 'Contant'),
+(3, 'Creditcard'),
+(4, 'PayPal')
 GO
 
 CREATE TABLE verzendinstructies (
 	ID INT NOT NULL,
 	Beschrijving VARCHAR(50) NOT NULL
+    CONSTRAINT PK_verzendinstructies PRIMARY KEY (ID)
 )
 
 INSERT INTO verzendinstructies
@@ -27,6 +29,22 @@ VALUES
 (3, 'Ophalen of afhalen'),
 (4, 'Post - brief'),
 (5, 'Post - pakket')
+GO
+
+CREATE TABLE conditie (
+	ID INT NOT NULL,
+	Beschrijving VARCHAR(50) NOT NULL
+    CONSTRAINT PK_conditie PRIMARY KEY (ID)
+)
+GO
+
+INSERT INTO conditie
+VALUES 
+(1, 'Nieuw'),
+(2, 'Tweedehands'),
+(3, 'Zo goed als nieuw'),
+(4, 'Gebruikt'),
+(5, 'Opknapbeurt nodig')
 GO
 
 CREATE TABLE voorwerp(
@@ -46,6 +64,7 @@ CREATE TABLE voorwerp(
 	looptijdEinde DATETIME NOT NULL,
 	veilingGesloten BIT NOT NULL,
 	verkoopprijs NUMERIC(19, 7) NULL,
+	conditie INT NOT NULL
 	CONSTRAINT PK_Voorwerpnummer PRIMARY KEY (voorwerpnummer),
 	CONSTRAINT FK_Voorwerp_GBA_CODE FOREIGN KEY (GBA_CODE)
 		REFERENCES tblIMAOLand (GBA_CODE)
