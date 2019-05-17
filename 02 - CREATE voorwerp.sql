@@ -4,6 +4,7 @@ GO
 CREATE TABLE betalingswijze (
 	ID INT NOT NULL,
 	Beschrijving VARCHAR(50) NOT NULL
+    CONSTRAINT PK_betalingswijze PRIMARY KEY (ID)
 )
 GO
 
@@ -18,6 +19,7 @@ GO
 CREATE TABLE verzendinstructies (
 	ID INT NOT NULL,
 	Beschrijving VARCHAR(50) NOT NULL
+    CONSTRAINT PK_verzendinstructies PRIMARY KEY (ID)
 )
 
 INSERT INTO verzendinstructies
@@ -32,6 +34,7 @@ GO
 CREATE TABLE conditie (
 	ID INT NOT NULL,
 	Beschrijving VARCHAR(50) NOT NULL
+    CONSTRAINT PK_conditie PRIMARY KEY (ID)
 )
 GO
 
