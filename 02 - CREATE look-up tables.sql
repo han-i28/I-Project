@@ -57,6 +57,22 @@ CREATE TABLE Categorieen (
 )
 GO
 
+CREATE TABLE Vraag (
+	ID INT NOT NULL,
+	Vraag varchar(100) NOT NULL
+	CONSTRAINT PK_vraag PRIMARY KEY (ID)
+)
+GO
+
+INSERT INTO Vraag
+VALUES 
+(1, 'Wat was/is je eerste huisdier?'),
+(2, 'Wat is de voornaam van je opa aan je moeder kant?'),
+(3, 'Wat was je eerste knuffel?'),
+(4, 'In welke stad is je vader geboren?'),
+(5, 'Hoe heette je basisschool?')
+GO
+
 INSERT Categorieen (ID,Name,Parent) VALUES (-1,'Root',NULL)
 INSERT Categorieen (ID,Name,Parent) VALUES (1,'Verzamelen',-1)
 INSERT Categorieen (ID,Name,Parent) VALUES (30,'Overig klassiek speelgoed',19016)
