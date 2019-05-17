@@ -18,7 +18,8 @@ CREATE TABLE voorwerp(
 	looptijdEinde DATETIME NOT NULL,
 	veilingGesloten BIT NOT NULL,
 	verkoopprijs NUMERIC(19, 7) NULL,
-	conditie INT NOT NULL
+	conditie INT NOT NULL,
+	categorie INT NOT NULL
 	CONSTRAINT PK_Voorwerpnummer PRIMARY KEY (voorwerpnummer),
 	CONSTRAINT FK_Voorwerp_GBA_CODE FOREIGN KEY (GBA_CODE)
 		REFERENCES tblIMAOLand (GBA_CODE)
@@ -48,6 +49,10 @@ CREATE TABLE voorwerp(
 		REFERENCES verzendinstructies(ID)
 		ON UPDATE NO ACTION
 		on DELETE NO ACTION,
+	CONSTRAINT FK_Voorwerp_Categorie FOREIGN KEY (categorie)
+		REFERENCES categorieen(ID)
+		ON UPDATE NO ACTION
+		ON DELETE NO ACTION,
 	CONSTRAINT CHK_Looptijdbegin_Looptijdeinde 
 		CHECK (looptijdBegin < looptijdEinde)
 )
