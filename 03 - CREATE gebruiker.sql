@@ -24,6 +24,10 @@ CREATE TABLE gebruiker (
 		REFERENCES tblIMAOLand (GBA_CODE)
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION,
+	CONSTRAINT FK_Gebruiker_Vraag FOREIGN KEY (Vraag)
+		REFERENCES Vraag(ID)
+		ON UPDATE NO ACTION
+		on DELETE NO ACTION,
 	CONSTRAINT CHK_Mailbox CHECK (mailbox LIKE '%_@__%.__%'),
 	CONSTRAINT UNQ_Mailbox UNIQUE (mailbox),
 	CONSTRAINT CHK_Wachtwoord CHECK (COL_LENGTH ('wachtwoord', 'this') = LEN(wachtwoord)),--password hash must be maximum length of column to ensure hash
