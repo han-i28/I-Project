@@ -61,6 +61,7 @@ CREATE TABLE voorwerp(
 	looptijdEinde DATETIME NOT NULL,
 	veilingGesloten BIT NOT NULL,
 	verkoopprijs NUMERIC(19, 7) NULL,
+	conditie INT NOT NULL
 	CONSTRAINT PK_Voorwerpnummer PRIMARY KEY (voorwerpnummer),
 	CONSTRAINT FK_Voorwerp_GBA_CODE FOREIGN KEY (GBA_CODE)
 		REFERENCES tblIMAOLand (GBA_CODE)
