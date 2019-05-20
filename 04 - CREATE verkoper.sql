@@ -2,7 +2,7 @@ USE iproject28
 GO
 
 CREATE TABLE verkoper(
-	gebruiker CHAR(20) NOT NULL,
+	gebruiker VARCHAR(20) NOT NULL,
 	bank CHAR(8) NULL,
 	bankrekening VARCHAR(10) NULL,
 	controle_optie CHAR(10) NOT NULL,
