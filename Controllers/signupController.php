@@ -14,11 +14,32 @@ class signupController extends Controller
     function signupAuthentication()
     {
         if (isset($_POST['signup_submit'])) {
+			
+			/************************* TEST CODE *********************************/
+			/*
+			print_r($_POST['uid']);
+			print_r($_POST['voornaam']);
+			print_r($_POST['tussenvoegsel']);
+			print_r($_POST['achternaam']);
+			print_r($_POST['adres_1']);
+			print_r($_POST['adres_2']);
+			print_r($_POST['postcode']);
+			print_r($_POST['plaatsnaam']);
+			print_r($_POST['land_id']);
+			print_r($_POST['telefoon']);
+			print_r($_POST['email']);
+			print_r($_POST['wachtwoord']);
+			print_r($_POST['wachtwoord_herhaal']);
+			print_r($_POST['vraag']);
+			print_r($_POST['antwoordtekst']);
+			
 			if (empty($_POST['uid']) || empty($_POST['voornaam']) || empty($_POST['tussenvoegsel']) || empty($_POST['achternaam']) || empty($_POST['adres_1']) || empty($_POST['adres_2']) || empty($_POST['postcode']) || 
 			empty($_POST['plaatsnaam']) || empty($_POST['land_id']) || empty($_POST['telefoon']) || empty($_POST['email']) || empty($_POST['wachtwoord']) || empty($_POST['wachtwoord_herhaal']) || 
 			empty($_POST['vraag']) || empty($_POST['antwoordtekst'])) {
-				header("Location: ../signup?errorwtf");
+				header("Location: ../signup?error");
 			}
+			*/
+			/*********************************************************************/
 			
             $gebruikersnaam = strip_tags((isset($_POST['uid']) ? $_POST['uid'] : null));
             $voornaam = strip_tags((isset($_POST['voornaam']) ? $_POST['voornaam'] : null));
@@ -29,7 +50,7 @@ class signupController extends Controller
             $postcode = strip_tags((isset($_POST['postcode']) ? $_POST['postcode'] : null));
             $plaatsnaam = strip_tags((isset($_POST['plaatsnaam']) ? $_POST['plaatsnaam'] : null));
             $land_id = strip_tags((isset($_POST['land_id']) ? $_POST['land_id'] : null));
-            //$geboortedatum = strip_tags((isset($_POST['geboortedatum']) ? $_POST['geboortedatum'] : null));
+            $geboortedatum = strip_tags((isset($_POST['geboortedatum']) ? $_POST['geboortedatum'] : null));
             $telefoon = strip_tags((isset($_POST['telefoon']) ? $_POST['telefoon'] : null));
             $mailbox = strip_tags((isset($_POST['email']) ? $_POST['email'] : null));
             $wachtwoord = strip_tags((isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null));
@@ -39,21 +60,7 @@ class signupController extends Controller
 
             if (empty($gebruikersnaam) || empty($voornaam) || empty($achternaam) || empty($adresregel_1) || empty($postcode) || empty($plaatsnaam) || empty($land_id)
                 || empty($geboortedatum) || empty($telefoon) || empty($mailbox) || empty($wachtwoord) || empty($wachtwoord_herhaal) || empty($vraag) || empty($antwoordtekst)) {
-                //header("Location: ../signup?error1");
-				print_r($gebruikersnaam);
-				print_r($voornaam);
-				print_r($achternaam);
-				print_r($adresregel_1);
-				print_r($postcode);
-				print_r($plaatsnaam);
-				print_r($land_id);
-				//print_r($geboortedatum);
-				print_r($telefoon);
-				print_r($mailbox);
-				print_r($wachtwoord);
-				print_r($wachtwoord_herhaal);
-				print_r($vraag);
-				print_r($antwoordtekst);
+                header("Location: ../signup?error1");
                 exit();
             } elseif (!filter_var($mailbox, FILTER_VALIDATE_EMAIL)) { //email validate
                 header("Location: ../signup?error2");
@@ -85,26 +92,25 @@ class signupController extends Controller
             } elseif (!preg_match("/^[0-9]*$/", $telefoon)) { //telefoonnummer
                 header("Location: ../signup?error=11");
                 exit();
-            } elseif (!preg_match("/^[a-zA-Z0-9]!@#%&*$/", $wachtwoord || !preg_match("/^[a-zA-Z0-9]!@#%&*$/", $wachtwoord_herhaal))) {
-				if ($wachtwoord !== $wachtwoord_herhaal) { //password repeat
-					header("Location: ../signup?error=12");
-					exit();
-				}
-            } else {
-				
+            } elseif (!preg_match("/^[a-zA-Z0-9!@#$%^&*]*$/", $wachtwoord || !preg_match("/^[a-zA-Z0-9]*$/", $wachtwoord_herhaal))) {
+				header("Location: ../signup?error=12");
+				exit();
+            } elseif ($wachtwoord !== $wachtwoord_herhaal) { //password repeat
+				header("Location: ../signup?error=13");
+				exit(); 
+			} else {
                 require('../Models/signupModel.php');
                 $signupModel = new signupModel();
 
                 $resultArray = $signupModel->getUidCheck($gebruikersnaam);
                 print_R($resultArray);
-
                 if (empty($resultArray)) {
                     $hashedPwd = password_hash($wachtwoord, PASSWORD_DEFAULT);
                     $signupModel->setSignupUser($gebruikersnaam, $voornaam, $tussenvoegsel, $achternaam, $adresregel_1, $adresregel_2, $postcode, $plaatsnaam, $land_id, $geboortedatum, $telefoon, $mailbox, $hashedPwd, $vraag, $antwoordtekst);
                     header("Location: ../signup?signup=succes");
                     exit();
                 } else {
-					header("Location: ../signup?error=sql"); //veranderen
+					header("Location: ../signup?error=invalid_username");
                     exit();
 
 
