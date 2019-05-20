@@ -23,8 +23,8 @@ CREATE TABLE verzendinstructies (
 INSERT INTO verzendinstructies
 VALUES 
 ('Ophalen'),
-('Afhalen'),
-('Ophalen of afhalen'),
+('Verzenden'),
+('Ophalen of verzenden'),
 ('Post - brief'),
 ('Post - pakket')
 GO
