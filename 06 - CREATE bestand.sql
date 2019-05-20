@@ -3,7 +3,7 @@ GO
 
 CREATE TABLE bestand(
 	pad VARCHAR(40) NOT NULL,
-	voorwerp NUMERIC(14) NOT NULL,
+	voorwerp BIGINT NOT NULL,
 	CONSTRAINT PK_filenaam PRIMARY KEY (pad),
     CONSTRAINT FK_Bestand_voorwerpnummer FOREIGN KEY (voorwerp)
 		REFERENCES Voorwerp (voorwerpnummer)

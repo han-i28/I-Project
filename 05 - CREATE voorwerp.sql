@@ -2,7 +2,7 @@ USE iproject28
 GO
 
 CREATE TABLE voorwerp(
-	voorwerpnummer NUMERIC(14) IDENTITY NOT NULL,
+	voorwerpnummer BIGINT IDENTITY NOT NULL,
 	titel VARCHAR(100) NOT NULL,
 	beschrijving VARCHAR(max) NOT NULL,
 	startprijs NUMERIC(19, 7) NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE voorwerp(
 GO
 
 CREATE TABLE voorwerp_in_categorie(
-	voorwerp NUMERIC(14) NOT NULL,
+	voorwerp BIGINT NOT NULL,
 	categorie_op_laagste_niveau BIGINT NOT NULL,
 	CONSTRAINT PK_voorwerp_in_categorie_op_laagste_niveau PRIMARY KEY (voorwerp, categorie_op_laagste_niveau),
 	CONSTRAINT FK_Voorwerp_in_categorie_voorwerp FOREIGN KEY (voorwerp)

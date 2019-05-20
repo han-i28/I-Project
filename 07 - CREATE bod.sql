@@ -2,7 +2,7 @@ USE iproject28
 GO
 
 CREATE TABLE bod (
-	voorwerp NUMERIC(14) NOT NULL,
+	voorwerp BIGINT NOT NULL,
 	bodBedrag CHAR(10) NOT NULL,
 	gebruiker CHAR(20) NOT NULL,
 	bodMoment DATETIME NOT NULL

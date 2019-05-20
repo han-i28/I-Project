@@ -2,7 +2,7 @@ USE iproject28
 GO
 
 CREATE TABLE feedback (
-	voorwerp NUMERIC(14) NOT NULL,
+	voorwerp BIGINT NOT NULL,
 	soort_gebruiker CHAR(8) NOT NULL,
 	feedbacksoort CHAR(8) NOT NULL,
 	moment DATETIME NOT NULL,
