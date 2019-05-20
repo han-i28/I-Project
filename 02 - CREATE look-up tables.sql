@@ -1,53 +1,65 @@
 USE iproject28
 GO
 
+DROP TABLE betalingswijze
+
 CREATE TABLE betalingswijze (
-	ID INT NOT NULL,
-	Beschrijving VARCHAR(50) NOT NULL
-    CONSTRAINT PK_betalingswijze PRIMARY KEY (ID)
+	betalingswijze VARCHAR(50) NOT NULL
+    CONSTRAINT PK_Betalingswijze PRIMARY KEY (betalingswijze)
 )
 GO
 
 INSERT INTO betalingswijze 
 VALUES 
-(1, 'iDeal'),
-(2, 'Contant'),
-(3, 'Creditcard'),
-(4, 'PayPal')
+('iDeal'),
+('Contant'),
+('Creditcard'),
+('PayPal')
 GO
 
 CREATE TABLE verzendinstructies (
-	ID INT NOT NULL,
-	Beschrijving VARCHAR(50) NOT NULL
-    CONSTRAINT PK_verzendinstructies PRIMARY KEY (ID)
+	verzendinstructies VARCHAR(50) NOT NULL
+    CONSTRAINT PK_Verzendinstructies PRIMARY KEY (verzendinstructies)
 )
 
 INSERT INTO verzendinstructies
 VALUES 
-(1, 'Ophalen'),
-(2, 'Afhalen'),
-(3, 'Ophalen of afhalen'),
-(4, 'Post - brief'),
-(5, 'Post - pakket')
+('Ophalen'),
+('Afhalen'),
+('Ophalen of afhalen'),
+('Post - brief'),
+('Post - pakket')
 GO
 
 CREATE TABLE conditie (
-	ID INT NOT NULL,
-	Beschrijving VARCHAR(50) NOT NULL
-    CONSTRAINT PK_conditie PRIMARY KEY (ID)
+	conditie VARCHAR(50) NOT NULL
+    CONSTRAINT PK_Conditie PRIMARY KEY (conditie)
 )
 GO
 
 INSERT INTO conditie
 VALUES 
-(1, 'Nieuw'),
-(2, 'Tweedehands'),
-(3, 'Zo goed als nieuw'),
-(4, 'Gebruikt'),
-(5, 'Opknapbeurt nodig')
+('Nieuw'),
+('Tweedehands'),
+('Zo goed als nieuw'),
+('Gebruikt'),
+('Opknapbeurt nodig')
 GO
 
-GO 
+CREATE TABLE vraag (
+	vraag varchar(100) NOT NULL
+	CONSTRAINT PK_Vraag PRIMARY KEY (vraag)
+)
+GO
+
+INSERT INTO vraag
+VALUES 
+('Wat was/is je eerste huisdier?'),
+('Wat is de voornaam van je opa aan je moeder kant?'),
+('Wat was je eerste knuffel?'),
+('In welke stad is je vader geboren?'),
+('Hoe heette je basisschool?')
+GO
 
 CREATE TABLE categorie (
     ID BIGINT NOT NULL,
@@ -58,22 +70,6 @@ CREATE TABLE categorie (
 GO
 
 CREATE INDEX IX_Categorie_parent ON categorie (parent)
-GO
-
-CREATE TABLE Vraag (
-	ID INT NOT NULL,
-	Vraag varchar(100) NOT NULL
-	CONSTRAINT PK_vraag PRIMARY KEY (ID)
-)
-GO
-
-INSERT INTO Vraag
-VALUES 
-(1, 'Wat was/is je eerste huisdier?'),
-(2, 'Wat is de voornaam van je opa aan je moeder kant?'),
-(3, 'Wat was je eerste knuffel?'),
-(4, 'In welke stad is je vader geboren?'),
-(5, 'Hoe heette je basisschool?')
 GO
 
 INSERT categorie (ID,naam,parent) VALUES (-1,'Root',NULL)
