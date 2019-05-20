@@ -9,7 +9,7 @@
     ?>
 </main>
 <footer>
-    <?php //include 'Includes/footer.inc.php'; ?>
+    <?php include 'Includes/footer.inc.php'; ?>
 </footer>
 </body>
 </html>
