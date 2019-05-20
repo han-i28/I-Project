@@ -33,7 +33,7 @@ CREATE TABLE voorwerp(
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION,
 	CONSTRAINT FK_Voorwerp_Gebruiker_Verkoper FOREIGN KEY (verkoper)
-		REFERENCES gebruiker(gebruikersnaam)
+		REFERENCES verkoper(gebruikersnaam)
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION,
 	CONSTRAINT FK_Voorwerp_Gebruiker_Koper FOREIGN KEY (koper)
