@@ -1,8 +1,6 @@
 USE iproject28
 GO
 
-DROP TABLE betalingswijze
-
 CREATE TABLE betalingswijze (
 	betalingswijze VARCHAR(50) NOT NULL
     CONSTRAINT PK_Betalingswijze PRIMARY KEY (betalingswijze)
@@ -47,8 +45,10 @@ VALUES
 GO
 
 CREATE TABLE vraag (
+	ID INT IDENTITY NOT NULL,
 	vraag varchar(100) NOT NULL
-	CONSTRAINT PK_Vraag PRIMARY KEY (vraag)
+	CONSTRAINT PK_Vraag PRIMARY KEY (ID),
+	CONSTRAINT UNQ_Vraag UNIQUE (vraag)
 )
 GO
 
