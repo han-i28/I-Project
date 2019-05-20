@@ -66,3 +66,9 @@ CREATE TABLE voorwerp_in_categorie(
 
 CREATE INDEX IX_Voorwerp_in_categorie ON voorwerp_in_categorie (categorie_op_laagste_niveau)
 GO
+
+
+INSERT INTO voorwerp (titel, beschrijving, startprijs, betalingswijze, betalingsinstructie, plaatsnaam, GBA_CODE, verzendkosten, verzendinstructies, verkoper, koper, looptijdBegin, looptijdEinde, veilingGesloten, verkoopprijs, conditie)
+VALUES
+('Opel Astra te koop! Als nieuw', 'Mooie Opel Astra uit 2011. Motor is een 2.4tsfi. leren bekleding, airco, elektrische ramen, DAB+ radio.', 12321.50, 'iDeal',
+'betalingsinstructie', 'Amsterdam', 6030, 6.95, 'Verzenden', 'Alex123', 'Alex456', '01-12-2018', '07-12-2018', 1, 12321.45, 'Nieuw')
