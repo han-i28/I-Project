@@ -4,7 +4,7 @@ GO
 CREATE TABLE bod (
 	voorwerp BIGINT NOT NULL,
 	bodBedrag CHAR(10) NOT NULL,
-	gebruiker CHAR(20) NOT NULL,
+	gebruiker VARCHAR(20) NOT NULL,
 	bodMoment DATETIME NOT NULL
 	CONSTRAINT PK_Bod_voorwerp_bodBedrag PRIMARY KEY (voorwerp, bodBedrag),
 	CONSTRAINT UNQ_Bod_gebruiker_bodMoment UNIQUE (gebruiker, bodMoment),

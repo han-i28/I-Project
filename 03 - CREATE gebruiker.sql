@@ -28,7 +28,7 @@ CREATE TABLE gebruiker (
 		ON UPDATE NO ACTION
 		on DELETE NO ACTION,
 	CONSTRAINT CHK_Mailbox CHECK (mailbox LIKE '%_@__%.__%'),
-	CONSTRAINT UNQ_Mailbox UNIQUE (mailbox),
+	--CONSTRAINT UNQ_Mailbox UNIQUE (mailbox),
 	CONSTRAINT CHK_Wachtwoord CHECK (COL_LENGTH ('wachtwoord', 'this') = LEN(wachtwoord)),--password hash must be maximum length of column to ensure hash
 	CONSTRAINT CHK_Geboortedatum CHECK (getdate() >= DATEADD(year, 12, geboortedatum)),--users need to be at least 12 years old
 	CONSTRAINT CHK_adresregel_1_not_adresregel_2 CHECK (adresregel_1 <> adresregel_2),

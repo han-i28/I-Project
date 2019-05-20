@@ -14,8 +14,8 @@ CREATE TABLE voorwerp(
 	looptijdBegin DATETIME NOT NULL,
 	verzendkosten NUMERIC(19, 7) NOT NULL, 
 	verzendinstructies VARCHAR(50) NOT NULL,
-	verkoper CHAR(20) NOT NULL,
-	koper CHAR(20) NULL,
+	verkoper VARCHAR(20) NOT NULL,
+	koper VARCHAR(20) NULL,
 	looptijdEinde DATETIME NOT NULL,
 	veilingGesloten BIT NOT NULL,
 	verkoopprijs NUMERIC(19, 7) NULL,
@@ -71,5 +71,5 @@ GO
 
 INSERT INTO voorwerp (titel, beschrijving, startprijs, betalingswijze, betalingsinstructie, postcode, plaatsnaam, GBA_CODE, verzendkosten, verzendinstructies, verkoper, koper, looptijdBegin, looptijdEinde, veilingGesloten, verkoopprijs, conditie)
 VALUES
-('Opel Astra te koop! Als nieuw', 'Mooie Opel Astra uit 2011. Motor is een 2.4tsfi. leren bekleding, airco, elektrische ramen, DAB+ radio.', 12321.50, 'iDeal',
+(1, 'Opel Astra te koop! Als nieuw', 'Mooie Opel Astra uit 2011. Motor is een 2.4tsfi. leren bekleding, airco, elektrische ramen, DAB+ radio.', 12321.50, 'iDeal',
 'betalingsinstructie', '3241AB', 'Amsterdam', 6030, 6.95, 'Verzenden', 'Alex123', 'Alex456', '01-12-2018', '07-12-2018', 1, 12321.45, 'Nieuw')
