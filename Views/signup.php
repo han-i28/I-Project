@@ -1,5 +1,5 @@
 <div class="container uk-position-center" style="margin-top: 250px" uk-grid>
-	<h1 style="margin-left: 20%;">Registratie</h1>
+	<h1 class="uk-margin-top" style="margin-left: 20%;">Registratie</h1>
     <form action="signup/signupAuthentication" method="POST" class="uk-form-horizontal uk-width-1-1 uk-margin-large" >
         <div class="uk-width-2-3 uk-margin-top">
             <div class="uk-form-controls" style="margin-left: 20%;">
