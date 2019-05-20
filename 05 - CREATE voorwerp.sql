@@ -2,7 +2,7 @@ USE iproject28
 GO
 
 CREATE TABLE voorwerp(
-	voorwerpnummer BIGINT IDENTITY NOT NULL,
+	voorwerpnummer BIGINT NOT NULL,
 	titel VARCHAR(100) NOT NULL,
 	beschrijving VARCHAR(max) NOT NULL,
 	startprijs NUMERIC(19, 7) NOT NULL,
