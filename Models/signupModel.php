@@ -25,6 +25,14 @@ class signupModel extends Model {
 		$stmt = $req->fetchAll(PDO::FETCH_ASSOC);
 		return $stmt;
 	}
+	
+	public function getVragenList() {
+		$sql = "SELECT id, vraag FROM vraag";
+		$req = Database::getBdd()->prepare($sql);
+		$req->execute();
+		$stmt = $req->fetchAll(PDO::FETCH_ASSOC);
+		return $stmt;
+	}
 }
 
 ?>

@@ -95,6 +95,9 @@ class signupController extends Controller
             } elseif (!preg_match("/^[a-zA-Z0-9!@#$%^&*]*$/", $wachtwoord)) { //password
 				header("Location: ../signup?error=invalid_password");
 				exit();
+			} elseif (strlen($wachtwoord) < 8) { //wachtwoord lengte check
+				header("Location: ../signup?error=invalid_password");
+				exit();
 			} elseif (!preg_match("/^[a-zA-Z0-9!@#$%^&*]*$/", $wachtwoord_herhaal)) { //password repeat
 				header("Location: ../signup?error=invalid_password_repeat");
 				exit();
@@ -110,7 +113,7 @@ class signupController extends Controller
                 if (empty($resultArray)) { //al in database check
                     $hashedPwd = password_hash($wachtwoord, PASSWORD_DEFAULT);
                     $signupModel->setSignupUser($gebruikersnaam, $voornaam, $tussenvoegsel, $achternaam, $adresregel_1, $adresregel_2, $postcode, $plaatsnaam, $land_id, $geboortedatum, $telefoon, $mailbox, $hashedPwd, $vraag, $antwoordtekst);
-                    header("Location: ../Home?registration=succes");
+                    header("Location: ../login?registration=succes");
                     exit();
                 } else {
 					header("Location: ../signup?error=username_taken");
