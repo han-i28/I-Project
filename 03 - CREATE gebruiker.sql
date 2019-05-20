@@ -2,21 +2,21 @@ USE iproject28
 GO
 
 CREATE TABLE gebruiker (
-	gebruikersnaam CHAR(20) NOT NULL,
-	voornaam CHAR(255) NOT NULL,
+	gebruikersnaam VARCHAR(20) NOT NULL,
+	voornaam VARCHAR(255) NOT NULL,
 	tussenvoegsel VARCHAR(10) NULL,
-	achternaam CHAR(255) NOT NULL,
+	achternaam VARCHAR(255) NOT NULL,
 	adresregel_1 VARCHAR(60) NOT NULL,--Street, addressnumber
 	adresregel_2 VARCHAR (60) NULL,
 	postcode CHAR(6) NOT NULL,--Montserrat zipcodes are 13 chars long: future proof with 16
-	plaatsnaam CHAR(85) NOT NULL,
+	plaatsnaam VARCHAR(85) NOT NULL,
 	GBA_CODE CHAR(4) NOT NULL,
 	geboortedatum DATE NOT NULL,
 	telefoon CHAR(15) NOT NULL,
 	mailbox VARCHAR(50) NOT NULL,--Create email check
 	wachtwoord BINARY(128) NOT NULL,--128 BINARY field for password hash
 	vraag INT NOT NULL,
-	antwoordtekst CHAR(20) NOT NULL,
+	antwoordtekst VARCHAR(20) NOT NULL,
 	rating NUMERIC(4,1) NOT NULL,
 	CONSTRAINT PK_Gebruiker PRIMARY KEY (gebruikersnaam),
 	CONSTRAINT FK_Gebruiker_GBA_CODE FOREIGN KEY (GBA_CODE)
@@ -31,8 +31,8 @@ CREATE TABLE gebruiker (
 	CONSTRAINT UNQ_Mailbox UNIQUE (mailbox),
 	CONSTRAINT CHK_Wachtwoord CHECK (COL_LENGTH ('wachtwoord', 'this') = LEN(wachtwoord)),--password hash must be maximum length of column to ensure hash
 	CONSTRAINT CHK_Geboortedatum CHECK (getdate() >= DATEADD(year, 12, geboortedatum)),--users need to be at least 12 years old
-	CONSTRAINT CHK_Adresregel_1_not_adresregel_2 CHECK (adresregel_1 <> adresregel_2),
-	CONSTRAINT CHK_Adresregel_1_format CHECK (adresregel_1 LIKE '%___[ ]%')
+	CONSTRAINT CHK_adresregel_1_not_adresregel_2 CHECK (adresregel_1 <> adresregel_2),
+	CONSTRAINT CHK_adresregel_1_format CHECK (adresregel_1 LIKE '%___[ ]%')
 )
 GO
 
