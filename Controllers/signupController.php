@@ -60,43 +60,46 @@ class signupController extends Controller
 
             if (empty($gebruikersnaam) || empty($voornaam) || empty($achternaam) || empty($adresregel_1) || empty($postcode) || empty($plaatsnaam) || empty($land_id)
                 || empty($geboortedatum) || empty($telefoon) || empty($mailbox) || empty($wachtwoord) || empty($wachtwoord_herhaal) || empty($vraag) || empty($antwoordtekst)) {
-                header("Location: ../signup?error1");
+                header("Location: ../signup?error=emptyfields");
                 exit();
             } elseif (!filter_var($mailbox, FILTER_VALIDATE_EMAIL)) { //email validate
-                header("Location: ../signup?error2");
+                header("Location: ../signup?error=invalid_email");
                 exit();
             } elseif (!preg_match("/^[a-zA-Z0-9]*$/", $gebruikersnaam)) { //voornaam
-                header("Location: ../signup?error3");
+                header("Location: ../signup?error=invalid_username");
                 exit();
             } elseif (!preg_match("/^[a-zA-Z0-9]*$/", $voornaam)) { //voornaam
-                header("Location: ../signup?error4");
+                header("Location: ../signup?error=invalid_voornaam");
                 exit();
             } elseif (!preg_match("/^[a-zA-Z0-9]*$/", $tussenvoegsel)) { //tussenvoegsel
-                header("Location: ../signup?error5");
+                header("Location: ../signup?error=invalid_tussenvoegsel");
                 exit();
 			} elseif (!preg_match("/^[a-zA-Z0-9]*$/", $achternaam)) { //achternaam
-                header("Location: ../signup?error6");
+                header("Location: ../signup?error=invalid_achternaam");
                 exit();
             } elseif (!preg_match("/^[a-zA-Z0-9]*$/", $adresregel_1)) { //adres 1
-                header("Location: ../signup?error7");
+                header("Location: ../signup?error=invalid_adres");
                 exit();
             } elseif (!preg_match("/^[a-zA-Z0-9]*$/", $adresregel_2)) { //adres 2
-                header("Location: ../signup?error8");
+                header("Location: ../signup?error=invalid_adres");
                 exit();
 			} elseif (!preg_match("/^[a-zA-Z0-9]*$/", $postcode)) { //postcode
-                header("Location: ../signup?error9");
+                header("Location: ../signup?error=invalid_postcode");
                 exit();
             } elseif (!preg_match("/^[a-zA-Z0-9]*$/", $plaatsnaam)) { //plaatsnaam
-                header("Location: ../signup?error10");
+                header("Location: ../signup?error=invalid_woonplaats");
                 exit();
             } elseif (!preg_match("/^[0-9]*$/", $telefoon)) { //telefoonnummer
-                header("Location: ../signup?error=11");
+                header("Location: ../signup?error=invalid_telefoonnummer");
                 exit();
-            } elseif (!preg_match("/^[a-zA-Z0-9!@#$%^&*]*$/", $wachtwoord || !preg_match("/^[a-zA-Z0-9]*$/", $wachtwoord_herhaal))) {
-				header("Location: ../signup?error=12");
+            } elseif (!preg_match("/^[a-zA-Z0-9!@#$%^&*]*$/", $wachtwoord)) { //password
+				header("Location: ../signup?error=invalid_password");
+				exit();
+			} elseif (!preg_match("/^[a-zA-Z0-9!@#$%^&*]*$/", $wachtwoord_herhaal)) { //password repeat
+				header("Location: ../signup?error=invalid_password_repeat");
 				exit();
             } elseif ($wachtwoord !== $wachtwoord_herhaal) { //password repeat
-				header("Location: ../signup?error=13");
+				header("Location: ../signup?error=invalid_password_repeat");
 				exit(); 
 			} else {
                 require('../Models/signupModel.php');
@@ -104,13 +107,13 @@ class signupController extends Controller
 
                 $resultArray = $signupModel->getUidCheck($gebruikersnaam);
                 print_R($resultArray);
-                if (empty($resultArray)) {
+                if (empty($resultArray)) { //al in database check
                     $hashedPwd = password_hash($wachtwoord, PASSWORD_DEFAULT);
                     $signupModel->setSignupUser($gebruikersnaam, $voornaam, $tussenvoegsel, $achternaam, $adresregel_1, $adresregel_2, $postcode, $plaatsnaam, $land_id, $geboortedatum, $telefoon, $mailbox, $hashedPwd, $vraag, $antwoordtekst);
-                    header("Location: ../signup?signup=succes");
+                    header("Location: ../Home?registration=succes");
                     exit();
                 } else {
-					header("Location: ../signup?error=invalid_username");
+					header("Location: ../signup?error=username_taken");
                     exit();
 
 
