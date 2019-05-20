@@ -5,10 +5,12 @@
 	if ($link === "/I-Project/login") { //checken of we op de login pagina zitten als we ingelogd zijn
 		if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
 			header('Location: home');
+			exit();
 		}
 	} elseif ($link === "/I-Project/signup") {
 		if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
 			header('Location: home');
+			exit();
 		}
 	}
 	

@@ -1,13 +1,11 @@
-<div class="container uk-position-center" uk-grid>
-    <h1>Registratie</h1>
-    <form action="signup/signupAuthentication" class="uk-form-horizontal uk-width-1-1 uk-margin-large" >
-        <label class="uk-form-label uk-margin-top" for="form-horizontal-text">Gebruikersnaam</label>
+<div class="container uk-position-center" style="margin-top: 250px" uk-grid>
+	<h1>Registratie</h1>
+    <form action="signup/signupAuthentication" method="POST" class="uk-form-horizontal uk-width-1-1 uk-margin-large" >
         <div class="uk-width-1-1 uk-margin-top">
             <div class="uk-form-controls">
                 <input class="uk-input" id="uid" type="text" placeholder="Gebruikersnaam...">
             </div>
         </div>
-        <label class="uk-form-label uk-margin-top" for="voornaam">Naam</label>
         <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-3@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="voornaam" type="text" placeholder="Voornaam...">
@@ -23,7 +21,6 @@
                 <input class="uk-input" id="achternaam" type="text" placeholder="Achternaam...">
             </div>
         </div>
-        <label class="uk-form-label uk-margin-top" for="adres_1">Adres</label>
         <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="adres_1" type="text" placeholder="Adres 1...">
@@ -47,29 +44,33 @@
         <div class="uk-width-1-1"> <!--uk-width-1-3@s-->
             <div class="uk-form-controls">
                 <select name="countries" id="land_id">
-                    <option value="placeholder" title="">country placeholder</option>;
+					<?php
+						require('../Models/signupModel.php');
+						$signupModel = new signupModel();
+						
+						$countries = $signupModel->getCountryList();
+						
+						foreach ($countries as $value) { ?>
+								<option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
+						<?php } ?>
                 </select>
             </div>
         </div>
-        <label class="uk-form-label uk-margin-top" for="geboortedatum">Geboortedatum</label>
         <div class="uk-width-1-1 uk-margin-top">
             <div class="uk-form-controls">
                 <input class="uk-input" id="Geboortedatum" type="date">
             </div>
         </div>
-        <label class="uk-form-label uk-margin-top" for="telefoon">Telefoon</label>
         <div class="uk-width-1-1 uk-margin-top">
             <div class="uk-form-controls">
                 <input class="uk-input" id="telefoon" type="tel" placeholder="Telefoon...">
             </div>
         </div>
-        <label class="uk-form-label uk-margin-top" for="email">Email</label>
         <div class="uk-width-1-1 uk-margin-top">
             <div class="uk-form-controls">
                 <input class="uk-input" id="email" type="email" placeholder="naam@adres.com...">
             </div>
         </div>
-        <label class="uk-form-label uk-margin-top" for="wachtwoord">Wachtwoord</label>
         <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
             <div class="uk-form-controls">
                 <input class="uk-input" id="wachtwoord" type="password" placeholder="Wachtwoord...">
@@ -80,8 +81,8 @@
                 <input class="uk-input" id="wachtwoord_herhaal" type="password" placeholder="Herhaal wachtwoord...">
             </div>
         </div>
-        <label class="uk-form-label uk-margin-top" for="vraag">Veiligheidsvraag</label>
-        <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
+        <!--<label class="uk-form-label uk-margin-top" for="vraag">Veiligheidsvraag</label>-->
+        <div class="uk-width-1-1 uk-margin-top" style="margin-left: 0px;"> <!--uk-width-1-2@s-->
             <div uk-form-custom="target: > * > span:first-child">
                 <select>
                     <option value="">Kies een vraag.</option>

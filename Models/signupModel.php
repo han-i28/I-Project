@@ -17,6 +17,14 @@ class signupModel extends Model {
                             ':plaatsnaam' =>$plaatsnaam, ':land_id' => $land_id, ':geboortedatum' => $geboortedatum, ':telefoon' => $telefoon, ':mailbox' => $mailbox, ':hashedPwd' => $hashedPwd, ':vraag' => $vraag, ':antwoordtekst' => $antwoordtekst));
         return $req->fetch(PDO::FETCH_ASSOC);
     }
+	
+	public function getCountryList() {
+		$sql = "SELECT id, name FROM country";
+		$req = Database::getBdd()->prepare($sql);
+		$req->execute();
+		$stmt = $req->fetchAll(PDO::FETCH_ASSOC);
+		return $stmt;
+	}
 }
 
 ?>
