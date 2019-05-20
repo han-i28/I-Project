@@ -8,6 +8,7 @@ CREATE TABLE voorwerp(
 	startprijs NUMERIC(19, 7) NOT NULL,
 	betalingswijze VARCHAR(50) NOT NULL,
 	betalingsinstructie CHAR(25) NULL,
+	postcode CHAR(6) NOT NULL,
 	plaatsnaam VARCHAR(255) NOT NULL,
 	GBA_CODE CHAR(4) NOT NULL,
 	looptijdBegin DATETIME NOT NULL,
