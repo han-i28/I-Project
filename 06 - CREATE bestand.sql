@@ -1,4 +1,4 @@
-USE EA
+USE iproject28
 GO
 
 CREATE TABLE bestand(
