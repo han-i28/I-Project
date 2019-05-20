@@ -6,7 +6,7 @@ CREATE TABLE bestand(
 	voorwerp BIGINT NOT NULL,
 	CONSTRAINT PK_filenaam PRIMARY KEY (pad),
     CONSTRAINT FK_Bestand_voorwerpnummer FOREIGN KEY (voorwerp)
-		REFERENCES Voorwerp (voorwerpnummer)
+		REFERENCES voorwerp (voorwerpnummer)
 		ON UPDATE CASCADE
 		ON DELETE NO ACTION
 )

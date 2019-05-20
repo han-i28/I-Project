@@ -8,7 +8,7 @@ CREATE TABLE gebruiker (
 	achternaam CHAR(255) NOT NULL,
 	adresregel_1 VARCHAR(60) NOT NULL,--Street, addressnumber
 	adresregel_2 VARCHAR (60) NULL,
-	postcode CHAR(16) NOT NULL,--Montserrat zipcodes are 13 chars long: future proof with 16
+	postcode CHAR(6) NOT NULL,--Montserrat zipcodes are 13 chars long: future proof with 16
 	plaatsnaam CHAR(85) NOT NULL,
 	GBA_CODE CHAR(4) NOT NULL,
 	geboortedatum DATE NOT NULL,
