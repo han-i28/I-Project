@@ -6,30 +6,30 @@ CREATE TABLE voorwerp(
 	titel VARCHAR(100) NOT NULL,
 	beschrijving VARCHAR(max) NOT NULL,
 	startprijs NUMERIC(19, 7) NOT NULL,
-	betalingswijze INT NOT NULL,
+	betalingswijze VARCHAR(50) NOT NULL,
 	betalingsinstructie CHAR(25) NULL,
 	plaatsnaam VARCHAR(255) NOT NULL,
 	GBA_CODE CHAR(4) NOT NULL,
 	looptijdBegin DATETIME NOT NULL,
 	verzendkosten NUMERIC(19, 7) NOT NULL, 
-	verzendinstructies INT NOT NULL,
+	verzendinstructies VARCHAR(50) NOT NULL,
 	verkoper CHAR(20) NOT NULL,
 	koper CHAR(20) NULL,
 	looptijdEinde DATETIME NOT NULL,
 	veilingGesloten BIT NOT NULL,
 	verkoopprijs NUMERIC(19, 7) NULL,
-	conditie INT NOT NULL,
+	conditie VARCHAR(50) NOT NULL,
 	CONSTRAINT PK_Voorwerpnummer PRIMARY KEY (voorwerpnummer),
 	CONSTRAINT FK_Voorwerp_GBA_CODE FOREIGN KEY (GBA_CODE)
 		REFERENCES tblIMAOLand (GBA_CODE)
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION,
 	CONSTRAINT FK_Voorwerp_Conditie FOREIGN KEY (conditie)
-		REFERENCES conditie (ID)
+		REFERENCES conditie (conditie)
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION,
 	CONSTRAINT FK_Voorwerp_Betalingswijze FOREIGN KEY (betalingswijze) 
-		REFERENCES betalingswijze(ID) 
+		REFERENCES betalingswijze(betalingswijze) 
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION,
 	CONSTRAINT FK_Voorwerp_Gebruiker_Verkoper FOREIGN KEY (verkoper)
@@ -41,11 +41,12 @@ CREATE TABLE voorwerp(
 		ON UPDATE NO ACTION
 		ON DELETE NO ACTION,
 	CONSTRAINT FK_Voorwerp_Verzendinstructies FOREIGN KEY (verzendinstructies)
-		REFERENCES verzendinstructies(ID)
+		REFERENCES verzendinstructies(verzendinstructies)
 		ON UPDATE NO ACTION
 		on DELETE NO ACTION,
-	CONSTRAINT CHK_Looptijdbegin_Looptijdeinde 
-		CHECK (looptijdBegin < looptijdEinde)
+	CONSTRAINT CHK_Looptijdbegin_Looptijdeinde CHECK (looptijdBegin < looptijdEinde),
+	CONSTRAINT CHK_Verkoper_NOT_koper CHECK (verkoper <> koper),
+	CONSTRAINT UNQ_Voorwerp UNIQUE (titel, verkoper)
 )
 GO
 
