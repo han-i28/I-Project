@@ -54,8 +54,8 @@
                 <li class="uk-card uk-card-default uk-card-body">
                 <a href="product?nummer=' . $item['voorwerpnummer'] . '">
                     <h3 class="uk-text-truncate">' . $item['titel'] . '</h3>
-                    <img src="http://iproject28.icasites.nl/thumbnails/' . $item['pad'] . '" alt="afbeelding">
-                    <h3>' . $item['voorwerpnummer'] . '</h3>
+                    <img src="http://iproject28.icasites.nl/thumbnails/' . $item['pad'] . '" alt="afbeelding" style="height: 15vh;">
+                    <h5 class="uk-text-truncate">' . $item['beschrijving'] . '</h5>
                 </a>
                 </li>
             ';
