@@ -1,5 +1,8 @@
 <?php
-    function search_for_keywords(){
+
+class homeModel extends Model {
+
+    public function getResults() {
         $start = "'%";
         $end = "%'";
         $search = str_replace(' ', '%', $_POST['search']);
@@ -12,5 +15,7 @@
         $req = Database::getBdd()->prepare($sql);
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
-    }
+    }   
+}
+
 ?>
