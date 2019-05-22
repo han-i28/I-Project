@@ -107,7 +107,7 @@
         <a href=""> <img style="max-height: 50px" src="afb/logo.png" alt="Logo"></a>
     </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-visible@s">
-        <form action="../../Core/zoekfunctie.php" class="uk-flex" method="POST">
+        <form action="HIER NOG DE ACTION INVULLEN" class="uk-flex" method="POST">
             <input type="search" name="search" id="" class="uk-input" placeholder="Zoeken...">
             <button class="uk-button-primary zoekbalk" type="submit"><span class="uk-icon" uk-icon="icon: search"></span></button>
         </form>
