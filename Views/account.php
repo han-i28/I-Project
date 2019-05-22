@@ -40,6 +40,6 @@
 		<hr style="margin-left: -5%; margin-right: 10%;">
 		<p>Mijn geboortedatum: <?php echo $accountInformation['geboortedatum']; ?></br></p>
 		<hr style="margin-left: -5%; margin-right: 10%;">
-		<p>Mijn telefoonnummer: <?php echo $accountInformation['telefoon']; ?></br></p>
+		<p>Mijn telefoonnummer: <?php echo $accountInformation['telefoon']; ?></br></p></br></br>
 	</div>
 </div>
