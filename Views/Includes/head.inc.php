@@ -1,5 +1,7 @@
 <?php
-	session_start();
+	if(!isset($_SESSION)) {
+		session_start();
+	}
 	
 	$link = $_SERVER['REQUEST_URI']; //bekijken welke pagina we op zitten
 	if ($link === "/I-Project/login") { //checken of we op de login pagina zitten als we ingelogd zijn
@@ -12,6 +14,11 @@
 			header('Location: home');
 			exit();
 		}
+	} elseif ($link === "/I-Project/account") {
+		if (!isset($_SESSION['loggedIn'])) {
+			header('Location: home');
+			exit();
+		}
 	}
 	
 	if(isset($_SESSION['last_ip']) === false) {
@@ -21,6 +28,7 @@
 		session_unset();
 		session_destroy();
 	}
+	print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <head>

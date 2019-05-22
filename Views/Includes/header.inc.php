@@ -5,7 +5,7 @@
                 <a href="#">Account</a>
                 <div uk-dropdown="pos:bottom-justify" class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                        <li class="uk-active"><a href="#">Profiel</a></li>
+                        <li class="uk-active"><a href="account">Profiel</a></li>
                         <li class="uk-nav-divider"></li>
 
                         <li><a href="login">Inloggen</a></li>
