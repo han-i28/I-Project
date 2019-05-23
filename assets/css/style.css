@@ -32,3 +32,11 @@ hr{
     color: #5f4b8b;
     font-weight: bold;
 }
+
+.afbeeldingContainer {
+    padding-bottom: calc(100% / (16 / 9));
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 1px solid #5f4b8b;
+}

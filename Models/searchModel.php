@@ -1,23 +1,20 @@
 <?php
 
-class homeModel extends Model {
+class searchModel extends Model {
 
-    public function getResults() {
+    public function getResults($input) {
         
-        $input = $_POST['search'];
         $input = trim(preg_replace('!\s+!', ' ', $input));
-        
-        foreach ($word in $input) {
-            $word = '%' + $word + '%';
-            $sql = "SELECT voorwerpnummer, titel, pad FROM voorwerp, bestand WHERE titel LIKE '$word' OR categorie LIKE '$word' OR beschrijving LIKE '$word'";
+        $array = explode(" ", $input);
+        foreach ($array as $word) {
+            
+            $word = '%' . $word . '%';
+            $sql = "SELECT voorwerpnummer, beschrijving, titel, looptijdEinde, pad FROM voorwerp, bestand WHERE beschrijving LIKE '$word' AND voorwerp.voorwerpnummer = bestand.voorwerp";
             $req = Database::getBdd()->prepare($sql);
             $req->execute();            
         }
-        if ($req > 0) {
-            return $req->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-            echo '<h1> Geen zoekresultaten </h1>'
-        }
+        
+        return $req->fetchAll(PDO::FETCH_ASSOC);
         
     }   
 }

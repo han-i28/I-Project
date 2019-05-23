@@ -4,15 +4,16 @@ class searchController extends Controller {
     function index() {
         require('../Models/searchModel.php');
         $searchModel = new searchModel();
+        if(isset($_GET['search'])){
+            $input = $_GET['search'];
+            $data['html'] =  $this->generate_searchresults("Zoekresultaten", $searchModel->getResults($input));
 
-        $data['html'] =  $this->generate_section("Zoekresultaten", $searchModel->getResults());
-    
-
-        $data['title'] = "Eenmaal Andermaal - testtitle";
-        $data['page'] = "zoekresultaten";
-        $this->set($data);
-        $this->load_view("template");
-    }
+            $data['title'] = "Eenmaal Andermaal - testtitle";
+            $data['page'] = "search";
+            $this->set($data);
+            $this->load_view("template");
+        }
+    }  
 }
 
 ?>
