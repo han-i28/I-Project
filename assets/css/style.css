@@ -40,3 +40,8 @@ hr{
     background-size: contain;
     border: 1px solid #5f4b8b;
 }
+
+.uk-countdown-number {
+    text-align: center;
+    font-size: 2rem;
+}

@@ -104,7 +104,7 @@
         <a href=""> <img style="max-height: 80px" src="afb/logo.png" alt="Logo"></a>
     </div>
     <div class="uk-navbar-left uk-navbar-small uk-logo uk-navbar item uk-hidden@s">
-        <a href=""> <img style="max-height: 50px" src="afb/logo.png" alt="Logo"></a>
+        <a href="iproject28.icasites.nl"> <img style="max-height: 50px" src="afb/logo.png" alt="Logo"></a>
     </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-visible@s">
         <form action="search" class="uk-flex" method="GET">

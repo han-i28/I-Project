@@ -9,7 +9,8 @@ class searchModel extends Model {
         foreach ($array as $word) {
             
             $word = '%' . $word . '%';
-            $sql = "SELECT voorwerpnummer, beschrijving, titel, looptijdEinde, pad FROM voorwerp, bestand WHERE beschrijving LIKE '$word' AND voorwerp.voorwerpnummer = bestand.voorwerp";
+            $sql = "SELECT voorwerpnummer, beschrijving, titel, looptijdEinde, pad, bod FROM voorwerp, bestand, biedingen WHERE titel LIKE '$word' 
+            AND voorwerp.voorwerpnummer = bestand.voorwerp AND voorwerpnummer = biedingen.voorwerp";
             $req = Database::getBdd()->prepare($sql);
             $req->execute();            
         }
