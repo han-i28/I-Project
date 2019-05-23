@@ -14,7 +14,7 @@ CREATE TABLE gebruiker (
 	geboortedatum DATE NOT NULL,
 	telefoon CHAR(15) NOT NULL,
 	mailbox VARCHAR(50) NOT NULL,--Create email check
-	wachtwoord BINARY(128) NOT NULL,--128 BINARY field for password hash
+	wachtwoord CHAR(60) NOT NULL,--60 CHAR field for password hash
 	vraag INT NOT NULL,
 	antwoordtekst VARCHAR(20) NOT NULL,
 	rating NUMERIC(4,1) NOT NULL,
