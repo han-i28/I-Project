@@ -3,18 +3,22 @@
 class homeModel extends Model {
 
     public function getResults() {
-        $start = "'%";
-        $end = "%'";
-        $search = str_replace(' ', '%', $_POST['search']);
-        $keywords = $start + $search + $end;
-    
-        $sql = "SELECT voorwerpnummer, titel, pad FROM voorwerp, bestand
-        WHERE voorwerp.voorwerpnummer = bestand.voorwerp
-        AND titel IN (SELECT titel FROM voorwerp WHERE titel LIKE '$search' OR beschrijving LIKE '$search'
-        OR categorie LIKE '$search')";
-        $req = Database::getBdd()->prepare($sql);
-        $req->execute();
-        return $req->fetchAll(PDO::FETCH_ASSOC);
+        
+        $input = $_POST['search'];
+        $input = trim(preg_replace('!\s+!', ' ', $input));
+        
+        foreach ($word in $input) {
+            $word = '%' + $word + '%';
+            $sql = "SELECT voorwerpnummer, titel, pad FROM voorwerp, bestand WHERE titel LIKE '$word' OR categorie LIKE '$word' OR beschrijving LIKE '$word'";
+            $req = Database::getBdd()->prepare($sql);
+            $req->execute();            
+        }
+        if ($req > 0) {
+            return $req->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            echo '<h1> Geen zoekresultaten </h1>'
+        }
+        
     }   
 }
 
