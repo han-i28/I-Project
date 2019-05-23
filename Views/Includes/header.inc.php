@@ -51,9 +51,10 @@
                 <a uk-navbar-toggle-icon></a>
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                        <li><a href="#">Acount</a></li>
-                        <li><a href="#">Inloggen</a></li>
-                        <li><a href="#">Registreren</a></li>
+                        <li><a href="login">Inloggen</a></li>
+                        <li><a href="signup">Registreren</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="login/logout">Uitloggen</a></li>
 
 
                         <li class="uk-nav-divider"></li>
@@ -102,10 +103,10 @@
         </ul>
     </div>
     <div class="uk-navbar-center uk-navbar-small uk-logo uk-navbar item uk-visible@s">
-        <a href=""> <img style="max-height: 80px" src="afb/logo.png" alt="Logo"></a>
+        <a href="home"> <img style="max-height: 80px" src="afb/logo.png" alt="Logo"></a>
     </div>
     <div class="uk-navbar-left uk-navbar-small uk-logo uk-navbar item uk-hidden@s">
-        <a href=""> <img style="max-height: 50px" src="afb/logo.png" alt="Logo"></a>
+        <a href="home"> <img style="max-height: 50px" src="afb/logo.png" alt="Logo"></a>
     </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-visible@s">
         <form action="" class="uk-flex">

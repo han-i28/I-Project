@@ -61,6 +61,14 @@ CREATE TABLE gebruiker (
 	CONSTRAINT PK_Gebruiker PRIMARY KEY (gebruikersnaam)
 )
 
+CREATE TABLE wachtwoordReset (
+	resetId int IDENTITY(1,1) PRIMARY KEY NOT NULL ,
+	resetEmail TEXT NOT NULL,
+	resetSelector TEXT NOT NULL,
+	resetToken NVARCHAR(MAX) NOT NULL,
+	resetExpires TEXT NOT NULL
+)
+
 GO
 
 ALTER TABLE voorwerp
