@@ -5,12 +5,16 @@
                 <a href="#">Account</a>
                 <div uk-dropdown="pos:bottom-justify" class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-			<li class="uk-active"><a href="<?php echo SITEURL . 'account'; ?>">Profiel</a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><a href="<?php echo SITEURL . 'login'; ?>">Inloggen</a></li>
-                        <li><a href="<?php echo SITEURL . 'registreren'; ?>">Registreren</a></li>
-                        <li class="uk-nav-divider"></li>                        
-                       <li><a href="<?php echo SITEURL . 'login/logout'; ?>">Uitloggen</a></li>
+					<?php
+						if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] === false ) { ?>
+							<li class="uk-active"><a href="<?php echo SITEURL . 'account'; ?>">Profiel</a></li>
+							<li class="uk-nav-divider"></li>
+							<li><a href="<?php echo SITEURL . 'login'; ?>">Inloggen</a></li>
+							<li><a href="<?php echo SITEURL . 'registreren'; ?>">Registreren</a></li>
+					<?php } elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) { ?>
+							<li class="uk-nav-divider"></li>                        
+							<li><a href="<?php echo SITEURL . 'login/logout'; ?>">Uitloggen</a></li>
+					<?php } ?>
                     </ul>
                 </div>
             </li>
@@ -26,11 +30,11 @@
    </div>
     </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-visible@s">
-	<?php //if (isset($_SESSION['gebruikersnaam'])) { ?>
-		<!--<div>
+	<?php if (isset($_SESSION['gebruikersnaam'])) { ?>
+		<div class="uk-card uk-card-default uk-card-body">
 			<p>Welkom <?php echo $_SESSION['gebruikersnaam']; ?></p>
-		</div> -->
-	<?php //} ?>
+		</div>
+	<?php } ?>
         <form action="/veiling/zoekopdracht" class="uk-flex" method="GET">
             <input type="search" name="search" id="" class="uk-input" placeholder="Zoeken...">
             <button class="uk-button-primary zoekbalk" type="submit"><span class="uk-icon" uk-icon="icon: search"></span></button>
