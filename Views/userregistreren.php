@@ -40,6 +40,9 @@ if (isset($this->vars['error_input'])) {
     elseif($this->vars['error_input'] == 'username_taken') {
         echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Deze gebruikersnaam is al in gebruik.</div>';
     }
+	elseif($this->vars['error_input'] == 'age_restriction') {
+        echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>U moet 12 jaar of ouder zijn om te kunnen registreren.</div>';
+    }
 }
 ?>
 <div class="uk-container">
@@ -107,7 +110,7 @@ if (isset($this->vars['error_input'])) {
             </div>
             <div class="uk-width-1-1"> <!--uk-width-1-2@s-->
                 <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="wachtwoord_herhaal" id="wachtwoord_herhaal"	type="password" maxlength="255" placeholder="Herhaal wachtwoord... *">
+                    <input class="uk-input" name="wachtwoord_herhaal" id="wachtwoord_herhaal" type="password" maxlength="255" placeholder="Herhaal wachtwoord... *">
                 </div>
             </div>
             <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
