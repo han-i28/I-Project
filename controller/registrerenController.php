@@ -60,12 +60,10 @@ class registrerenController extends Controller {
                 $data['error_input'] = "invalid_tussenvoegsel";
             } elseif (!preg_match("/^[a-zA-Z0-9-]*$/", $achternaam)) { //					achternaam
                 $data['error_input'] = "invalid_achternaam";
-            } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $adresregel_1)) { //					adres 1
-                $data['error_input'] = "invalid_adres";
-			//} elseif (!preg_match("/^[a-zA-Z ]+[ \t]* \d [0-9a-z]*$/", $adresregel_1)) {
-				//$data['error_input'] = "invalid_adres";
-            } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $adresregel_2)) { //					adres 2
-                $data['error_input'] = "invalid_adres";
+			} elseif (!preg_match("/^[a-zA-Z]+\ +[0-9]+$/", $adresregel_1)) { //			adres 1 pregmatch
+				$data['error_input'] = "invalid_adres";
+            } elseif (!preg_match("/^[a-zA-Z]+\ +[0-9]+$/", $adresregel_2)) { //			adres 2 pregmatch
+				$data['error_input'] = "invalid_adres";
             } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $postcode)) { //						postcode
                 $data['error_input'] = "invalid_postcode";
             } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $plaatsnaam)) { //					plaatsnaam
