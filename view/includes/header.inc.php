@@ -31,7 +31,7 @@
     </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-visible@s">
 	<?php if (isset($_SESSION['gebruikersnaam'])) { ?>
-		<div class="uk-card uk-card-default uk-card-body">
+		<div class="uk-card uk-card-default uk-card-body" style="height: 30px;">
 			<p>Welkom <?php echo $_SESSION['gebruikersnaam']; ?></p>
 		</div>
 	<?php } ?>
