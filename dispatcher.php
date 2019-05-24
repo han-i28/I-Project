@@ -9,8 +9,9 @@ class Dispatcher {
         Router::parse($this->request->url, $this->request);
 
         $controller = $this->loadController();
+
         if(!method_exists($controller, $this->request->action)) {
-            include '../Views/error_404.php';
+            include PATH . '/view/error_404.php';
             exit;
         }
 
