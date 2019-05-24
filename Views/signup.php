@@ -56,7 +56,7 @@
         </div>
         <div class="uk-width-1-1"> <!--uk-width-1-3@s-->
             <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                <input class="uk-input" name="tussenvoegsel" id="tussenvoegsel" type="text" maxlength="10" placeholder="Tussenvoegsel...">
+                <input class="uk-input" name="tussenvoegsel" id="tussenvoegsel" type="text" maxlength="10" placeholder="*Tussenvoegsel...">
             </div>
         </div>
         <div class="uk-width-1-1"> <!--uk-width-1-3@s-->

@@ -12,6 +12,9 @@ if (isset($this->vars['error_input'])) {
 <div class="container uk-position-center">
 	<h1>Login</h1></br></br>
     <form action="" method="post" class="uk-form">
+<div class="container uk-position-center">
+    </br></br></br>
+    <form action="login/userAuthentication" method="post" class="uk-form">
         <div class="uk-margin">
             <div class="uk-inline">
                 <span class="uk-form-icon" uk-icon="icon: user"></span>
@@ -29,4 +32,22 @@ if (isset($this->vars['error_input'])) {
             <button class="uk-button uk-button-primary uk-width" name="login_submit" type="submit">Log in!</button>
         </div>
     </form>
+
+    <!--        password recovery-->
+    <?php
+    if (isset($_GET["newpwd"])) {
+        if ($_GET["newpwd"] == "passwordupdated") {
+            echo '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Uw wachtwoord is gereset!</div>';
+        }
+    } elseif (isset($_GET['error'])) {
+        echo '</br></br>';
+        if ($_GET['error'] == 'emptyfields') {
+            echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Niet alle velden zijn ingevuld.</div>';
+        }
+        if ($_GET['error'] == 'wrongusernamepassword') {
+            echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Één of meerdere velden zijn verkeerd ingevuld.</div>';
+        }
+    }
+    ?>
+    <a href="passwordResetRequest">Wachtwoord vergeten?</a>
 </div>
