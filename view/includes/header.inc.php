@@ -52,7 +52,7 @@
 
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-width-expand">
-                    <form class="uk-search uk-search-navbar uk-width-1-1" name="search" method="POST" action="">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" name="search" method="POST" action="/veiling/zoekopdracht">
                         <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
                     </form>
                 </div>
