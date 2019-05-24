@@ -5,13 +5,16 @@
                 <a href="#">Account</a>
                 <div uk-dropdown="pos:bottom-justify" class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                        <li class="uk-active"><a href="account">Profiel</a></li>
+                        <li class="uk-active"><a href="<?php echo SITEURL . 'account'; ?>">Profiel</a></li>
                         <li class="uk-nav-divider"></li>
-
-                        <li><a href="login">Inloggen</a></li>
-                        <li><a href="signup">Registreren</a></li>
+						<?php
+						//if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) { ?>
+                        <li><a href="<?php echo SITEURL . 'login'; ?>">Inloggen</a></li>
+                        <li><a href="<?php echo SITEURL . 'registreren'; ?>">Registreren</a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="login/logout">Uitloggen</a></li>
+						<?php //} else { ?>
+                        <li><a href="<?php echo SITEURL . 'login/logout'; ?>">Uitloggen</a></li>
+						<?php //} ?>
                     </ul>
                 </div>
             </li>
@@ -102,16 +105,15 @@
         </ul>
     </div>
     <div class="uk-navbar-center uk-navbar-small uk-logo uk-navbar item uk-visible@s">
-        <a href=""> <img style="max-height: 80px" src="afb/logo.png" alt="Logo"></a>
+        <a href="<?php echo SITEURL; ?>"> <img style="max-height: 80px" src="<?php echo SITEURL . "assets/images/logo.png" ?>" alt="Logo"></a>
     </div>
     <div class="uk-navbar-left uk-navbar-small uk-logo uk-navbar item uk-hidden@s">
-        <a href=""> <img style="max-height: 50px" src="afb/logo.png" alt="Logo"></a>
+        <a href="<?php echo SITEURL; ?>"> <img style="max-height: 50px" src="<?php echo SITEURL . "assets/images/logo.png" ?>" alt="Logo"></a>
     </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-visible@s">
         <form action="" class="uk-flex">
             <input type="search" name="" id="" class="uk-input" placeholder="Zoeken...">
-
-            <button class="uk-button-primary" type="submit"><span class="uk-icon" uk-icon="icon: search"></span></button>
+            <button class="uk-button-primary zoekbalk" type="submit"><span class="uk-icon" uk-icon="icon: search"></span></button>
         </form>
         <!--        <a class="uk-navbar-toggle" uk-search-icon href="#"></a>-->
         <!--        <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: -20">-->
@@ -138,4 +140,3 @@
         </div>
     </div>
 </nav>
-

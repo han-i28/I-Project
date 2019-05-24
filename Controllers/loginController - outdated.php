@@ -18,6 +18,7 @@ class loginController extends Controller {
                     $loginModel = new loginModel();
 
                     $resultArray = $loginModel->getUserAuthentication($mailuid);
+                    print_R($resultArray);exit;
                     if (empty($resultArray)) {
                         $data['error_input'] = "wrong_input";
                     } else {
@@ -60,7 +61,7 @@ class loginController extends Controller {
         session_start();
         session_unset();
         session_destroy();
-        header("Location: ../");
+        header("Location: ../home");
     }
 }
 
