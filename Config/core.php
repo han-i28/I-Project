@@ -1,5 +1,5 @@
 <?php
-require(ROOT . "Config/db.php");
-require(ROOT . "Core/Model.php");
-require(ROOT . "Core/Controller.php");
+require("db.php");
+require(PATH . "/Core/Model.php");
+require(PATH . "/Core/Controller.php");
 ?>
