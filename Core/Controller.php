@@ -1,5 +1,6 @@
 <?php
-    class Controller {
+    class Controller
+    {
         var $vars = [];
 
         function set($d) {
@@ -8,7 +9,7 @@
 
         function load_view($filename) {
             extract($this->vars);
-            require("../Views/" . $filename . '.php');
+            require(PATH . "/view/" . $filename . '.php');
         }
 
         private function secure_input($data) {

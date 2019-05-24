@@ -1,6 +1,7 @@
 <?php
 
 class Router {
+
     static public function parse($url, $request) {
         //www.voorbeeld.nl/controller/action/parameter
         $url = trim($url);
@@ -11,6 +12,7 @@ class Router {
             $request->action = "index";
             $request->params = [];
         } else {
+
             $explode_url = explode('/', $url);
             $explode_url = array_slice($explode_url, 1);
 
@@ -22,14 +24,13 @@ class Router {
             }
 
             //Als er een extentie is wordt er gekeken of deze bestaat. Anders 404 (mogelijk eigen controller?).
-
-            if (file_exists('../Controllers/' . $explode_url[1] . 'Controller.php')) {
+            if (file_exists(PATH . '/controller/' . $explode_url[1] . 'Controller.php')) {
                 $request->controller = $explode_url[1];
                 //links zonder tweede verwijzing gaan automatisch naar index.
                 $request->action = (empty($explode_url[2]) ? "index" : $explode_url[2]);
                 $request->params = array_slice($explode_url, 3);
             } else {
-                include '../Views/error_404.php';
+                include PATH . '/view/error_404.php';
                 exit;
             }
         }
