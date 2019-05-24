@@ -7,10 +7,10 @@
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                         <li class="uk-active"><a href="#">Profiel</a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="#">Inloggen</a></li>
-                        <li><a href="#">Registreren</a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><a href="#">Uitloggen</a></li>
+                        <li><a href="<?php echo SITEURL . 'login'; ?>">Inloggen</a></li>
+                        <li><a href="<?php echo SITEURL . 'registreren'; ?>">Registreren</a></li>
+                        <li class="uk-nav-divider"></li>                        
+                       <li><a href="<?php echo SITEURL . 'login/logout'; ?>">Uitloggen</a></li>
                     </ul>
                 </div>
             </li>
@@ -104,7 +104,12 @@
         <a href=""> <img style="max-height: 80px" src="afb/logo.png" alt="Logo"></a>
     </div>
     <div class="uk-navbar-left uk-navbar-small uk-logo uk-navbar item uk-hidden@s">
-        <a href="iproject28.icasites.nl"> <img style="max-height: 50px" src="afb/logo.png" alt="Logo"></a>
+    <div class="uk-navbar-center uk-navbar-small uk-logo uk-navbar item uk-visible@s">
+       <a href="<?php echo SITEURL; ?>"> <img style="max-height: 80px" src="<?php echo SITEURL . "assets/images/logo.png" ?>" alt="Logo"></a>
+    </div>
+    <div class="uk-navbar-left uk-navbar-small uk-logo uk-navbar item uk-hidden@s">
+       <a href="<?php echo SITEURL; ?>"> <img style="max-height: 50px" src="<?php echo SITEURL . "assets/images/logo.png" ?>" alt="Logo"></a>
+    </div>
     </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-visible@s">
         <form action="search" class="uk-flex" method="GET">
