@@ -25,9 +25,6 @@
     <div class="uk-navbar-center uk-navbar-small uk-logo uk-navbar item uk-visible@s">
        <a href="<?php echo SITEURL; ?>"> <img style="max-height: 80px" src="<?php echo SITEURL . "assets/images/logo.png" ?>" alt="Logo"></a>
    </div>
-   <div class="uk-navbar-left uk-navbar-small uk-logo uk-navbar item uk-hidden@s">
-       <a href="<?php echo SITEURL; ?>"> <img style="max-height: 50px" src="<?php echo SITEURL . "assets/images/logo.png" ?>" alt="Logo"></a>
-   </div>
     </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-visible@s">
         <form action="<?php echo SITEURL; ?>veiling/zoekopdracht" class="uk-flex" method="GET">
@@ -41,6 +38,34 @@
         <!--            </form>-->
         <!--        </div>-->
     </div>
+    
+    
+    <div class="uk-navbar-left uk-navbar-left uk-hidden@s">
+        <ul class="uk-navbar-nav uk-hidden@s">
+            <li>
+                <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
+                <div uk-dropdown="pos:bottom-justify" class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+					<?php
+						if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] === false ) { ?>
+							<li class="uk-active"><a href="<?php echo SITEURL . 'account'; ?>">Profiel</a></li>
+							<li class="uk-nav-divider"></li>
+							<li><a href="<?php echo SITEURL . 'login'; ?>">Inloggen</a></li>
+							<li><a href="<?php echo SITEURL . 'registreren'; ?>">Registreren</a></li>
+					<?php } elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) { ?>
+							<li class="uk-nav-divider"></li>                        
+							<li><a href="<?php echo SITEURL . 'login/logout'; ?>">Uitloggen</a></li>
+					<?php } ?>
+                    </ul>
+                </div>
+            </li>
+        </ul>    
+    </div>
+
+
+    <div class="uk-navbar-left uk-navbar-small uk-logo uk-navbar item uk-hidden@s">
+       <a href="<?php echo SITEURL; ?>"> <img style="max-height: 50px" src="<?php echo SITEURL . "assets/images/logo.png" ?>" alt="Logo"></a>
+   </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-hidden@s">
         <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
         <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">

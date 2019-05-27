@@ -63,7 +63,24 @@
                     Conditie: <?php echo $this->vars['veiling']['conditie']; ?>
                 </p>
                 <div class="uk-container">
-                    <p>Resterende tijd: 2 Dagen 15 Minuten 34 Seconden</p>
+                    <div class="uk-grid-small uk-child-width-auto uk-flex-around" uk-grid uk-countdown="date: <?php echo $this->vars['veiling']['looptijdEinde'] ?>">
+                        <div>
+                            <div class="uk-countdown-number uk-countdown-days">dagen</div>
+                            <div>dagen</div>
+                        </div>
+                        <div>
+                            <div class="uk-countdown-number uk-countdown-hours">uren</div>
+                            <div>uren</div>
+                        </div>
+                        <div>
+                            <div class="uk-countdown-number uk-countdown-minutes">minuten</div>
+                            <div>minuten</div>
+                        </div>
+                        <div>
+                            <div class="uk-countdown-number uk-countdown-seconds"></div>
+                            <div>seconden</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="uk-card uk-card-default uk-card-body">
