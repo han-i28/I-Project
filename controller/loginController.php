@@ -4,17 +4,13 @@ class loginController extends Controller {
     function index() {
         if(!isset($_SESSION['loggedIn'])) {
             if (isset($_POST['login_submit'])) {
-                if (empty($_POST['gebruikersnaam']) || empty($_POST['wachtwoord'])) {
-                    $data['error_input'] = "empty_fields";
-                }
-                else {
                     $mailuid = secure_input((isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null));
 
                     $password = secure_input((isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null));
 
                     if (empty($mailuid) || empty($password)) {
                         $data['error_input'] = "empty_fields";
-                        header("Location: ../login?error=emptyfields");
+                        header("Location: ../login?error=emptyfields&gebruikersnaam=".$mailuid);
                         exit();
                     } else {
                         require(PATH . '/model/loginModel.php');
@@ -58,7 +54,7 @@ class loginController extends Controller {
                             }
                         }
                     }
-                }
+
             }
 
             $data['title'] = "Eenmaal Andermaal - Login";
@@ -66,7 +62,7 @@ class loginController extends Controller {
             $this->set($data);
             $this->load_view("template");
         } else {
-            header("location: " . SITEURL . "");
+            header('Location: ' . SITEURL . '');
         }
     }
 
