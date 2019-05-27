@@ -23,6 +23,6 @@
     </div>
 
     <div class="uk-container">
-        <?php echo $this->vars['html']?>
+        <?php if(isset($this->vars['html'])) { echo $this->vars['html']; } ?>
     </div>
 </div>

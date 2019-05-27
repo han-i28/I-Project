@@ -94,7 +94,7 @@ class veilingController extends Controller {
             foreach ($veilingData as $value) {
                 $veilingListingHTML .= "
                 <div>
-                    <a href=\"/I-Project/veiling/weergave/?veiling=" . $value['ID'] . "\">
+                    <a href=\"" .  SITEURL . "veiling/weergave/?veiling=" . $value['voorwerpnummer'] . "\">
                         <div class=\"uk-card uk-card-default uk-card-body\">
                             <h4>" . $value['titel'] . "</h4>
                             <div class=\"afbeeldingContainer\" style=\"background-image: url('http://iproject28.icasites.nl/thumbnails/" . $value['pad'] . "');\"></div>

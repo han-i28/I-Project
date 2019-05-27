@@ -2,32 +2,13 @@
 	if(!isset($_SESSION)) {
 		session_start();
 	}
-	
-	$link = $_SERVER['REQUEST_URI']; //bekijken welke pagina we op zitten
-	if ($link === "/login/") { //checken of we op de login pagina zitten als we ingelogd zijn
-		if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
-			header('Location: ../');
-			exit();
-		}
-	} elseif ($link === "/registreren/") {
-		if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
-			header('Location: ../');
-			exit();
-		}
-	} elseif ($link === "/account/") {
-		if (!isset($_SESSION['loggedIn'])) {
-			header('Location: ../');
-			exit();
-		}
-	}
-	
-	if(isset($_SESSION['last_ip']) === false) {
-		$_SESSION['last_ip'] = $_SERVER['REMOTE_ADDR'];
-	}
-	if ($_SESSION['last_ip'] !== $_SERVER['REMOTE_ADDR']) {
-		session_unset();
-		session_destroy();
-	}
+//	if(isset($_SESSION['last_ip']) === false) {
+//		$_SESSION['last_ip'] = $_SERVER['REMOTE_ADDR'];
+//	}
+//	if ($_SESSION['last_ip'] !== $_SERVER['REMOTE_ADDR']) {
+//		session_unset();
+//		session_destroy();
+//	}
 ?>
 <!DOCTYPE html>
 <head>

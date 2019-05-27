@@ -1,6 +1,7 @@
 <?php
 class registrerenController extends Controller {
     function index() {
+        if(!isset($_SESSION['loggedIn'])) {
         require(PATH . '/model/registratieModel.php');
         $registratieModel = new registratieModel();
         if (isset($_POST['signup_submit'])) {
@@ -101,6 +102,9 @@ class registrerenController extends Controller {
         $data['page'] = "userregistreren";
         $this->set($data);
         $this->load_view("template");
+        } else {
+            header("location: " . SITEURL . "");
+        }
     }
 
     private function createVragenHTML($data) {

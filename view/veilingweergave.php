@@ -59,16 +59,9 @@
                 <h1>Verkoper</h1>
                 <p>
                     Verkoper: <?php echo $this->vars['veiling']['verkoper']; ?></br>
-                    Startprijs: <?php echo $this->vars['veiling']['prijs']; ?></br>
+                    Startprijs: <?php echo $this->vars['veiling']['startprijs']; ?></br>
                     Conditie: <?php echo $this->vars['veiling']['conditie']; ?>
                 </p>
-
-                <p>
-                    Hoogste bod:</br>
-                    Pepijn - &euro;40
-                </p>
-
-                </br>
                 <div class="uk-container">
                     <p>Resterende tijd: 2 Dagen 15 Minuten 34 Seconden</p>
                 </div>
