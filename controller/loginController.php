@@ -6,13 +6,16 @@ class loginController extends Controller {
             if (isset($_POST['login_submit'])) {
                 if (empty($_POST['gebruikersnaam']) || empty($_POST['wachtwoord'])) {
                     $data['error_input'] = "empty_fields";
-                } else {
-                    $mailuid = strip_tags((isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null));
+                }
+                else {
+                    $mailuid = secure_input((isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null));
 
-                    $password = strip_tags((isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null));
+                    $password = secure_input((isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null));
 
                     if (empty($mailuid) || empty($password)) {
                         $data['error_input'] = "empty_fields";
+                        header("Location: ../login?error=emptyfields");
+                        exit();
                     } else {
                         require(PATH . '/model/loginModel.php');
                         $loginModel = new loginModel();
@@ -20,12 +23,20 @@ class loginController extends Controller {
                         $resultArray = $loginModel->getUserAuthentication($mailuid);
                         if (empty($resultArray)) {
                             $data['error_input'] = "wrong_input";
+                            header("Location: ../login?error=wronguidpwd");
+                            exit();
                         } else {
                             $pwdCheck = password_verify($password, $resultArray['wachtwoord']);
 
                             if ($pwdCheck == false) {
                                 $data['error_input'] = "wrong_input";
-                            } else if ($pwdCheck == true) {
+                                header("Location: ../login?error=wronguidpwd");
+                                exit();
+                            } elseif ($resultArray['is_geverifieerd'] == 0) {
+                                $data['error_input'] = "not_verified";
+                                header("Location: ../login?error=notverified");
+                                exit();
+                            } else if ($pwdCheck == true && $resultArray['is_geverifieerd'] == 1) {
 
                                 ini_set('session.cookie_httponly', true); //Preventie van session hijacking door cookies niet door javascript te kunnen sturen
 
