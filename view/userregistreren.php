@@ -126,7 +126,7 @@ if (isset($this->vars['error_input'])) {
             </div>
             <div class="uk-width-1-1"> <!--uk-width-1-2@s-->
                 <div class="uk-form-controls uk-margin-top" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="antwoordtekst" id="antwoordtekst" type="text" maxlength="20" placeholder="antwoord... *">
+                    <input class="uk-input" name="antwoordtekst" id="antwoordtekst" type="text" maxlength="20" placeholder="Antwoord... *">
                 </div>
             </div>
             <button class="uk-button uk-margin-top" style="margin-left: calc(50% - 45px); margin-right: 32%;" type="submit" name="signup_submit">Sign up</button>

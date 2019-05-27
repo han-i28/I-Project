@@ -20,6 +20,18 @@ hr{
     border-color: #5f4b8b;
 }
 
+.loginknop {
+    background-color: #5f4b8b;
+}
+
+a {
+    color: #5f4b8b;
+}
+
+.loginknop:hover {
+    background-color: #3c2e58;
+}
+
 .zoekbalk {
     background-color: #5f4b8b;
 }

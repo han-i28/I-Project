@@ -1,17 +1,20 @@
-<?php
-if (isset($this->vars['error_input'])) {
-    echo '</br></br>';
-    if($this->vars['error_input'] == "empty_fields") {
-        echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Niet alle velden zijn ingevuld.</div>';
-    }
-    if($this->vars['error_input'] == "wrong_input") {
-        echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Één of meerdere velden zijn verkeerd ingevuld.</div>';
-    }
-}
-?>
-<div class="uk-container uk-position-center">
-	<h1>Login</h1></br></br>
-    <form action="" method="post" class="uk-form">
+<div class="uk-container">
+	<h1 class="uk-heading-large uk-text-center">Login</h1><br/>
+    <?php
+        if (isset($this->vars['error_input'])) {
+            echo '';
+            if($this->vars['error_input'] == "empty_fields") {
+                echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Niet alle velden zijn ingevuld.</div>';
+            }
+            if($this->vars['error_input'] == "wrong_input") {
+                echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Één of meerdere velden zijn verkeerd ingevuld.</div>';
+            }
+        } else {
+            echo '<br/><br/>';
+        }
+
+    ?>
+    <form action="" method="post" class="uk-form uk-text-center">
         <div class="uk-margin">
             <div class="uk-inline">
                 <span class="uk-form-icon" uk-icon="icon: user"></span>
@@ -26,7 +29,7 @@ if (isset($this->vars['error_input'])) {
         </div>
         <p class="uk-flex uk-flex-center"></p>Nog geen account? <a href="<?php echo SITEURL . "registreren" ?>">Registreer hier!</a></p>
         <div class="uk-flex uk-flex-center">
-            <button class="uk-button uk-button-primary uk-width" name="login_submit" type="submit">Log in!</button>
+            <button class="uk-button uk-button-primary uk-width-medium loginknop" name="login_submit" type="submit">Log in!</button>
         </div>
     </form>
 </div>
