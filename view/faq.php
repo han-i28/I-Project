@@ -79,32 +79,14 @@
                     </p>
                 </div>
             </li>
-            <!--
-                            <li>
-                                <a href="" class="uk-accordion-title"></a>
-                                <div class="uk-accordion-content">
-                                    <p>
 
-                                    </p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <a href="" class="uk-accordion-title"></a>
-                                <div class="uk-accordion-content">
-                                    <p>
-
-                                    </p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <a href="" class="uk-accordion-title"></a>
-                                <div class="uk-accordion-content">
-                                    <p>
-
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div> -->
+            <li>
+                <a href="" class="uk-accordion-title">Hoe lang duurt een veiling?</a>
+                <div class="uk-accordion-content">
+                    <p>
+                        De looptijd van een veilings is 7 dagen.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
