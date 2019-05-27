@@ -16,11 +16,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" type="image/png" href="<?=SITEURL?>/assets/images/logo.png">
+    <link rel="icon" type="image/png" href="<?=SITEURL?>/assets/images/icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.2/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.2/js/uikit-icons.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo SITEURL . "//assets/css/style.css" ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo SITEURL . "/assets/css/style.css" ?>">
 
 </head>

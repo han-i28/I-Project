@@ -19,8 +19,6 @@
                 </div>
             </li>
         </ul>
-
-        
     </div>
     <div class="uk-navbar-center uk-navbar-small uk-logo uk-navbar item uk-visible@s">
        <a href="<?php echo SITEURL; ?>"> <img style="max-height: 80px" src="<?php echo SITEURL . "assets/images/logo.png" ?>" alt="Logo"></a>
