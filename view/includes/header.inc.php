@@ -73,7 +73,7 @@
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-width-expand">
                     <form class="uk-search uk-search-navbar uk-width-1-1" method="GET" action="<?php echo SITEURL; ?>veiling/zoekopdracht">
-                        <input class="uk-search-input" name= "search" type="search" placeholder="Search..." autofocus>
+                        <input class="uk-search-input" name= "search" type="search" placeholder="Zoeken..." autofocus>
                     </form>
                 </div>
                 <div class="uk-width-auto">
