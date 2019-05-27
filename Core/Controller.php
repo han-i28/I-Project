@@ -82,7 +82,7 @@ class Controller {
                 <div class=\"uk-card uk-card-default uk-card-body\">
                     <h4 class=\"uk-text-truncate\">" . $item['titel'] . "</h4>
                     <div class=\"afbeeldingContainer\" style=\"background-image: url('http://iproject28.icasites.nl/thumbnails/" . $item['pad'] . " ');\"></div>
-                    <h5>Hoogste bod: �" . number_format($item['bod'], 2) . "</h5>
+                    <h5>Hoogste bod: &euro;" . number_format($item['bod'], 2) . "</h5>
                     <h5>Eindigt in:                                     
                     </h5>
                     <div class=\"uk-grid-small uk-child-width-auto uk-flex-around\" uk-grid uk-countdown=\"date: " . $item['looptijdEinde'] . "\">
