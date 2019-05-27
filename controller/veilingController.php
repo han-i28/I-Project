@@ -98,7 +98,7 @@ class veilingController extends Controller {
                         <div class=\"uk-card uk-card-default uk-card-body\">
                             <h4>" . $value['titel'] . "</h4>
                             <div class=\"afbeeldingContainer\" style=\"background-image: url('http://iproject28.icasites.nl/thumbnails/" . $value['pad'] . "');\"></div>
-                            <h5>Hoogste bod: €x.xx</h5>
+                            <h5>Hoogste bod: &euro;x.xx</h5>
                             <h5>Eindigt in: x minuten</h5>
                         </div>
                     </a>
