@@ -104,6 +104,7 @@
                     }
                 }
                 ?>
+                <?php echo $this->vars['biedingen']; ?>
                 <!-- <div>
                     <ul class="uk-padding-remove">
                         <div class="uk-card uk-card-default uk-card-body">
