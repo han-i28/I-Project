@@ -1,6 +1,11 @@
 <h1 class="uk-margin-top" style="margin-left: calc(50% - 99px);">Registratie</h1>
 <?php
-if (isset($this->vars['error_input'])) {
+if (isset($_GET["registration"])) {
+    echo '</br></br>';
+    if ($_GET["registration"] == "success") {
+        echo '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Verificatie email is verstuurd.</div>';
+    }
+} elseif (isset($this->vars['error_input'])) {
     if($this->vars['error_input'] == 'empty_fields') {
         echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Niet alle velden zijn ingevuld.</div>';
     }
