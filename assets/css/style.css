@@ -28,6 +28,10 @@ a {
     color: #5f4b8b;
 }
 
+a:hover {
+    color: #3c2e58;
+}
+
 .uk-button-primary:hover {
     background-color: #3c2e58;
 }
