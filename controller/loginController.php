@@ -6,10 +6,8 @@ class loginController extends Controller {
             if (isset($_POST['login_submit'])) {
                 
                 $this->secure_form($_POST);
-                $mailuid = (isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null);
-                $password = (isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null);
 
-                if (empty($mailuid) || empty($password)) {
+                if (!defined($_POST['gebruikersnaam']) || !defined($_POST['wachtwoord'])) {
                     $data['error_input'] = "empty_fields";
                     header("Location: ../login");
                     exit();
@@ -17,15 +15,15 @@ class loginController extends Controller {
                     require(PATH . '/model/loginModel.php');
                     $loginModel = new loginModel();
 
-                    $resultArray = $loginModel->getUserAuthentication($mailuid);
+                    $resultArray = $loginModel->getUserAuthentication($_POST['gebruikersnaam']);
                     if (empty($resultArray)) {
                         $data['error_input'] = "wrong_input";
                         header("Location: ../login");
                         exit();
                     } else {
-                        $pwdCheck = password_verify($password, $resultArray['wachtwoord']);
+                        $pwdCheck = password_verify($_POST['wachtwoord'], $resultArray['wachtwoord']);
 
-                        if ($pwdCheck == false) {
+                        if (!$pwdCheck) {
                             $data['error_input'] = "wrong_input";
                             header("Location: ../login");
                             exit();
@@ -48,8 +46,8 @@ class loginController extends Controller {
                             $_SESSION['time'] = time();//success
 
 
-                            unset($mailuid);
-                            unset($password);
+                            unset($_POST['gebruikersnaam']);
+                            unset($_POST['wachtwoord']);
                             unset($resultArray);
                             header('Location: ' . SITEURL . '');
                         }
@@ -71,7 +69,7 @@ class loginController extends Controller {
         session_start();
         session_unset();
         session_destroy();
-        header("Location: ../");
+        header(SITEURL);
     }
 }
 
