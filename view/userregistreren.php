@@ -171,7 +171,7 @@ if (isset($_GET["registration"])) {
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon" uk-icon="icon: lock"></span>
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                        <input class="uk-input" name="wachtwoord" id="wachtwoord" type="password" maxlength="255" placeholder="W@chtw00rd123... (minimaal 8 tekens)">
+                        <input class="uk-input" name="wachtwoord" id="wachtwoord" type="password" maxlength="255" placeholder="W@chtw00rd123... (min. 8 tekens)">
                     </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@ if (isset($_GET["registration"])) {
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon" uk-icon="icon: lock"></span>
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                        <input class="uk-input" name="wachtwoord bevestigen" id="wachtwoord_bevestigen" type="password" maxlength="255" placeholder="W@chtw00rd123... (minimaal 8 tekens)">
+                        <input class="uk-input" name="wachtwoord bevestigen" id="wachtwoord_bevestigen" type="password" maxlength="255" placeholder="W@chtw00rd123... (min. 8 tekens)">
                     </div>
                 </div>
             </div>
