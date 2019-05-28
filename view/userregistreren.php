@@ -187,15 +187,10 @@ if (isset($_GET["registration"])) {
             </div>
             <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
                 <label class="uk-form-label" for="beveiligingsvraag">Beveiligingsvraag</label>
-                <div uk-form-custom="target: > * > span:first-child" >
-                    <select class="uk-select uk-width-1-1" name="beveiligingsvraag" id="beveiligingsvraag">										<!-- HIER MOET NOG EEN LIJST VAN VRAGEN UIT DE DATABASE KOMEN VIA FUNCTION getVragenList() -->
-                        <option selected disabled><span class="uk-form-icon" uk-icon="icon: question"></span>Kies een beveiligingsvraag</option>
-                        <?php echo $this->vars['vragen']; ?>
-                    </select>
-                    <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                        <span uk-icon="icon: chevron-down"></span>
-                    </button>
-                </div>
+                <select class="uk-select uk-width-1-1" name="beveiligingsvraag" id="beveiligingsvraag">										<!-- HIER MOET NOG EEN LIJST VAN VRAGEN UIT DE DATABASE KOMEN VIA FUNCTION getVragenList() -->
+                    <option selected disabled><span class="uk-form-icon" uk-icon="icon: question"></span>Kies een beveiligingsvraag</option>
+                    <?php echo $this->vars['vragen']; ?>
+                </select>
             </div>
             <div class="uk-width-1-1"> <!--uk-width-1-2@s-->
                 <label class="uk-form-label" for="antwoordtekst">Antwoordtekst</label>
