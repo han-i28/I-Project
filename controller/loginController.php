@@ -11,7 +11,7 @@ class loginController extends Controller {
 
                 if (empty($mailuid) || empty($password)) {
                     $data['error_input'] = "empty_fields";
-                    header("Location: ../login?error=emptyfields&gebruikersnaam=".$mailuid);
+                    header("Location: ../login");
                     exit();
                 } else {
                     require(PATH . '/model/loginModel.php');
@@ -20,18 +20,18 @@ class loginController extends Controller {
                     $resultArray = $loginModel->getUserAuthentication($mailuid);
                     if (empty($resultArray)) {
                         $data['error_input'] = "wrong_input";
-                        header("Location: ../login?error=wronguidpwd");
+                        header("Location: ../login");
                         exit();
                     } else {
                         $pwdCheck = password_verify($password, $resultArray['wachtwoord']);
 
                         if ($pwdCheck == false) {
                             $data['error_input'] = "wrong_input";
-                            header("Location: ../login?error=wronguidpwd");
+                            header("Location: ../login");
                             exit();
                         } elseif ($resultArray['is_geverifieerd'] == 0) {
                             $data['error_input'] = "not_verified";
-                            header("Location: ../login?error=notverified");
+                            header("Location: ../login");
                             exit();
                         } else if ($pwdCheck == true && $resultArray['is_geverifieerd'] == 1) {
 

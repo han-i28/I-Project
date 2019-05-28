@@ -4,12 +4,12 @@
             <h1 class="uk-margin-top uk-width-1-1 uk-text-center uk-card-title">Login</h1>
             <p class="uk-width-1-1 uk-text-center">Welkom bij Eenmaal Andermaal, de beste veilingsite van Nederland!</p>
     <?php
-    if (isset($_GET["newpwd"])) {
+    if (isset($this->vars["newpwd"])) {
         echo '</br></br>';
-        if ($_GET["newpwd"] == "passwordupdated") {
+        if ($this->vars["newpwd"] == "passwordupdated") {
             echo '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Uw wachtwoord is gereset!</div>';
         }
-    }elseif (isset($_GET["vkey"])) {
+    }elseif (isset($_GET["vkey"])) {        //VERANDEREN
         $vkey = $_GET['vkey'];
         $loginModel = new loginModel();
         $resultArray = $loginModel->getVkeyCheck($vkey);
@@ -19,22 +19,16 @@
             $loginModel->setVerification($vkey);
             echo '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Uw account is nu geverifieerd. U kunt nu inloggen.</div>';
         }
-    } elseif (isset($_GET["newuser"])) {
-        echo '</br></br>';
-        if ($_GET["newuser"] == "emailvalidated") {
-            echo '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Registratie voltooid.</div>';
-        }
-    } elseif (isset($_GET['error'])) {
-        if ($_GET['error'] == 'notverified') {
-            echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>U bent niet geverifieerd, controleer uw email.</div>';
-        }
     } elseif (isset($this->vars['error_input'])) {
             echo '';
             if($this->vars['error_input'] == "empty_fields") {
                 echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Niet alle velden zijn ingevuld.</div>';
             }
-            if($this->vars['error_input'] == "wrong_input") {
+            elseif($this->vars['error_input'] == "wrong_input") {
                 echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Één of meerdere velden zijn verkeerd ingevuld.</div>';
+            }
+            elseif ($this->vars['error_input'] == "not_verified") {
+                echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>U bent niet geverifieerd, controleer uw email.</div>';
             }
         } else {
             echo '<br/><br/>';
@@ -47,7 +41,7 @@
                         <div class="uk-inline uk-width-1-1">
                             <span class="uk-form-icon" uk-icon="icon: user"></span>
                             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                            <input class="uk-input" name="gebruikersnaam" id="gebruikersnaam" type="text" maxlength="20" placeholder="Uw gebruikersnaam...">
+                            <input class="uk-input" name="gebruikersnaam" id="gebruikersnaam" type="text" maxlength="20" placeholder="Uw gebruikersnaam..." value="<?= (isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null); ?>">
                         </div>
                     </div>
                 </div>
