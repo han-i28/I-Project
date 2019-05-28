@@ -74,20 +74,20 @@
                 </div>
             </div>
             <div class="uk-card uk-card-default uk-card-body">
-                <legend class="uk-legend">Bieden</legend>
-                </br>
-                <div>
+                <!--<div>
                     <input class="uk-input uk-width-expand" type="text" placeholder="Uw bod">
                     <a class="uk-button uk-button-primary custom_button uk-width-expand" style="background-color:#5f4b8b;" href="#">Bieden</a><br><br>
-                </div>
+                </div>-->
                 <?php
-                if (isset($_SESSION['loggedin'])) {
-                    if ($_SESSION['loggedin'] == true) {
+                if (isset($_SESSION['loggedIn'])) {
+                    if ($_SESSION['loggedIn'] === true) {
                         ?>
+						<legend class="uk-legend">Bieden</legend>
+						</br>
 						<div>
-							<form action="./setNieuwBod" method="POST">
-								<input class="uk-input uk-width-expand" type="text" placeholder="Uw bod">
-								<button class="uk-button uk-button-primary custom_button uk-width-expand" type="submit" name="bod_submit">Bieden</button><br><br>
+							<form action="<?= SITEURL . "veiling/setNieuwBod"; ?>" method="post" id="bieden_form">
+								<input class="uk-input uk-width-expand" id="bod" name="bod" type="text" placeholder="Uw bod">
+								<button class="uk-button uk-button-primary custom_button uk-width-expand" style="background-color:#5f4b8b;" type="submit" name="bod_submit">Bieden</button><br><br>
 							</form>
                         </div>
 						<?php

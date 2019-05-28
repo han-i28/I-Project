@@ -109,7 +109,7 @@ class veilingController extends Controller {
         return $veilingListingHTML;
     }
 	
-	public function setNieuwBod() {
+	function setNieuwBod() {
 		/*
 		Deze functie wordt gebruikt wanneer de knop op een veilingitem pagina wordt aangeklikt om te bieden, met het bod als input.
 		Hierin wordt rekening gehouden met: sql injection, verkeerde users op de pagina, zekerheid rondom gebruikerinfo, en vergelijk met andere boden.
@@ -117,7 +117,8 @@ class veilingController extends Controller {
 		Wanneer er iets fout gaat door de input zal er teruggestuurd worden naar de veilingitem pagina, anders naar de homepage.
 		*/
 		//security
-		if (isset($_SESSION)) {
+		session_start();
+		if (isset($_SESSION['loggedIn'])) {
 			if (isset($_POST['bod_submit'])) {
 				if (isset($_POST['bod'])) {
 					require(PATH . '/model/veilingModel.php');
@@ -126,7 +127,7 @@ class veilingController extends Controller {
 					//aanmaken van alle variabelen
 					$datum = date("Y-m-d H:i:s");
 					$currentUser = $_SESSION['gebruikersnaam'];
-					$voorwerpId = $_GET['veiling'];
+					$voorwerpId = $_POST['veiling'];
 					$bod = strip_tags((isset($_POST['bod']) ? $_POST['bod'] : null));
 					$hoogsteBod = $veilingModel->getHoogsteBod($voorwerpId);
 					$url = $_SERVER['REQUEST_URI'];
@@ -138,40 +139,43 @@ class veilingController extends Controller {
 								if ($bod > $hoogsteBod) {
 									$result = $veilingModel->createNewBod($datum, $currentUser, $voorwerpId, $bod);
 									echo $result;
+									header("location: ?error=test8");
 									exit();
 								}
 								else {
-									header("location: ../".$url);
+									print_r($hoogsteBod);
+									//header("location: ?error=test4");
 									exit();
 								}
 							}
 							else {
-								header("location: ../".$url);
+								header("location: ?error=test3");
 								exit();
 							}
 						}
 						else {
-							header("location: ../".$url);
+							header("location: ?error=test2");
 							exit();
 						}
 					}
 					else {
-						header("location: ../".$url);
+						header("location: ?error=test1");
 						exit();
 					}
 				}
 				else {
-					header("location: .");//naar home
+					header("location: ?error=test5");//naar home
 					exit();
 				}
 			}
 			else {
-				header("location: .");//naar home
+				print_R($_POST);
+				//header("location: ?error=test6");//naar home
 				exit();
 			}
 		}
 		else {
-			header("location: .");//naar home
+			header("location: ?error=test7");//naar home
 			exit();
 		}
 	}
