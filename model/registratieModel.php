@@ -9,7 +9,7 @@ class registratieModel extends Model {
         return $req->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function setSignupUser($gebruikersnaam, $voornaam, $tussenvoegsel, $achternaam, $adresregel_1, $adresregel_2, $postcode, $plaatsnaam, $land_id, $geboortedatum, $telefoon, $mailbox, $hashedPwd, $vraag, $antwoordtekst, $rating, $vkey) {
+    public function setSignupUser($gebruikersnaam, $voornaam, $tussenvoegsel, $achternaam, $adresregel_1, $adresregel_2, $postcode, $plaatsnaam, $land_id, $geboortedatum, $telefoonnummer, $mailbox, $hashedPwd, $beveiligingsvraag, $antwoordtekst, $rating, $vkey) {
 		$sql = "INSERT INTO dbo.gebruiker 
 		(gebruikersnaam
 		, voornaam
@@ -48,11 +48,11 @@ class registratieModel extends Model {
 		, :vkey)";
         $req = Database::getBdd()->prepare($sql);
         return $req->execute(array(':gebruikersnaam' => $gebruikersnaam, ':voornaam' => $voornaam, ':tussenvoegsel' => $tussenvoegsel, ':achternaam' => $achternaam, ':adresregel_1' => $adresregel_1, ':adresregel_2' => $adresregel_2, ':postcode' => $postcode,
-            ':plaatsnaam' => $plaatsnaam, ':land_id' => $land_id, ':geboortedatum' => $geboortedatum, ':telefoon' => $telefoon, ':mailbox' => $mailbox, ':vraag' => $vraag, ':antwoordtekst' => $antwoordtekst, ':rating' => $rating, ':hashedPwd' => $hashedPwd, ':vkey' => $vkey));
+            ':plaatsnaam' => $plaatsnaam, ':land_id' => $land_id, ':geboortedatum' => $geboortedatum, ':telefoon' => $telefoonnummer, ':mailbox' => $mailbox, ':vraag' => $beveiligingsvraag, ':antwoordtekst' => $antwoordtekst, ':rating' => $rating, ':hashedPwd' => $hashedPwd, ':vkey' => $vkey));
     }
 
     public function getVragenLijst() {
-        $sql = "SELECT id, vraag FROM vraag ORDER BY id ASC";
+        $sql = "SELECT id, vraag beveiligingsvraag FROM vraag ORDER BY id ASC";
         $req = Database::getBdd()->prepare($sql);
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
