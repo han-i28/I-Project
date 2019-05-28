@@ -1,4 +1,3 @@
-<h1 class="uk-margin-top" style="margin-left: calc(50% - 99px);">Registratie</h1>
 <?php
 if (isset($_GET["registration"])) {
     echo '</br></br>';
@@ -53,92 +52,144 @@ if (isset($_GET["registration"])) {
     }
 }
 ?>
-<div class="uk-container">
+<div class="uk-container uk-width-1-2@s">
     <div class="uk-grid" uk-grid>
         <form action="" method="POST" class="uk-form-horizontal uk-width-1-1 uk-margin-large" >
+            <h1 class="uk-margin-top uk-width-1-1 uk-text-center">Registratie</h1>
             <div class="uk-width-1-1 uk-margin-top">
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="uid" id="uid" type="text" maxlength="20" placeholder="Gebruikersnaam... *">
+                <label class="uk-form-label" for="gebruikersnaam">Gebruikersnaam</label>
+                <div class="uk-form-controls">
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" name="gebruikersnaam" id="gebruikersnaam" type="text" maxlength="20" placeholder="JanvdH12">
+                    </div>
                 </div>
             </div>
             <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-3@s-->
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="voornaam" id="voornaam" type="text" maxlength="255" placeholder="Voornaam... *">
+                <label class="uk-form-label" for="voornaam">Voornaam</label>
+                <div class="uk-form-controls" >
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" name="voornaam" id="voornaam" type="text" maxlength="255" placeholder="Jan...">
+                    </div>
                 </div>
             </div>
             <div class="uk-width-1-1"> <!--uk-width-1-3@s-->
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="tussenvoegsel" id="tussenvoegsel" type="text" maxlength="10" placeholder="Tussenvoegsel...">
+                <label class="uk-form-label" for="tussenvoegsel">Tussenvoegsel</label>
+                <div class="uk-form-controls" >
+                    <input class="uk-input" name="tussenvoegsel" id="tussenvoegsel" type="text" maxlength="10" placeholder="Van der...">
                 </div>
             </div>
             <div class="uk-width-1-1"> <!--uk-width-1-3@s-->
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="achternaam" id="achternaam" type="text" maxlength="255" placeholder="Achternaam... *">
+                <label class="uk-form-label" for="achternaam">Achternaam</label>
+                <div class="uk-form-controls" >
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" name="achternaam" id="achternaam" type="text" maxlength="255" placeholder="Heijden...">
+                    </div>
                 </div>
             </div>
             <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="adres_1" id="adres_1" type="text" maxlength="60" placeholder="Adres 1... *">
+                <label class="uk-form-label" for="adres_1">Adres 1</label>
+                <div class="uk-form-controls" >
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" name="adres 1" id="adres_1" type="text" maxlength="60" placeholder="Straatnaam 123...">
+                    </div>
                 </div>
             </div>
             <div class="uk-width-1-1"> <!--uk-width-1-2@s-->
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="adres_2" id="adres_2" type="text" maxlength="60" placeholder="Adres 2...">
+                <label class="uk-form-label" for="adres_2">Adres 2</label>
+                <div class="uk-form-controls" >
+                    <input class="uk-input" name="adres 2" id="adres_2" type="text" maxlength="60" placeholder="Straatnaam 456...">
                 </div>
             </div>
             <div class="uk-width-1-1"> <!--uk-width-1-3@s-->
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="postcode" id="postcode" type="text" maxlength="16" placeholder="Postcode... *">
+                <label class="uk-form-label" for="postcode">Postcode</label>
+                <div class="uk-form-controls" >
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" name="postcode" id="postcode" type="text" maxlength="16" placeholder="1234AB...">
+                    </div>
                 </div>
             </div>
             <div class="uk-width-1-1"> <!--uk-width-1-3@s-->
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="plaatsnaam" id="plaatsnaam" type="text" maxlength="85" placeholder="Woonplaats... *">
+                <label class="uk-form-label" for="plaatsnaam">Plaatsnaam</label>
+                <div class="uk-form-controls" >
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" name="plaatsnaam" id="plaatsnaam" type="text" maxlength="85" placeholder="Amsterdam...">
+                    </div>
                 </div>
             </div>
             <div class="uk-width-1-1 uk-margin-top">
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="geboortedatum" id="geboortedatum" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Geboortedatum... *">
+                <label class="uk-form-label" for="geboortedatum">Geboortedatum</label>
+                <div class="uk-form-controls" >
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" name="geboortedatum" id="geboortedatum" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Geboortedatum...">
+                    </div>
                 </div>
             </div>
             <div class="uk-width-1-1 uk-margin-top">
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="telefoon" id="telefoon" type="tel" maxlength="15" placeholder="Telefoon... *" pattern="((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))">
+                <label class="uk-form-label" for="telefoonnummer">Telefoonnummer</label>
+                <div class="uk-form-controls" >
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" name="telefoonnummer" id="telefoonnummer" type="tel" maxlength="15" placeholder="Telefoon..." pattern="((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))">
+                    </div>
                 </div>
             </div>
             <div class="uk-width-1-1 uk-margin-top">
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="email" id="email" type="email" maxlength="50" placeholder="naam@adres.com... *">
+                <label class="uk-form-label" for="mailbox">Mailbox</label>
+                <div class="uk-form-controls" >
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" name="mailbox" id="mailbox" type="email" maxlength="50" placeholder="naam@adres.com...">
+                    </div>
                 </div>
             </div>
             <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="wachtwoord" id="wachtwoord" type="password" maxlength="255" placeholder="Wachtwoord... * (minimaal 8 tekens)">
+                <label class="uk-form-label" for="wachtwoord">Wachtwoord</label>
+                <div class="uk-form-controls" >
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" name="wachtwoord" id="wachtwoord" type="password" maxlength="255" placeholder="W@chtw00rd123... (minimaal 8 tekens)">
+                    </div>
                 </div>
             </div>
             <div class="uk-width-1-1"> <!--uk-width-1-2@s-->
-                <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="wachtwoord_herhaal" id="wachtwoord_herhaal" type="password" maxlength="255" placeholder="Herhaal wachtwoord... *">
+                <label class="uk-form-label" for="wachtwoord_bevestigen">Wachtwoord bevestigen</label>
+                <div class="uk-form-controls">
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" name="wachtwoord bevestigen" id="wachtwoord_bevestigen" type="password" maxlength="255" placeholder="W@chtw00rd123... (minimaal 8 tekens)">
+                    </div>
                 </div>
             </div>
             <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
-                <div uk-form-custom="target: > * > span:first-child" style="margin-left: 35%; margin-right: 32%;">
-                    <select name="vraag" id="vraag">										<!-- HIER MOET NOG EEN LIJST VAN VRAGEN UIT DE DATABASE KOMEN VIA FUNCTION getVragenList() -->
-                        <option selected disabled>Kies een vraag *</option>
+                <label class="uk-form-label" for="beveiligingsvraag">Beveiligingsvraag</label>
+                <div uk-form-custom="target: > * > span:first-child" >
+                    <select class="uk-select uk-width-1-1" name="beveiligingsvraag" id="beveiligingsvraag">										<!-- HIER MOET NOG EEN LIJST VAN VRAGEN UIT DE DATABASE KOMEN VIA FUNCTION getVragenList() -->
+                        <option selected disabled>Kies een beveiligingsvraag</option>
                         <?php echo $this->vars['vragen']; ?>
                     </select>
-                    <button class="uk-button uk-button-default" style="width: 397px; height: 42px;" type="button" tabindex="-1">
+                    <button class="uk-button uk-button-default" type="button" tabindex="-1">
                         <span uk-icon="icon: chevron-down"></span>
                     </button>
                 </div>
             </div>
             <div class="uk-width-1-1"> <!--uk-width-1-2@s-->
-                <div class="uk-form-controls uk-margin-top" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="antwoordtekst" id="antwoordtekst" type="text" maxlength="20" placeholder="Antwoord... *">
+                <label class="uk-form-label" for="antwoordtekst">Antwoordtekst</label>
+                <div class="uk-form-controls uk-margin-top" >
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" name="antwoordtekst" id="antwoordtekst" type="text" maxlength="20" placeholder="Antwoord...">
+                    </div>
                 </div>
             </div>
-            <button class="uk-button uk-margin-top" style="margin-left: calc(50% - 45px); margin-right: 32%;" type="submit" name="signup_submit">Sign up</button>
-			<p style="margin-left: 35.5%;">Velden met &ast; zijn verplicht.</p></br></br>
+            <button class="uk-button uk-button-primary uk-margin-top uk-text-middle uk-width-1-1" type="submit" name="signup_submit">Registreren</button>
+		    <p>Velden met <span class="uk-icon" uk-icon="icon: chevron-double-left"></span> zijn verplicht.</p>
         </form>
     </div>
 </div>

@@ -20,7 +20,7 @@ hr{
     border-color: #5f4b8b;
 }
 
-.loginknop {
+.uk-button-primary {
     background-color: #5f4b8b;
 }
 
@@ -28,8 +28,12 @@ a {
     color: #5f4b8b;
 }
 
-.loginknop:hover {
+.uk-button-primary:hover {
     background-color: #3c2e58;
+}
+
+.uk-input:focus{
+    border-color: #5f4b8b;
 }
 
 .zoekbalk {
@@ -43,6 +47,11 @@ a {
 #footer a {
     color: #5f4b8b;
     font-weight: bold;
+}
+
+.uk-form-controls h5{
+    padding: 0px;
+    margin: 0px;
 }
 
 /* ------------------------------ veilingweergave ------------------------------ */
