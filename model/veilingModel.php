@@ -48,9 +48,18 @@ class veilingModel extends Model {
 	}
 	
 	public function createNewBod($datum, $currentUser, $voorwerpId, $bod) {
-		$sql = "INSERT INTO";
+		$sql = "INSERT INTO [dbo].[biedingen]
+           ([voorwerp]
+           ,[bod]
+           ,[bieder]
+           ,[datum])
+		VALUES
+           (:voorwerpId,
+           ,:bod,
+           ,:gebruikersnaam,
+           ,:datum)";
 		$req = Database::getBdd()->prepare($sql);
-        $req->execute(array(':' => $));
+        $req->execute(array(':voorwerpId' => $voorwerpId, ':bod' => $bod, ':gebruikersnaam' => $currentUser, ':datum' => $datum));
         return $req->fetch(PDO::FETCH_ASSOC);
 	}
 }

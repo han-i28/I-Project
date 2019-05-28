@@ -85,7 +85,7 @@
                     if ($_SESSION['loggedin'] == true) {
                         ?>
 						<div>
-							<form action="" method="POST">
+							<form action="setNieuwBod" method="POST">
 								<input class="uk-input uk-width-expand" type="text" placeholder="Uw bod">
 								<button class="uk-button uk-button-primary custom_button uk-width-expand" type="submit" name="bod_submit">Bieden</button><br><br>
 							</form>
