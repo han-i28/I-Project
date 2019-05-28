@@ -118,7 +118,7 @@ class veilingController extends Controller {
 		*/
 		//security
 		if (isset($_SESSION)) {
-			if (isset($_POST['bod_submit') {
+			if (isset($_POST['bod_submit']) {
 				if (isset($_POST['bod'])) {
 					require(PATH . '/model/veilingModel.php');
 					$veilingModel = new veilingModel();
