@@ -18,7 +18,8 @@ class veilingController extends Controller {
             } else {
                 $data['veiling'] = $result;
                 $data['afbeelding'] = $veilingModel->getAfbeeldingenById($veilingid);
-
+                $data['bod'] = $veilingModel->getBidHistory($veilingid);
+                $data['biedingen'] = $this->generate_bid_history($data['bod']);
                 $data['title'] = "Eenmaal Andermaal - home";
                 $data['page'] = "veilingweergave";
                 $this->set($data);
@@ -107,6 +108,27 @@ class veilingController extends Controller {
             }
         }
         return $veilingListingHTML;
+    }
+
+    function generate_bid_history($biddings){
+        $bid_html = '';
+        foreach($biddings as $bid) {
+            $bid_html .= $this->get_biddings($bid);
+        }
+
+        $bid_html = '<div> <ul class="uk-padding-remove">' . $bid_html . '</ul></div>';
+        return $bid_html;
+    }
+
+    function get_biddings($bid){
+        $html = '<div class="uk-card uk-card-default uk-card-body">
+            <li style="list-style-type: none;">
+                <span>' . $bid['bieder'] . '</span>            
+                <span class="uk-align-right">&euro;' . number_format($bid['bod'], 2). '</span>
+                <span class="uk-align-bottom uk-margin-remove">' . $bid['datum'] . '</span>
+            </li>
+            </div>';
+        return $html;
     }
 }
 

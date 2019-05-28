@@ -78,7 +78,7 @@ class Controller {
         function get_searchresults_html($item){
             $html = 
             "<div style=\"transform: translateY(0px);\">
-                <a href='/" . SITEURL . "/veiling/weergave/?veiling=" . $item['voorwerpnummer']. "'>
+                <a href='" . SITEURL . "veiling/weergave/?veiling=" . $item['voorwerpnummer']. "'>
                 <div class=\"uk-card uk-card-default uk-card-body\">
                     <h4 class=\"uk-text-truncate\">" . $item['titel'] . "</h4>
                     <div class=\"afbeeldingContainer\" style=\"background-image: url('http://iproject28.icasites.nl/thumbnails/" . $item['pad'] . " ');\"></div>
