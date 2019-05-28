@@ -80,13 +80,13 @@ class registrerenController extends Controller {
                     "&land_id=".$land_id."&geboortedatum=".$geboortedatum."&telefoon=".$telefoon."&email=".$mailbox."&vraag=".$vraag."&antwoordtekst=".$antwoordtekst);
                 exit();
 			} elseif (!preg_match("/^[a-zA-Z]+\ +[0-9]+$/", $adresregel_1)) { //			adres 1 pregmatch
-				$data['error_input'] = "invalid_adres";
-                header("Location: ../registreren?error=invalid_adres&uid=".$gebruikersnaam."&voornaam=".$voornaam."&tussenvoegsel=".$tussenvoegsel."&achternaam=".$achternaam."&adres_2=".$adresregel_2."&postcode=".$postcode."&plaatsnaam=".$plaatsnaam.
+				$data['error_input'] = "invalid_adres1";
+                header("Location: ../registreren?error=invalid_adres1&uid=".$gebruikersnaam."&voornaam=".$voornaam."&tussenvoegsel=".$tussenvoegsel."&achternaam=".$achternaam."&adres_2=".$adresregel_2."&postcode=".$postcode."&plaatsnaam=".$plaatsnaam.
                     "&land_id=".$land_id."&geboortedatum=".$geboortedatum."&telefoon=".$telefoon."&email=".$mailbox."&vraag=".$vraag."&antwoordtekst=".$antwoordtekst);
                 exit();
             } elseif (!preg_match("/^[a-zA-Z]+\ +[0-9]+$/", $adresregel_2)) { //			adres 2 pregmatch
-				$data['error_input'] = "invalid_adres";
-                header("Location: ../registreren?error=invalid_adres&uid=".$gebruikersnaam."&voornaam=".$voornaam."&tussenvoegsel=".$tussenvoegsel."&achternaam=".$achternaam."&adres_1=".$adresregel_1."&postcode=".$postcode."&plaatsnaam=".$plaatsnaam.
+				$data['error_input'] = "invalid_adres2";
+                header("Location: ../registreren?error=invalid_adres2&uid=".$gebruikersnaam."&voornaam=".$voornaam."&tussenvoegsel=".$tussenvoegsel."&achternaam=".$achternaam."&adres_1=".$adresregel_1."&postcode=".$postcode."&plaatsnaam=".$plaatsnaam.
                     "&land_id=".$land_id."&geboortedatum=".$geboortedatum."&telefoon=".$telefoon."&email=".$mailbox."&vraag=".$vraag."&antwoordtekst=".$antwoordtekst);
                 exit();
             } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $postcode)) { //						postcode

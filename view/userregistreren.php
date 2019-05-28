@@ -24,8 +24,11 @@ if (isset($_GET["registration"])) {
     elseif($this->vars['error_input'] == 'invalid_achternaam') {
         echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>De opgegeven achternaam is foutief.</div>';
     }
-    elseif($this->vars['error_input'] == 'invalid_adres') {
-        echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Het opgegeven adres is foutief.</div>';
+    elseif($this->vars['error_input'] == 'invalid_adres1') {
+        echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Het opgegeven eerste adres is foutief.</div>';
+    }
+    elseif($this->vars['error_input'] == 'invalid_adres2') {
+        echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Het opgegeven tweede adres is foutief.</div>';
     }
     elseif($this->vars['error_input'] == 'invalid_postcode') {
         echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>De opgegeven postcode is foutief.</div>';
@@ -100,7 +103,7 @@ if (isset($_GET["registration"])) {
             </div>
             <div class="uk-width-1-1 uk-margin-top">
                 <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="telefoon" id="telefoon" type="tel" maxlength="15" placeholder="Telefoon... *">
+                    <input class="uk-input" name="telefoon" id="telefoon" type="tel" maxlength="15" placeholder="Telefoon... *" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}">
                 </div>
             </div>
             <div class="uk-width-1-1 uk-margin-top">
