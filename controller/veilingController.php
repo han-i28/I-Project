@@ -129,28 +129,34 @@ class veilingController extends Controller {
 					$voorwerpId = $_GET['veiling'];
 					$bod = strip_tags((isset($_POST['bod']) ? $_POST['bod'] : null));
 					$hoogsteBod = $veilingModel->getHoogsteBod($voorwerpId);
+					$url = $_SERVER['REQUEST_URI'];
 					
 					//functionaliteit en security
-					if (preg_match("/^[0-9.]*$/", $bod)) {
-						if (strlen($bod) < 9) {
-							if ($bod > $hoogsteBod) {
-								echo 'test';
-								//$result = $veilingModel->createNewBod($datum, $currentUser, $voorwerpId, $bod);
-								//echo $result;
-								exit();
+					if (!empty($bod)) {
+						if (preg_match("/^[0-9.]*$/", $bod)) {
+							if (strlen($bod) < 9) {
+								if ($bod > $hoogsteBod) {
+									$result = $veilingModel->createNewBod($datum, $currentUser, $voorwerpId, $bod);
+									echo $result;
+									exit();
+								}
+								else {
+									header("location: ../".$url);
+									exit();
+								}
 							}
 							else {
-								header("location: .");//naar home
+								header("location: ../".$url);
 								exit();
 							}
 						}
 						else {
-							header("location: .");//naar home
+							header("location: ../".$url);
 							exit();
 						}
 					}
 					else {
-						header("location: .");//naar home
+						header("location: ../".$url);
 						exit();
 					}
 				}
