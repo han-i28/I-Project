@@ -150,7 +150,7 @@ class registrerenController extends Controller {
                     $subject = 'Verificatie registratie Eenmaal Andermaal';
 
                     $message = '<p>U heeft een account aangemaakt op de website van EenmaalAndermaal. Klik op de link hieronder om uw registratie te voltooien.</p>';
-                    $message .= '<p>Hier is uw wachtwoord reset link: </br>';
+                    $message .= '<p>Hier is uw verificatie link: </br>';
                     $message .= '<a href="' . $url . '">Registratie voltooien</a></p>';
 
                     $headers = "From: Eenmaal Andermaal <noreply@EenmaalAndermaal.com>\r\n";
