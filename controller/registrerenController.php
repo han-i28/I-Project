@@ -55,7 +55,7 @@ class registrerenController extends Controller {
                 header("Location: ../registreren?error=empty_fields&gebruikersnaam=".$gebruikersnaam."&voornaam=".$voornaam."&tussenvoegsel=".$tussenvoegsel."&achternaam=".$achternaam."&adres_1=".$adresregel_1."&adres_2=".$adresregel_2."&postcode=".$postcode."&plaatsnaam=".$plaatsnaam.
                     "&land_id=".$land_id."&geboortedatum=".$geboortedatum."&telefoonnummer=".$telefoonnummer."&mailbox=".$mailbox."&beveiligingsvraag=".$beveiligingsvraag."&antwoordtekst=".$antwoordtekst);
                 exit();
-            } elseif (!filter_var($mailbox, FILTER_VALIDATE_mailbox)) { //					mailbox validate
+            } elseif (!filter_var($mailbox, FILTER_VALIDATE_EMAIL)) { //					mailbox validate
                 $data['error_input'] = "invalid_mail";
                 header("Location: ../registreren?error=invalid_mail&gebruikersnaam=".$gebruikersnaam."&voornaam=".$voornaam."&tussenvoegsel=".$tussenvoegsel."&achternaam=".$achternaam."&adres_1=".$adresregel_1."&adres_2=".$adresregel_2."&postcode=".$postcode."&plaatsnaam=".$plaatsnaam.
                     "&land_id=".$land_id."&geboortedatum=".$geboortedatum."&telefoonnummer=".$telefoonnummer."&beveiligingsvraag=".$beveiligingsvraag."&antwoordtekst=".$antwoordtekst);
