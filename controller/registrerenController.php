@@ -30,22 +30,23 @@ class registrerenController extends Controller {
             */
             /*********************************************************************/
 
-            $gebruikersnaam = $this->secure_input((isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null));
-            $voornaam = $this->secure_input((isset($_POST['voornaam']) ? $_POST['voornaam'] : null));
-            $tussenvoegsel = $this->secure_input((isset($_POST['tussenvoegsel']) ? $_POST['tussenvoegsel'] : null));
-            $achternaam = $this->secure_input((isset($_POST['achternaam']) ? $_POST['achternaam'] : null));
-            $adresregel_1 = $this->secure_input((isset($_POST['adres_1']) ? $_POST['adres_1'] : null));
-            $adresregel_2 = $this->secure_input((isset($_POST['adres_2']) ? $_POST['adres_2'] : null));
-            $postcode = $this->secure_input((isset($_POST['postcode']) ? $_POST['postcode'] : null));
-            $plaatsnaam = $this->secure_input((isset($_POST['plaatsnaam']) ? $_POST['plaatsnaam'] : null));
-            $land_id = $this->secure_input((isset($_POST['land_id']) ? $_POST['land_id'] : null));
-            $geboortedatum = $this->secure_input((isset($_POST['geboortedatum']) ? $_POST['geboortedatum'] : null));
-            $telefoonnummer = $this->secure_input((isset($_POST['telefoonnummer']) ? $_POST['telefoonnummer'] : null));
-            $mailbox = $this->secure_input((isset($_POST['mailbox']) ? $_POST['mailbox'] : null));
-            $wachtwoord = $this->secure_input((isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null));
-            $wachtwoord_bevestigen = $this->secure_input((isset($_POST['wachtwoord_bevestigen']) ? $_POST['wachtwoord_bevestigen'] : null));
-            $beveiligingsvraag = $this->secure_input((isset($_POST['beveiligingsvraag']) ? $_POST['beveiligingsvraag'] : null));
-            $antwoordtekst = $this->secure_input((isset($_POST['antwoordtekst']) ? $_POST['antwoordtekst'] : null));
+            $this->secure_form($_POST);
+            $gebruikersnaam = (isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null);
+            $voornaam = (isset($_POST['voornaam']) ? $_POST['voornaam'] : null);
+            $tussenvoegsel = (isset($_POST['tussenvoegsel']) ? $_POST['tussenvoegsel'] : null);
+            $achternaam = (isset($_POST['achternaam']) ? $_POST['achternaam'] : null);
+            $adresregel_1 = (isset($_POST['adres_1']) ? $_POST['adres_1'] : null);
+            $adresregel_2 = (isset($_POST['adres_2']) ? $_POST['adres_2'] : null);
+            $postcode = (isset($_POST['postcode']) ? $_POST['postcode'] : null);
+            $plaatsnaam = (isset($_POST['plaatsnaam']) ? $_POST['plaatsnaam'] : null);
+            $land_id = (isset($_POST['land_id']) ? $_POST['land_id'] : null);
+            $geboortedatum = (isset($_POST['geboortedatum']) ? $_POST['geboortedatum'] : null);
+            $telefoonnummer = (isset($_POST['telefoonnummer']) ? $_POST['telefoonnummer'] : null);
+            $mailbox = (isset($_POST['mailbox']) ? $_POST['mailbox'] : null);
+            $wachtwoord = (isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null);
+            $wachtwoord_bevestigen = (isset($_POST['wachtwoord_bevestigen']) ? $_POST['wachtwoord_bevestigen'] : null);
+            $beveiligingsvraag = (isset($_POST['beveiligingsvraag']) ? $_POST['beveiligingsvraag'] : null);
+            $antwoordtekst = (isset($_POST['antwoordtekst']) ? $_POST['antwoordtekst'] : null);
             $rating = 0;
 
 //            if(false) {
