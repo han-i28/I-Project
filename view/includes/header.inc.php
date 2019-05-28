@@ -19,10 +19,8 @@
                 </div>
             </li>
         </ul>
-
-        
     </div>
-    <div class="uk-navbar-center uk-navbar-small uk-logo uk-navbar item uk-visible@s">
+    <div class="uk-navbar-center uk-logo">
        <a href="<?php echo SITEURL; ?>"> <img style="max-height: 80px" src="<?php echo SITEURL . "assets/images/logo.png" ?>" alt="Logo"></a>
    </div>
     </div>
@@ -62,10 +60,6 @@
         </ul>    
     </div>
 
-
-    <div class="uk-navbar-left uk-navbar-small uk-logo uk-navbar item uk-hidden@s">
-       <a href="<?php echo SITEURL; ?>"> <img style="max-height: 50px" src="<?php echo SITEURL . "assets/images/logo.png" ?>" alt="Logo"></a>
-   </div>
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-hidden@s">
         <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
         <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">

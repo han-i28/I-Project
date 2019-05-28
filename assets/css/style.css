@@ -49,6 +49,10 @@ a:hover {
     font-weight: bold;
 }
 
+.uk-logo img{
+    padding: 5px !important;
+}
+
 /* ------------------------------ veilingweergave ------------------------------ */
 #afbeeldingContainer {
     padding-bottom: calc(100% / (16 / 9));
