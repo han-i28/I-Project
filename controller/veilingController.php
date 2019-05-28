@@ -108,6 +108,65 @@ class veilingController extends Controller {
         }
         return $veilingListingHTML;
     }
+	
+	public function setNieuwBod() {
+		/*
+		Deze functie wordt gebruikt wanneer de knop op een veilingitem pagina wordt aangeklikt om te bieden, met het bod als input.
+		Hierin wordt rekening gehouden met: sql injection, verkeerde users op de pagina, zekerheid rondom gebruikerinfo, en vergelijk met andere boden.
+		Daarna wordt het bod in de database gegooid d.m.v. het veilingModel bestand.
+		Wanneer er iets fout gaat door de input zal er teruggestuurd worden naar de veilingitem pagina, anders naar de homepage.
+		*/
+		//security
+		if (isset($_SESSION)) {
+			if (isset($_POST['bod_submit') {
+				if (isset($_POST['bod'])) {
+					require(PATH . '/model/veilingModel.php');
+					$veilingModel = new veilingModel();
+					
+					//aanmaken van alle variabelen
+					$datum = date("Y-m-d H:i:s");
+					$currentUser = $_SESSION['gebruikersnaam'];
+					$voorwerpId = $_GET['veiling'];
+					$bod = strip_tags((isset($_POST['bod']) ? $_POST['bod'] : null));
+					$hoogsteBod = $veilingModel->getHoogsteBod($voorwerpId);
+					
+					//functionaliteit en security
+					if (preg_match("/^[0-9.]*$/", $bod)) {
+						if (strlen($bod) < 9) {
+							if ($bod > $hoogsteBod) {
+								echo 'test';
+								//$result = $veilingModel->createNewBod($datum, $currentUser, $voorwerpId, $bod);
+								//echo $result;
+								exit();
+							}
+							else {
+								header("location: .");//naar home
+								exit();
+							}
+						}
+						else {
+							header("location: .");//naar home
+							exit();
+						}
+					}
+					else {
+						header("location: .");//naar home
+						exit();
+					}
+				}
+				else {
+					header("location: .");//naar home
+					exit();
+				}
+			}
+			else {
+				header("location: .");//naar home
+				exit();
+			}
+		}
+		else {
+			header("location: .");//naar home
+			exit();
+		}
+	}
 }
-
-?>

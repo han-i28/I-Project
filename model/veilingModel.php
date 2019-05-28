@@ -39,6 +39,20 @@ class veilingModel extends Model {
         $req->execute(array('id' => $id));
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
+	
+	public function getHoogsteBod($voorwerpId) {
+		$sql = "SELECT MAX([bod]) FROM [iproject28].[dbo].[biedingen] WHERE [voorwerp] = :voorwerpId";
+		$req = Database::getBdd()->prepare($sql);
+        $req->execute(array(':voorwerpId' => $voorwerpId));
+        return $req->fetch(PDO::FETCH_ASSOC);
+	}
+	
+	public function createNewBod($datum, $currentUser, $voorwerpId, $bod) {
+		$sql = "INSERT INTO";
+		$req = Database::getBdd()->prepare($sql);
+        $req->execute(array(':' => $));
+        return $req->fetch(PDO::FETCH_ASSOC);
+	}
 }
 
 ?>

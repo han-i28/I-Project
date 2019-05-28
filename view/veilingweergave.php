@@ -83,12 +83,14 @@
                 <?php
                 if (isset($_SESSION['loggedin'])) {
                     if ($_SESSION['loggedin'] == true) {
-                        echo '
+                        ?>
 						<div>
-                            <input class="uk-input uk-width-expand" type="text" placeholder="Uw bod">
-                            <a class="uk-button uk-button-primary custom_button uk-width-expand" href="#">Bieden</a><br><br>
+							<form action="" method="POST">
+								<input class="uk-input uk-width-expand" type="text" placeholder="Uw bod">
+								<button class="uk-button uk-button-primary custom_button uk-width-expand" type="submit" name="bod_submit">Bieden</button><br><br>
+							</form>
                         </div>
-						';
+						<?php
                     } else {
 
                     }
