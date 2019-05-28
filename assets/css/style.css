@@ -49,6 +49,11 @@ a {
     font-weight: bold;
 }
 
+footer{
+    margin-top: 10px;
+    bottom: 0px;
+}
+
 .uk-form-controls h5{
     padding: 0px;
     margin: 0px;
