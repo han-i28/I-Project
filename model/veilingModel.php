@@ -41,7 +41,7 @@ class veilingModel extends Model {
     }
 
     public function getBidHistory($id){
-        $sql = "SELECT * FROM biedingen WHERE voorwerp = :id ORDER BY bod DESC";
+        $sql = "SELECT voorwerp, CONCAT(CONVERT(varchar, datum, 1), ' ', CONVERT(varchar, datum, 8)) as datum, bieder, bod FROM biedingen WHERE voorwerp = :id ORDER BY bod DESC";
         $req = Database::getBdd()->prepare($sql);
         $req->execute(array('id' => $id));
         return $req->fetchAll(PDO::FETCH_ASSOC);

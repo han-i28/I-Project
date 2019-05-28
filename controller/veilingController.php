@@ -125,7 +125,7 @@ class veilingController extends Controller {
             <li style="list-style-type: none;">
                 <span>' . $bid['bieder'] . '</span>            
                 <span class="uk-align-right">&euro;' . number_format($bid['bod'], 2). '</span>
-                <span>' . $bid['datum'] . '</span>
+                <span class="uk-align-bottom uk-margin-remove">' . $bid['datum'] . '</span>
             </li>
             </div>';
         return $html;
