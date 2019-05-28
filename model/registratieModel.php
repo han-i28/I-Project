@@ -2,7 +2,7 @@
 
 class registratieModel extends Model {
 
-    public function getUidCheck($gebruikersnaam) {
+    public function getGebruikersnaamCheck($gebruikersnaam) {
         $sql = "SELECT gebruikersnaam FROM Gebruiker WHERE gebruikersnaam=:gebruikersnaam";
         $req = Database::getBdd()->prepare($sql);
         $req->execute(array(':gebruikersnaam' => $gebruikersnaam));

@@ -30,22 +30,22 @@ class registrerenController extends Controller {
             */
             /*********************************************************************/
 
-            $gebruikersnaam = secure_input((isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null));
-            $voornaam = secure_input((isset($_POST['voornaam']) ? $_POST['voornaam'] : null));
-            $tussenvoegsel = secure_input((isset($_POST['tussenvoegsel']) ? $_POST['tussenvoegsel'] : null));
-            $achternaam = secure_input((isset($_POST['achternaam']) ? $_POST['achternaam'] : null));
-            $adresregel_1 = secure_input((isset($_POST['adres_1']) ? $_POST['adres_1'] : null));
-            $adresregel_2 = secure_input((isset($_POST['adres_2']) ? $_POST['adres_2'] : null));
-            $postcode = secure_input((isset($_POST['postcode']) ? $_POST['postcode'] : null));
-            $plaatsnaam = secure_input((isset($_POST['plaatsnaam']) ? $_POST['plaatsnaam'] : null));
-            $land_id = secure_input((isset($_POST['land_id']) ? $_POST['land_id'] : null));
-            $geboortedatum = secure_input((isset($_POST['geboortedatum']) ? $_POST['geboortedatum'] : null));
-            $telefoonnummer = secure_input((isset($_POST['telefoonnummer']) ? $_POST['telefoonnummer'] : null));
-            $mailbox = secure_input((isset($_POST['mailbox']) ? $_POST['mailbox'] : null));
-            $wachtwoord = secure_input((isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null));
-            $wachtwoord_bevestigen = secure_input((isset($_POST['wachtwoord_bevestigen']) ? $_POST['wachtwoord_bevestigen'] : null));
-            $beveiligingsvraag = secure_input((isset($_POST['beveiligingsvraag']) ? $_POST['beveiligingsvraag'] : null));
-            $antwoordtekst = secure_input((isset($_POST['antwoordtekst']) ? $_POST['antwoordtekst'] : null));
+            $gebruikersnaam = $this->secure_input((isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null));
+            $voornaam = $this->secure_input((isset($_POST['voornaam']) ? $_POST['voornaam'] : null));
+            $tussenvoegsel = $this->secure_input((isset($_POST['tussenvoegsel']) ? $_POST['tussenvoegsel'] : null));
+            $achternaam = $this->secure_input((isset($_POST['achternaam']) ? $_POST['achternaam'] : null));
+            $adresregel_1 = $this->secure_input((isset($_POST['adres_1']) ? $_POST['adres_1'] : null));
+            $adresregel_2 = $this->secure_input((isset($_POST['adres_2']) ? $_POST['adres_2'] : null));
+            $postcode = $this->secure_input((isset($_POST['postcode']) ? $_POST['postcode'] : null));
+            $plaatsnaam = $this->secure_input((isset($_POST['plaatsnaam']) ? $_POST['plaatsnaam'] : null));
+            $land_id = $this->secure_input((isset($_POST['land_id']) ? $_POST['land_id'] : null));
+            $geboortedatum = $this->secure_input((isset($_POST['geboortedatum']) ? $_POST['geboortedatum'] : null));
+            $telefoonnummer = $this->secure_input((isset($_POST['telefoonnummer']) ? $_POST['telefoonnummer'] : null));
+            $mailbox = $this->secure_input((isset($_POST['mailbox']) ? $_POST['mailbox'] : null));
+            $wachtwoord = $this->secure_input((isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null));
+            $wachtwoord_bevestigen = $this->secure_input((isset($_POST['wachtwoord_bevestigen']) ? $_POST['wachtwoord_bevestigen'] : null));
+            $beveiligingsvraag = $this->secure_input((isset($_POST['beveiligingsvraag']) ? $_POST['beveiligingsvraag'] : null));
+            $antwoordtekst = $this->secure_input((isset($_POST['antwoordtekst']) ? $_POST['antwoordtekst'] : null));
             $rating = 0;
 
 //            if(false) {
@@ -136,7 +136,7 @@ class registrerenController extends Controller {
                 exit();
             } else {
                 $registratieModel = new registratieModel();
-                $resultArray = $registratieModel->getgebruikersnaamCheck($gebruikersnaam);
+                $resultArray = $registratieModel->getGebruikersnaamCheck($gebruikersnaam);
                 if (empty($resultArray)) { //al in database check
                     $hashedPwd = password_hash($wachtwoord, PASSWORD_DEFAULT);
                     $vkey = password_hash(time() . $gebruikersnaam, PASSWORD_DEFAULT);
