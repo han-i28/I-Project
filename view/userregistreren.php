@@ -103,7 +103,7 @@ if (isset($_GET["registration"])) {
             </div>
             <div class="uk-width-1-1 uk-margin-top">
                 <div class="uk-form-controls" style="margin-left: 35%; margin-right: 32%;">
-                    <input class="uk-input" name="telefoon" id="telefoon" type="tel" maxlength="15" placeholder="Telefoon... *" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}">
+                    <input class="uk-input" name="telefoon" id="telefoon" type="tel" maxlength="15" placeholder="Telefoon... *" pattern="((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))">
                 </div>
             </div>
             <div class="uk-width-1-1 uk-margin-top">
