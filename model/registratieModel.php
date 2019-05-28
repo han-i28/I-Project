@@ -45,7 +45,7 @@ class registratieModel extends Model {
 		, :antwoordtekst
 		, :rating
 		, :hashedPwd
-		, vkey)";
+		, :vkey)";
         $req = Database::getBdd()->prepare($sql);
         return $req->execute(array(':gebruikersnaam' => $gebruikersnaam, ':voornaam' => $voornaam, ':tussenvoegsel' => $tussenvoegsel, ':achternaam' => $achternaam, ':adresregel_1' => $adresregel_1, ':adresregel_2' => $adresregel_2, ':postcode' => $postcode,
             ':plaatsnaam' => $plaatsnaam, ':land_id' => $land_id, ':geboortedatum' => $geboortedatum, ':telefoon' => $telefoon, ':mailbox' => $mailbox, ':vraag' => $vraag, ':antwoordtekst' => $antwoordtekst, ':rating' => $rating, ':hashedPwd' => $hashedPwd, ':vkey' => $vkey));

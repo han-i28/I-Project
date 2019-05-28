@@ -162,7 +162,8 @@ class registrerenController extends Controller {
                     exit();
                 } else {
                     $data['error_input'] = "username_taken";
-                    header("Location: ../registreren?error=username_taken");
+                    header("Location: ../registreren?error=username_taken&voornaam=".$voornaam."&tussenvoegsel=".$tussenvoegsel."&achternaam=".$achternaam."&adres_1=".$adresregel_1."&adres_2=".$adresregel_2."&postcode=".$postcode."&plaatsnaam=".$plaatsnaam.
+                    "&land_id=".$land_id."&geboortedatum=".$geboortedatum."&telefoon=".$telefoon."&email=".$mailbox."&vraag=".$vraag."&antwoordtekst=".$antwoordtekst);
                     exit();
                 }
 
