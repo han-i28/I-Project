@@ -187,10 +187,14 @@ if (isset($_GET["registration"])) {
             </div>
             <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
                 <label class="uk-form-label" for="beveiligingsvraag">Beveiligingsvraag</label>
-                <select class="uk-select uk-width-1-1" name="beveiligingsvraag" id="beveiligingsvraag">										<!-- HIER MOET NOG EEN LIJST VAN VRAGEN UIT DE DATABASE KOMEN VIA FUNCTION getVragenList() -->
-                    <option selected disabled><span class="uk-form-icon" uk-icon="icon: question"></span>Kies een beveiligingsvraag</option>
-                    <?php echo $this->vars['vragen']; ?>
-                </select>
+                <div class="uk-form-controls">
+                    <div class="uk-inline uk-width-1-1">
+                        <select class="uk-select" name="beveiligingsvraag" id="beveiligingsvraag">										<!-- HIER MOET NOG EEN LIJST VAN VRAGEN UIT DE DATABASE KOMEN VIA FUNCTION getVragenList() -->
+                            <option selected disabled>Kies een beveiligingsvraag</option>
+                            <?php echo $this->vars['vragen']; ?>
+                        </select>
+                    </div>
+                </div>                          
             </div>
             <div class="uk-width-1-1"> <!--uk-width-1-2@s-->
                 <label class="uk-form-label" for="antwoordtekst">Antwoordtekst</label>
