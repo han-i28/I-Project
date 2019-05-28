@@ -61,7 +61,7 @@ if (isset($_GET["registration"])) {
                 <div class="uk-form-controls">
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                        <input class="uk-input" name="gebruikersnaam" id="gebruikersnaam" type="text" maxlength="20" placeholder="JanvdH12">
+                        <input class="uk-input" name="gebruikersnaam" id="gebruikersnaam" type="text" maxlength="20" placeholder="JanvdH12...">
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@ if (isset($_GET["registration"])) {
                 <div class="uk-form-controls" >
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                        <input class="uk-input" name="geboortedatum" id="geboortedatum" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Geboortedatum...">
+                        <input class="uk-input" name="geboortedatum" id="geboortedatum" type="date" placeholder="Geboortedatum...">
                     </div>
                 </div>
             </div>
@@ -136,7 +136,7 @@ if (isset($_GET["registration"])) {
                 <div class="uk-form-controls" >
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                        <input class="uk-input" name="telefoonnummer" id="telefoonnummer" type="tel" maxlength="15" placeholder="Telefoon..." pattern="((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))">
+                        <input class="uk-input" name="telefoonnummer" id="telefoonnummer" type="tel" maxlength="15" placeholder="+31 6 12345678..." pattern="((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))">
                     </div>
                 </div>
             </div>
