@@ -52,7 +52,7 @@ if (isset($_GET["registration"])) {
     }
 }
 ?>
-<div class="uk-container uk-width-1-2@s">
+<div class="uk-container uk-card uk-card-default uk-width-1-2@s">
     <div class="uk-grid" uk-grid>
         <form action="" method="POST" class="uk-form-horizontal uk-width-1-1 uk-margin-large" >
             <h1 class="uk-margin-top uk-width-1-1 uk-text-center">Registratie</h1>
