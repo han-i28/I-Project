@@ -91,9 +91,11 @@
 							</form>
                         </div>
 						<?php
-                    } else {
-
                     }
+                } else {
+                    ?> 
+                    <h3>Log in om te kunnen bieden!</h3>
+                    <?php
                 }
                 ?>
                 <div>
