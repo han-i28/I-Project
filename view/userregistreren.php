@@ -3,8 +3,12 @@ if (isset($this->vars['registration'])) {
     $message =  '</br></br>';
     if ($this->vars['registration'] == "success") {
         $message .=  '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Verificatie email is verstuurd.</div>';
-        echo $message;
+    }else if($this->vars['registration'] == "mail-error"){
+        $message .= '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Verificatie mail sturen niet gelukt. Probeer het later opnieuw.</div>';
+    }else{
+        $message .= '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Er is iets fout gegaan. Probeer het later opnieuw.</div>';
     }
+    echo $message;
 } else{
     if(isset($this->vars['error_input'])) {
         if($this->vars['error_input'] == 'empty_fields') {

@@ -53,9 +53,18 @@ class registrerenController extends Controller {
 
                     // mailbox setup
                     $url = SITEURL . "/registreren/verificatie/index?vkey=" . $vkey; //VERVANGEN
-                    sendVerificationEmail($url, $_POST['mailbox']);
 
-                    $data['registration'] = "success";
+                    for($i=0; $i < 10; $i++){//try to send mail 3 times
+                        if($this->sendVerificationEmail($url, $_POST['mailbox'])){
+                            $data['registration'] = "success";
+                            return;
+                        }else{
+                            sleep(0.5);//wait for retry
+                        }
+                    }
+                    
+                    $data['registration'] = "mail-error";//upon failing 3 times, send mail error
+
                 } else {
                     $data['error_input'] = "username_taken";
                 }
@@ -83,7 +92,11 @@ class registrerenController extends Controller {
         $headers .= "Reply-To: noreply@EenmaalAndermaal.com\r\n";
         $headers .= "Content-type: text/html\r\n";
 
-        mail($to, $subject, $message, $headers);
+        try{
+            return (mail($to, $subject, $message, $headers));
+        }catch(Exception $e){
+            return false;
+        }
     }
 
     public function verificatie(){
