@@ -123,6 +123,11 @@ class registrerenController extends Controller {
         }
     }
 
+    public function verificatie(){
+        //verifieren
+        //vergelijk get vkey met db vkeys
+    }
+
     private function createVragenHTML($data) {
         $html = '';
 
