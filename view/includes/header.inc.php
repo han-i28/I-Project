@@ -12,9 +12,12 @@
 					<?php } elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) { ?>
 							<li><p>Welkom, <?php echo $_SESSION['gebruikersnaam']; ?></p></li>
                             <li class="uk-active"><a href="<?php echo SITEURL . 'account'; ?>">Profiel</a></li>
+                    <?php if(isset($_SESSION['isBeheerder']) && $_SESSION['isBeheerder'] == true) { ?>
+                            <li><a href="<?php echo SITEURL . 'beheer'; ?>">Beheer</a></li>
+                    <?php } ?>
                             <li class="uk-nav-divider"></li>
 							<li><a href="<?php echo SITEURL . 'login/logout'; ?>">Uitloggen</a></li>
-					<?php } ?>
+                   <?php } ?>
                     </ul>
                 </div>
             </li>
