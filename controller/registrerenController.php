@@ -124,8 +124,17 @@ class registrerenController extends Controller {
     }
 
     public function verificatie(){
-        //verifieren
-        //vergelijk get vkey met db vkeys
+        if (isset($_GET["vkey"])) {        //VERANDEREN
+            $vkey = $_GET['vkey'];
+            $loginModel = new loginModel();
+            $resultArray = $loginModel->getVkeyCheck($vkey);
+            if(empty($resultArray)) {
+                echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Dit account is niet geldig of al geverifieerd.</div>';
+            } else {
+                $loginModel->setVerification($vkey);
+                echo '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Uw account is nu geverifieerd. U kunt nu <a href="../login">inloggen</a></div>';
+            }
+        }
     }
 
     private function createVragenHTML($data) {
