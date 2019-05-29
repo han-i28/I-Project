@@ -11,72 +11,38 @@ class registrerenController extends Controller {
 
             if (!defined($_POST['gebruikersnaam']) || !defined($_POST['voornaam']) || !defined($_POST['achternaam']) || !defined($_POST['adresregel_1']) || !defined($_POST['postcode']) || !defined($_POST['plaatsnaam']) || !defined($_POST['geboortedatum']) || !defined($_POST['telefoonnummer']) || !defined($_POST['mailbox']) || !defined($_POST['wachtwoord']) || !defined($_POST['wachtwoord_bevestigen']) || !defined($_POST['beveiligingsvraag']) || !defined($_POST['antwoordtekst'])) {
                 $data['error_input'] = "empty_fields";
-                header("Location: ../registreren");
-                exit();
             } elseif (!filter_var($_POST['mailbox'], FILTER_VALIDATE_EMAIL)) { //					mailbox validate
                 $data['error_input'] = "invalid_mail";
-                header("Location: ../registreren");
-                exit();
             } elseif (!preg_match("/^[a-zA-Z0-9]*$/", $_POST['gebruikersnaam'])) { //				gebruikersnaam
                 $data['error_input'] = "invalid_username";
-                header("Location: ../registreren");
-                exit();
             } elseif (!preg_match("/^[a-zA-Z0-9-]*$/", $_POST['voornaam'])) { //						voornaam
                 $data['error_input'] = "invalid_voornaam";
-                header("Location: ../registreren");
-                exit();
             } elseif (!preg_match("/^[a-zA-Z0-9 -]*$/", $_POST['tussenvoegsel'])) { //				tussenvoegsel
                 $data['error_input'] = "invalid_tussenvoegsel";
-                header("Location: ../registreren");
-                exit();
             } elseif (!preg_match("/^[a-zA-Z0-9-]*$/", $_POST['achternaam'])) { //					achternaam
                 $data['error_input'] = "invalid_achternaam";
-                header("Location: ../registreren");
-                exit();
 			} elseif (!preg_match("/^[a-zA-Z]+\ +[0-9]+$/", $_POST['adresregel_1'])) { //			adres 1 pregmatch
 				$data['error_input'] = "invalid_adres1";
-                header("Location: ../registreren");
-                exit();
             } elseif (!preg_match("/^[a-zA-Z]+\ +[0-9]+$/", $_POST['adresregel_2'])) { //			adres 2 pregmatch
 				$data['error_input'] = "invalid_adres2";
-                header("Location: ../registreren");
-                exit();
             } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['postcode'])) { //						postcode
                 $data['error_input'] = "invalid_postcode";
-                header("Location: ../registreren");
-                exit();
             } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['plaatsnaam'])) { //					plaatsnaam
                 $data['error_input'] = "invalid_plaatsnaam";
-                header("Location: ../registreren");
-                exit();
 			} elseif (!defined($_POST['geboortedatum']) || $_POST['geboortedatum'] == '0000-00-00') { //			geboortedatum empty check
 				$data['error_input'] = "empty_fields";
-                header("Location: ../registreren");
-                exit();
 			} elseif ((floor((time() - strtotime($_POST['geboortedatum']))/31556926))<12) { //		geboortedatum check
 				$data['error_input'] = "age_restriction";
-                header("Location: ../registreren");
-                exit();
             } elseif (!preg_match("/^[0-9]*$/", $_POST['telefoonnummer'])) { //							telefoonnummernummer
                 $data['error_input'] = "invalid_telefoonnummernummer";
-                header("Location: ../registreren");
-                exit();
             } elseif (!preg_match("/^[a-zA-Z0-9!@#$%^&*]*$/", $_POST['wachtwoord'])) { //			password
                 $data['error_input'] = "invalid_password";
-                header("Location: ../registreren");
-                exit();
             } elseif (strlen($_POST['wachtwoord']) < 8) { //											wachtwoord lengte check
                 $data['error_input'] = "invalid_password";
-                header("Location: ../registreren");
-                exit();
             } elseif (!preg_match("/^[a-zA-Z0-9!@#$%^&*]*$/", $_POST['wachtwoord_bevestigen'])) { //	password repeat
                 $data['error_input'] = "invalid_password_repeat";
-                header("Location: ../registreren");
-                exit();
             } elseif ($_POST['wachtwoord'] !== $_POST['wachtwoord_bevestigen']) { //								password repeat
                 $data['error_input'] = "invalid_password_repeat";
-                header("Location: ../registreren");
-                exit();
             } else {
                 $registratieModel = new registratieModel();
                 $resultArray = $registratieModel->getGebruikersnaamCheck($_POST['gebruikersnaam']);
@@ -102,14 +68,9 @@ class registrerenController extends Controller {
                     mail($to, $subject, $message, $headers);
 
                     $data['registration'] = "success";
-                    header("Location: ../registreren");
-                    exit();
                 } else {
                     $data['error_input'] = "username_taken";
-                    header("Location: ../registreren");
-                    exit();
                 }
-
             }
         }
 
