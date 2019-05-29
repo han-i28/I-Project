@@ -27,7 +27,8 @@ class registratieModel extends Model {
 		, antwoordtekst
 		, rating
 		, wachtwoord
-		, vkey) 
+		, vkey
+		, isGeblokkeerd) 
 		VALUES 
 		(:gebruikersnaam
 		, :voornaam
@@ -45,10 +46,11 @@ class registratieModel extends Model {
 		, :antwoordtekst
 		, :rating
 		, :hashedPwd
-		, :vkey)";
+		, :vkey
+		, :isGeblokkeerd)";
         $req = Database::getBdd()->prepare($sql);
         return $req->execute(array(':gebruikersnaam' => $gebruikersnaam, ':voornaam' => $voornaam, ':tussenvoegsel' => $tussenvoegsel, ':achternaam' => $achternaam, ':adresregel_1' => $adresregel_1, ':adresregel_2' => $adresregel_2, ':postcode' => $postcode,
-            ':plaatsnaam' => $plaatsnaam, ':land_id' => $land_id, ':geboortedatum' => $geboortedatum, ':telefoon' => $telefoonnummer, ':mailbox' => $mailbox, ':vraag' => $beveiligingsvraag, ':antwoordtekst' => $antwoordtekst, ':rating' => $rating, ':hashedPwd' => $hashedPwd, ':vkey' => $vkey));
+            ':plaatsnaam' => $plaatsnaam, ':land_id' => $land_id, ':geboortedatum' => $geboortedatum, ':telefoon' => $telefoonnummer, ':mailbox' => $mailbox, ':vraag' => $beveiligingsvraag, ':antwoordtekst' => $antwoordtekst, ':rating' => $rating, ':hashedPwd' => $hashedPwd, ':vkey' => $vkey, ':isGeblokkeerd' => $isGeblokkeerd));
     }
 
     public function getVragenLijst() {
