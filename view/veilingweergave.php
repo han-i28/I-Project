@@ -85,7 +85,7 @@
 						<legend class="uk-legend">Bieden</legend>
 						</br>
 						<div>
-							<form action="<?= SITEURL . "veiling/setNieuwBod"; ?>" method="post" id="bieden_form">
+							<form action="" method="post" id="bieden_form">
 								<input class="uk-input uk-width-expand" id="bod" name="bod" type="text" placeholder="Uw bod">
 								<button class="uk-button uk-button-primary custom_button uk-width-expand" style="background-color:#5f4b8b;" type="submit" name="bod_submit">Bieden</button><br><br>
 							</form>

@@ -8,6 +8,14 @@ class veilingController extends Controller {
 
     function weergave() {
         if(isset($_GET['veiling'])) {
+			if(isset($_POST['bod_submit'])) {
+				if(isset($_POST['bod'])) {
+					$this->setNieuwBod($_POST['bod']);
+				} else {
+					header("location: .");
+					exit();
+				}
+			}
             $veilingid = $_GET['veiling'];
             require(PATH . '/model/veilingModel.php');
             $veilingModel = new veilingModel();
@@ -109,73 +117,63 @@ class veilingController extends Controller {
         return $veilingListingHTML;
     }
 	
-	function setNieuwBod() {
-		/*
+	function setNieuwBod($nieuwBod) {
+	/*
 		Deze functie wordt gebruikt wanneer de knop op een veilingitem pagina wordt aangeklikt om te bieden, met het bod als input.
 		Hierin wordt rekening gehouden met: sql injection, verkeerde users op de pagina, zekerheid rondom gebruikerinfo, en vergelijk met andere boden.
 		Daarna wordt het bod in de database gegooid d.m.v. het veilingModel bestand.
 		Wanneer er iets fout gaat door de input zal er teruggestuurd worden naar de veilingitem pagina, anders naar de homepage.
-		*/
-		//security
-		session_start();
-		if (isset($_SESSION['loggedIn'])) {
-			if (isset($_POST['bod_submit'])) {
-				if (isset($_POST['bod'])) {
-					require(PATH . '/model/veilingModel.php');
-					$veilingModel = new veilingModel();
-					
-					//aanmaken van alle variabelen
-					$datum = date("Y-m-d H:i:s");
-					$currentUser = $_SESSION['gebruikersnaam'];
-					$voorwerpId = $_POST['veiling'];
-					$bod = strip_tags((isset($_POST['bod']) ? $_POST['bod'] : null));
-					$hoogsteBod = $veilingModel->getHoogsteBod($voorwerpId);
-					$url = $_SERVER['REQUEST_URI'];
-					
-					//functionaliteit en security
-					if (!empty($bod)) {
-						if (preg_match("/^[0-9.]*$/", $bod)) {
-							if (strlen($bod) < 9) {
-								if ($bod > $hoogsteBod) {
-									$result = $veilingModel->createNewBod($datum, $currentUser, $voorwerpId, $bod);
-									echo $result;
-									header("location: ?error=test8");
-									exit();
-								}
-								else {
-									print_r($hoogsteBod);
-									//header("location: ?error=test4");
-									exit();
-								}
+	*/
+	//security
+	session_start();
+	if (isset($_SESSION['loggedIn'])) {
+			require(PATH . '/model/veilingModel.php');
+			$veilingModel = new veilingModel();
+			
+			//aanmaken van alle variabelen
+			$datum = date("Y-m-d H:i:s");
+			$currentUser = $_SESSION['gebruikersnaam'];
+			$voorwerpId = $_GET['veiling'];
+			$bod = strval(number_format((float)strip_tags(isset($nieuwBod) ? $nieuwBod : null), 2, '.', ''));
+			$hoogsteBodArray = $veilingModel->getHoogsteBod($voorwerpId);
+			$hoogsteBod = rtrim($hoogsteBodArray['bod'], "0");
+			
+			//functionaliteit en security
+			if (!empty($bod)) {
+				if (!$hoogsteBodArray['bieder'] == $currentUser) {
+					if (preg_match("/^\d+\.\d{0,2}$/", $bod)) {
+						if (strlen($bod) < 9) {
+							if ((float)$bod > (float)$hoogsteBod) {
+								$result = $veilingModel->createNewBod($datum, $currentUser, $voorwerpId, (float)$bod);
+								header("location: ?veiling=" . $voorwerpId); //success
+								exit();
 							}
 							else {
-								header("location: ?error=test3");
+								header("location: ?veiling=" . $voorwerpId); //					niet hoog genoeg geboden
 								exit();
 							}
 						}
 						else {
-							header("location: ?error=test2");
+							header("location: ?veiling=" . $voorwerpId); //						input te groot
 							exit();
 						}
 					}
 					else {
-						header("location: ?error=test1");
+						header("location: ?veiling=" . $voorwerpId); //							voldoet niet aan perg_match
 						exit();
 					}
 				}
 				else {
-					header("location: ?error=test5");//naar home
+					header("location: ?veiling=" . $voorwerpId); //								zelf overbieden
 					exit();
 				}
-			}
-			else {
-				print_R($_POST);
-				//header("location: ?error=test6");//naar home
+			} else {
+				header("location: ?veiling=" . $voorwerpId); //									input empty
 				exit();
 			}
 		}
 		else {
-			header("location: ?error=test7");//naar home
+			header("location: .");//naar home
 			exit();
 		}
 	}
