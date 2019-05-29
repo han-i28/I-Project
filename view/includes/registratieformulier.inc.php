@@ -4,6 +4,7 @@
             <h1 class="uk-margin-top uk-width-1-1 uk-text-center uk-card-title">Registratie</h1>
             <p class="uk-width-1-1 uk-text-center">Een nieuwe wereld van veilingen gaat voor u open!</p>
             <p class="uk-width-1-1 uk-text-center"><b>Let op:</b> velden met aan de rechterzijde het <span class="uk-icon" uk-icon="icon: chevron-double-left"></span> icoon zijn verplicht.</p>
+            <?=$message?>
             <div class="uk-width-1-1 uk-margin-top">
                 <label class="uk-form-label" for="gebruikersnaam">Gebruikersnaam</label>
                 <div class="uk-form-controls">
