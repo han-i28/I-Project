@@ -48,6 +48,7 @@ class registrerenController extends Controller {
             $beveiligingsvraag = (isset($_POST['beveiligingsvraag']) ? $_POST['beveiligingsvraag'] : null);
             $antwoordtekst = (isset($_POST['antwoordtekst']) ? $_POST['antwoordtekst'] : null);
             $rating = 0;
+            $isGeblokkeerd = 0;
 
 //            if(false) {
             if (empty($gebruikersnaam) || empty($voornaam) || empty($achternaam) || empty($adresregel_1) || empty($postcode) || empty($plaatsnaam) || empty($geboortedatum) || empty($telefoonnummer) || empty($mailbox) || empty($wachtwoord) || empty($wachtwoord_bevestigen) || empty($beveiligingsvraag) || empty($antwoordtekst)) {
