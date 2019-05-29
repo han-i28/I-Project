@@ -3,28 +3,6 @@
         <form action="login" method="POST" class="uk-form-horizontal uk-width-1-1 uk-margin-large" >
             <h1 class="uk-margin-top uk-width-1-1 uk-text-center uk-card-title">Login</h1>
             <p class="uk-width-1-1 uk-text-center">Welkom bij Eenmaal Andermaal, de beste veilingsite van Nederland!</p>
-    <?php
-    if (isset($this->vars["newpwd"])) {
-        echo '</br></br>';
-        if ($this->vars["newpwd"] == "passwordupdated") {
-            echo '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Uw wachtwoord is gereset!</div>';
-        }
-    } elseif (isset($this->vars['error_input'])) {
-            echo '';
-            if($this->vars['error_input'] == "empty_fields") {
-                echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Niet alle velden zijn ingevuld.</div>';
-            }
-            elseif($this->vars['error_input'] == "wrong_input") {
-                echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Één of meerdere velden zijn verkeerd ingevuld.</div>';
-            }
-            elseif ($this->vars['error_input'] == "not_verified") {
-                echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>U bent niet geverifieerd, controleer uw email.</div>';
-            }
-        } else {
-            echo '<br/><br/>';
-        }
-
-    ?>
                 <div class="uk-width-1-1 uk-margin-top">
                     <label class="uk-form-label" for="gebruikersnaam">Gebruikersnaam</label>
                     <div class="uk-form-controls">
@@ -51,4 +29,26 @@
             </form>
         </div>
     </div>
-</div
+    <?php
+    if (isset($this->vars["newpwd"])) {
+        echo '</br></br>';
+        if ($this->vars["newpwd"] == "passwordupdated") {
+            echo '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Uw wachtwoord is gereset!</div>';
+        }
+    } elseif (isset($this->vars['error_input'])) {
+        echo '';
+        if($this->vars['error_input'] == "empty_fields") {
+            echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Niet alle velden zijn ingevuld.</div>';
+        }
+        elseif($this->vars['error_input'] == "wrong_input") {
+            echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Één of meerdere velden zijn verkeerd ingevuld.</div>';
+        }
+        elseif ($this->vars['error_input'] == "not_verified") {
+            echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>U bent niet geverifieerd, controleer uw email.</div>';
+        }
+    } else {
+        echo '<br/><br/>';
+    }
+
+    ?>
+</div>

@@ -52,7 +52,7 @@ class registrerenController extends Controller {
                     $registratieModel->setSignupUser($_POST['gebruikersnaam'], $_POST['voornaam'], $_POST['tussenvoegsel'], $_POST['achternaam'], $_POST['adresregel_1'], $_POST['adresregel_2'], $_POST['postcode'], $_POST['plaatsnaam'], $land_id, $_POST['geboortedatum'], $_POST['telefoonnummer'], $_POST['mailbox'], $hashedPwd, $_POST['beveiligingsvraag'], $_POST['antwoordtekst'], $rating, $vkey);
 
                     // mailbox setup
-                    $url = "iproject28.icasites.nl/login?vkey=" . $vkey; //VERVANGEN
+                    $url = SITEURL . "/registreren/verificatie/index?vkey=" . $vkey; //VERVANGEN
 
                     $to = $_POST['mailbox'];
                     $subject = 'Verificatie registratie Eenmaal Andermaal';
