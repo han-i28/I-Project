@@ -9,6 +9,8 @@ class registrerenController extends Controller {
             $this->secure_form($_POST);
             $rating = 0;
 
+            $data['error_input'] = "";
+
             if (!defined($_POST['gebruikersnaam']) || !defined($_POST['voornaam']) || !defined($_POST['achternaam']) || !defined($_POST['adresregel_1']) || !defined($_POST['postcode']) || !defined($_POST['plaatsnaam']) || !defined($_POST['geboortedatum']) || !defined($_POST['telefoonnummer']) || !defined($_POST['mailbox']) || !defined($_POST['wachtwoord']) || !defined($_POST['wachtwoord_bevestigen']) || !defined($_POST['beveiligingsvraag']) || !defined($_POST['antwoordtekst'])) {
                 $data['error_input'] = "empty_fields";
             } elseif (!filter_var($_POST['mailbox'], FILTER_VALIDATE_EMAIL)) { //					mailbox validate
