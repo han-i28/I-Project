@@ -49,8 +49,28 @@ class beheerController extends Controller {
     }
 
     function rubriekenboom() {
+        require(PATH . '/model/beheerModel.php');
         $data['title'] = "Eenmaal Andermaal - Rubriekenboom";
         $data['page'] = "beheerRubrieken";
+        $beheerModel = new beheerModel();
+
+        $categorieen = $beheerModel->getAllCategorieen();
+        $data['rubriekenHTML'] = $beheerModel->createcategorieen($categorieen);
+
+        $this->set($data);
+        $this->load_view("template_beheer");
+    }
+
+    function bewerk_rubriekenboom() {
+        require(PATH . '/model/beheerModel.php');
+        $data['title'] = "Eenmaal Andermaal - Bewerk Rubriek";
+        $data['page'] = "bewerkRubriek";
+        $beheerModel = new beheerModel();
+
+        $categorieen = $beheerModel->getAllCategorieen();
+        $data['rubriekenHTML'] = $beheerModel->createcategorieen($categorieen);
+        
+
         $this->set($data);
         $this->load_view("template_beheer");
     }

@@ -3,7 +3,9 @@
 class searchModel extends Model {
 
     public function getResults($input) {
-        
+        if($input==''){
+            return null;
+        }
         $input = trim(preg_replace('!\s+!', ' ', $input));
         $array = explode(" ", $input);
         foreach ($array as $word) {

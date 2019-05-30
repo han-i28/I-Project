@@ -38,7 +38,7 @@ class loginController extends Controller {
                                 $_SESSION['gebruikersnaam'] = $resultArray['gebruikersnaam'];
                                 $_SESSION['loggedIn'] = true;
                                 $_SESSION['time'] = time();//success
-
+                                $_SESSION['isBeheerder'] = $resultArray['isBeheerder'];
 
                                 unset($mailuid);
                                 unset($password);

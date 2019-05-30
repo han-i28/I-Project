@@ -20,6 +20,14 @@ hr{
     border-color: #5f4b8b;
 }
 
+.uk-button-primary {
+    background-color: #5f4b8b;
+}
+
+.uk-button-primary:hover {
+    background-color: #3c2e58;
+}
+
 .zoekbalk {
     background-color: #5f4b8b;
 }
