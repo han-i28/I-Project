@@ -16,6 +16,39 @@ class beheerModel extends Model {
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getAllOfRubriekByID($id){
+        $sql = "SELECT * FROM categorie WHERE ID = :id";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute(array('id' => $id));
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getParentByID($id){
+        $sql = "SELECT * FROM categorie where id = :id";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute(array('id' => $id));
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getChildrenByID($id){
+        $sql = "SELECT * FROM categorie where parent = :id ORDER BY naam ASC";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute(array('id' => $id));
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function createChildren($children){
+        $items = $children;
+        $html = "";
+        $id = '';
+
+        foreach ($children as $child) {
+            $html .= "<li>";
+            $html .= "<a href=\"?rubriek=" . $child['ID'] . "\">" . $child['naam'] . "</a>";
+            $html .= "</li>";
+            }
+        return $html;
+    }
 
     public function getAllCategorieen(){
         $sql = "SELECT * FROM categorie ORDER BY naam ASC";
@@ -66,7 +99,7 @@ class beheerModel extends Model {
         foreach($items as $item) {
             if($item['parent'] == $id) {
                 $html .= "<ul>";
-                $html .= "<li class=\"uk-parent\"><a href='" . SITEURL . "beheer/beheerrubriek'>" . $item['naam'] . "</a></li>";
+                $html .= "<li class=\"uk-parent\"><a href='" . SITEURL . "beheer/bewerk/?rubriek=" . $item['ID'] . "'>" . $item['naam'] . "</a></li>";
                 $html .= $this->createBeheerderSubCategorie($items, $item['ID']);
                 $html .= "</ul>";
             }

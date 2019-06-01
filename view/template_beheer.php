@@ -12,7 +12,6 @@ include 'includes/header.inc.php';
                         <li><a href="<?= SITEURL . "beheer/blokkeer_gebruiker"; ?>">Blokeer gebruiker<span uk-icon="icon: users;"></span></a></li>
                         <li><a href="<?= SITEURL . "beheer/blokkeer_veiling"; ?>">Blokeer veiling<span uk-icon="icon: tag;"></span></a></li>
                         <li><a href="<?= SITEURL . "beheer/rubriekenboom"; ?>">Rubriekenboom<span uk-icon="icon: list;"></span></a></li>
-                        <li><a href="<?= SITEURL . "beheer/bewerk_rubriekenboom"; ?>">Bewerk Rubriek</a></li>
                     </ul>
             </div>
         </div>

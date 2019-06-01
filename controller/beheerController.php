@@ -61,18 +61,35 @@ class beheerController extends Controller {
         $this->load_view("template_beheer");
     }
 
-    function bewerk_rubriekenboom() {
-        require(PATH . '/model/beheerModel.php');
-        $data['title'] = "Eenmaal Andermaal - Bewerk Rubriek";
-        $data['page'] = "bewerkRubriek";
-        $beheerModel = new beheerModel();
+    function bewerk() {
+        if(isset($_GET['rubriek'])) {
+            $id = $_GET['rubriek'];
+            require(PATH . '/model/beheerModel.php');
+            $beheerModel = new beheerModel();
+            $result = $beheerModel->getAllOfRubriekByID($id);
+            $childrenResult = $beheerModel->getChildrenByID($id);
+            $parentResult = $beheerModel->getParentByID($result[0]['parent']);
+            $children = $beheerModel->createChildren($childrenResult);
+            
+            if(empty($result)) {
+                echo 'rubriek bestaat niet';
+            } else {
+                $data['rubriek'] = $result;
+                $data['children'] = $children;
+                if(empty($parentResult)){
+                    $data['parent'] = null;
+                } else {
+                    $data['parent'] = $parentResult;
+                }
 
-        $categorieen = $beheerModel->getAllCategorieen();
-        $data['rubriekenHTML'] = $beheerModel->createcategorieen($categorieen);
-        
-
-        $this->set($data);
-        $this->load_view("template_beheer");
+                $data['title'] = "Eenmaal Andermaal - Bewerk";
+                $data['page'] = "beheerBewerk";
+                $this->set($data);
+                $this->load_view("template_beheer");
+            }
+        } else {
+            header("location: .");//naar home
+        }
     }
 }
 
