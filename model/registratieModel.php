@@ -9,7 +9,7 @@ class registratieModel extends Model {
         return $req->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function setSignupUser($gebruikersnaam, $voornaam, $tussenvoegsel, $achternaam, $adresregel_1, $adresregel_2, $postcode, $plaatsnaam, $land_id, $geboortedatum, $telefoonnummer, $mailbox, $hashedPwd, $beveiligingsvraag, $antwoordtekst, $rating, $isGeblokkeerd, $isBeheerder, $vkey) {
+    public function setSignupUser($user_data) {
 		$sql = "INSERT INTO dbo.gebruiker 
 		(gebruikersnaam
 		, voornaam
@@ -51,10 +51,10 @@ class registratieModel extends Model {
 		, :isBeheerder
 		, :vkey)";
         $req = Database::getBdd()->prepare($sql);
-        return $req->execute(array(':gebruikersnaam' => $gebruikersnaam, ':voornaam' => $voornaam, ':tussenvoegsel' => $tussenvoegsel, ':achternaam' => $achternaam, ':adresregel_1' => $adresregel_1, ':adresregel_2' => $adresregel_2, ':postcode' => $postcode,
-			':plaatsnaam' => $plaatsnaam, ':land_id' => $land_id, ':geboortedatum' => $geboortedatum, ':telefoon' => $telefoonnummer, ':mailbox' => $mailbox, ':vraag' => $beveiligingsvraag, ':antwoordtekst' => $antwoordtekst, ':rating' => $rating,
-			':hashedPwd' => $hashedPwd, 'isGeblokkeerd' => $isGeblokkeerd, ':isBeheerder' => $isBeheerder ,':vkey' => $vkey));
-    }
+		return $req->execute(array(':gebruikersnaam' => $user_data['0'], ':voornaam' => $user_data['1'], ':tussenvoegsel' => $user_data['2'], ':achternaam' => $user_data['3'], ':adresregel_1' => $user_data['4'], ':adresregel_2' => $user_data['5'], ':postcode' => $user_data['6'],
+            ':plaatsnaam' => $user_data['7'], ':land_id' => $user_data['8'], ':geboortedatum' => $user_data['9'], ':telefoon' => $user_data['10'], ':mailbox' => $user_data['11'], ':vraag' => $user_data['12'], ':antwoordtekst' => $user_data['13'], ':rating' => $user_data['14'],
+            ':hashedPwd' => $user_data['15'], 'isGeblokkeerd' => $user_data['16'], ':isBeheerder' => $user_data['17'] ,':vkey' => $user_data['18']));
+	}
 
     public function getVragenLijst() {
         $sql = "SELECT id, vraag beveiligingsvraag FROM vraag ORDER BY id ASC";

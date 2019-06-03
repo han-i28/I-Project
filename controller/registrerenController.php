@@ -4,33 +4,43 @@ class registrerenController extends Controller {
         if(!isset($_SESSION['loggedIn'])) {//if logged in return exit registration
             require(PATH . '/model/registratieModel.php');
             $registratieModel = new registratieModel();
+
             if (isset($_POST['signup_submit'])) {//when submitted
                 $this->secure_form($_POST);//secure the form
 
-                $errors = checkForErrors();//check for invalid inputs
+                $errors = $this->checkForErrors();//check for invalid inputs
 
                 if(!$errors){//if no errors: continue with submitting user 
+                    $hashedPwd = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
+                    $vkey = password_hash(time() . $_POST['gebruikersnaam'], PASSWORD_DEFAULT);
                     $rating = 0;
                     $land_id = 6030;
                     $isGeblokkeerd = 0;
                     $isBeheerder = 0;
-                    createUser($rating, $land_id, $isGeblokkeerd, $isBeheerder);
+                    
+                    $this->createUser($hashedPwd, $vkey, $rating, $land_id, $isGeblokkeerd, $isBeheerder);
 
                     // mailbox setup
                     $url = SITEURL . "registreren/verificatie/?vkey=" . $vkey; //VERVANGEN
 
+                    $mailSent = false;
                     for($i=0; $i < 10; $i++){//try to send mail 3 times
                         if($this->sendVerificationEmail($url, $_POST['mailbox'])){
-                            $data['registration'] = "succes";
+                            $mailSent = true;
                             break;
                         }else{
                             sleep(0.5);//wait for retry
                         }
+
                     }
 
-                    if(!isset($data['registration']) || $data['registration'] != 'succes'){
+                    $checkGebruikerGeregistreerd = $registratieModel->getGebruikersnaamCheck($_POST['gebruikersnaam']);
+
+                    if(!empty($checkGebruikerGeregistreerd) && $mailSent){
+                        $data['registration'] = "succes";
+                    }else if(!$mailSent){
                         $data['registration'] = "mail-error";//upon failing 10 times, send mail error
-                    }
+                    }//else: error unknown
                 }
 
                 $data['vragen'] = $this->createVragenHTML($registratieModel->getVragenLijst());
@@ -92,9 +102,8 @@ class registrerenController extends Controller {
         return $html;
     }
 
-    private function createUser($rating, $land_id, $isGeblokkeerd, $isBeheerder){
-        $hashedPwd = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
-        $vkey = password_hash(time() . $_POST['gebruikersnaam'], PASSWORD_DEFAULT);
+    private function createUser($hashedPwd, $vkey, $rating, $land_id, $isGeblokkeerd, $isBeheerder){
+        $registratieModel = new registratieModel();
 
         $user_data = array($_POST['gebruikersnaam'], $_POST['voornaam'], $_POST['tussenvoegsel'],
         $_POST['achternaam'], $_POST['adres_1'], $_POST['adres_2'], $_POST['postcode'], $_POST['plaatsnaam'],
