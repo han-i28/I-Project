@@ -1,12 +1,12 @@
-<?php 
-    if(isset($this->vars['error_input'])) {
-        echo '<br><br>';
-        if($this->vars['error_input'] == 'empty_field'){
-            echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Het veld is niet ingevuld.</div>';
-        }
-    } 
-?>
         <div class="uk-container">
+            <?php 
+                if(isset($this->vars['error_input'])) {
+                    echo '<br><br>';
+                    if($this->vars['error_input'] == 'empty_field'){
+                        echo '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Het veld is niet ingevuld.</div>';
+                    }
+                } 
+            ?>
             <h2>Huidige rubriek:</h2>
             <h4 class="uk-margin-remove-top"><?php echo $this->vars['rubriek'][0]['naam'] ?></h4>
             <div class="uk-container">

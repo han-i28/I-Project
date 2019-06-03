@@ -72,6 +72,39 @@ class beheerController extends Controller {
 
     function bewerk() {
         session_start();
+
+
+
+        $bewerkNaam_naam = strip_tags((isset($_POST['bewerkNaam']) ? $_POST['bewerkNaam'] : null));
+        if(isset($_POST['bewerkNaam_submit'])){
+            if(empty($bewerkNaam_naam)){
+                $data['error_input'] = 'empty_field';
+            } else {                        
+                $result = $beheerModel->bewerkNaam($bewerkNaam_naam, $this->vars['rubriek'][0]['ID']);
+                echo "<meta http-equiv='refresh' content='0'>";
+            }
+        }
+        
+        $nieuweRubriek_naam = strip_tags((isset($_POST['voegToe']) ? $_POST['voegToe'] : null));
+        if(isset($_POST['voegToe_submit'])){
+            if(empty($nieuweRubriek_naam)){
+                $data['error_input'] = 'empty_field';
+            } else {
+                $result = $beheerModel->voegToe($nieuweRubriek_naam, $this->vars['rubriek'][0]['ID']);
+                echo "<meta http-equiv='refresh' content='0'>";
+            }
+        }
+
+        $nieuweParent_naam = strip_tags((isset($_POST['nieuweParent']) ? $_POST['nieuweParent'] : null));
+        if(isset($_POST['nieuweParent_submit'])){
+            if(empty($nieuweParent_naam)){
+                $data['error_input'] = 'empty_field';
+            } else {
+                $result = $beheerModel->nieuweParent($nieuweParent_naam, $this->vars['rubriek'][0]['ID']);
+                echo "<meta http-equiv='refresh' content='0'>";
+            }
+        }
+
         if($_SESSION['loggedIn'] == true && $_SESSION['isBeheerder'] == true){
             if(isset($_GET['rubriek'])) {
                 $id = $_GET['rubriek'];
@@ -98,36 +131,6 @@ class beheerController extends Controller {
                     $data['page'] = "beheerBewerk";
                     $this->set($data);
                     $this->load_view("template_beheer");
-                }
-
-                $bewerkNaam_naam = strip_tags((isset($_POST['bewerkNaam']) ? $_POST['bewerkNaam'] : null));
-                if(isset($_POST['bewerkNaam_submit'])){
-                    if(empty($bewerkNaam_naam)){
-                        $data['error_input'] = 'empty_field';
-                    } else {                        
-                        $result = $beheerModel->bewerkNaam($bewerkNaam_naam, $this->vars['rubriek'][0]['ID']);
-                        echo "<meta http-equiv='refresh' content='0'>";
-                    }
-                }
-                
-                $nieuweRubriek_naam = strip_tags((isset($_POST['voegToe']) ? $_POST['voegToe'] : null));
-                if(isset($_POST['voegToe_submit'])){
-                    if(empty($nieuweRubriek_naam)){
-                        $data['error_input'] = 'empty_field';
-                    } else {
-                        $result = $beheerModel->voegToe($nieuweRubriek_naam, $this->vars['rubriek'][0]['ID']);
-                        echo "<meta http-equiv='refresh' content='0'>";
-                    }
-                }
-
-                $nieuweParent_naam = strip_tags((isset($_POST['nieuweParent']) ? $_POST['nieuweParent'] : null));
-                if(isset($_POST['nieuweParent_submit'])){
-                    if(empty($nieuweParent_naam)){
-                        $data['error_input'] = 'empty_field';
-                    } else {
-                        $result = $beheerModel->nieuweParent($nieuweParent_naam, $this->vars['rubriek'][0]['ID']);
-                        echo "<meta http-equiv='refresh' content='0'>";
-                    }
                 }
             } else {
                 header("location: .");//naar home
