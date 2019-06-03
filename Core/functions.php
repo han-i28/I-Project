@@ -1,6 +1,0 @@
-<?php
-//general functions
-
-
-
-?>
