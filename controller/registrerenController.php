@@ -8,7 +8,7 @@ class registrerenController extends Controller {
             if (isset($_POST['signup_submit'])) {//when submitted
                 $this->secure_form($_POST);//secure the form
 
-                $errors = $this->checkForErrors();//check for invalid inputs
+                $errors = $this->checkForErrors($registratieModel);//check for invalid inputs
 
                 if(!$errors){//if no errors: continue with submitting user 
                     $hashedPwd = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
@@ -113,7 +113,7 @@ class registrerenController extends Controller {
         $registratieModel->setSignupUser($user_data);
     }
 
-    private function checkForErrors(){
+    private function checkForErrors($registratieModel){
         if (!isset($_POST['gebruikersnaam']) || !isset($_POST['voornaam']) || !isset($_POST['achternaam']) || !isset($_POST['adres_1']) || !isset($_POST['postcode']) || !isset($_POST['plaatsnaam']) || !isset($_POST['geboortedatum']) || !isset($_POST['telefoonnummer']) || !isset($_POST['mailbox']) || !isset($_POST['wachtwoord']) || !isset($_POST['wachtwoord_bevestigen']) || !isset($_POST['beveiligingsvraag']) || !isset($_POST['antwoordtekst'])) {
             $data['error_input'] = "empty_fields";
         } elseif (!filter_var($_POST['mailbox'], FILTER_VALIDATE_EMAIL)) { //					mailbox validate
