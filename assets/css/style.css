@@ -1,0 +1,34 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul{
+    resize: none !important;
+    border: none !important;
+}
+
+.item-section{
+    padding: 0px 10px;
+    border-bottom: 5px solid #5f4b8b;
+}
+
+hr{
+    border-color: #5f4b8b;
+}
+
+.zoekbalk {
+    background-color: #5f4b8b;
+}
+
+.zoekbalk:hover {
+    background-color: #3c2e58;
+}
+
+#footer a {
+    color: #5f4b8b;
+    font-weight: bold;
+}
