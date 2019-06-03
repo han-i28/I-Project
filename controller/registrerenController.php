@@ -1,7 +1,7 @@
 <?php
 class registrerenController extends Controller {
     function index() {
-        if(!isset($_SESSION['loggedIn'])) {//if logged in return exit registration
+        if(!isset($_SESSION['loggedIn'])) {//if logged in exit registration
             require(PATH . '/model/registratieModel.php');
             $registratieModel = new registratieModel();
 
@@ -9,6 +9,7 @@ class registrerenController extends Controller {
                 $this->secure_form($_POST);//secure the form
 
                 $errors = $this->checkForErrors($registratieModel);//check for invalid inputs
+                print_r($data['error_input']);
 
                 if(!$errors){//if no errors: continue with submitting user 
                     $hashedPwd = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
@@ -21,36 +22,40 @@ class registrerenController extends Controller {
                     $this->createUser($hashedPwd, $vkey, $rating, $land_id, $isGeblokkeerd, $isBeheerder);
 
                     // mailbox setup
-                    $url = SITEURL . "registreren/verificatie/?vkey=" . $vkey; //VERVANGEN
-
-                    $mailSent = false;
-                    for($i=0; $i < 10; $i++){//try to send mail 3 times
-                        if($this->sendVerificationEmail($url, $_POST['mailbox'])){
-                            $mailSent = true;
-                            break;
-                        }else{
-                            sleep(0.5);//wait for retry
-                        }
-
-                    }
 
                     $checkGebruikerGeregistreerd = $registratieModel->getGebruikersnaamCheck($_POST['gebruikersnaam']);
 
-                    if(!empty($checkGebruikerGeregistreerd) && $mailSent){
+                    if(!empty($checkGebruikerGeregistreerd)){
                         $data['registration'] = "succes";
-                    }else if(!$mailSent){
-                        $data['registration'] = "mail-error";//upon failing 10 times, send mail error
-                    }//else: error unknown
-                }
+                        $url = SITEURL . "registreren/verificatie/?vkey=" . $vkey; //VERVANGEN
 
-                $data['vragen'] = $this->createVragenHTML($registratieModel->getVragenLijst());
-                $data['title'] = "Eenmaal Andermaal - Registreren";
-                $data['page'] = "userregistreren";
-                $this->set($data);
-                $this->load_view("template");
-            } else {
-                header("location: " . SITEURL . "");
+                        $mailSent = false;
+                        for($i=0; $i < 10; $i++){//try to send mail 3 times
+                            if($this->sendVerificationEmail($url, $_POST['mailbox'])){
+                                $mailSent = true;
+                                break;
+                            }else{
+                                sleep(0.5);//wait for retry
+                            }
+                        }
+                    }else{
+                        $data['registration'] = "error-unknown";//user could not be added
+                    }
+
+                    if(!$mailSent){
+                        $data['registration'] = "mail-error";//upon failing 10 times, send mail error
+                    }
+                }
             }
+
+            $data['vragen'] = $this->createVragenHTML($registratieModel->getVragenLijst());
+            $data['title'] = "Eenmaal Andermaal - Registreren";
+            $data['page'] = "userregistreren";
+            $this->set($data);
+            $this->load_view("template");
+
+        } else {//if logged in
+            header("location: " . SITEURL . "");
         }
     }
 
@@ -153,6 +158,6 @@ class registrerenController extends Controller {
             if(empty($resultArray)) $data['error_input'] = "username_taken";
         }
 
-        return empty($data['error_input']);//if no errors returns true
+        return !isset($data['error_input']);//if no errors returns true
     }
 }
