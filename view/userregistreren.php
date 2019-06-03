@@ -2,7 +2,7 @@
 $message ='';
 if (isset($this->vars['registration'])) {
     $message .=  '</br></br>';
-    if ($this->vars['registration'] == "success") {
+    if ($this->vars['registration'] == "succes") {
         $message .=  '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Verificatie email is verstuurd.</div>';
     }else if($this->vars['registration'] == "mail-error"){
         $message .= '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Verificatie mail sturen niet gelukt. Probeer het later opnieuw.</div>';
