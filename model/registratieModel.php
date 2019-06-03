@@ -10,46 +10,14 @@ class registratieModel extends Model {
     }
 
     public function setSignupUser($user_data) {
+		print_r($user_data);
 		$sql = "INSERT INTO dbo.gebruiker 
-		(gebruikersnaam
-		, voornaam
-		, tussenvoegsel
-		, achternaam
-		, adresregel_1
-		, adresregel_2
-		, postcode
-		, plaatsnaam
-		, GBA_CODE
-		, geboortedatum
-		, telefoon
-		, mailbox
-		, vraag
-		, antwoordtekst
-		, rating
-		, wachtwoord
-		, isGeblokkeerd
-		, isBeheerder
-		, vkey)
-		VALUES 
-		(:gebruikersnaam
-		, :voornaam
-		, :tussenvoegsel
-		, :achternaam
-		, :adresregel_1
-		, :adresregel_2
-		, :postcode
-		, :plaatsnaam
-		, :land_id
-		, :geboortedatum
-		, :telefoon
-		, :mailbox
-		, :vraag
-		, :antwoordtekst
-		, :rating
-		, :hashedPwd
-		, :isGeblokkeerd
-		, :isBeheerder
-		, :vkey)";
+		(gebruikersnaam, voornaam, tussenvoegsel, achternaam, adresregel_1, adresregel_2, postcode, plaatsnaam, GBA_CODE,
+		geboortedatum, telefoon, mailbox, vraag, antwoordtekst, rating, wachtwoord, isGeblokkeerd, isBeheerder, vkey)
+		VALUES (
+		:gebruikersnaam, :voornaam, :tussenvoegsel, :achternaam, :adresregel_1, :adresregel_2, :postcode, :plaatsnaam, :land_id,
+		:geboortedatum, :telefoon, :mailbox, :vraag, :antwoordtekst, :rating, :hashedPwd, :isGeblokkeerd, :isBeheerder, :vkey)";
+
         $req = Database::getBdd()->prepare($sql);
 		return $req->execute(array(':gebruikersnaam' => $user_data['0'], ':voornaam' => $user_data['1'], ':tussenvoegsel' => $user_data['2'], ':achternaam' => $user_data['3'], ':adresregel_1' => $user_data['4'], ':adresregel_2' => $user_data['5'], ':postcode' => $user_data['6'],
             ':plaatsnaam' => $user_data['7'], ':land_id' => $user_data['8'], ':geboortedatum' => $user_data['9'], ':telefoon' => $user_data['10'], ':mailbox' => $user_data['11'], ':vraag' => $user_data['12'], ':antwoordtekst' => $user_data['13'], ':rating' => $user_data['14'],
@@ -75,7 +43,7 @@ class registratieModel extends Model {
         $req = Database::getBdd()->prepare($sql);
         $req->execute(array(':vkey' => $vkey));
         return $req->fetch(PDO::FETCH_ASSOC);
-    }
+	}
 }
 
 ?>
