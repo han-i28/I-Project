@@ -2,13 +2,13 @@
 class registrerenController extends Controller {
     function index() {
         if(!isset($_SESSION['loggedIn'])) {//if logged in return exit registration
-
             require(PATH . '/model/registratieModel.php');
             $registratieModel = new registratieModel();
+
             if (isset($_POST['signup_submit'])) {//when submitted
                 $this->secure_form($_POST);//secure the form
 
-                $errors = $this->checkForErrors($registratieModel);//check for invalid inputs
+                $errors = $this->checkForErrors();//check for invalid inputs
 
                 if(!$errors){//if no errors: continue with submitting user 
                     $hashedPwd = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
@@ -23,29 +23,34 @@ class registrerenController extends Controller {
                     // mailbox setup
                     $url = SITEURL . "registreren/verificatie/?vkey=" . $vkey; //VERVANGEN
 
+                    $mailSent = false;
                     for($i=0; $i < 10; $i++){//try to send mail 3 times
                         if($this->sendVerificationEmail($url, $_POST['mailbox'])){
-                            $data['registration'] = "succes";
+                            $mailSent = true;
                             break;
                         }else{
                             sleep(0.5);//wait for retry
                         }
+
                     }
 
-                    if(!isset($data['registration']) || $data['registration'] != 'succes'){
+                    $checkGebruikerGeregistreerd = $registratieModel->getGebruikersnaamCheck($_POST['gebruikersnaam']);
+
+                    if(!empty($checkGebruikerGeregistreerd) && $mailSent){
+                        $data['registration'] = "succes";
+                    }else if(!$mailSent){
                         $data['registration'] = "mail-error";//upon failing 10 times, send mail error
-                    }
+                    }//else: error unknown
                 }
-            }
 
-            $data['vragen'] = $this->createVragenHTML($registratieModel->getVragenLijst());
-            $data['title'] = "Eenmaal Andermaal - Registreren";
-            $data['page'] = "userregistreren";
-            $this->set($data);
-            $this->load_view("template");
-        } else {
-            exit;
-            header("location: " . SITEURL . "");
+                $data['vragen'] = $this->createVragenHTML($registratieModel->getVragenLijst());
+                $data['title'] = "Eenmaal Andermaal - Registreren";
+                $data['page'] = "userregistreren";
+                $this->set($data);
+                $this->load_view("template");
+            } else {
+                header("location: " . SITEURL . "");
+            }
         }
     }
 
@@ -70,10 +75,10 @@ class registrerenController extends Controller {
     public function verificatie(){
         if (isset($_GET["vkey"])) {        //VERANDEREN
             $vkey = $_GET['vkey'];
-            echo $vkey;
             require(PATH . '/model/registratieModel.php');
             $registratieModel = new registratieModel();
-            $resultArray = $registratieModel->getVkeyCheck($vkey);
+            $resultArray = $registratieModel->getVkeyCheck($vkey);  
+            echo $resultArray;
             if(empty($resultArray)) {
                 $data['message'] = '<div class="uk-alert-danger uk-margin-top" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Dit account is niet geldig of al geverifieerd.</div>';
             } else {
@@ -108,7 +113,7 @@ class registrerenController extends Controller {
         $registratieModel->setSignupUser($user_data);
     }
 
-    private function checkForErrors($registratieModel){
+    private function checkForErrors(){
         if (!isset($_POST['gebruikersnaam']) || !isset($_POST['voornaam']) || !isset($_POST['achternaam']) || !isset($_POST['adres_1']) || !isset($_POST['postcode']) || !isset($_POST['plaatsnaam']) || !isset($_POST['geboortedatum']) || !isset($_POST['telefoonnummer']) || !isset($_POST['mailbox']) || !isset($_POST['wachtwoord']) || !isset($_POST['wachtwoord_bevestigen']) || !isset($_POST['beveiligingsvraag']) || !isset($_POST['antwoordtekst'])) {
             $data['error_input'] = "empty_fields";
         } elseif (!filter_var($_POST['mailbox'], FILTER_VALIDATE_EMAIL)) { //					mailbox validate

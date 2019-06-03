@@ -32,7 +32,7 @@ class registratieModel extends Model {
 	}
 	
 	public function getVkeyCheck($vkey) {
-        $sql = "SELECT isGeverifieerd, vkey FROM gebruiker WHERE isGeverifieerd = 0 AND vkey = :vkey";
+        $sql = "SELECT is_geverifieerd, vkey FROM gebruiker WHERE is_geverifieerd = 0 AND vkey=:vkey";
         $req = Database::getBdd()->prepare($sql);
         $req->execute(array(':vkey' => $vkey));
         return $req->fetch(PDO::FETCH_ASSOC);
