@@ -1,6 +1,7 @@
 <?php
 class beheerController extends Controller {
     function index() {
+        session_start();
         $data['title'] = "Eenmaal Andermaal - beheer ";
         $data['page'] = "beheer";
         $this->set($data);
@@ -8,7 +9,8 @@ class beheerController extends Controller {
     }
 
     function blokkeer_gebruiker() {
-//        if($_SESSION['loggedIn'] == true && $_SESSION['beheerder'] == true) {
+        session_start();
+        if($_SESSION['loggedIn'] == true && $_SESSION['isBeheerder'] == true) {
             require(PATH . '/model/beheerModel.php');
             $beheerModel = new beheerModel();
             if (isset($_GET['gebruiker']) && isset($_GET['status'])) {
@@ -23,13 +25,14 @@ class beheerController extends Controller {
                 $this->set($data);
                 $this->load_view("template_beheer");
             }
-//        } else {
-//            header("location: " . SITEURL . "");
-//        }
+       } else {
+           header("location: " . SITEURL . "");
+       }
     }
 
     function blokkeer_veiling() {
-//        if($_SESSION['loggedIn'] == true && $_SESSION['beheerder'] == true) {
+        session_start();
+        if($_SESSION['loggedIn'] == true && $_SESSION['isBeheerder'] == true) {
             require(PATH . '/model/beheerModel.php');
             $beheerModel = new beheerModel();
             if (isset($_GET['veiling'])) {
@@ -43,52 +46,92 @@ class beheerController extends Controller {
                 $this->set($data);
                 $this->load_view("template_beheer");
             }
-//        } else {
-//            header("location: " . SITEURL . "");
-//        }
+       } else {
+           header("location: " . SITEURL . "");
+       }
     }
 
     function rubriekenboom() {
-        require(PATH . '/model/beheerModel.php');
-        $data['title'] = "Eenmaal Andermaal - Rubriekenboom";
-        $data['page'] = "beheerRubrieken";
-        $beheerModel = new beheerModel();
+        session_start();    
+        if($_SESSION['loggedIn'] == true && $_SESSION['isBeheerder'] == true) {
+            require(PATH . '/model/beheerModel.php');
+            $data['title'] = "Eenmaal Andermaal - Rubriekenboom";
+            $data['page'] = "beheerRubrieken";
+            $beheerModel = new beheerModel();
 
-        $categorieen = $beheerModel->getAllCategorieen();
-        $data['rubriekenHTML'] = $beheerModel->createcategorieen($categorieen);
+            $categorieen = $beheerModel->getAllCategorieen();
+            $data['rubriekenHTML'] = $beheerModel->createcategorieen($categorieen);
 
-        $this->set($data);
-        $this->load_view("template_beheer");
+            $this->set($data);
+            $this->load_view("template_beheer");
+        }
+        else {
+            header("location: " . SITEURL . "");
+        }
     }
 
     function bewerk() {
-        if(isset($_GET['rubriek'])) {
-            $id = $_GET['rubriek'];
-            require(PATH . '/model/beheerModel.php');
-            $beheerModel = new beheerModel();
-            $result = $beheerModel->getAllOfRubriekByID($id);
-            $childrenResult = $beheerModel->getChildrenByID($id);
-            $parentResult = $beheerModel->getParentByID($result[0]['parent']);
-            $children = $beheerModel->createChildren($childrenResult);
-            
-            if(empty($result)) {
-                echo 'rubriek bestaat niet';
-            } else {
-                $data['rubriek'] = $result;
-                $data['children'] = $children;
-                if(empty($parentResult)){
-                    $data['parent'] = null;
+        session_start();
+        if($_SESSION['loggedIn'] == true && $_SESSION['isBeheerder'] == true){
+            if(isset($_GET['rubriek'])) {
+                $id = $_GET['rubriek'];
+                require(PATH . '/model/beheerModel.php');
+                $beheerModel = new beheerModel();
+                $result = $beheerModel->getAllOfRubriekByID($id);
+                $childrenResult = $beheerModel->getChildrenByID($id);
+                $parentResult = $beheerModel->getParentByID($result[0]['parent']);
+                $children = $beheerModel->createChildren($childrenResult);
+                
+                if(empty($result)) {
+                    echo 'rubriek bestaat niet';
                 } else {
-                    $data['parent'] = $parentResult;
+                    $data['rubriek'] = $result;
+                    $data['children'] = $children;
+                    $data['parentrubrieken'] = $beheerModel->createParents();
+                    if(empty($parentResult)){
+                        $data['parent'] = null;
+                    } else {
+                        $data['parent'] = $parentResult;
+                    }
+
+                    $data['title'] = "Eenmaal Andermaal - Bewerk";
+                    $data['page'] = "beheerBewerk";
+                    $this->set($data);
+                    $this->load_view("template_beheer");
                 }
 
-                $data['title'] = "Eenmaal Andermaal - Bewerk";
-                $data['page'] = "beheerBewerk";
-                $this->set($data);
-                $this->load_view("template_beheer");
+                $bewerkNaam_naam = strip_tags((isset($_POST['bewerkNaam']) ? $_POST['bewerkNaam'] : null));
+                if(isset($_POST['bewerkNaam_submit'])){
+                    if(empty($bewerkNaam_naam)){
+                        $data['error_input'] = 'empty_field';
+                    } else {                        
+                        $result = $beheerModel->bewerkNaam($bewerkNaam_naam, $this->vars['rubriek'][0]['ID']);
+                        echo "<meta http-equiv='refresh' content='0'>";
+                    }
+                }
+                
+                $nieuweRubriek_naam = strip_tags((isset($_POST['voegToe']) ? $_POST['voegToe'] : null));
+                if(isset($_POST['voegToe_submit'])){
+                    if(empty($nieuweRubriek_naam)){
+                        $data['error_input'] = 'empty_field';
+                    } else {
+                        $result = $beheerModel->voegToe($nieuweRubriek_naam, $this->vars['rubriek'][0]['ID']);
+                        echo "<meta http-equiv='refresh' content='0'>";
+                    }
+                }
+
+                $nieuweParent_naam = strip_tags((isset($_POST['nieuweParent']) ? $_POST['nieuweParent'] : null));
+                if(isset($_POST['nieuweParent_submit'])){
+                    if(empty($nieuweParent_naam)){
+                        $data['error_input'] = 'empty_field';
+                    } else {
+                        $result = $beheerModel->nieuweParent($nieuweParent_naam, $this->vars['rubriek'][0]['ID']);
+                        echo "<meta http-equiv='refresh' content='0'>";
+                    }
+                }
+            } else {
+                header("location: .");//naar home
             }
-        } else {
-            header("location: .");//naar home
         }
     }
 }

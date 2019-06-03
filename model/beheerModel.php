@@ -37,6 +37,25 @@ class beheerModel extends Model {
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getParents(){
+        $sql = "SELECT * FROM categorie WHERE parent = '-1' ORDER BY naam ASC";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function createParents(){
+        $html = '';
+        $parents = $this->getParents();
+
+        foreach($parents as $parent){
+            $html .= "<option value=\"" . $parent['ID'] . "\">";
+            $html .= $parent['naam'];
+            $html .= "</option>";
+        }
+        return $html;
+    }
+
     public function createChildren($children){
         $items = $children;
         $html = "";
@@ -105,6 +124,28 @@ class beheerModel extends Model {
             }
         }
         return $html;
+    }
+
+    public function bewerkNaam($naam, $id){
+        $sql = "UPDATE categorie SET naam = :naam WHERE ID = :id";
+        $req = Database::getBdd()->prepare($sql);
+        return $req->execute(array('naam' => $naam, 'id' => $id));
+    }
+
+    public function voegToe($naam, $parent){
+        $sql = "DECLARE @newid int;
+        SELECT @newid = coalesce(MAX(ID),0) + 1 FROM categorie;
+        
+        INSERT INTO categorie (ID, naam, parent)
+        VALUES (@newid, :naam, :parent)";
+        $req = Database::getBdd()->prepare($sql);
+        return $req->execute(array('naam' => $naam, 'parent' => $parent));
+    }
+
+    public function nieuweParent($parent, $id){
+        $sql = "UPDATE categorie SET parent = :parent WHERE id = :id";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute(array('parent' => $parent, 'id' => $id));
     }
 }
 ?>
