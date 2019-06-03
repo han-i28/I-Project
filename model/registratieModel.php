@@ -2,26 +2,35 @@
 
 class registratieModel extends Model {
 
-    public function getGebruikersnaamCheck($gebruikersnaam) {
-        $sql = "SELECT gebruikersnaam FROM Gebruiker WHERE gebruikersnaam=:gebruikersnaam";
+    public function checkUsernameTaken($gebruikersnaam) {
+        $sql = "SELECT gebruikersnaam FROM gebruiker WHERE gebruikersnaam = :gebruikersnaam";
         $req = Database::getBdd()->prepare($sql);
         $req->execute(array(':gebruikersnaam' => $gebruikersnaam));
-        return $req->fetch(PDO::FETCH_ASSOC);
+		$result = $req->fetch(PDO::FETCH_ASSOC);
+		return !empty($result);//if user is in database, return true
     }
 
-    public function setSignupUser($user_data) {
-		print_r($user_data);
-		$sql = "INSERT INTO dbo.gebruiker 
-		(gebruikersnaam, voornaam, tussenvoegsel, achternaam, adresregel_1, adresregel_2, postcode, plaatsnaam, GBA_CODE,
-		geboortedatum, telefoon, mailbox, vraag, antwoordtekst, rating, wachtwoord, isGeblokkeerd, isBeheerder, vkey)
-		VALUES (
-		:gebruikersnaam, :voornaam, :tussenvoegsel, :achternaam, :adresregel_1, :adresregel_2, :postcode, :plaatsnaam, :land_id,
-		:geboortedatum, :telefoon, :mailbox, :vraag, :antwoordtekst, :rating, :hashedPwd, :isGeblokkeerd, :isBeheerder, :vkey)";
+    public function insertUser($user_data) {
+		$sql = "INSERT INTO gebruiker(
+			gebruikersnaam, voornaam, tussenvoegsel, achternaam, adresregel_1, adresregel_2,
+			postcode, plaatsnaam, GBA_CODE, geboortedatum, telefoon, mailbox, vraag, antwoordtekst,
+			rating, wachtwoord, isGeblokkeerd, isBeheerder, vkey
+		)VALUES(
+			:gebruikersnaam, :voornaam, :tussenvoegsel, :achternaam, :adresregel_1, :adresregel_2,
+			:postcode, :plaatsnaam, :GBA_CODE, :geboortedatum, :telefoon, :mailbox, :vraag, :antwoordtekst,
+			:rating, :wachtwoord, :isGeblokkeerd, :isBeheerder, :vkey
+		);";
 
-        $req = Database::getBdd()->prepare($sql);
-		return $req->execute(array(':gebruikersnaam' => $user_data['0'], ':voornaam' => $user_data['1'], ':tussenvoegsel' => $user_data['2'], ':achternaam' => $user_data['3'], ':adresregel_1' => $user_data['4'], ':adresregel_2' => $user_data['5'], ':postcode' => $user_data['6'],
-            ':plaatsnaam' => $user_data['7'], ':land_id' => $user_data['8'], ':geboortedatum' => $user_data['9'], ':telefoon' => $user_data['10'], ':mailbox' => $user_data['11'], ':vraag' => $user_data['12'], ':antwoordtekst' => $user_data['13'], ':rating' => $user_data['14'],
-            ':hashedPwd' => $user_data['15'], 'isGeblokkeerd' => $user_data['16'], ':isBeheerder' => $user_data['17'] ,':vkey' => $user_data['18']));
+		$req = Database::getBdd()->prepare($sql);
+		$req->execute(array(':gebruikersnaam' => $user_data['gebruikersnaam'], ':voornaam' => $user_data['voornaam'],
+		':tussenvoegsel' => $user_data['tussenvoegsel'], ':achternaam' => $user_data['achternaam'],
+		':adresregel_1' => $user_data['adres_1'],':adresregel_2' => $user_data['adres_2'], ':postcode' => $user_data['postcode'],
+		':plaatsnaam' => $user_data['plaatsnaam'], ':GBA_CODE' => $user_data['GBA_CODE'],
+		':geboortedatum' => $user_data['geboortedatum'], ':telefoon' => $user_data['telefoon'], ':mailbox' => $user_data['mailbox'],
+		':vraag' => $user_data['vraag'], ':antwoordtekst' => $user_data['antwoordtekst'], ':rating' => $user_data['rating'],
+		':wachtwoord' => $user_data['wachtwoord'], ':isGeblokkeerd' => $user_data['isGeblokkeerd'],
+		':isBeheerder' => $user_data['isBeheerder'], ':vkey' => $user_data['vkey']));
+        return $req->fetch(PDO::FETCH_ASSOC);
 	}
 
     public function getVragenLijst() {
