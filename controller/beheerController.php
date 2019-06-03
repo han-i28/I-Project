@@ -73,8 +73,7 @@ class beheerController extends Controller {
     function bewerk() {
         session_start();
 
-
-
+        //changes the name of a category
         $bewerkNaam_naam = strip_tags((isset($_POST['bewerkNaam']) ? $_POST['bewerkNaam'] : null));
         if(isset($_POST['bewerkNaam_submit'])){
             if(empty($bewerkNaam_naam)){
@@ -85,6 +84,7 @@ class beheerController extends Controller {
             }
         }
         
+        //creates a new category
         $nieuweRubriek_naam = strip_tags((isset($_POST['voegToe']) ? $_POST['voegToe'] : null));
         if(isset($_POST['voegToe_submit'])){
             if(empty($nieuweRubriek_naam)){
@@ -95,6 +95,7 @@ class beheerController extends Controller {
             }
         }
 
+        //changes the parent of a category
         $nieuweParent_naam = strip_tags((isset($_POST['nieuweParent']) ? $_POST['nieuweParent'] : null));
         if(isset($_POST['nieuweParent_submit'])){
             if(empty($nieuweParent_naam)){

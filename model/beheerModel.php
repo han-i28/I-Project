@@ -44,6 +44,7 @@ class beheerModel extends Model {
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //creates <select> for the parent categories
     public function createParents(){
         $html = '';
         $parents = $this->getParents();
@@ -56,6 +57,7 @@ class beheerModel extends Model {
         return $html;
     }
 
+    //creates a list with the childrencategories
     public function createChildren($children){
         $items = $children;
         $html = "";
@@ -126,12 +128,14 @@ class beheerModel extends Model {
         return $html;
     }
 
+    //changes the name
     public function bewerkNaam($naam, $id){
         $sql = "UPDATE categorie SET naam = :naam WHERE ID = :id";
         $req = Database::getBdd()->prepare($sql);
         return $req->execute(array('naam' => $naam, 'id' => $id));
     }
 
+    //adds new category
     public function voegToe($naam, $parent){
         $sql = "DECLARE @newid int;
         SELECT @newid = coalesce(MAX(ID),0) + 1 FROM categorie;
@@ -142,6 +146,7 @@ class beheerModel extends Model {
         return $req->execute(array('naam' => $naam, 'parent' => $parent));
     }
 
+    //changes the parent of a category
     public function nieuweParent($parent, $id){
         $sql = "UPDATE categorie SET parent = :parent WHERE id = :id";
         $req = Database::getBdd()->prepare($sql);
