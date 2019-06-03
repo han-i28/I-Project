@@ -41,6 +41,10 @@ hr{
     font-weight: bold;
 }
 
+a {
+    color: #5f4b8b;
+}
+
 /* ------------------------------ veilingweergave ------------------------------ */
 #afbeeldingContainer {
     padding-bottom: calc(100% / (16 / 9));
