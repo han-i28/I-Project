@@ -22,14 +22,26 @@ class registratieModel extends Model {
 		);";
 
 		$req = Database::getBdd()->prepare($sql);
-		$req->execute(array(':gebruikersnaam' => $user_data['gebruikersnaam'], ':voornaam' => $user_data['voornaam'],
-		':tussenvoegsel' => $user_data['tussenvoegsel'], ':achternaam' => $user_data['achternaam'],
-		':adresregel_1' => $user_data['adres_1'],':adresregel_2' => $user_data['adres_2'], ':postcode' => $user_data['postcode'],
-		':plaatsnaam' => $user_data['plaatsnaam'], ':GBA_CODE' => $user_data['GBA_CODE'],
-		':geboortedatum' => $user_data['geboortedatum'], ':telefoon' => $user_data['telefoon'], ':mailbox' => $user_data['mailbox'],
-		':vraag' => $user_data['vraag'], ':antwoordtekst' => $user_data['antwoordtekst'], ':rating' => $user_data['rating'],
-		':wachtwoord' => $user_data['wachtwoord'], ':isGeblokkeerd' => $user_data['isGeblokkeerd'],
-		':isBeheerder' => $user_data['isBeheerder'], ':vkey' => $user_data['vkey']));
+		$req->execute(array(
+			':gebruikersnaam' => $user_data['gebruikersnaam'],
+			':voornaam' => $user_data['voornaam'],
+			':tussenvoegsel' => $user_data['tussenvoegsel'],
+			':achternaam' => $user_data['achternaam'],
+			':adresregel_1' => $user_data['adres_1'],
+			':adresregel_2' => $user_data['adres_2'],
+			':postcode' => $user_data['postcode'],
+			':plaatsnaam' => $user_data['plaatsnaam'],
+			':GBA_CODE' => $user_data['GBA_CODE'],
+			':geboortedatum' => $user_data['geboortedatum'],
+			':telefoon' => $user_data['telefoon'],
+			':mailbox' => $user_data['mailbox'],
+			':vraag' => $user_data['vraag'],
+			':antwoordtekst' => $user_data['antwoordtekst'],
+			':rating' => $user_data['rating'],
+			':wachtwoord' => $user_data['wachtwoord'],
+			':isGeblokkeerd' => $user_data['isGeblokkeerd'],
+			':isBeheerder' => $user_data['isBeheerder'],
+			':vkey' => $user_data['vkey']));
         return $req->fetch(PDO::FETCH_ASSOC);
 	}
 

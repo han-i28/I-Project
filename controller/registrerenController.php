@@ -142,15 +142,26 @@ class registrerenController extends Controller {
     private function createUser($hashedPwd, $vkey, $rating, $GBA_CODE, $isGeblokkeerd, $isBeheerder){
         $registratieModel = new registratieModel();
 
-        $user_data = array(':gebruikersnaam' => $_POST['gebruikersnaam'], ':voornaam' => $_POST['voornaam'],
-		':tussenvoegsel' => $_POST['tussenvoegsel'], ':achternaam' => $_POST['achternaam'],
-		':adresregel_1' => $_POST['adresregel_1'],':adresregel_2' => $_POST['adresregel_2'], ':postcode' => $_POST['postcode'],
-		':plaatsnaam' => $_POST['plaatsnaam'], ':GBA_CODE' => $GBA_CODE,
-		':geboortedatum' => $_POST['geboortedatum'], ':telefoon' => $_POST['telefoon'], ':mailbox' => $_POST['mailbox'],
-		':vraag' => $_POST['vraag'], ':antwoordtekst' => $_POST['antwoordtekst'], ':rating' => $rating,
-		':wachtwoord' => $hashedPwd, ':isGeblokkeerd' => $isGeblokkeerd,
-		':isBeheerder' => $isBeheerder, ':vkey' => $vkey);
-
+        $user_data = array(
+            'gebruikersnaam' => $_POST['gebruikersnaam'],
+            'voornaam' => $_POST['voornaam'],
+            'tussenvoegsel' => $_POST['tussenvoegsel'],
+            'achternaam' => $_POST['achternaam'],
+            'adresregel_1' => $_POST['adresregel_1'],
+            'adresregel_2' => $_POST['adresregel_2'],
+            'postcode' => $_POST['postcode'],
+            'plaatsnaam' => $_POST['plaatsnaam'],
+            'GBA_CODE' => $GBA_CODE,
+            'geboortedatum' => $_POST['geboortedatum'],
+            'telefoon' => $_POST['telefoon'],
+            'mailbox' => $_POST['mailbox'],
+            'vraag' => $_POST['vraag'],
+            'antwoordtekst' => $_POST['antwoordtekst'],
+            'rating' => $rating,
+            'wachtwoord' => $hashedPwd,
+            'isGeblokkeerd' => $isGeblokkeerd,
+            'isBeheerder' => $isBeheerder,
+            'vkey' => $vkey);
         $registratieModel->insertUser($user_data);
     }
 }
