@@ -54,6 +54,26 @@ class homeController extends Controller {
 
         return $html;
     }
+	
+	private function createUserVeilingen() {
+		require(PATH . '/model/homeModel.php');
+        $homeModel = new homeModel();
+		
+		
+	}
+	
+	private function createUserBoden() {
+		require(PATH . '/model/homeModel.php');
+        $homeModel = new homeModel();
+		
+		$bodenArray = $homeModel->getUserBoden($_SESSION['gebruikersnaam']);
+		
+		$html = "
+		<ul>
+			
+		</ul>
+		";
+	}
 }
 
 ?>
