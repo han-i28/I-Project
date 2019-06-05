@@ -9,6 +9,13 @@ class veilingModel extends Model {
         return $req->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getVerkoperByID($id){
+        $sql = "SELECT verkoper FROM voorwerp WHERE voorwerpnummer = :id";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute(array('id' => $id));
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getAfbeeldingenById($id) {
         $sql = "SELECT * FROM afbeeldingen WHERE voorwerp = :id";
         $req = Database::getBdd()->prepare($sql);

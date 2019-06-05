@@ -82,7 +82,27 @@
                 if (isset($_SESSION['loggedIn'])) {
                     if ($_SESSION['loggedIn'] === true) {
                         ?>
-						<legend class="uk-legend">Bieden</legend>
+						<legend class="uk-legend">Bieden</legend> <?php echo $data['error_input'] ?>
+                        <?php if(isset($data['error_input'])){
+                            if($data['error_input'] == 'success'){
+                                $html = "<div class=\"uk-alert-succes\">Uw bod is geplaatst.</div>";
+                                echo $html;
+                            } else if($data['error_input'] == 'invalid_bod'){
+                                $html = "<div class=\"uk-alert-danger\">Geen geldig bod.</div>";
+                                echo $html;
+                            } else if($data['error_input'] == 'invalid_bod_user'){
+                                $html = "<div class=\"uk-alert-danger\">U kunt uwzelf niet overbieden.</div>";
+                                echo $html;
+                            } else if($data['error_input'] == 'input_value_low'){
+                                $html = "<div class=\"uk-alert-danger\">Uw bod is niet hoog genoeg.</div>";
+                                echo $html;
+                            } else if($data['error_input'] == 'invalid_bod_own_product'){
+                                $html = "<div class=\"uk-alert-danger\">U kunt niet op uw eigen product bieden.</div>";
+                                echo $html;
+                            }
+                            
+                        }
+                        ?>
 						</br>
 						<div>
 							<form action="" method="post" id="bieden_form">

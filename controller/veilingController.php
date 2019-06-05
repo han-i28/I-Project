@@ -25,30 +25,36 @@ class veilingController extends Controller {
 						$bod = strval(number_format((float)strip_tags(isset($_POST['bod']) ? $_POST['bod'] : null), 2, '.', ''));
 						$hoogsteBodArray = $veilingModel->getHoogsteBod($voorwerpId);
 						$hoogsteBod = rtrim($hoogsteBodArray['bod'], "0");
+						$verkoper = $veilingModel->getVerkoperByID($voorwerpId);
 						
 						//functionaliteit en security
-						if ($hoogsteBodArray['bieder'] !== $currentUser) {
-							if (preg_match("/^\d+\.\d{0,2}$/", $bod)) {
-								if (strlen($bod) < 9) {
-									if ((float)$bod > (float)$hoogsteBod) {
-										$result = $veilingModel->createNewBod($datum, $currentUser, $voorwerpId, (float)$bod);
-										$data['error_input'] = "success"; //							success
+						if($verkoper !== $currentUser){
+							if ($hoogsteBodArray['bieder'] !== $currentUser) {
+								if (preg_match("/^\d+\.\d{0,2}$/", $bod)) {
+									if (strlen($bod) < 9) {
+										if ((float)$bod > (float)$hoogsteBod) {
+											$result = $veilingModel->createNewBod($datum, $currentUser, $voorwerpId, (float)$bod);
+											$data['error_input'] = "success"; //							success
+										}
+										else {
+											$data['error_input'] = "input_value_low";//						niet hoog genoeg geboden
+										}
 									}
 									else {
-										$data['error_input'] = "input_value_low";//						niet hoog genoeg geboden
+										$data['error_input'] = "invalid_bod";//								input te groot
 									}
 								}
 								else {
-									$data['error_input'] = "invalid_bod";//								input te groot
+									$data['error_input'] = "invalid_bod";//									voldoet niet aan perg_match
 								}
 							}
 							else {
-								$data['error_input'] = "invalid_bod";//									voldoet niet aan perg_match
+								$data['error_input'] = "invalid_bod_user";//								zelf overbieden
 							}
+						} else {
+							$data['error_input'] = "invalid_bod_own_product"; //						eigen product
 						}
-						else {
-							$data['error_input'] = "invalid_bod_user";//								zelf overbieden
-						}
+
 					} else {
 						header("location: .");//														naar home
 					}
@@ -110,7 +116,7 @@ class veilingController extends Controller {
             $input = $_GET['search'];
             $data['html'] =  $this->generate_searchresults("Zoekresultaten", $searchModel->getResults($input));
         }
-
+		
         $data['title'] = "Eenmaal Andermaal - home";
         $data['page'] = "zoekweergave";
         $this->set($data);
