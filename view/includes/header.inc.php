@@ -44,14 +44,38 @@
         <!--            </form>-->
         <!--        </div>-->
     </div>
+    
+    
+    <div class="uk-navbar-left uk-navbar-left uk-hidden@s">
+        <ul class="uk-navbar-nav uk-hidden@s">
+            <li>
+                <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
+                <div uk-dropdown="pos:bottom-justify" class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+					<?php
+						if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] === false ) { ?>														
+							<li><a href="<?php echo SITEURL . 'login'; ?>">Inloggen</a></li>
+							<li><a href="<?php echo SITEURL . 'registreren'; ?>">Registreren</a></li>
+					<?php } elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) { ?>
+                            <li><p>Welkom, <?php echo $_SESSION['gebruikersnaam']; ?></p></li>                        
+                            <li><a href="<?php echo SITEURL . 'account'; ?>">Account</a></li>
+							<li class="uk-nav-divider"></li>                        
+							<li><a href="<?php echo SITEURL . 'login/logout'; ?>">Uitloggen</a></li>
+					<?php } ?>
+                    </ul>
+                </div>
+            </li>
+        </ul>    
+    </div>
+
     <div class="uk-navbar-right uk-margin-right uk-margin-top uk-hidden@s">
         <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
         <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">
 
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-width-expand">
-                    <form class="uk-search uk-search-navbar uk-width-1-1" method="GET" action="/veiling/zoekopdracht">
-                        <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    <form class="uk-search uk-search-navbar uk-width-1-1" method="GET" action="<?php echo SITEURL; ?>veiling/zoekopdracht">
+                        <input class="uk-search-input" name= "search" type="search" placeholder="Zoeken..." autofocus>
                     </form>
                 </div>
                 <div class="uk-width-auto">

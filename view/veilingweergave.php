@@ -59,11 +59,28 @@
                 <h1>Verkoper</h1>
                 <p>
                     Verkoper: <?php echo $this->vars['veiling']['verkoper']; ?></br>
-                    Startprijs: <?php echo $this->vars['veiling']['startprijs']; ?></br>
+                    Startprijs: &euro; <?php echo number_format($this->vars['veiling']['startprijs'], 2); ?></br>
                     Conditie: <?php echo $this->vars['veiling']['conditie']; ?>
                 </p>
                 <div class="uk-container">
-                    <p>Resterende tijd: 2 Dagen 15 Minuten 34 Seconden</p>
+                    <div class="uk-grid-small uk-child-width-auto uk-flex-around" uk-grid uk-countdown="date: <?php echo $this->vars['veiling']['looptijdEinde'] ?>">
+                        <div>
+                            <div class="uk-countdown-number uk-countdown-days">dagen</div>
+                            <div>dagen</div>
+                        </div>
+                        <div>
+                            <div class="uk-countdown-number uk-countdown-hours">uren</div>
+                            <div>uren</div>
+                        </div>
+                        <div>
+                            <div class="uk-countdown-number uk-countdown-minutes">minuten</div>
+                            <div>minuten</div>
+                        </div>
+                        <div>
+                            <div class="uk-countdown-number uk-countdown-seconds"></div>
+                            <div>seconden</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="uk-card uk-card-default uk-card-body">
@@ -87,19 +104,7 @@
                     }
                 }
                 ?>
-                <div>
-                    <ul class="uk-padding-remove">
-                        <div class="uk-card uk-card-default uk-card-body">
-                            <li><span>Naam</span><span>Bod</span><span>Datum</span></li>
-                        </div>
-                        <div class="uk-card uk-card-default uk-card-body">
-                            <li><span>Naam</span><span>Bod</span><span>Datum</span></li>
-                        </div>
-                        <div class="uk-card uk-card-default uk-card-body">
-                            <li><span>Naam</span><span>Bod</span><span>Datum</span></li>
-                        </div>
-                    </ul>
-                </div>
+                <?php echo $this->vars['biedingen']; ?>
             </div>
         </div>
     </div>
