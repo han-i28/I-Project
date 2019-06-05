@@ -39,7 +39,7 @@
                 <div class="uk-form-controls">
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                        <select class="uk-select" name="betalingswijze" id="betalingswijze" ">
+                        <select class="uk-select" name="betalingswijze" id="betalingswijze">
                         <option selected disabled>Kies een betalingswijze</option>
                         <option value="contant">contant</option>
                         <option value="PayPal">PayPal</option>
