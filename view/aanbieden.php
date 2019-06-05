@@ -26,11 +26,11 @@
                 </div>
 
                 <div class="uk-width-1-1 uk-margin-top">
-                    <label class="uk-form-label" for="startprijs">Startprijs</label>
+                    <label class="uk-form-label" for="startprijs">Startprijs €</label>
                     <div class="uk-form-controls">
                         <div class="uk-inline uk-width-1-1">
                             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                            &euro;<input class="uk-input" type="number" id="startprijs" name="startprijs" placeholder="Startprijs" value="<?= (isset($_POST['startprijs']) ? $_POST['startprijs'] : null); ?>">
+                            <input class="uk-input" type="number" id="startprijs" name="startprijs" placeholder="€" value="<?= (isset($_POST['startprijs']) ? $_POST['startprijs'] : null); ?>">
                         </div>
                     </div>
                 </div>
@@ -64,11 +64,11 @@
                 <!-- GBA-Code moet uit de database komen -->
 
                 <div class="uk-width-1-1 uk-margin-top">
-                    <label class="uk-form-label" for="verzendkosten">Eventuele verzendkosten</label>
+                    <label class="uk-form-label" for="verzendkosten">Eventuele verzendkosten €</label>
                     <div class="uk-form-controls">
                         <div class="uk-inline uk-width-1-1"> <!-- minimum van 0 moeten invoeren bij ophalen en hoger bij verzenden-->
                             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                            &euro;<input class="uk-input" type="number" id="verzendkosten" name="verzendkosten" placeholder="Verzendkosten" value="<?= (isset($_POST['verzendkosten']) ? $_POST['verzendkosten'] : null); ?>">
+                            <input class="uk-input" type="number" id="verzendkosten" name="verzendkosten" placeholder="€" value="<?= (isset($_POST['verzendkosten']) ? $_POST['verzendkosten'] : null); ?>">
                         </div>
                     </div>
                 </div>
