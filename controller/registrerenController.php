@@ -46,8 +46,7 @@ class registrerenController extends Controller {
                     $data['error_input'] = "username_taken";
                 }
 
-                $errors = isset($data['error_input']);//check for invalid inputs
-                if(!$errors){//if no errors: continue with submitting user 
+                if(!isset($data['error_input'])){//if no errors: continue with submitting user 
                     $hashedPwd = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
                     $vkey = password_hash(time() . $_POST['gebruikersnaam'], PASSWORD_DEFAULT);
                     $rating = 0;

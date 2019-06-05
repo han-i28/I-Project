@@ -5,10 +5,10 @@ if(!defined('PATH')){//PATH NOT SET
     }else require_once($_SERVER['DOCUMENT_ROOT'].'/definedVariables.php');
 }
 
-require(PATH . '/Config/core.php');
-require(PATH . '/router.php');
-require(PATH . '/request.php');
-require(PATH . '/dispatcher.php');
+require(PATH . '/Config/core.php');//configuration
+require(PATH . '/request.php');//url handling
+require(PATH . '/router.php');//controller selection
+require(PATH . '/dispatcher.php');//load controller
 
 $dispatch = new Dispatcher();
 $dispatch->dispatch();

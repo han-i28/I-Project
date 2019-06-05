@@ -1,6 +1,6 @@
 <?php
 
-class Router {
+class Router {//selects correct controller
 
     static public function parse($url, $request) {
         
