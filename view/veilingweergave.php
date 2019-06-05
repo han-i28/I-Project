@@ -100,19 +100,19 @@
                                 $html = "<div class=\"uk-alert-danger\" uk-alert><p>U kunt niet op uw eigen product bieden.</p></div>";
                                 echo $html;
                             } else if($this->vars['error_input'] == 'invalid_bod_minimal_value_w1'){
-                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg. Bied minimaal &euro; 0,50 meer.</p></div>";
+                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg. Bied minimaal &euro; 0,50 meer dan het huidige bod.</p></div>";
                                 echo $html;
                             } else if($this->vars['error_input'] == 'invalid_bod_minimal_value_w2'){
-                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg. Bied minimaal &euro; 1,- meer.</p></div>";
+                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg. Bied minimaal &euro; 1,- meer dan het huidige bod.</p></div>";
                                 echo $html;
                             } else if($this->vars['error_input'] == 'invalid_bod_minimal_value_w3'){
-                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg. Bied minimaal &euro; 5,- meer.</p></div>";
+                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg. Bied minimaal &euro; 5,- meer dan het huidige bod.</p></div>";
                                 echo $html;
                             } else if($this->vars['error_input'] == 'invalid_bod_minimal_value_w4'){
-                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg. Bied minimaal &euro; 10,- meer.</p></div>";
+                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg. Bied minimaal &euro; 10,- meer dan het huidige bod.</p></div>";
                                 echo $html;
                             } else if($this->vars['error_input'] == 'invalid_bod_minimal_value_w5'){
-                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg. Bied minimaal &euro; 50,- meer.</p></div>";
+                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg. Bied minimaal &euro; 50,- meer dan het huidige bod.</p></div>";
                                 echo $html;
                             } else if($this->vars['error_input'] == 'invalid_bod_not_numeric'){
                                 $html = "<div class=\"uk-alert-danger\" uk-alert><p>Voer een bedrag in.</p></div>";
