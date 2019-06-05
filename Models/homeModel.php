@@ -8,13 +8,6 @@ class homeModel extends Model {
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    public function getVoorwerp(){
-        $sql = "SELECT *, pad FROM voorwerp, bestand where voorwerp.voorwerpnummer = bestand.voorwerp";
-        $req = Database::getBdd()->prepare($sql);
-        $req->execute();
-        return $req->fetchAll(PDO::FETCH_ASSOC);
-    }    
 }
 
 ?>

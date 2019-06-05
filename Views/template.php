@@ -1,6 +1,6 @@
 <?php
     include 'Includes/head.inc.php';
-    include 'Includes/header.inc.php';
+    include 'Includes/menu.inc.php';
 ?>
 <body>
 <main>
@@ -8,6 +8,8 @@
     include $this->vars['page'] . '.php';
     ?>
 </main>
-<?php include 'Includes/footer.inc.php'; ?>
+<footer>
+    <?php include 'Includes/footer.inc.php'; ?>
+</footer>
 </body>
 </html>
