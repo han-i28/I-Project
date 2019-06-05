@@ -38,7 +38,6 @@
                 <label class="uk-form-label" for="betalingswijze">Betalingswijze</label>
                 <div class="uk-form-controls">
                     <div class="uk-inline uk-width-1-1">
-                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
                         <select class="uk-select" name="betalingswijze" id="betalingswijze">
                         <option selected disabled>Kies een betalingswijze</option>
                         <option value="contant">contant</option>
@@ -89,7 +88,6 @@
                 <label class="uk-form-label" for="looptijd">Hoe lang blijft de veiling lopen?</label>
                 <div class="uk-form-controls">
                     <div class="uk-inline uk-width-1-1">
-                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
                         <select class="uk-select" name="looptijd" id="looptijd">
                             <option selected disabled>Kies een looptijd</option>
                             <option value="3">3 dagen</option>
@@ -107,7 +105,6 @@
                 <label class="uk-form-label" for="conditie">Geef de conditie van het object</label>
                 <div class="uk-form-controls">
                     <div class="uk-inline uk-width-1-1">
-                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
                         <select class="uk-select" name="conditie" id="conditie" >
                             <option selected disabled>Kies een conditie</option>
                             <option value="nieuw">Nieuw</option>
