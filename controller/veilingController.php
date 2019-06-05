@@ -10,6 +10,12 @@ class veilingController extends Controller {
         if(isset($_GET['veiling'])) {
 			
 			/********** HIER IS DE BIED FUNCTIONALITEIT ***********/
+			/*
+				Deze code wordt gebruikt wanneer de knop op een veilingitem pagina wordt aangeklikt om te bieden, met het bod als input.
+				Hierin wordt rekening gehouden met: sql injection, verkeerde users op de pagina, zekerheid rondom gebruikerinfo, en vergelijk met andere boden.
+				Daarna wordt het bod in de database gegooid d.m.v. het veilingModel bestand.
+				Wanneer er iets fout gaat door de input zal er teruggestuurd worden naar de veilingitem pagina, anders naar de homepage.
+			*/
 			
 			if(isset($_POST['bod_submit'])) {
 				if(isset($_POST['bod']) && !empty($_POST['bod'])) {
@@ -199,60 +205,4 @@ class veilingController extends Controller {
         }
         return $veilingListingHTML;
     }
-	
-/*	function setNieuwBod($nieuwBod) {
-	/*
-		Deze functie wordt gebruikt wanneer de knop op een veilingitem pagina wordt aangeklikt om te bieden, met het bod als input.
-		Hierin wordt rekening gehouden met: sql injection, verkeerde users op de pagina, zekerheid rondom gebruikerinfo, en vergelijk met andere boden.
-		Daarna wordt het bod in de database gegooid d.m.v. het veilingModel bestand.
-		Wanneer er iets fout gaat door de input zal er teruggestuurd worden naar de veilingitem pagina, anders naar de homepage.
-	*/
-	//security
-/*	session_start();
-	if (isset($_SESSION['loggedIn'])) {
-			require(PATH . '/model/veilingModel.php');
-			$veilingModel = new veilingModel();
-			
-			//aanmaken van alle variabelen
-			$datum = date("Y-m-d H:i:s");
-			$currentUser = $_SESSION['gebruikersnaam'];
-			$voorwerpId = $_GET['veiling'];
-			$bod = strval(number_format((float)strip_tags(isset($nieuwBod) ? $nieuwBod : null), 2, '.', ''));
-			$hoogsteBodArray = $veilingModel->getHoogsteBod($voorwerpId);
-			$hoogsteBod = rtrim($hoogsteBodArray['bod'], "0");
-			
-			//functionaliteit en security
-			if (!empty($bod)) {
-				if (!$hoogsteBodArray['bieder'] == $currentUser) {
-					if (preg_match("/^\d+\.\d{0,2}$/", $bod)) {
-						if (strlen($bod) < 9) {
-							if ((float)$bod > (float)$hoogsteBod) {
-								$result = $veilingModel->createNewBod($datum, $currentUser, $voorwerpId, (float)$bod);
-								header("location: ?veiling=" . $voorwerpId); //					success
-								exit();
-							}
-							else {
-								$data['error_input'] = "input_value_low";//					niet hoog genoeg geboden
-							}
-						}
-						else {
-							$data['error_input'] = "invalid_bod";//						input te groot
-						}
-					}
-					else {
-						$data['error_input'] = "invalid_bod";//							voldoet niet aan perg_match
-					}
-				}
-				else {
-					$data['error_input'] = "invalid_bod_user";//								zelf overbieden
-				}
-			} else {
-				$data['error_input'] = "invalid_bod";//									input empty
-			}
-		}
-		else {
-			header("location: .");//naar home
-			exit();
-		}
-	} */
 }
