@@ -82,22 +82,22 @@
                 if (isset($_SESSION['loggedIn'])) {
                     if ($_SESSION['loggedIn'] === true) {
                         ?>
-						<legend class="uk-legend">Bieden</legend> <?php echo $this->vars['error_input'] ?>
+						<legend class="uk-legend">Bieden</legend> 
                         <?php if(isset($this->vars['error_input'])){
-                            if($data['error_input'] == 'success'){
-                                $html = "<div class=\"uk-alert-succes\">Uw bod is geplaatst.</div>";
+                            if($this->vars['error_input'] == 'success'){
+                                $html = "<div class=\"uk-alert-succes\" uk-alert><p>Uw bod is geplaatst.</p></div>";
                                 echo $html;
-                            } else if($data['error_input'] == 'invalid_bod'){
-                                $html = "<div class=\"uk-alert-danger\">Geen geldig bod.</div>";
+                            } else if($this->vars['error_input'] == 'invalid_bod'){
+                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Geen geldig bod.</p></div>";
                                 echo $html;
-                            } else if($data['error_input'] == 'invalid_bod_user'){
-                                $html = "<div class=\"uk-alert-danger\">U kunt uwzelf niet overbieden.</div>";
+                            } else if($this->vars['error_input'] == 'invalid_bod_user'){
+                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>U kunt uwzelf niet overbieden.</p></div>";
                                 echo $html;
-                            } else if($data['error_input'] == 'input_value_low'){
-                                $html = "<div class=\"uk-alert-danger\">Uw bod is niet hoog genoeg.</div>";
+                            } else if($this->vars['error_input'] == 'input_value_low'){
+                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg.</p></div>";
                                 echo $html;
-                            } else if($data['error_input'] == 'invalid_bod_own_product'){
-                                $html = "<div class=\"uk-alert-danger\">U kunt niet op uw eigen product bieden.</div>";
+                            } else if($this->vars['error_input'] == 'invalid_bod_own_product'){
+                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>U kunt niet op uw eigen product bieden.</p></div>";
                                 echo $html;
                             }
                             
@@ -106,7 +106,7 @@
 						</br>
 						<div>
 							<form action="" method="post" id="bieden_form">
-								<input class="uk-input uk-width-expand" id="bod" name="bod" type="text" placeholder="Uw bod">
+								<input class="uk-input uk-width-expand" id="bod" name="bod" type="text" placeholder="Uw bod" maxlength="9">
 								<button class="uk-button uk-button-primary custom_button uk-width-expand" style="background-color:#5f4b8b;" type="submit" name="bod_submit">Bieden</button><br><br>
 							</form>
                         </div>
