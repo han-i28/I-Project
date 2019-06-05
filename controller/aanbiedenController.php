@@ -6,29 +6,43 @@ class aanbiedenController extends Controller
     {
        // if (!isset($_SESSION['loggedIn'])) {//if logged in return exit registration
             require(PATH . '/model/aanbiedenModel.php');
-            $aanbiedenModel = new aanbiedenModel();
 
             if (isset($_POST['aanbieden_submit'])) {//when submitted
                 $this->secure_form($_POST);//secure the form
 
+                $aanbiedenModel = new aanbiedenModel();
 
-                $titel = $_POST["titel"];
-                $beschrijving = $_POST["beschrijving"];
-                $startprijs = $_POST["startprijs"];
-                $betalingswijze = $_POST["betalingswijze"];
-                $betalingsinstructie = $_POST["betalingsinstructie"];
-                $verzendkosten = $_POST["verzendkosten"];
-                $looptijd = $_POST["looptijd"];
-                $conditie = $_POST["conditie"];
+                $resultArrayVerkoper = $aanbiedenModel->getVerkoper($_SESSION['gebruikersnaam']);
+                $resultArrayVoorwerp = $aanbiedenModel->getVoorwerpnummer();
 
-//                echo $titel;
-//                echo $beschrijving;
-//                echo $startprijs;
-//                echo $betalingswijze;
-//                echo $betalingsinstructie;
-//                echo $verzendkosten;
-//                echo $looptijd;
-//                echo $conditie;
+                if (empty($resultArrayVerkoper)) {
+                    $data['error_input'] = "wrong_input";
+                    header("Location: ../aanbieden");
+                    exit();
+                } elseif(empty($resultArrayVoorwerp)) {
+                    $data['error_input'] = "wrong_input";
+                    header("Location: ../aanbieden");
+                    exit();
+                } else {
+                    $voorwerpnummer = $resultArrayVoorwerp['voorwerpnummer'] + 1;
+                    $looptijdBegin = date("Y-m-d H:i:s");
+                    $tempTijd = strtotime($looptijdBegin);
+                    if ($_POST['looptijd'] == '3') {
+                        $tempTijd = strtotime("+3 day", $tempTijd);
+                    } elseif ($_POST['looptijd'] == '5') {
+                        $tempTijd = strtotime("+5 day", $tempTijd);
+                    } elseif ($_POST['looptijd'] == '7') {
+                        $tempTijd = strtotime("+7 day", $tempTijd);
+                    } else {
+                        $data['error_input'] = "wrong_input";
+                        header("Location: ../aanbieden");
+                        exit();
+                    }
+                    $looptijdEinde = date("Y-m-d H:i:s", $tempTijd);
+
+                    $this->createVeiling($voorwerpnummer, $resultArrayVerkoper['postcode'], $resultArrayVerkoper['plaatsnaam'], $resultArrayVerkoper['GBA_CODE'], $looptijdBegin, $resultArrayVerkoper['gebruikersnaam'], $looptijdEinde);
+                }
+
                 $count = 0;
                 $target_dir = "Assets/uploads/";
 
@@ -95,15 +109,12 @@ class aanbiedenController extends Controller
         }
     //}
 
-    private function createVeiling($voorwerpnummer,$postcode,$plaatsnaam,$GBA_CODE,$looptijdBegin,$verkoper,$koper,$looptijdEinde,$veilingGesloten){
+    private function createVeiling($voorwerpnummer, $postcode, $plaatsnaam, $GBA_CODE, $looptijdBegin, $verkoper, $looptijdEinde){
         $aanbiedenModel = new aanbiedenModel();
-
-        //Wat moet er nog gebeuren:
-        // Voorwerpnummer moet hij zelf genereren, postcode, plaatsnaam, GBA_CODE, looptijdBegin zelf genereren, verkoper, koper later duidelijk, looptijdEinde genereren aan de hand van looptijd, veilingGesloten standaard 0
-
-        $user_data = array($_POST['voorwerpnummer'],$_POST['titel'], $_POST['beschrijving'], $_POST['startprijs'],
-            $_POST['betalingswijze'], $_POST['betalingsinstructie'],$_POST['postcode'],$_POST['plaatsnaam'],$_POST['GBA_CODE'],$_POST['looptijdBegin'], $_POST['verzendkosten'],$_POST['verzendinstructies'],$_POST['verkoper'],$_POST['koper'], $_POST['looptijdEinde'],$_POST['veilingGesloten'],$_POST['verkoopprijs'], $_POST['conditie']
-            );
+        $user_data = array($voorwerpnummer, $_POST['titel'], $_POST['beschrijving'], $_POST['startprijs'],
+            $_POST['betalingswijze'], $_POST['betalingsinstructie'], $postcode, $plaatsnaam, $GBA_CODE,
+            $looptijdBegin, $_POST['verzendkosten'], $_POST['verzendinstructies'], $verkoper, $looptijdEinde, 0, $_POST['conditie']
+        );
 
         $aanbiedenModel->setVeiling($user_data);
     }
