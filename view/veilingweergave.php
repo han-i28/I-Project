@@ -82,8 +82,8 @@
                 if (isset($_SESSION['loggedIn'])) {
                     if ($_SESSION['loggedIn'] === true) {
                         ?>
-						<legend class="uk-legend">Bieden</legend> <?php echo $data['error_input'] ?>
-                        <?php if(isset($data['error_input'])){
+						<legend class="uk-legend">Bieden</legend> <?php echo $this->vars['error_input'] ?>
+                        <?php if(isset($this->vars['error_input'])){
                             if($data['error_input'] == 'success'){
                                 $html = "<div class=\"uk-alert-succes\">Uw bod is geplaatst.</div>";
                                 echo $html;
