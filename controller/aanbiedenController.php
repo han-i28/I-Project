@@ -1,10 +1,10 @@
 <?php
 
-class registrerenController extends Controller
+class aanbiedenController extends Controller
 {
     function index()
     {
-        if (!isset($_SESSION['loggedIn'])) {//if logged in return exit registration
+       // if (!isset($_SESSION['loggedIn'])) {//if logged in return exit registration
             require(PATH . '/model/aanbiedenModel.php');
             $aanbiedenModel = new aanbiedenModel();
 
@@ -86,31 +86,30 @@ class registrerenController extends Controller
         echo "Sorry, er was een fout tijdens het uploaden.";
     }
 }*/
-                $data['title'] = "Eenmaal Andermaal - Aanbieden";
-                $data['page'] = "aanbieden";
-                $this->set($data);
-                $this->load_view("template");
-            } else {
-                header("location: " . SITEURL . "");
-            }
-        }
-    }
 
-    private function createVeiling(...){
+            }
+        $data['title'] = "Eenmaal Andermaal - Aanbieden";
+        $data['page'] = "aanbieden";
+        $this->set($data);
+        $this->load_view("template");
+        }
+    //}
+
+    private function createVeiling($voorwerpnummer,$postcode,$plaatsnaam,$GBA_CODE,$looptijdBegin,$verkoper,$koper,$looptijdEinde,$veilingGesloten){
         $aanbiedenModel = new aanbiedenModel();
 
         //Wat moet er nog gebeuren:
-        // Voorwerpnummer, postcode, plaatsnaam, GBA_CODE, looptijdBegin, verkoper, koper, looptijdEinde, veilingGesloten
+        // Voorwerpnummer moet hij zelf genereren, postcode, plaatsnaam, GBA_CODE, looptijdBegin zelf genereren, verkoper, koper later duidelijk, looptijdEinde genereren aan de hand van looptijd, veilingGesloten standaard 0
 
-        $user_data = array($_POST['titel'], $_POST['beschrijving'], $_POST['startprijs'],
-            $_POST['betalingswijze'], $_POST['betalingsinstructie'], $_POST['verzendkosten'], $_POST['looptijd'], $_POST['conditie'],
-            ...);
+        $user_data = array($_POST['voorwerpnummer'],$_POST['titel'], $_POST['beschrijving'], $_POST['startprijs'],
+            $_POST['betalingswijze'], $_POST['betalingsinstructie'],$_POST['postcode'],$_POST['plaatsnaam'],$_POST['GBA_CODE'],$_POST['looptijdBegin'], $_POST['verzendkosten'],$_POST['verzendinstructies'],$_POST['verkoper'],$_POST['koper'], $_POST['looptijdEinde'],$_POST['veilingGesloten'],$_POST['verkoopprijs'], $_POST['conditie']
+            );
 
         $aanbiedenModel->setVeiling($user_data);
     }
 
 //    private function checkForErrors($registratieModel){
-//        if (!isset($_POST['titel']) || !isset($_POST['beschrijving']) || !isset($_POST['startprijs']) || !isset($_POST['betalingswijze']) || !isset($_POST['looptijd']) || !isset($_POST['conditie'])) {
+//        if (!isset($_POST['titel']) || !isset($_POST['beschrijving']) || !isset($_POST['startprijs']) || !isset($_POST['verzendinstructies']) || !isset($_POST['betalingswijze']) || !isset($_POST['looptijd']) || !isset($_POST['conditie'])) {
 //            $data['error_input'] = "empty_fields";
 //        } elseif (!preg_match("/^[a-zA-Z0-9]*$/", $_POST['titel'])) { //				titel
 //            $data['error_input'] = "invalid_titel";

@@ -20,7 +20,7 @@
                     <div class="uk-form-controls">
                         <div class="uk-inline uk-width-1-1">
                             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                            <textarea class="uk-input" id="beschrijving" name="beschrijving" rows="5"  placeholder="geef een beschrijving" value="<?= (isset($_POST['beschrijving']) ? $_POST['beschrijving'] : null); ?>"></textarea>
+                            <textarea class="uk-input" id="beschrijving" name="beschrijving" rows="5"  placeholder="Geef een beschrijving" ></textarea>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     <div class="uk-form-controls">
                         <div class="uk-inline uk-width-1-1">
                             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                            <select class="uk-select" name="betalingswijze" id="betalingswijze" value="<?= (isset($_POST['betalingswijze']) ? $_POST['betalingswijze'] : null); ?>">
+                            <select class="uk-select" name="betalingswijze" id="betalingswijze" ">
                                 <option selected disabled>Kies een betalingswijze</option>
                                 <option value="contant">contant</option>
                                 <option value="PayPal">PayPal</option>
@@ -51,10 +51,10 @@
                 </div>
 
                 <div class="uk-width-1-1 uk-margin-top">
-                    <label class="uk-form-label" for="betaalinstructie">Betaalinstructie</label>
+                    <label class="uk-form-label" for="betalingsinstructie">Betalingsinstructie</label>
                     <div class="uk-form-controls">
                         <div class="uk-inline uk-width-1-1">
-                            <input class="uk-input" type="text" id="betaalinstructie" name="betaalinstructie" placeholder="Betaalinstructie" value="<?= (isset($_POST['betaalinstructie']) ? $_POST['betaalinstructie'] : null); ?>">
+                            <input class="uk-input" type="text" id="betalingsinstructie" name="betalingsinstructie" placeholder="Betalingsinstructie" value="<?= (isset($_POST['betalingsinstructie']) ? $_POST['betalingsinstructie'] : null); ?>">
                         </div>
                     </div>
                 </div>
@@ -74,11 +74,11 @@
                 </div>
 
                 <div class="uk-width-1-1 uk-margin-top">
-                    <label class="uk-form-label" for="verzendinstructie">Eventuele Verzendinstructie</label>
+                    <label class="uk-form-label" for="verzendinstructies">Eventuele Verzendinstructie</label>
                     <div class="uk-form-controls">
                         <div class="uk-inline uk-width-1-1">
                             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                            <textarea class="uk-input" id="verzendinstructie" name="verzendinstructie" rows="5"  placeholder="Geef een eventuele verzend of ophaal instructie" value="<?= (isset($_POST['beschrijving']) ? $_POST['beschrijving'] : null); ?>"></textarea>
+                            <textarea class="uk-input" id="verzendinstructies" name="verzendinstructies" rows="5"  placeholder="Geef een eventuele verzend instructie" ></textarea>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                     <div class="uk-form-controls">
                         <div class="uk-inline uk-width-1-1">
                             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                            <select class="uk-select" name="looptijd" id="looptijd" value="<?= (isset($_POST['looptijd']) ? $_POST['looptijd'] : null); ?>">
+                            <select class="uk-select" name="looptijd" id="looptijd">
                                 <option selected disabled>Kies een looptijd</option>
                                 <option value="3">3 dagen</option>
                                 <option value="5">5 dagen</option>
@@ -101,7 +101,7 @@
                     </div>
                 </div>
 
-                <!-- veiling gesloten standaard nee-->
+                <!-- veiling gesloten standaard 0-->
                 <!-- verkoopprijs wordt later ingevuld-->
 
                 <div class="uk-width-1-1 uk-margin-top"> <!--uk-width-1-2@s-->
@@ -109,7 +109,7 @@
                     <div class="uk-form-controls">
                         <div class="uk-inline uk-width-1-1">
                             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                            <select class="uk-select" name="conditie" id="conditie" value="<?= (isset($_POST['conditie']) ? $_POST['conditie'] : null); ?>">
+                            <select class="uk-select" name="conditie" id="conditie" >
                                 <option selected disabled>Kies een conditie</option>
                                 <option value="nieuw">Nieuw</option>
                                 <option value="zo goed als nieuw">zo goed als nieuw</option>
