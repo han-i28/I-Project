@@ -99,7 +99,7 @@
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon" uk-icon="icon: receiver"></span>
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                        <input class="uk-input" name="telefoon" id="telefoon" type="tel" maxlength="15" placeholder="+31 6 12345678..." pattern="((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))"
+                        <input class="uk-input" name="telefoon" id="telefoon" type="tel" maxlength="15" placeholder="0612345678..." pattern="((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))"
                                value="<?= (isset($_POST['telefoon']) ? $_POST['telefoon'] : null); ?>">
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon" uk-icon="icon: mail"></span>
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                        <input class="uk-input" name="mailbox" id="mailbox" type="email" maxlength="50" placeholder="naam@adres.com..." value="<?= (isset($_POST['mailbox']) ? $_POST['mailbox'] : null); ?>">
+                        <input class="uk-input" name="mailbox" id="mailbox" type="email" maxlength="50" placeholder="email@voorbeeld.com..." value="<?= (isset($_POST['mailbox']) ? $_POST['mailbox'] : null); ?>">
                     </div>
                 </div>
             </div>
@@ -155,6 +155,7 @@
                     </div>
                 </div>
             </div>
+            <p class="uk-flex uk-flex-center"></p>Heb je al een account? <a href="<?php echo SITEURL . "login" ?>">Log hier in!</a></p>
             <button class="uk-button uk-button-primary uk-margin-top uk-text-middle uk-width-1-1" type="submit" name="signup_submit">Registreren <span class="uk-icon" uk-icon="icon: cloud-upload"></span></button>
         </form>
     </div>

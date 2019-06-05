@@ -2,7 +2,6 @@
 
 class loginController extends Controller {
     function index() {
-        session_start();
         if(!isset($_SESSION['loggedIn'])) {
             if (isset($_POST['login_submit'])) {
                 $this->secure_form($_POST);
