@@ -10,7 +10,7 @@ class beheerController extends Controller {
 
     function blokkeer_gebruiker() {
         session_start();
-        if($_SESSION['loggedIn'] == true && $_SESSION['isBeheerder'] == true) {
+        if($_SESSION['loggedIn'] && $_SESSION['isBeheerder']) {
             require(PATH . '/model/beheerModel.php');
             $beheerModel = new beheerModel();
             if (isset($_GET['gebruiker']) && isset($_GET['status'])) {
@@ -32,7 +32,7 @@ class beheerController extends Controller {
 
     function blokkeer_veiling() {
         session_start();
-        if($_SESSION['loggedIn'] == true && $_SESSION['isBeheerder'] == true) {
+        if($_SESSION['loggedIn'] && $_SESSION['isBeheerder']) {
             require(PATH . '/model/beheerModel.php');
             $beheerModel = new beheerModel();
             if (isset($_GET['veiling'])) {
@@ -53,7 +53,7 @@ class beheerController extends Controller {
 
     function rubriekenboom() {
         session_start();    
-        if($_SESSION['loggedIn'] == true && $_SESSION['isBeheerder'] == true) {
+        if($_SESSION['loggedIn'] && $_SESSION['isBeheerder']) {
             require(PATH . '/model/beheerModel.php');
             $data['title'] = "Eenmaal Andermaal - Rubriekenboom";
             $data['page'] = "beheerRubrieken";
@@ -106,7 +106,7 @@ class beheerController extends Controller {
             }
         }
 
-        if($_SESSION['loggedIn'] == true && $_SESSION['isBeheerder'] == true){
+        if($_SESSION['loggedIn'] && $_SESSION['isBeheerder']){
             if(isset($_GET['rubriek'])) {
                 $id = $_GET['rubriek'];
                 require(PATH . '/model/beheerModel.php');

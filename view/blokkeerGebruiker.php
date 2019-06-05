@@ -35,6 +35,12 @@
                 </tbody>
             </table>
         </div>
+        <!--
+            Next script is from: https://datatables.net/
+            It loads in the table shown on the webpage.
+            It works like $(SELECTOR).FUNCTION();
+            For all function go to: https://datatables.net/reference/index 
+        -->
         <script>
             $(document).ready(function() {
                 $('#dataTable').show();

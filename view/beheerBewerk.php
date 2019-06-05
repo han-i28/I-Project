@@ -29,12 +29,10 @@
             </div>
         </div>
         </div>
-        <?php if($this->vars['parent'] == null) {
-            // laat niets zien
-        } else { ?>
-        <div class="uk-container">
+        <?php if($this->vars['parent'] !== null) { ?>
+            <div class="uk-container">
             <h2>Parentrubriek:</h2>
-            <?php echo "<a href=\"?rubriek=" . $this->vars['parent'][0]['ID'] . "\"><p>" . $this->vars['parent'][0]['naam'] . "</p></a>";?>
+            <?php echo "<a href=\"?rubriek=" . $this->vars['parent'][0]['ID'] . "\"><p>" . $this->vars['parent'][0]['naam'] . "</p></a>"; ?>
         <?php } ?>
             <form action="" method="POST">
                 <h2>Nieuwe rubriek</h2>
@@ -42,10 +40,8 @@
                 <input type="text" name="voegToe" id="" class="uk-input" placeholder="Nieuwe rubriek">
                 <button class="uk-button uk-button-primary uk-width" name="voegToe_submit">Submit</button>
             </form>
-            <?php if($this->vars['parent'] == null){
-                    //laat niets zien
-                } else { ?>
-                <h2>Verander parent:</h2>                
+            <?php if($this->vars['parent'] !== null){ ?>
+                    <h2>Verander parent:</h2>                
                     <form action="" method="POST">
                         <label>Kies parent:</label>
                         <select name="nieuweParent"  class="uk-select" id="">
@@ -54,8 +50,8 @@
                             <?php echo $this->vars['parentrubrieken'] ?>
                         </select>
                         <button class="uk-button uk-button-primary uk-width" name="nieuweParent_submit">Submit</button>
-                    </form>
-                <?php } ?>
+                    </form>                
+            <?php } ?>
             </div>
         </div>
 
