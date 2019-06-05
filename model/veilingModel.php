@@ -34,7 +34,7 @@ class veilingModel extends Model {
     }
 
     public function getRubriekenByParent($id) {
-        $sql = "SELECT * FROM categorie WHERE parent = :id";
+        $sql = "SELECT * FROM categorie WHERE parent = :id ORDER BY naam ASC";
         $req = Database::getBdd()->prepare($sql);
         $req->execute(array('id' => $id));
         return $req->fetchAll(PDO::FETCH_ASSOC);

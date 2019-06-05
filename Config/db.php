@@ -4,7 +4,9 @@ class Database {
     private static $bdd = null;
 
     public static function getBdd() {
-        require_once "credentials.php";
+        $username = "iproject28";
+        $pw = "LQddZCdnZz";
+        //require_once "credentials.php";
         $hostname = "mssql2.iproject.icasites.nl";
         $dbname = "iproject28";
 

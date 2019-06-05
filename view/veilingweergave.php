@@ -105,6 +105,19 @@
                 }
                 ?>
                 <?php echo $this->vars['biedingen']; ?>
+                <!-- <div>
+                    <ul class="uk-padding-remove">
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <li><span>Naam</span><span>Bod</span><span>Datum</span></li>
+                        </div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <li><span>Naam</span><span>Bod</span><span>Datum</span></li>
+                        </div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <li><span>Naam</span><span>Bod</span><span>Datum</span></li>
+                        </div>
+                    </ul>
+                </div> -->
             </div>
         </div>
     </div>

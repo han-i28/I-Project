@@ -1,119 +1,158 @@
 <?php
 class registrerenController extends Controller {
     function index() {
-        if(!isset($_SESSION['loggedIn'])) {
-        require(PATH . '/model/registratieModel.php');
-        $registratieModel = new registratieModel();
-        if (isset($_POST['signup_submit'])) {
-            /************************* TEST CODE *********************************/
-            /*
-            print_r($_POST['uid']);
-            print_r($_POST['voornaam']);
-            print_r($_POST['tussenvoegsel']);
-            print_r($_POST['achternaam']);
-            print_r($_POST['adres_1']);
-            print_r($_POST['adres_2']);
-            print_r($_POST['postcode']);
-            print_r($_POST['plaatsnaam']);
-            print_r($_POST['land_id']);
-            print_r($_POST['telefoon']);
-            print_r($_POST['email']);
-            print_r($_POST['wachtwoord']);
-            print_r($_POST['wachtwoord_herhaal']);
-            print_r($_POST['vraag']);
-            print_r($_POST['antwoordtekst']);
+        if(!isset($_SESSION['loggedIn'])) {//if logged in return exit registration
+            require(PATH . '/model/registratieModel.php');
+            $registratieModel = new registratieModel();
 
-            if (empty($_POST['uid']) || empty($_POST['voornaam']) || empty($_POST['tussenvoegsel']) || empty($_POST['achternaam']) || empty($_POST['adres_1']) || empty($_POST['adres_2']) || empty($_POST['postcode']) ||
-            empty($_POST['plaatsnaam']) || empty($_POST['land_id']) || empty($_POST['telefoon']) || empty($_POST['email']) || empty($_POST['wachtwoord']) || empty($_POST['wachtwoord_herhaal']) ||
-            empty($_POST['vraag']) || empty($_POST['antwoordtekst'])) {
-            }
-            */
-            /*********************************************************************/
+            if (isset($_POST['signup_submit'])) {//when submitted
+                $this->secure_form($_POST);//secure the form
 
-            $gebruikersnaam = strip_tags((isset($_POST['uid']) ? $_POST['uid'] : null));
-            $voornaam = strip_tags((isset($_POST['voornaam']) ? $_POST['voornaam'] : null));
-            $tussenvoegsel = strip_tags((isset($_POST['tussenvoegsel']) ? $_POST['tussenvoegsel'] : null));
-            $achternaam = strip_tags((isset($_POST['achternaam']) ? $_POST['achternaam'] : null));
-            $adresregel_1 = strip_tags((isset($_POST['adres_1']) ? $_POST['adres_1'] : null));
-            $adresregel_2 = strip_tags((isset($_POST['adres_2']) ? $_POST['adres_2'] : null));
-            $postcode = strip_tags((isset($_POST['postcode']) ? $_POST['postcode'] : null));
-            $plaatsnaam = strip_tags((isset($_POST['plaatsnaam']) ? $_POST['plaatsnaam'] : null));
-            $land_id = 6030;
-            $geboortedatum = strip_tags((isset($_POST['geboortedatum']) ? $_POST['geboortedatum'] : null));
-            $telefoon = strip_tags((isset($_POST['telefoon']) ? $_POST['telefoon'] : null));
-            $mailbox = strip_tags((isset($_POST['email']) ? $_POST['email'] : null));
-            $wachtwoord = strip_tags((isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null));
-            $wachtwoord_herhaal = strip_tags((isset($_POST['wachtwoord_herhaal']) ? $_POST['wachtwoord_herhaal'] : null));
-            $vraag = strip_tags((isset($_POST['vraag']) ? $_POST['vraag'] : null));
-            $antwoordtekst = strip_tags((isset($_POST['antwoordtekst']) ? $_POST['antwoordtekst'] : null));
-            $rating = 0;
+                $errors = $this->checkForErrors($registratieModel);//check for invalid inputs
 
-//            if(false) {
-            if (empty($gebruikersnaam) || empty($voornaam) || empty($achternaam) || empty($adresregel_1) || empty($postcode) || empty($plaatsnaam) || empty($geboortedatum) || empty($telefoon) || empty($mailbox) || empty($wachtwoord) || empty($wachtwoord_herhaal) || empty($vraag) || empty($antwoordtekst)) {
-                $data['error_input'] = "empty_fields";
-            } elseif (!filter_var($mailbox, FILTER_VALIDATE_EMAIL)) { //					email validate
-                $data['error_input'] = "invalid_mail";
-            } elseif (!preg_match("/^[a-zA-Z0-9]*$/", $gebruikersnaam)) { //				gebruikersnaam
-                $data['error_input'] = "invalid_username";
-            } elseif (!preg_match("/^[a-zA-Z0-9-]*$/", $voornaam)) { //						voornaam
-                $data['error_input'] = "invalid_voornaam";
-            } elseif (!preg_match("/^[a-zA-Z0-9 -]*$/", $tussenvoegsel)) { //				tussenvoegsel
-                $data['error_input'] = "invalid_tussenvoegsel";
-            } elseif (!preg_match("/^[a-zA-Z0-9-]*$/", $achternaam)) { //					achternaam
-                $data['error_input'] = "invalid_achternaam";
-			} elseif (!preg_match("/^[a-zA-Z]+\ +[0-9]+$/", $adresregel_1)) { //			adres 1 pregmatch
-				$data['error_input'] = "invalid_adres";
-            } elseif (!preg_match("/^[a-zA-Z]+\ +[0-9]+$/", $adresregel_2)) { //			adres 2 pregmatch
-				$data['error_input'] = "invalid_adres";
-            } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $postcode)) { //						postcode
-                $data['error_input'] = "invalid_postcode";
-            } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $plaatsnaam)) { //					plaatsnaam
-                $data['error_input'] = "invalid_woonplaats";
-			} elseif (empty($geboortedatum) || $geboortedatum == '0000-00-00') { //			geboortedatum empty check
-				$data['error_input'] = "empty_fields";
-			} elseif ((floor((time() - strtotime($geboortedatum))/31556926))<12) { //		geboortedatum check
-				$data['error_input'] = "age_restriction";
-            } elseif (!preg_match("/^[0-9]*$/", $telefoon)) { //							telefoonnummer
-                $data['error_input'] = "invalid_telefoonnummer";
-            } elseif (!preg_match("/^[a-zA-Z0-9!@#$%^&*]*$/", $wachtwoord)) { //			password
-                $data['error_input'] = "invalid_password";
-            } elseif (strlen($wachtwoord) < 8) { //											wachtwoord lengte check
-                $data['error_input'] = "invalid_password";
-            } elseif (!preg_match("/^[a-zA-Z0-9!@#$%^&*]*$/", $wachtwoord_herhaal)) { //	password repeat
-                $data['error_input'] = "invalid_password_repeat";
-            } elseif ($wachtwoord !== $wachtwoord_herhaal) { //								password repeat
-                $data['error_input'] = "invalid_password_repeat";
-            } else {
-                $registratieModel = new registratieModel();
-                $resultArray = $registratieModel->getUidCheck($gebruikersnaam);
-                if (empty($resultArray)) { //al in database check
-                    $hashedPwd = password_hash($wachtwoord, PASSWORD_DEFAULT);
-                    $result = $registratieModel->setSignupUser($gebruikersnaam, $voornaam, $tussenvoegsel, $achternaam, $adresregel_1, $adresregel_2, $postcode, $plaatsnaam, $land_id, $geboortedatum, $telefoon, $mailbox, $hashedPwd, $vraag, $antwoordtekst, $rating);
-					header('Location: ../');
-                } else {
-                    $data['error_input'] = "username_taken";
+                if(!$errors){//if no errors: continue with submitting user 
+                    $hashedPwd = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
+                    $vkey = password_hash(time() . $_POST['gebruikersnaam'], PASSWORD_DEFAULT);
+                    $rating = 0;
+                    $land_id = 6030;
+                    $isGeblokkeerd = 0;
+                    $isBeheerder = 0;
+                    
+                    $this->createUser($hashedPwd, $vkey, $rating, $land_id, $isGeblokkeerd, $isBeheerder);
+
+                    // mailbox setup
+                    $url = SITEURL . "registreren/verificatie/?vkey=" . $vkey; //VERVANGEN
+
+                    $mailSent = false;
+                    for($i=0; $i < 10; $i++){//try to send mail 3 times
+                        if($this->sendVerificationEmail($url, $_POST['mailbox'])){
+                            $mailSent = true;
+                            break;
+                        }else{
+                            sleep(0.5);//wait for retry
+                        }
+
+                    }
+
+                    $checkGebruikerGeregistreerd = $registratieModel->getGebruikersnaamCheck($_POST['gebruikersnaam']);
+
+                    if(!empty($checkGebruikerGeregistreerd) && $mailSent){
+                        $data['registration'] = "succes";
+                    }else if(!$mailSent){
+                        $data['registration'] = "mail-error";//upon failing 10 times, send mail error
+                    }//else: error unknown
                 }
 
+                $data['vragen'] = $this->createVragenHTML($registratieModel->getVragenLijst());
+                $data['title'] = "Eenmaal Andermaal - Registreren";
+                $data['page'] = "userregistreren";
+                $this->set($data);
+                $this->load_view("template");
+            } else {
+                header("location: " . SITEURL . "");
+            }
+        }
+    }
+
+    private function sendVerificationEmail($url, $to){
+        $subject = 'Verificatie registratie Eenmaal Andermaal';
+
+        $message = '<p>U heeft een account aangemaakt op de website van EenmaalAndermaal. Klik op de link hieronder om uw registratie te voltooien.</p>';
+        $message .= '<p>Hier is uw verificatie link: </br>';
+        $message .= '<a href="' . $url . '">Registratie voltooien</a></p>';
+
+        $headers = "From: Eenmaal Andermaal <noreply@EenmaalAndermaal.com>\r\n";
+        $headers .= "Reply-To: noreply@EenmaalAndermaal.com\r\n";
+        $headers .= "Content-type: text/html\r\n";
+
+        try{
+            return (mail($to, $subject, $message, $headers));
+        }catch(Exception $e){
+            return false;
+        }
+    }
+
+    public function verificatie(){
+        if (isset($_GET["vkey"])) {        //VERANDEREN
+            $vkey = $_GET['vkey'];
+            require(PATH . '/model/registratieModel.php');
+            $registratieModel = new registratieModel();
+            $resultArray = $registratieModel->getVkeyCheck($vkey);  
+            echo $resultArray;
+            if(empty($resultArray)) {
+                $data['message'] = '<div class="uk-alert-danger uk-margin-top" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Dit account is niet geldig of al geverifieerd.</div>';
+            } else {
+                $registratieModel->setVerification($vkey);
+                $data['message'] = '<div class="uk-alert-success uk-margin-top" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Uw account is nu geverifieerd. U kunt nu <a href="../login">inloggen</a></div>';
             }
         }
 
-        $data['vragen'] = $this->createVragenHTML($registratieModel->getVragenLijst());
-        $data['title'] = "Eenmaal Andermaal - Registreren";
-        $data['page'] = "userregistreren";
+        $data['title'] = "Eenmaal Andermaal - verificatie";
+        $data['page'] = "verificatie";
         $this->set($data);
         $this->load_view("template");
-        } else {
-            header("location: " . SITEURL . "");
-        }
     }
 
     private function createVragenHTML($data) {
         $html = '';
 
         foreach($data as $value) {
-            $html .= '<option value="' . $value['id'] . '">' . $value['vraag'] . '</option>';
+            $html .= '<option value="' . $value['id'] . '">' . $value['beveiligingsvraag'] . '</option>';
         }
         return $html;
     }
 
+    private function createUser($hashedPwd, $vkey, $rating, $land_id, $isGeblokkeerd, $isBeheerder){
+        $registratieModel = new registratieModel();
+
+        $user_data = array($_POST['gebruikersnaam'], $_POST['voornaam'], $_POST['tussenvoegsel'],
+        $_POST['achternaam'], $_POST['adres_1'], $_POST['adres_2'], $_POST['postcode'], $_POST['plaatsnaam'],
+        $land_id, $_POST['geboortedatum'], $_POST['telefoonnummer'], $_POST['mailbox'], $hashedPwd,
+        $_POST['beveiligingsvraag'], $_POST['antwoordtekst'], $rating, $isGeblokkeerd, $isBeheerder, $vkey);
+
+        $registratieModel->setSignupUser($user_data);
+    }
+
+    private function checkForErrors($registratieModel){
+        if (!isset($_POST['gebruikersnaam']) || !isset($_POST['voornaam']) || !isset($_POST['achternaam']) || !isset($_POST['adres_1']) || !isset($_POST['postcode']) || !isset($_POST['plaatsnaam']) || !isset($_POST['geboortedatum']) || !isset($_POST['telefoonnummer']) || !isset($_POST['mailbox']) || !isset($_POST['wachtwoord']) || !isset($_POST['wachtwoord_bevestigen']) || !isset($_POST['beveiligingsvraag']) || !isset($_POST['antwoordtekst'])) {
+            $data['error_input'] = "empty_fields";
+        } elseif (!filter_var($_POST['mailbox'], FILTER_VALIDATE_EMAIL)) { //					mailbox validate
+            $data['error_input'] = "invalid_mail";
+        } elseif (!preg_match("/^[a-zA-Z0-9]*$/", $_POST['gebruikersnaam'])) { //				gebruikersnaam
+            $data['error_input'] = "invalid_username";
+        } elseif (!preg_match("/^[a-zA-Z0-9-]*$/", $_POST['voornaam'])) { //						voornaam
+            $data['error_input'] = "invalid_voornaam";
+        } elseif (!preg_match("/^[a-zA-Z0-9 -]*$/", $_POST['tussenvoegsel'])) { //				tussenvoegsel
+            $data['error_input'] = "invalid_tussenvoegsel";
+        } elseif (!preg_match("/^[a-zA-Z0-9-]*$/", $_POST['achternaam'])) { //					achternaam
+            $data['error_input'] = "invalid_achternaam";
+        } elseif (!preg_match("/^[a-zA-Z]+\ +[0-9]+$/", $_POST['adres_1'])) { //			adres 1 pregmatch
+            $data['error_input'] = "invalid_adres1";
+        } elseif (isset($_POST['adresregel_2'])&&!preg_match("/^[a-zA-Z]+\ +[0-9]+$/", $_POST['adres_2'])) { //			adres 2 pregmatch
+            $data['error_input'] = "invalid_adres2";
+        } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['postcode'])) { //						postcode
+            $data['error_input'] = "invalid_postcode";
+        } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['plaatsnaam'])) { //					plaatsnaam
+            $data['error_input'] = "invalid_plaatsnaam";
+        } elseif (!isset($_POST['geboortedatum']) || $_POST['geboortedatum'] == '0000-00-00') { //			geboortedatum empty check
+            $data['error_input'] = "empty_fields";
+        } elseif ((floor((time() - strtotime($_POST['geboortedatum']))/31556926))<12) { //		geboortedatum check
+            $data['error_input'] = "age_restriction";
+        } elseif (!preg_match("/^[0-9]*$/", $_POST['telefoonnummer'])) { //							telefoonnummernummer
+            $data['error_input'] = "invalid_telefoonnummernummer";
+        } elseif (!preg_match("/^[a-zA-Z0-9!@#$%^&*]*$/", $_POST['wachtwoord'])) { //			password
+            $data['error_input'] = "invalid_password";
+        } elseif (strlen($_POST['wachtwoord']) < 8) { //											wachtwoord lengte check
+            $data['error_input'] = "invalid_password";
+        } elseif (!preg_match("/^[a-zA-Z0-9!@#$%^&*]*$/", $_POST['wachtwoord_bevestigen'])) { //	password repeat
+            $data['error_input'] = "invalid_password_repeat";
+        } elseif ($_POST['wachtwoord'] !== $_POST['wachtwoord_bevestigen']) { //								password repeat
+            $data['error_input'] = "invalid_password_repeat";
+        } else {
+            $resultArray = $registratieModel->getGebruikersnaamCheck($_POST['gebruikersnaam']);
+            if(empty($resultArray)) $data['error_input'] = "username_taken";
+        }
+
+        return empty($data['error_input']);//if no errors returns true
+    }
 }

@@ -18,6 +18,8 @@ CREATE TABLE gebruiker (
 	vraag INT NOT NULL,
 	antwoordtekst VARCHAR(20) NOT NULL,
 	rating NUMERIC(4,1) NOT NULL,
+	is_geverifieerd BIT DEFAULT 0,
+	vkey CHAR(60) NOT NULL,
 	CONSTRAINT PK_Gebruiker PRIMARY KEY (gebruikersnaam),
 	CONSTRAINT FK_Gebruiker_GBA_CODE FOREIGN KEY (GBA_CODE)
 		REFERENCES tblIMAOLand (GBA_CODE)
