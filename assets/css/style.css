@@ -53,8 +53,27 @@ a:hover {
     padding: 5px !important;
 }
 
+.right-veiling-margin {
+	margin-top: 10%;
+	margin-bottom: 11%;
+}
+
+.right-boden-margin {
+	margin-top: 50%;
+}
+
 .persoonlijkeInfo {
 	font-size: 15px;
+}
+
+.persoonlijkeInfoSmall {
+	margin-left: 24%;
+	margin-right: 24%;
+	margin-top: 5%;
+}
+
+.persoonnlijkeInfoMedium {
+	margin-top: 70%;
 }
 
 /* ------------------------------ veilingweergave ------------------------------ */

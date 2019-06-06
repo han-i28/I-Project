@@ -15,8 +15,9 @@
 			$titelNummer = 0;
 		}
 	}
+/* LARGEST SIZE */
 if (!empty($userVeilingen)) { ?>
-	<div class="uk-position-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-visible@s" style="margin-top: 50%;">
+	<div class="right-veiling-margin uk-position-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-visible@s">
 		<div class="uk-card-header">
 			Uw veilingen
 		</div>
@@ -30,8 +31,8 @@ if (!empty($userVeilingen)) { ?>
 			</ul>
 		</div>
 	</div>
-<?php } elseif (empty($userveilingen)) { ?>
-	<div class="uk-position-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-visible@s" style="margin-top: 50%;">
+<?php } elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true && empty($userveilingen)) { ?>
+	<div class="right-veiling-margin uk-position-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-visible@s">
 		<div class="uk-card-header">
 			Uw veilingen
 		</div>
@@ -41,81 +42,29 @@ if (!empty($userVeilingen)) { ?>
 			</ul>
 		</div>
 	</div>
-<?php }
-if (!empty($userBoden)) { ?>
-	<div class="uk-position-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-visible@s" style="margin-top: 10%; margin-bottom: 8%;">
+<?php } ?>
+<div class="right-boden-margin uk-position-right uk-width-1-5 uk-visible@m">
+<?php if (!empty($userBoden)) { ?>
+	<div class="uk-card uk-card-default uk-card-titles">
 		<div class="uk-card-header">
 			Uw biedingen
 		</div>
 		<div class="uk-card-body">
 			<ul class="uk-nav">
 				<?php 
-					foreach ($userBoden as $boden) { ?>
-						<li class="persoonlijkeInfo"><?php echo "<a href='veiling/weergave/?veiling=" . $boden['voorwerp'] . "'>" . $userTitels[$titelNummer] . "</a>" . number_format($boden['bod'], 2); ?></li></br>
+					foreach ($userBoden as $boden) { 
+						if ($titelNummer == 2) {
+							$titelNummer = 0;
+						}?>
+						<li class="persoonlijkeInfo"><?php echo "<a href='veiling/weergave/?veiling=" . $boden['voorwerp'] . "'>" . $userTitels[$titelNummer] . "</a>&euro;" . number_format($boden['bod'], 2); ?></li></br>
 						<?php $titelNummer++;
 					}
 				?>
 			</ul>
 		</div>
 	</div>
-<?php } elseif (empty($userBoden)) { ?>
-	<div class="uk-position-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-hidden@s" style="margin-top: 10%; margin-bottom: 8%;">
-		<div class="uk-card-header">
-			Uw Biedingen
-		</div>
-		<div class="uk-card-body">
-			<ul class="uk-nav">
-				<li class="persoonlijkeInfo">U heeft geen boden gemaakt.</li>
-			</ul>
-		</div>
-	</div>
-<?php } 
-//<div class="uk-grid uk-width-1-1 uk-hidden@s">
-if (!empty($userVeilingen)) { ?>
-	<div class="uk-position-bottom-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-hidden@s">
-		<div class="uk-card-header">
-			Uw veilingen
-		</div>
-		<div class="uk-card-body">
-			<ul class="uk-nav">
-				<?php 
-					foreach ($userVeilingen as $veilingen) { ?>
-						<li class="persoonlijkeInfo"><?php echo "<a href='veiling/weergave/?veiling='" . $veilingen['voorwerpnummer'] . "'>" . $veilingen['titel'] . "</a>";?></li><?php
-					}
-				?>
-			</ul>
-		</div>
-	</div>
-<?php } else { ?>
-	<div class="uk-position-bottom-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-hidden@s">
-		<div class="uk-card-header">
-			Uw veilingen
-		</div>
-		<div class="uk-card-body">
-			<ul class="uk-nav">
-				<li class="persoonlijkeInfo">U heeft geen open veilingen.</li>
-			</ul>
-		</div>
-	</div>
-<?php }
-if (!empty($userBoden)) { ?>
-	<div class="uk-position-center-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-hidden@s">
-		<div class="uk-card-header">
-			Uw biedingen
-		</div>
-		<div class="uk-card-body">
-			<ul class="uk-nav">
-				<?php 
-					foreach ($userBoden as $boden) { ?>
-						<li class="persoonlijkeInfo"><?php echo "<a href='veiling/weergave/?veiling=" . $boden['voorwerp'] . "'>" . $userTitels[$titelNummer] . "</a>" . number_format($boden['bod'], 2); ?></li></br>
-						<?php $titelNummer++;
-					}
-				?>
-			</ul>
-		</div>
-	</div>
-<?php } else { ?>
-	<div class="uk-position-center-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-visible@s">
+<?php } elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true && empty($userBoden)) { ?>
+	<div class="uk-card uk-card-default uk-card-title">
 		<div class="uk-card-header">
 			Uw Biedingen
 		</div>
@@ -126,4 +75,97 @@ if (!empty($userBoden)) { ?>
 		</div>
 	</div>
 <?php } ?>
-<!--</div>-->
+</div>
+<!-- MEDIUM SIZE -->
+<div class="persoonnlijkeInfoMedium right-boden-margin uk-position-right uk-width-1-5 uk-visible@s uk-hidden@m">
+<?php if (!empty($userBoden)) { ?>
+	<div class="uk-card uk-card-default uk-card-title uk-visible@s">
+		<div class="uk-card-header">
+			Uw biedingen
+		</div>
+		<div class="uk-card-body">
+			<ul class="uk-nav">
+				<?php 
+					foreach ($userBoden as $boden) { 
+						if ($titelNummer == 2) {
+							$titelNummer = 0;
+						}?>
+						<li class="persoonlijkeInfo"><?php echo "<a href='veiling/weergave/?veiling=" . $boden['voorwerp'] . "'>" . $userTitels[$titelNummer] . "</a>&euro;" . number_format($boden['bod'], 2); ?></li></br>
+						<?php $titelNummer++;
+					}
+				?>
+			</ul>
+		</div>
+	</div>
+<?php } elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true && empty($userBoden)) { ?>
+	<div class="uk-card uk-card-default uk-card-title uk-visible@s">
+		<div class="uk-card-header">
+			Uw Biedingen
+		</div>
+		<div class="uk-card-body">
+			<ul class="uk-nav">
+				<li class="persoonlijkeInfo">U heeft geen boden gemaakt.</li>
+			</ul>
+		</div>
+	</div>
+<?php } ?>
+</div>
+<!-- SMALLEST SIZE -->
+<?php  if (!empty($userVeilingen)) { ?>
+	<div class="persoonlijkeInfoSmall uk-card uk-card-default uk-card-title uk-hidden@s">
+		<div class="uk-card-header">
+			Uw veilingen
+		</div>
+		<div class="uk-card-body">
+			<ul class="uk-nav">
+				<?php 
+					foreach ($userVeilingen as $veilingen) { ?>
+						<li class="persoonlijkeInfo"><?php echo "<a href='veiling/weergave/?veiling='" . $veilingen['voorwerpnummer'] . "'>" . $veilingen['titel'] . "</a>";?></li><?php
+					}
+				?>
+			</ul>
+		</div>
+	</div>
+<?php } elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true && empty($userveilingen)) { ?>
+	<div class="persoonlijkeInfoSmall uk-card uk-card-default uk-card-title uk-hidden@s">
+		<div class="uk-card-header">
+			Uw veilingen
+		</div>
+		<div class="uk-card-body">
+			<ul class="uk-nav">
+				<li class="persoonlijkeInfo">U heeft geen open veilingen.</li>
+			</ul>
+		</div>
+	</div>
+<?php }
+if (!empty($userBoden)) { ?>
+	<div class="persoonlijkeInfoSmall uk-card uk-card-default uk-card-title uk-hidden@s">
+		<div class="uk-card-header">
+			Uw biedingen
+		</div>
+		<div class="uk-card-body">
+			<ul class="uk-nav">
+				<?php 
+					foreach ($userBoden as $boden) { 
+						if ($titelNummer == 2) {
+							$titelNummer = 0;
+						}?>
+						<li class="persoonlijkeInfo"><?php echo "<a href='veiling/weergave/?veiling=" . $boden['voorwerp'] . "'>" . $userTitels[$titelNummer] . "</a>" . number_format($boden['bod'], 2); ?></li></br>
+						<?php $titelNummer++;
+					}
+				?>
+			</ul>
+		</div>
+	</div>
+<?php } elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true && empty($userBoden)) { ?>
+	<div class="persoonlijkeInfoSmall uk-card uk-card-default uk-card-title uk-hidden@s">
+		<div class="uk-card-header">
+			Uw Biedingen
+		</div>
+		<div class="uk-card-body">
+			<ul class="uk-nav">
+				<li class="persoonlijkeInfo">U heeft geen boden gemaakt.</li>
+			</ul>
+		</div>
+	</div>
+<?php } ?>
