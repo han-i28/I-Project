@@ -115,7 +115,7 @@
                                 $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg. Bied minimaal &euro; 50,- meer dan het huidige bod.</p></div>";
                                 echo $html;
                             } else if($this->vars['error_input'] == 'invalid_bod_not_numeric'){
-                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Voer een bedrag in.</p></div>";
+                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>Voer een geldig bedrag in.</p></div>";
                                 echo $html;
                             }
                             
@@ -124,7 +124,7 @@
 						</br>
 						<div>
 							<form action="" method="post" id="bieden_form">
-								<input class="uk-input uk-width-expand" id="bod" name="bod" type="text" placeholder="&euro; 9,99" maxlength="9">
+								<input class="uk-input uk-width-expand" id="bod" name="bod" type="text" placeholder="&euro; 9.99" maxlength="9">
 								<button class="uk-button uk-button-primary custom_button uk-width-expand" style="background-color:#5f4b8b;" type="submit" name="bod_submit">Bieden</button><br><br>
 							</form>
                         </div>
