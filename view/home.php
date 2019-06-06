@@ -7,7 +7,7 @@
 
 <?php 
 	echo $this->vars['html'];
-	if ($_SESSION['loggedIn'] == true) {
+	if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
 		$userVeilingen = $this->vars['userVeilingen'];
 		$userBoden = $this->vars['userBoden'];
 		if (!empty($userBoden)) {
