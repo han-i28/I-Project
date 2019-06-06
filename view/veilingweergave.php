@@ -91,7 +91,7 @@
                                 $html = "<div class=\"uk-alert-danger\" uk-alert><p>Geen geldig bod.</p></div>";
                                 echo $html;
                             } else if($this->vars['error_input'] == 'invalid_bod_user'){
-                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>U kunt uwzelf niet overbieden.</p></div>";
+                                $html = "<div class=\"uk-alert-danger\" uk-alert><p>U kunt uzelf niet overbieden.</p></div>";
                                 echo $html;
                             } else if($this->vars['error_input'] == 'input_value_low'){
                                 $html = "<div class=\"uk-alert-danger\" uk-alert><p>Uw bod is niet hoog genoeg.</p></div>";
