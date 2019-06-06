@@ -127,7 +127,7 @@ class aanbiedenController extends Controller
             }
         }
 
-        if ($success == $count - 1){
+        if ($success == $count && $success !== 0){
             $data['aanbieden'] = "success";
         }
     }
