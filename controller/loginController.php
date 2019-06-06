@@ -4,50 +4,45 @@ class loginController extends Controller {
     function index() {
         if(!isset($_SESSION['loggedIn'])) {
             if (isset($_POST['login_submit'])) {
+                $this->secure_form($_POST);
                 if (empty($_POST['gebruikersnaam']) || empty($_POST['wachtwoord'])) {
                     $data['error_input'] = "empty_fields";
                 } else {
-                    $mailuid = strip_tags((isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null));
+                    require(PATH . '/model/loginModel.php');
+                    $loginModel = new loginModel();
 
-                    $password = strip_tags((isset($_POST['wachtwoord']) ? $_POST['wachtwoord'] : null));
+                    $resultArray = $loginModel->getUserAuthentication($_POST['gebruikersnaam']);
 
-                    if (empty($mailuid) || empty($password)) {
-                        $data['error_input'] = "empty_fields";
+                    if (empty($resultArray) && !isset($data['error_input'])) {
+                        $data['error_input'] = "wrong_input";
                     } else {
-                        require(PATH . '/model/loginModel.php');
-                        $loginModel = new loginModel();
+                        $pwdCheck = password_verify($_POST['wachtwoord'], $resultArray['wachtwoord']);
 
-                        $resultArray = $loginModel->getUserAuthentication($mailuid);
-                        if (empty($resultArray)) {
+                        if (!$pwdCheck) {
                             $data['error_input'] = "wrong_input";
-                        } else {
-                            $pwdCheck = password_verify($password, $resultArray['wachtwoord']);
+                        } elseif ($resultArray['isGeverifieerd'] == 0) {
+                            $data['error_input'] = "not_verified";
+                        } else if ($pwdCheck == true && $resultArray['isGeverifieerd'] == 1) {
+                            ini_set('session.cookie_httponly', true); //Preventie van session hijacking door cookies niet door javascript te kunnen sturen
+                            session_start();
 
-                            if ($pwdCheck == false) {
-                                $data['error_input'] = "wrong_input";
-                            } else if ($pwdCheck == true) {
-
-                                ini_set('session.cookie_httponly', true); //Preventie van session hijacking door cookies niet door javascript te kunnen sturen
-
-                                session_start();
-
-                                if (isset($_SESSION['last_ip']) === false) {
-                                    $_SESSION['last_ip'] = $_SERVER['REMOTE_ADDR'];
-                                }
+                            if (isset($_SESSION['last_ip']) === false) {
+                                $_SESSION['last_ip'] = $_SERVER['REMOTE_ADDR'];
+                            }
 
                                 $_SESSION['gebruikersnaam'] = $resultArray['gebruikersnaam'];
                                 $_SESSION['loggedIn'] = true;
                                 $_SESSION['time'] = time();//success
                                 $_SESSION['isBeheerder'] = $resultArray['isBeheerder'];
 
-                                unset($mailuid);
-                                unset($password);
-                                unset($resultArray);
-                                header('Location: ' . SITEURL . '');
-                            }
+                            unset($_POST['gebruikersnaam']);
+                            unset($_POST['wachtwoord']);
+                            unset($resultArray);
+                            header('Location: ' . SITEURL . '');
                         }
                     }
                 }
+
             }
 
             $data['title'] = "Eenmaal Andermaal - Login";
@@ -55,7 +50,7 @@ class loginController extends Controller {
             $this->set($data);
             $this->load_view("template");
         } else {
-            header("location: " . SITEURL . "");
+            header('Location: ' . SITEURL . '');
         }
     }
 
@@ -63,7 +58,7 @@ class loginController extends Controller {
         session_start();
         session_unset();
         session_destroy();
-        header("Location: ../");
+        header('location: ' . SITEURL . '');
     }
 }
 
