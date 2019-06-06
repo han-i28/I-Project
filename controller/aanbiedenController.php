@@ -44,65 +44,11 @@ class aanbiedenController extends Controller
                         $looptijdEinde = date("Y-m-d H:i:s", $tempTijd);
 
                         $this->createVeiling($voorwerpnummer, $resultArrayVerkoper['postcode'], $resultArrayVerkoper['plaatsnaam'], $resultArrayVerkoper['GBA_CODE'], $looptijdBegin, $resultArrayVerkoper['gebruikersnaam'], $looptijdEinde);
+                        $this->uploadAfbeeldingen($voorwerpnummer);
                     }
 
-                    $count = 0;
-                    $target_dir = "Assets/uploads/";
-
-                    foreach ($_FILES['fileToUpload']['name'] as $filename) {
-                        $size = ($_FILES['fileToUpload']['size']);
-                        $temp = $target_dir;
-                        $tmp = $_FILES['fileToUpload']['tmp_name'][$count];
-                        $count = $count + 1;
-                        $temp = $temp . basename($filename);
-                        move_uploaded_file($tmp, $temp);
-                        $temp = '';
-                        $tmp = '';
 
 
-                        $target_file = $target_dir . basename($filename);
-                        $uploadOk = 1;
-                        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                        // Check if image file is a actual image or fake image
-
-                        if (isset($_POST["submit"])) {
-                            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-                            if ($check !== false) {
-                                echo "File is an image - " . $check["mime"] . ".";
-                                $uploadOk = 1;
-                            } else {
-                                echo "File is not an image.";
-                                $uploadOk = 0;
-                            }
-                        }
-                    }
-                    // Check if file already exists
-                    /*if (file_exists($target_file)) {
-                        echo "sorry, het bestand bestaat al.";
-                        $uploadOk = 0;
-                    }*/
-                    // Check file size
-                    //if ($size > 50000000) {
-                    //  echo "Sorry, het bestand is te groot.";
-                    // $uploadOk = 0;
-                    //}
-                    // Allow certain file formats
-                    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                        && $imageFileType != "gif") {
-                        echo "Sorry, alleen JPG, JPEG, PNG & GIF bestanden zijn toegestaan.";
-                        $uploadOk = 0;
-                    }
-                    // Check if $uploadOk is set to 0 by an error
-                    if ($uploadOk == 0) {
-                        echo "Sorry, you foto was niet geupload.";
-                        // if everything is ok, try to upload file
-                    }/* else {
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-            } else {
-                echo "Sorry, er was een fout tijdens het uploaden.";
-            }
-        }*/
                 } else {
                     header("location: " . SITEURL . "");
                 }
@@ -122,6 +68,68 @@ class aanbiedenController extends Controller
         );
 
         $aanbiedenModel->setVeiling($user_data);
+    }
+
+    private function uploadAfbeeldingen($voorwerpnummer) {
+        $aanbiedenModel = new aanbiedenModel();
+        $count = 0;
+        $success = 0;
+        $target_dir = "Assets/uploads/";
+
+        foreach ($_FILES['fileToUpload']['name'] as $filename) {
+            $temp = $target_dir;
+            $tmp = $_FILES['fileToUpload']['tmp_name'][$count];
+            $count = $count + 1;
+            $temp = $temp . basename($filename);
+
+//                        $temp = '';
+//                        $tmp = '';
+
+
+            $target_file = $target_dir . basename($filename);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            // Check if image file is a actual image or fake image
+
+            if (isset($_POST["submit"])) {
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                if ($check == false) {
+                    $data['afbeelding'] = "niet_een_afbeelding";
+                    $uploadOk = 0;
+                }
+                // Check if file already exists
+                if (file_exists($target_file)) {
+                    $data['afbeelding'] = "bestaat_al";
+                    $uploadOk = 0;
+                }
+                // Check filesize
+                if ($_FILES['fileToUpload']['size'] > 50000000) {
+                    $data['afbeelding'] = "grootte";
+                    $uploadOk = 0;
+                }
+                // Allow certain file formats
+                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif") {
+                    $data['afbeelding'] = "filetype";
+                    $uploadOk = 0;
+                }
+                //check if errors occurred
+                if ($uploadOk == 0) {
+                    $data['afbeelding'] = "niet geupload";
+                } else {
+                    if (move_uploaded_file($tmp, $temp)) {
+                        $success += 1;
+                        $aanbiedenModel->setAfbeelding($tmp, $voorwerpnummer);
+                    } else {
+                        $data['afbeelding'] = "error";
+                    }
+                }
+            }
+        }
+
+        if ($success == $count - 1){
+            $data['aanbieden'] = "success";
+        }
     }
 
     private function checkForErrors(){
