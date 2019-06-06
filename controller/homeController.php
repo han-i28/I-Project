@@ -6,17 +6,10 @@ class homeController extends Controller {
 
         $homeModel = new homeModel();
 
-        $data['html']  =  $this->generate_section("Highlights", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Auto's, motoren en boten", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Baby", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Computers", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Consumentenelektronica", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Film en DVD", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Games en consoles", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Gezondheid en verzorging", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("GSM en telecom", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Hobby's en handwerken", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Huis en tuin", $homeModel->getVoorwerp());
+        $data['html']  =  $this->generate_section("Voor jou", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Auto's", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Antiek", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Fietsen", $homeModel->getVoorwerp());
 		
 		if (!isset($_SESSION)) {
 			session_start();
@@ -35,7 +28,7 @@ class homeController extends Controller {
 				}
 			}
 		}
-
+		
         $categorieen = $homeModel->getRubrieken();
         $data['rubriekenHTML'] = $this->createCategorieHTML($categorieen);
 
@@ -71,7 +64,7 @@ class homeController extends Controller {
         foreach ($items as $item) {
             if ($item['parent'] == $id) {
                 $html .= "<ul>";
-                $html .= "<li class=\"uk-parent\"><a href='" . SITEURL . "veiling/zoekopdracht/?rubriek=" . $item['ID'] . "'>" . $item['naam'] . "</a></li>";
+                $html .= "<li class=\"uk-parent\"><a href='" . SITEURL . "veiling/zoekopdracht/?rubriek=" . $item['ID'] . "'>" . $item['naam'] . " (" . $item['aantal'] . ")</a></li>";
                 $html .= $this->createSubCategorie($items, $item['ID']);
                 $html .= "</ul>";
             }
@@ -88,11 +81,17 @@ class homeController extends Controller {
 		return $veilingenArray;
 	}
 	
-	private function createUserBiedingen() {
-		require(PATH . '/model/homeModel.php');
+	private function createUserBoden($gebruikersnaam) {
+		require_once(PATH . '/model/homeModel.php');
         $homeModel = new homeModel();
 		
-		$biedingen = $homeModel->getUserBiedingen($_SESSION['gebruikersnaam']);
+		$bodenArray = $homeModel->getUserBoden($gebruikersnaam);
+		return $bodenArray;
+	}
+	
+	private function addUserBodenTitels($id) {
+		require_once(PATH . '/model/homeModel.php');
+        $homeModel = new homeModel();
 		
 		$titel = $homeModel->getTitel($id);
 		return $titel;
