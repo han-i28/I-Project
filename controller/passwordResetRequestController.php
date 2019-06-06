@@ -5,11 +5,6 @@ class passwordResetRequestController extends Controller
 {
     function index()
     {
-        $data['title'] = "Eenmaal Andermaal - Wachtwoord resetten";
-        $data['page'] = "passwordResetRequest";
-        $this->set($data);
-        $this->load_view("template");
-
         if (isset($_POST["reset-request-submit"])) {
             $this->secure_form($_POST);
 
@@ -20,18 +15,18 @@ class passwordResetRequestController extends Controller
             }
 
             if(!isset($data['error_input'])) {
-                $data['selector'] = $this->secure_input(bin2hex(random_bytes(8)));
-                $data['token'] = $this->secure_input(bin2hex(random_bytes(32)));
-                $url = "iproject28.icasites.nl/createNewPassword?selector=" . $this->vars['selector'] . "&validator=" . $this->vars['token'];
+                $selector = $this->secure_input(bin2hex(random_bytes(8)));
+                $token = $this->secure_input(bin2hex(random_bytes(32)));
+                $url = "iproject28.icasites.nl/createNewPassword?selector=" . $selector . "&validator=" . $token;
                 $expires = date("U") + 1800;
 
 
-                require( PATH. '/Models/resetModel.php');
+                require( PATH. '/model/resetModel.php');
                 $resetModel = new resetModel();
 
-                $resetModel->deleteDuplicates($_POST['email']);
-                $hashedToken = password_hash($this->vars['token'], PASSWORD_DEFAULT);
-                $resetModel->setResetRequest($_POST['email'], $this->vars['selector'], $hashedToken, $expires);
+                $resetModel->deleteDuplicates($_POST['mailbox']);
+                $hashedToken = password_hash($token, PASSWORD_DEFAULT);
+                $resetModel->setResetRequest($_POST['mailbox'], $selector, $hashedToken, $expires);
 
                 $mailSent = false;
                 for($i=0; $i < 10; $i++){//try to send mail 10 times
@@ -49,9 +44,11 @@ class passwordResetRequestController extends Controller
                     $data['reset'] = "success";
                 }
             }
-        } else {
-            header("Location: home");
         }
+        $data['title'] = "Eenmaal Andermaal - Wachtwoord resetten";
+        $data['page'] = "passwordResetRequest";
+        $this->set($data);
+        $this->load_view("template");
     }
 
     private function sendResetEmail($url, $to){
