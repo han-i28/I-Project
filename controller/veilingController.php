@@ -99,8 +99,26 @@ class veilingController extends Controller {
                         <div class=\"uk-card uk-card-default uk-card-body\">
                             <h4>" . $value['titel'] . "</h4>
                             <div class=\"afbeeldingContainer\" style=\"background-image: url('http://iproject28.icasites.nl/thumbnails/" . $value['pad'] . "');\"></div>
-                            <h5>Hoogste bod: &euro;x.xx</h5>
-                            <h5>Eindigt in: x minuten</h5>
+                            <h5>Hoogste bod: &euro; " . number_format($value['startprijs'],2). "</h5> 
+                            <h5>Eindigt in: </h5>
+                            <div class=\"uk-grid-small uk-child-width-auto uk-flex-around\" uk-grid uk-countdown=\"date: " . $value['looptijdEinde'] . "\">
+                                <div>
+                                    <div class=\"uk-countdown-number uk-countdown-days\">dagen</div>
+                                    <div>dagen</div>
+                                </div>
+                                <div>
+                                    <div class=\"uk-countdown-number uk-countdown-hours\">uren</div>
+                                    <div>uren</div>
+                                </div>
+                                <div>
+                                    <div class=\"uk-countdown-number uk-countdown-minutes\">minuten</div>
+                                    <div>minuten</div>
+                                </div>
+                                <div>
+                                    <div class=\"uk-countdown-number uk-countdown-seconds\"></div>
+                                    <div>seconden</div>
+                                </div>
+                            </div>
                         </div>
                     </a>
                 </div>

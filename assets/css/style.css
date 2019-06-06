@@ -20,7 +20,7 @@ hr{
     border-color: #5f4b8b;
 }
 
-.loginknop {
+.uk-button-primary {
     background-color: #5f4b8b;
 }
 
@@ -32,8 +32,12 @@ a:hover {
     color: #3c2e58;
 }
 
-.loginknop:hover {
+.uk-button-primary:hover {
     background-color: #3c2e58;
+}
+
+.uk-input:focus{
+    border-color: #5f4b8b;
 }
 
 .zoekbalk {
@@ -47,6 +51,16 @@ a:hover {
 #footer a {
     color: #5f4b8b;
     font-weight: bold;
+}
+
+footer{
+    margin-top: 10px;
+    bottom: 0px;
+}
+
+.uk-form-controls h5{
+    padding: 0px;
+    margin: 0px;
 }
 
 .uk-logo img{
