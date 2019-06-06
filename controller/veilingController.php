@@ -44,7 +44,7 @@ class veilingController extends Controller {
                                 } else if($hoogsteBod > $minWaardes['w4']){
                                     $ophoogWaarde = $ophoogWaardes['o5'];
                                 }
-                            }
+                            
 
                                 //functionaliteit en security
                                 if ($verkoper !== $currentUser) {
@@ -85,7 +85,7 @@ class veilingController extends Controller {
                                 } else {
                                     $data['error_input'] = "invalid_bod_own_product"; //						    eigen product
                                 }
-
+							}
                         }
                     } else {
                         header("location: " . SITEURL . "");//														naar home
