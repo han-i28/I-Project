@@ -62,11 +62,11 @@ class homeController extends Controller {
 		
 	}
 	
-	private function createUserBoden() {
+	private function createUserBiedingen() {
 		require(PATH . '/model/homeModel.php');
         $homeModel = new homeModel();
 		
-		$bodenArray = $homeModel->getUserBoden($_SESSION['gebruikersnaam']);
+		$biedingen = $homeModel->getUserBiedingen($_SESSION['gebruikersnaam']);
 		
 		$html = "
 		<ul>
