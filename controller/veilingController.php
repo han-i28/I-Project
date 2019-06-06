@@ -236,7 +236,7 @@ class veilingController extends Controller {
             $bid_html .= $this->getBiddings($bid);
         }
 
-        $bid_html = '<div> <ul class="uk-padding-remove">' . $bid_html . '</ul></div>';
+        $bid_html = '<div style="overflow-y: scroll; max-height: 50vh;"> <ul class="uk-padding-remove">' . $bid_html . '</ul></div>';
         return $bid_html;
     }
 
