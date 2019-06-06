@@ -85,6 +85,8 @@ class veilingController extends Controller {
                                 } else {
                                     $data['error_input'] = "invalid_bod_own_product"; //						    eigen product
                                 }
+							} else {
+								$data['error_input'] = "invalid_bod"; //														geen hoog genoeg bod
 							}
                         }
                     } else {
