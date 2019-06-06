@@ -43,7 +43,7 @@ if (!empty($userVeilingen)) { ?>
 		</div>
 	</div>
 <?php }
-if (isset($_SESSION) && $_SESSION['loggedIn'] == true) { ?>
+if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) { ?>
 	<div class="right-boden-margin uk-position-right uk-width-1-5 uk-visible@m">
 	<?php if (!empty($userBoden)) { ?>
 		<div class="uk-card uk-card-default uk-card-titles">
@@ -79,7 +79,7 @@ if (isset($_SESSION) && $_SESSION['loggedIn'] == true) { ?>
 	</div>
 <?php } ?>
 <!-- MEDIUM SIZE -->
-<?php if (isset($_SESSION) && $_SESSION['loggedIn'] == true) { ?>
+<?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) { ?>
 	<div class="persoonnlijkeInfoMedium right-boden-margin uk-position-right uk-width-1-5 uk-visible@s uk-hidden@m">
 	<?php if (!empty($userBoden)) { ?>
 		<div class="uk-card uk-card-default uk-card-title uk-visible@s">
