@@ -41,6 +41,9 @@
     
     <div class="uk-navbar-left uk-navbar-left uk-hidden@s">
         <ul class="uk-navbar-nav uk-hidden@s">
+<!--            <li>-->
+<!--                <a href="--><?php //echo $_SERVER['HTTP_REFERER'] ?><!--" uk-icon="arrow-left"></a>-->
+<!--            </li>-->
             <li>
                 <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
                 <div uk-dropdown="pos:bottom-justify" class="uk-navbar-dropdown">
