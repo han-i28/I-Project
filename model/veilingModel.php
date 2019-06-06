@@ -9,6 +9,19 @@ class veilingModel extends Model {
         return $req->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getVerkoperByID($id){
+        $sql = "SELECT verkoper FROM voorwerp WHERE voorwerpnummer = :id";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute(array('id' => $id));
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getStartPrijsByID($id){
+        $sql = "SELECT startprijs FROM voorwerp WHERE voorwerpnummer = :id";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute(array('id' => $id));
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function getAfbeeldingenById($id) {
         $sql = "SELECT * FROM afbeeldingen WHERE voorwerp = :id";
         $req = Database::getBdd()->prepare($sql);
@@ -46,6 +59,29 @@ class veilingModel extends Model {
         $req->execute(array('id' => $id));
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
+	
+	public function getHoogsteBod($voorwerpId) {
+		$sql = "SELECT TOP 1 MAX([bod]) as bod, bieder  FROM [iproject28].[dbo].[biedingen] WHERE [voorwerp] = :voorwerpId GROUP BY bieder, bod ORDER BY bod DESC";
+		$req = Database::getBdd()->prepare($sql);
+        $req->execute(array(':voorwerpId' => $voorwerpId));
+        return $req->fetch(PDO::FETCH_ASSOC);
+	}
+	
+	public function createNewBod($datum, $currentUser, $voorwerpId, $bod) {
+		$sql = "INSERT INTO dbo.biedingen
+           (voorwerp
+           ,bod
+           ,bieder
+           ,datum)
+		VALUES
+           (:voorwerpId
+           ,:bod
+           ,:gebruikersnaam
+           ,:datum)";
+		$req = Database::getBdd()->prepare($sql);
+        $req->execute(array(':voorwerpId' => $voorwerpId, ':bod' => (float)$bod, ':gebruikersnaam' => $currentUser, ':datum' => $datum));
+        return $req->fetch(PDO::FETCH_ASSOC);
+	}
 }
 
 ?>
