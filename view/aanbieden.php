@@ -1,6 +1,4 @@
 <?php
-    require(PATH . '/model/aanbiedenModel.php');
-    $aanbiedenModel = new aanbiedenModel();
     $message = '';
     if(isset($this->vars['error'])) {
         if ($this->vars['error'] == "no_user_found") {
@@ -32,13 +30,19 @@
         }
     } elseif (isset($this->vars['aanbieden'])) {
         if ($this->vars['aanbieden'] == "success") {
-            $resultArray = $aanbiedenModel->getVoorwerpnummer();
-            $url = SITEURL . "veiling/weergave/?veiling=" . $resultArray['voorwerpnummer'];
-            $message = '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Uw veiling is succesvol geplaatst. Klik <a href='. $url. '>hier</a> om uw veiling te bekijken.</div>';
+            $message = '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Uw veiling is succesvol geplaatst.</div>';
         }
     } elseif (isset($this->vars['afbeelding'])) { //afbeelding errors van Jasper.
-        if ($this->vars['afbeelding'] == ""){
-
+        if ($this->vars['afbeelding'] == "niet_een_afbeelding"){
+            $message = '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Het geuploade bestand is geen afbeelding</div>';
+        } elseif ($this->vars['afbeelding'] == "bestaat_al"){
+            $message = '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Het geuploade bestand bestaat al in de database</div>';
+        } elseif ($this->vars['afbeelding'] == "grootte"){
+            $message = '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Het geuploade bestand is te groot</div>';
+        } elseif ($this->vars['afbeelding'] == "filetype"){
+            $message = '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Alleen JPG, JPEG, PNG & GIF bestanden zijn toegestaan</div>';
+        } elseif ($this->vars['afbeelding'] == "error"){
+            $message = '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Het uploaden is mislukt</div>';
         }
     }
 

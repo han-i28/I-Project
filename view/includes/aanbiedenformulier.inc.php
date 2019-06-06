@@ -29,7 +29,7 @@
                 <div class="uk-form-controls">
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                        <input class="uk-input" type="number" id="startprijs" name="startprijs" placeholder="€" value="<?= (isset($_POST['startprijs']) ? $_POST['startprijs'] : null); ?>">
+                        <input class="uk-input" type="number" step=".01"  id="startprijs" name="startprijs" placeholder="€" value="<?= (isset($_POST['startprijs']) ? $_POST['startprijs'] : null); ?>">
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                 <div class="uk-form-controls">
                     <div class="uk-inline uk-width-1-1"> <!-- minimum van 0 moeten invoeren bij ophalen en hoger bij verzenden-->
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                        <input class="uk-input" type="number" id="verzendkosten" name="verzendkosten" placeholder="€" value="<?= (isset($_POST['verzendkosten']) ? $_POST['verzendkosten'] : null); ?>">
+                        <input class="uk-input" type="number" step=".01" id="verzendkosten" name="verzendkosten" placeholder="€" value="<?= (isset($_POST['verzendkosten']) ? $_POST['verzendkosten'] : null); ?>">
                     </div>
                 </div>
             </div>
@@ -106,10 +106,15 @@
                 </div>
             </div>
 
-
-            <input type="file" multiple name="fileToUpload[]" id="fileToUpload">    voeg afbeeldingen toe<br>
-
-
+            <div class="uk-width-1-1 uk-margin-top">
+                <label class="uk-form-label" for="verzendkosten">Voeg afbeeldingen toe</label>
+                <div class="uk-form-controls">
+                    <div class="uk-inline uk-width-1-1"> <!-- minimum van 0 moeten invoeren bij ophalen en hoger bij verzenden-->
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
+                        <input class="uk-input" type="file" multiple name="fileToUpload[]" id="fileToUpload">
+                    </div>
+                </div>
+            </div>
             <button class="uk-button uk-button-primary uk-margin-top uk-text-middle uk-width-1-1" name="aanbieden_submit" type="submit">Versturen</button>
         </form>
     </div>
