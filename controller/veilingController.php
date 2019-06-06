@@ -57,7 +57,21 @@ class veilingController extends Controller {
                                                     $result = $veilingModel->createNewBod($datum, $currentUser, $voorwerpId, (float)$bod);
                                                     $data['error_input'] = "success"; //							success
                                                 } else {
-                                                    $data['error_input'] = "input_value_low";//						niet hoog genoeg geboden
+													if ($ophoogWaarde == 0.50) {
+														$data['error_input'] = "invalid_bod_minimal_value_w1";
+													}
+													elseif ($ophoogWaarde == 1.00) {
+														$data['error_input'] = "invalid_bod_minimal_value_w2";
+													}
+													elseif ($ophoogWaarde == 5.00) {
+														$data['error_input'] = "invalid_bod_minimal_value_w3";
+													}
+													elseif ($ophoogWaarde == 10.00) {
+														$data['error_input'] = "invalid_bod_minimal_value_w4";
+													}
+													elseif ($ophoogWaarde == 50.00) {
+														$data['error_input'] = "invalid_bod_minimal_value_w5";
+													}
                                                 }
                                             } else {
                                                 $data['error_input'] = "invalid_bod";//								input te groot
