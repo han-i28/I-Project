@@ -1,6 +1,6 @@
 <?php
     $headerAccountItemHtml = '';
-    if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false ) {
+    if(!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
         $headerAccountItemHtml = '
         <li><a href="#">Account</a>
             <div uk-dropdown="pos:bottom-justify" class="uk-navbar-dropdown">
@@ -23,7 +23,7 @@
         ';
     }
 
-    elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+    elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
         if(isset($_SESSION['isBeheerder']) && $_SESSION['isBeheerder']){
             $headerAccountItemHtml = '
             <li><a href="#">Account - ' . $_SESSION['gebruikersnaam'] . '</a>

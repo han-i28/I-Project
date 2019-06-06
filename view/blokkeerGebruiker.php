@@ -1,11 +1,9 @@
-<?php 
-    if (isset($_SESSION['isBeheerder']) && $_SESSION['isBeheerder'] == true) { ?>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <div class="tableContainer">
-            <table id="dataTable" style="display:none;">
-                <thead>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <div class="tableContainer">
+        <table id="dataTable" style="display:none;">
+            <thead>
                 <tr>
                     <td>Gebruikersnaam</td>
                     <td>email</td>
@@ -17,39 +15,33 @@
                     <td>Account status</td>
                     <td></td>
                 </tr>
-                </thead>
-                <tbody>
+            </thead>
+            <tbody>
                 <?php foreach($this->vars['gebruikers'] as $value) { ?>
-                    <tr height="50">
-                        <td><?= $value['gebruikersnaam']; ?></td>
-                        <td><?= $value['mailbox']; ?></td>
-                        <td><?= $value['voornaam']; ?></td>
-                        <td><?= $value['tussenvoegsel'] . $value['achternaam']; ?></td>
-                        <td><?= $value['adresregel_1']; ?></td>
-                        <td><?= $value['postcode']; ?></td>
-                        <td><?= $value['plaatsnaam']; ?></td>
-                        <td><?= ($value['isGeblokkeerd'] ?"Geblokkeerd" :"Niet geblokkeerd"); ?></td>
-                        <td><a class="uk-text-primary" href="<?= SITEURL . "beheer/blokkeer_gebruiker/?gebruiker=" . $value['gebruikersnaam'] . "&status=" . $value['isGeblokkeerd']; ?>"><?= ($value['isGeblokkeerd'] ?"Deblokkeer" :"Blokkeer"); ?></a></td>
-                    </tr>
+                <tr height="50">
+                    <td><?= $value['gebruikersnaam']; ?></td>
+                    <td><?= $value['mailbox']; ?></td>
+                    <td><?= $value['voornaam']; ?></td>
+                    <td><?= $value['tussenvoegsel'] . $value['achternaam']; ?></td>
+                    <td><?= $value['adresregel_1']; ?></td>
+                    <td><?= $value['postcode']; ?></td>
+                    <td><?= $value['plaatsnaam']; ?></td>
+                    <td><?= ($value['isGeblokkeerd'] ?"Geblokkeerd" :"Niet geblokkeerd"); ?></td>
+                    <td><a class="uk-text-primary" href="<?= SITEURL . "beheer/blokkeer_gebruiker/?gebruiker=" . $value['gebruikersnaam'] . "&status=" . $value['isGeblokkeerd']; ?>"><?= ($value['isGeblokkeerd'] ?"Deblokkeer" :"Blokkeer"); ?></a></td>
+                </tr>
                 <?php } ?>
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
+    </div>
         <!--
             Next script is from: https://datatables.net/
             It loads in the table shown on the webpage.
             It works like $(SELECTOR).FUNCTION();
             For all function go to: https://datatables.net/reference/index 
         -->
-        <script>
+    <script>
             $(document).ready(function() {
                 $('#dataTable').show();
                 $('#dataTable').DataTable();
             } );
-        </script>
-            
-    <?php } else { ?>
-        <h2>U bent geen beheerder.</h2>
-    <?php
-    }
-?>
+    </script>
