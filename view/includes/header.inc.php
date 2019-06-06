@@ -32,7 +32,7 @@
        <a href="<?php echo SITEURL; ?>"> <img style="max-height: 50px" src="<?php echo SITEURL . "assets/images/logo.png" ?>" alt="Logo"></a>
    </div>
     </div>
-    <div class="uk-navbar-right uk-margin-right uk-margin-top uk-visible@s">
+    <div class="uk-navbar-right uk-margin-right uk-margin-top uk-visible@s uk-margin-remove-top">
         <form action="<?php echo SITEURL; ?>veiling/zoekopdracht" class="uk-flex" method="GET">
             <input type="search" name="search" id="" class="uk-input" placeholder="Zoeken...">
             <button class="uk-button-primary zoekbalk" type="submit"><span class="uk-icon" uk-icon="icon: search"></span></button>
@@ -68,7 +68,7 @@
         </ul>    
     </div>
 
-    <div class="uk-navbar-right uk-margin-right uk-margin-top uk-hidden@s">
+    <div class="uk-navbar-right uk-margin-right uk-margin-top uk-hidden@s uk-margin-remove-top">
         <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
         <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">
 
