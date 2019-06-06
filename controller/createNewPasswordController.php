@@ -48,8 +48,8 @@ class createNewPasswordController extends Controller
 
                     $userArray = $resetModel->getMailCheck($tokenEmail);
                     if (empty($userArray)) {
-                        $data['newpwd'] = "sqlerror";
-                        header("Location: " . SITEURL . "/createNewPassword?selector=" . $selector . "&validator=" . $validator);
+                        $data['newpwd'] = "no_account";
+                        header("Location: " . SITEURL . "/passwordResetRequest");
                         exit();
                     } else {
                         $newPwdHash = password_hash($_POST['pwd'], PASSWORD_DEFAULT);

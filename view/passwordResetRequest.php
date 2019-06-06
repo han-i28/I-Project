@@ -18,6 +18,8 @@
     } elseif (isset($this->vars['newpwd'])) {
         if ($this->vars['newpwd'] == "expired") {
             $message .=  '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>U moet opnieuw een verzoek maken om het wachtwoord te resetten</div>';
+        } elseif ($this->vars['newpwd'] == "no_account") {
+            $message .= '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>U heeft geen bekend account met dat emailadres. probeer opnieuw.</div>';
         }
     }
 ?>
