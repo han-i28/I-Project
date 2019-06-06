@@ -53,6 +53,10 @@ a:hover {
     padding: 5px !important;
 }
 
+.persoonlijkeInfo {
+	font-size: 15px;
+}
+
 /* ------------------------------ veilingweergave ------------------------------ */
 #afbeeldingContainer {
     padding-bottom: calc(100% / (16 / 9));

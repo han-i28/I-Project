@@ -10,6 +10,24 @@ class homeController extends Controller {
         $data['html'] .=  $this->generate_section("Auto's", $homeModel->getVoorwerp());
         $data['html'] .=  $this->generate_section("Antiek", $homeModel->getVoorwerp());
         $data['html'] .=  $this->generate_section("Fietsen", $homeModel->getVoorwerp());
+		
+		if (!isset($_SESSION)) {
+			session_start();
+			if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+				$data['userVeilingen'] =  $this->createUserVeilingen($_SESSION['gebruikersnaam']);
+				$data['userBoden'] =  $this->createUserBoden($_SESSION['gebruikersnaam']);
+				$data['userBodenTitels'] = array();
+				foreach ($data['userBoden'] as $userBodenIds) {
+					$titelArray = $this->addUserBodenTitels($userBodenIds['voorwerp']);
+					if (strlen($titelArray[0]['titel']) > 19) {
+						$data['userBodenTitels'][] = substr($titelArray[0]['titel'], 0, 16) . "..";
+					}
+					else {
+						$data['userBodenTitels'][] = $titelArray[0]['titel'];
+					}
+				}
+			}
+		}
 
         $categorieen = $homeModel->getRubrieken();
         $data['rubriekenHTML'] = $this->createCategorieHTML($categorieen);
@@ -55,24 +73,28 @@ class homeController extends Controller {
         return $html;
     }
 	
-	private function createUserVeilingen() {
-		require(PATH . '/model/homeModel.php');
+	private function createUserVeilingen($gebruikersnaam) {
+		require_once(PATH . '/model/homeModel.php');
         $homeModel = new homeModel();
 		
-		
+		$veilingenArray = $homeModel->getUserVeilingen($gebruikersnaam);
+		return $veilingenArray;
 	}
 	
-	private function createUserBoden() {
-		require(PATH . '/model/homeModel.php');
+	private function createUserBoden($gebruikersnaam) {
+		require_once(PATH . '/model/homeModel.php');
         $homeModel = new homeModel();
 		
-		$bodenArray = $homeModel->getUserBoden($_SESSION['gebruikersnaam']);
+		$bodenArray = $homeModel->getUserBoden($gebruikersnaam);
+		return $bodenArray;
+	}
+	
+	private function addUserBodenTitels($id) {
+		require_once(PATH . '/model/homeModel.php');
+        $homeModel = new homeModel();
 		
-		$html = "
-		<ul>
-			
-		</ul>
-		";
+		$titel = $homeModel->getTitel($id);
+		return $titel;
 	}
 }
 
