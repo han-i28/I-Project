@@ -157,8 +157,8 @@ class veilingController extends Controller {
         if(isset($_GET['search'])){
             require(PATH . '/model/searchModel.php');
             $searchModel = new searchModel();
-            $input = $_GET['search'];
-            $data['html'] =  $this->generate_searchresults("Zoekresultaten", $searchModel->getResults($input));
+            $data['searchInput'] = $_GET['search'];
+            $data['html'] =  $this->generate_searchresults("Zoekresultaten", $searchModel->getResults($data['searchInput']));
         }
 		
         $data['title'] = "Eenmaal Andermaal - home";

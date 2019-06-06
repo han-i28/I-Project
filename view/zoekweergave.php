@@ -2,9 +2,13 @@
     <div class="uk-card uk-card-default uk-card-body uk-flex">
         <h3 class="uk-card-title"><?php if(isset($this->vars['hoofdRubriek'])) { echo $this->vars['hoofdRubriek']; } ?></h3>
         <ul class="uk-breadcrumb">
-            <li><a href="">a</a></li>
-            <li><a href="">b</a></li>
-            <li><span>c</span></li>
+            <li>Zoekopdracht</li>
+            <?php
+                if(isset($this->vars['searchInput'])){
+                    echo '<li><a href="'.SITEURL.'veiling/zoekopdracht/?search='.$this->vars['searchInput'].'">'.$this->vars['searchInput'].'</a></li>';
+                }else{
+                }
+            ?>
         </ul>
     </div>
     <div class="uk-grid-small" uk-grid>
