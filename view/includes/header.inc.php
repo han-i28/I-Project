@@ -9,10 +9,10 @@
 						if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] === false ) { ?>
 							<li><a href="<?php echo SITEURL . 'login'; ?>">Inloggen</a></li>
 							<li><a href="<?php echo SITEURL . 'registreren'; ?>">Registreren</a></li>
-                            <li><a href="<?php echo SITEURL . 'aanbieden'; ?>">Aanbieden</a></li>
 					<?php } elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) { ?>
 							<li><p>Welkom, <?php echo $_SESSION['gebruikersnaam']; ?></p></li>
                             <li class="uk-active"><a href="<?php echo SITEURL . 'account'; ?>">Profiel</a></li>
+                            <li><a href="<?php echo SITEURL . 'aanbieden'; ?>">Aanbieden</a></li>
                             <li class="uk-nav-divider"></li>
 							<li><a href="<?php echo SITEURL . 'login/logout'; ?>">Uitloggen</a></li>
 					<?php } ?>
