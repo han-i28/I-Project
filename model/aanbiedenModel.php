@@ -30,4 +30,10 @@ class aanbiedenModel extends Model{
             ':plaatsnaam' => $user_data['7'], ':GBA_CODE' => $user_data['8'], ':looptijdBegin' => $user_data['9'], ':verzendkosten' => $user_data['10'], ':verzendinstructies' => $user_data['11'], ':verkoper' => $user_data['12'], ':koper' => $user_data['13'], ':looptijdEinde' => $user_data['14'],
             ':veilingGesloten' => $user_data['15']));
     }
+
+    public function setAfbeelding($pad, $voorwerp) {
+        $sql = "INSERT INTO dbo.bestand(pad, voorwerp) VALUES (:pad, :voorwerp)";
+        $req = Database::getBdd()->prepare($sql);
+        return $req->execute(array(':pad' => $pad, ':voorwerp'=>$voorwerp));
+    }
 }
