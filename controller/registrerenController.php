@@ -119,7 +119,7 @@ class registrerenController extends Controller {
                 $data['message'] = '<div class="uk-alert-danger uk-margin-top" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Dit account is niet geldig of al geverifieerd.</div>';
             } else {
                 $registratieModel->setVerification($vkey);
-                $data['message'] = '<div class="uk-alert-success uk-margin-top" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Uw account is nu geverifieerd. U kunt nu <a href="'.PATH.'login">inloggen</a></div>';
+                $data['message'] = '<div class="uk-alert-success uk-margin-top" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Uw account is nu geverifieerd. U kunt nu <a href="'.SITEURL.'login">inloggen</a></div>';
             }
         }
 
