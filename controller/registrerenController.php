@@ -62,7 +62,7 @@ class registrerenController extends Controller {
                         $url = SITEURL . "registreren/verificatie/?vkey=" . $vkey;
 
                         $mailSent = false;
-                        for($i=0; $i < 10; $i++){//try to send mail 3 times
+                        for($i=0; $i < 10; $i++){//try to send mail 10 times
                             if($this->sendVerificationEmail($url, $_POST['mailbox'])){
                                 $mailSent = true;
                                 break;
