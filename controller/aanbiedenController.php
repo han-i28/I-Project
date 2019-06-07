@@ -4,9 +4,9 @@ class aanbiedenController extends Controller
 {
     function index()
     {
-        if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
+        session_start();
+        if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
             require(PATH . '/model/aanbiedenModel.php');
-
             if (isset($_POST['aanbieden_submit'])) {//when submitted
                 $this->secure_form($_POST);//secure the form
 
@@ -61,7 +61,7 @@ class aanbiedenController extends Controller
         $aanbiedenModel = new aanbiedenModel();
         $count = 0;
         $success = 0;
-        $target_dir = "Assets/uploads/";
+        $target_dir = "assets/uploads/";
 
         foreach ($_FILES['fileToUpload']['name'] as $filename) {
             $temp = $target_dir;
@@ -78,8 +78,9 @@ class aanbiedenController extends Controller
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             // Check if image file is a actual image or fake image
 
+            $tempImage = $_FILES["fileToUpload"]["tmp_name"][0];
+            $check = getimagesize($tempImage);
 
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
             if ($check == false) {
                 $data['afbeelding'] = "niet_een_afbeelding";
                 $uploadOk = 0;

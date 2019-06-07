@@ -40,9 +40,10 @@
                     <div class="uk-inline uk-width-1-1">
                         <select class="uk-select" name="betalingswijze" id="betalingswijze">
                             <option selected disabled>Kies een betalingswijze</option>
-                            <option value="contant">contant</option>
+                            <option value="Contant">contant</option>
+                            <option value="Creditcard">Creditcard</option>
                             <option value="PayPal">PayPal</option>
-                            <option value="Ideal">Ideal</option>
+                            <option value="iDeal">Ideal</option>
                         </select>
                     </div>
                 </div>

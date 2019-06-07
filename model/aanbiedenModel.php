@@ -18,18 +18,31 @@ class aanbiedenModel extends Model{
 
 
     public function voegVeilingToe($veiling_data){
-        print_r($veiling_data);
-        $sql = "DECLARE @newid int;
-        SELECT @newid = coalesce(MAX(voorwerpnummer),0) + 1 FROM voorwerp;  
-        INSERT INTO categorie (voorwerpnummer, titel, beschrijving, startprijs, betalingswijze, betalingsinstructie, postcode, plaatsnaam, GBA_CODE,
+        $sql = "DECLARE @newid bigint;
+		SELECT @newid = coalesce(MAX(voorwerpnummer),0) + 1 FROM voorwerp;  
+        INSERT INTO voorwerp (voorwerpnummer, titel, beschrijving, startprijs, betalingswijze, betalingsinstructie, postcode, plaatsnaam, GBA_CODE,
 		looptijdBegin, verzendkosten, verzendinstructies, verkoper, looptijdEinde, veilingGesloten, conditie)
         VALUES (
 		@newid, :titel, :beschrijving, :startprijs, :betalingswijze, :betalingsinstructie, :postcode, :plaatsnaam, :GBA_CODE,
 		:looptijdBegin, :verzendkosten, :verzendinstructies, :verkoper, :looptijdEinde, :veilingGesloten, :conditie)";
-        $req = Database::getBdd()->prepare($sql);Ø
-        return $req->execute(array(':titel' => $veiling_data['0'], ':beschrijving' => $veiling_data['1'], ':startprijs' => $veiling_data['2'], ':betalingswijze' => $veiling_data['3'], ':betalingsinstructie' => $veiling_data['4'], ':postcode' => $veiling_data['5'],
-            ':plaatsnaam' => $veiling_data['6'], ':GBA_CODE' => $veiling_data['7'], ':looptijdBegin' => $veiling_data['8'], ':verzendkosten' => $veiling_data['9'], ':verzendinstructies' => $veiling_data['10'], ':verkoper' => $veiling_data['11'], ':koper' => $veiling_data['12'], ':looptijdEinde' => $veiling_data['13'],
-            ':veilingGesloten' => $veiling_data['14']));
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute(array(
+            ':titel' => $veiling_data[0],
+            ':beschrijving' => $veiling_data[1],
+            ':startprijs' => $veiling_data[2],
+            ':betalingswijze' => $veiling_data[3],
+            ':betalingsinstructie' => $veiling_data[4],
+            ':postcode' => $veiling_data[5],
+            ':plaatsnaam' => $veiling_data[6],
+            ':GBA_CODE' => $veiling_data[7],
+            ':looptijdBegin' => $veiling_data[8],
+            ':verzendkosten' => $veiling_data[9],
+            ':verzendinstructies' => $veiling_data[10],
+            ':verkoper' => $veiling_data[11],
+            ':looptijdEinde' => $veiling_data[12],
+            ':veilingGesloten' => $veiling_data[13],
+            ':conditie' => $veiling_data[14]));
+        return $req->fetch(PDO::FETCH_ASSOC);
     }
 
 
