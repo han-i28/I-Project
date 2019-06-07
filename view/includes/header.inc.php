@@ -36,7 +36,9 @@
                         <li><a href="' . SITEURL . 'login/logout">Uitloggen</a></li>
                     </ul>
                 </div>
-            </li>';
+            </li>
+            <li><a href="' . SITEURL . 'aanbieden">Voorwerp aanbieden</a></li>
+            ';
 
             $headerAccountItemHtmlSmall = '
             <li><a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
@@ -47,6 +49,8 @@
                         <li><a href="' . SITEURL . 'beheer">Beheer</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="' . SITEURL . 'login/logout">Uitloggen</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="' . SITEURL . 'aanbieden">Voorwerp aanbieden</a></li>
                     </ul>
                 </div>
             </li>
@@ -59,10 +63,13 @@
                         <li><p>Welkom, ' . $_SESSION['gebruikersnaam'] . '</p></li>
                         <li class="uk-active"><a href="' . SITEURL . 'account">Profiel</a></li>
                         <li class="uk-nav-divider"></li>
+                        li><a href="' . SITEURL . 'aanbieden">Uitloggen</a></li>
                         <li><a href="' . SITEURL . 'login/logout">Uitloggen</a></li>
                     </ul>
                 </div>
-            </li>';   
+            </li>
+            <li><a href="' . SITEURL . 'aanbieden">Voorwerp aanbieden</a></li>
+            ';
             
             $headerAccountItemHtmlSmall = '
             <li><a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
@@ -72,6 +79,8 @@
                         <li><a href="' . SITEURL . 'account">Account</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="' . SITEURL . 'login/logout">Uitloggen</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="' . SITEURL . 'aanbieden">Voorwerp aanbieden</a></li>
                     </ul>
                 </div>
             </li>
