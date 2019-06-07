@@ -22,11 +22,8 @@
         <div class="uk-width-4-5@l uk-width-4-5@m uk-width-expand@s">
             <div class="uk-grid-small uk-child-width-1-3@xl uk-child-width-1-3@l uk-child-width-1-3@m uk-child-width-1-2@s uk-text-center" uk-grid="masonry: true" uk-grid>
                 <?php if(isset($this->vars['veilingen'])) { echo $this->vars['veilingen']; } ?>
+                <?php if(isset($this->vars['html'])) { echo $this->vars['html']; } ?>
             </div>
         </div>
-    </div>
-
-    <div class="uk-container">
-        <?php if(isset($this->vars['html'])) { echo $this->vars['html']; } ?>
     </div>
 </div>
