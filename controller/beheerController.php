@@ -72,7 +72,38 @@ class beheerController extends Controller {
 
     function bewerk() {
         session_start();
+        if($_SESSION['loggedIn'] && $_SESSION['isBeheerder']){
+            if(isset($_GET['rubriek'])) {
+                $id = $_GET['rubriek'];
+                require(PATH . '/model/beheerModel.php');
+                $beheerModel = new beheerModel();
+                $result = $beheerModel->getAllOfRubriekByID($id);
+                $childrenResult = $beheerModel->getChildrenByID($id);
+                $parentResult = $beheerModel->getParentByID($result[0]['parent']);
+                $children = $beheerModel->createChildren($childrenResult);
+                
+                if(empty($result)) {
+                    echo 'rubriek bestaat niet';
+                } else {
+                    $data['rubriek'] = $result;
+                    $data['children'] = $children;
+                    $data['parentrubrieken'] = $beheerModel->createParents();
+                    if(empty($parentResult)){
+                        $data['parent'] = null;
+                    } else {
+                        $data['parent'] = $parentResult;
+                    }
 
+                    $data['title'] = "Eenmaal Andermaal - Bewerk";
+                    $data['page'] = "beheerBewerk";
+                    $this->set($data);
+                    $this->load_view("template_beheer");
+                }
+            } else {
+                header("location: .");//naar home
+            }
+        }
+        
         //changes the name of a category
         $bewerkNaam_naam = strip_tags((isset($_POST['bewerkNaam']) ? $_POST['bewerkNaam'] : null));
         if(isset($_POST['bewerkNaam_submit'])){
@@ -103,38 +134,6 @@ class beheerController extends Controller {
             } else {
                 $result = $beheerModel->nieuweParent($nieuweParent_naam, $this->vars['rubriek'][0]['ID']);
                 echo "<meta http-equiv='refresh' content='0'>";
-            }
-        }
-
-        if($_SESSION['loggedIn'] && $_SESSION['isBeheerder']){
-            if(isset($_GET['rubriek'])) {
-                $id = $_GET['rubriek'];
-                require(PATH . '/model/beheerModel.php');
-                $beheerModel = new beheerModel();
-                $result = $beheerModel->getAllOfRubriekByID($id);
-                $childrenResult = $beheerModel->getChildrenByID($id);
-                $parentResult = $beheerModel->getParentByID($result[0]['parent']);
-                $children = $beheerModel->createChildren($childrenResult);
-                
-                if(empty($result)) {
-                    echo 'rubriek bestaat niet';
-                } else {
-                    $data['rubriek'] = $result;
-                    $data['children'] = $children;
-                    $data['parentrubrieken'] = $beheerModel->createParents();
-                    if(empty($parentResult)){
-                        $data['parent'] = null;
-                    } else {
-                        $data['parent'] = $parentResult;
-                    }
-
-                    $data['title'] = "Eenmaal Andermaal - Bewerk";
-                    $data['page'] = "beheerBewerk";
-                    $this->set($data);
-                    $this->load_view("template_beheer");
-                }
-            } else {
-                header("location: .");//naar home
             }
         }
     }
