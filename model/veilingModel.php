@@ -40,7 +40,12 @@ class veilingModel extends Model {
         return $req->fetch(PDO::FETCH_ASSOC);
     }
     public function getRubriekenByParent($id) {
-        $sql = "SELECT * FROM categorie WHERE parent = :id";
+        $sql = "SELECT c.ID, c.naam, c.parent, v.categorie_op_laagste_niveau, COUNT(categorie_op_laagste_niveau) AS aantal
+                FROM categorie c
+                LEFT JOIN voorwerp_in_categorie v ON c.ID = v.categorie_op_laagste_niveau
+                WHERE parent = :id
+                GROUP BY ID, c.naam, c.parent, v.categorie_op_laagste_niveau
+                ORDER BY naam ASC";
         $req = Database::getBdd()->prepare($sql);
         $req->execute(array('id' => $id));
         return $req->fetchAll(PDO::FETCH_ASSOC);

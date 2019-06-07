@@ -98,7 +98,7 @@ class Controller {
                 <a href='" . SITEURL . 'veiling/weergave/?veiling=' . $value['voorwerpnummer'] . "'>
                  <h4 class=\"uk-text-truncate\">" . $value['titel'] . "</h4>
                 <div class=\"afbeeldingContainer\" style=\"background-image: url('http://iproject28.icasites.nl/thumbnails/" . $value['pad'] . "');\"></div>
-                <h5>Hoogste bod: &euro;" . number_format($value['bod'], 2) . "</h5>
+                <h5>Hoogste bod: &euro;" . number_format($value['startprijs'], 2) . "</h5>
                 <h5>Eindigt in:
                 </h5>
                 <div class=\"uk-grid-small uk-child-width-auto uk-flex-around\" uk-grid uk-countdown=\"date: " . $value['looptijdEinde'] . "\">

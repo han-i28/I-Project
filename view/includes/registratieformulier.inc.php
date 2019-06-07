@@ -11,7 +11,7 @@
                     <div class="uk-inline uk-width-1-1">
                         <span class="uk-form-icon" uk-icon="icon: user"></span>
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: chevron-double-left"></span>
-                        <input class="uk-input" name="gebruikersnaam" id="gebruikersnaam" type="text" maxlength="20" placeholder="gebruikersnaam..." value="<?= (isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null); ?>">
+                        <input class="uk-input" name="gebruikersnaam" id="gebruikersnaam" type="text" maxlength="20" placeholder="Gebruikersnaam..." value="<?= (isset($_POST['gebruikersnaam']) ? $_POST['gebruikersnaam'] : null); ?>">
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<div class="uk-card uk-card-default uk-card-body uk-position-fixed uk-width-1-5 uk- uk-visible@s uk-text-capitalize">
+<div class="uk-card uk-card-default uk-card-body uk-position-fixed uk-width-1-5 uk-visible@s uk-text-capitalize">
     <h3>Rubrieken</h3>
     <ul uk-height-viewport="offset-top: true" class="uk-nav-default uk-nav-parent-icon uk-panel uk-panel-scrollable uk-height-viewport uk-overflow-auto uk-nav rubriekenboom" uk-nav="" style="min-height: calc(100vh - 184px);">
         <?php echo $this->vars['rubriekenHTML'] ?>
@@ -17,7 +17,7 @@
 	}
 /* LARGEST SIZE */
 if (!empty($userVeilingen)) { ?>
-	<div class="right-veiling-margin uk-position-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-visible@s">
+	<div class="right-veiling-margin uk-position-fixed uk-position-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-visible@s">
 		<div class="uk-card-header">
 			Uw veilingen
 		</div>
@@ -32,7 +32,7 @@ if (!empty($userVeilingen)) { ?>
 		</div>
 	</div>
 <?php } elseif (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true && empty($userveilingen)) { ?>
-	<div class="right-veiling-margin uk-position-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-visible@s">
+	<div class="right-veiling-margin uk-position-fixed uk-position-right uk-card uk-card-default uk-card-title uk-width-1-5 uk-visible@s">
 		<div class="uk-card-header">
 			Uw veilingen
 		</div>
@@ -44,7 +44,7 @@ if (!empty($userVeilingen)) { ?>
 	</div>
 <?php }
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) { ?>
-	<div class="right-boden-margin uk-position-right uk-width-1-5 uk-visible@m">
+	<div class="right-boden-margin uk-position-fixed uk-position-right uk-width-1-5 uk-visible@m">
 	<?php if (!empty($userBoden)) { ?>
 		<div class="uk-card uk-card-default uk-card-titles">
 			<div class="uk-card-header">
@@ -80,7 +80,7 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) { ?>
 <?php } ?>
 <!-- MEDIUM SIZE -->
 <?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) { ?>
-	<div class="persoonnlijkeInfoMedium right-boden-margin uk-position-right uk-width-1-5 uk-visible@s uk-hidden@m">
+	<div class="persoonnlijkeInfoMedium right-boden-margin uk-position-fixed uk-position-right uk-width-1-5 uk-visible@s uk-hidden@m">
 	<?php if (!empty($userBoden)) { ?>
 		<div class="uk-card uk-card-default uk-card-title uk-visible@s">
 			<div class="uk-card-header">
