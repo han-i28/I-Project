@@ -39,10 +39,7 @@ class aanbiedenController extends Controller
                         $voorwerpArray = $aanbiedenModel->getVoorwerpnummer();
                         $this->uploadAfbeeldingen($voorwerpArray['voorwerpnummer']);
                     }
-
-
-
-                } 
+                }
             }
             $data['title'] = "Eenmaal Andermaal - Aanbieden";
             $data['page'] = "aanbieden";
