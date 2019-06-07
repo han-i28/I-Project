@@ -6,10 +6,14 @@ class homeController extends Controller {
 
         $homeModel = new homeModel();
 
-        $data['html']  =  $this->generate_section("Voor jou", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Auto's", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Antiek", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Fietsen", $homeModel->getVoorwerp());
+        $data['html']  =  $this->generate_section("Highlights", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Auto's, motoren en boten", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Baby", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Computers", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Consumentenelektronica", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Film en DVD", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Games en consoles", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Gezondheid en verzorging", $homeModel->getVoorwerp());
 		
 		if (!isset($_SESSION)) {
 			session_start();
