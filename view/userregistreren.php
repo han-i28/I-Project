@@ -62,7 +62,7 @@ if(isset($this->vars['error_input'])) {
 } elseif (isset($this->vars['registration'])) {
     $message .= '</br></br>';
     if ($this->vars['registration'] == "succes") {
-        $message .=  '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Verificatie email is verstuurd.</div>';
+        $message .=  '<div class="uk-alert-success" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Verificatie email is verstuurd naar '.$_POST['mailbox'].'.</div>';
     }else if($this->vars['registration'] == "mail-error"){
         $message .= '<div class="uk-alert-danger" style="margin-left: 30%; margin-right: 30%; text-align: center;" uk-alert>Verificatie mail sturen niet gelukt. Probeer het later opnieuw.</div>';
     }else{
