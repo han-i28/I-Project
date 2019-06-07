@@ -67,6 +67,29 @@ footer{
     padding: 5px !important;
 }
 
+.right-veiling-margin {
+	margin-top: 10%;
+	margin-bottom: 11%;
+}
+
+.right-boden-margin {
+	margin-top: 50%;
+}
+
+.persoonlijkeInfo {
+	font-size: 15px;
+}
+
+.persoonlijkeInfoSmall {
+	margin-left: 24%;
+	margin-right: 24%;
+	margin-top: 5%;
+}
+
+.persoonnlijkeInfoMedium {
+	margin-top: 70%;
+}
+
 /* ------------------------------ veilingweergave ------------------------------ */
 #afbeeldingContainer {
     padding-bottom: calc(100% / (16 / 9));
@@ -91,4 +114,23 @@ footer{
 .uk-countdown-number {
     text-align: center;
     font-size: 2rem;
+}
+
+/* ------------------------------ beheer ------------------------------ */
+#dataTable_wrapper, #dataTable {
+    width: 100%;
+}
+
+#dataTable thead {
+    background-color: #5f4b8b;
+    color: white;
+}
+#dataTable tbody tr:nth-child(odd) {
+    background-color: #E7E0F7;
+}
+
+.tableContainer {
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
 }

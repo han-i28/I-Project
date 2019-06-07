@@ -6,11 +6,33 @@ class homeController extends Controller {
 
         $homeModel = new homeModel();
 
-        $data['html']  =  $this->generate_section("Voor jou", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Auto's", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Antiek", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Fietsen", $homeModel->getVoorwerp());
-
+        $data['html']  =  $this->generate_section("Highlights", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Auto's, motoren en boten", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Baby", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Computers", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Consumentenelektronica", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Film en DVD", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Games en consoles", $homeModel->getVoorwerp());
+        $data['html'] .=  $this->generate_section("Gezondheid en verzorging", $homeModel->getVoorwerp());
+		
+		if (!isset($_SESSION)) {
+			session_start();
+			if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+				$data['userVeilingen'] =  $this->createUserVeilingen($_SESSION['gebruikersnaam']);
+				$data['userBoden'] =  $this->createUserBoden($_SESSION['gebruikersnaam']);
+				$data['userBodenTitels'] = array();
+				foreach ($data['userBoden'] as $userBodenIds) {
+					$titelArray = $this->addUserBodenTitels($userBodenIds['voorwerp']);
+					if (strlen($titelArray[0]['titel']) > 19) {
+						$data['userBodenTitels'][] = substr($titelArray[0]['titel'], 0, 16) . "..";
+					}
+					else {
+						$data['userBodenTitels'][] = $titelArray[0]['titel'];
+					}
+				}
+			}
+		}
+		
         $categorieen = $homeModel->getRubrieken();
         $data['rubriekenHTML'] = $this->createCategorieHTML($categorieen);
 
@@ -46,7 +68,7 @@ class homeController extends Controller {
         foreach ($items as $item) {
             if ($item['parent'] == $id) {
                 $html .= "<ul>";
-                $html .= "<li class=\"uk-parent\"><a href='" . SITEURL . "veiling/zoekopdracht/?rubriek=" . $item['ID'] . "'>" . $item['naam'] . "</a></li>";
+                $html .= "<li class=\"uk-parent\"><a href='" . SITEURL . "veiling/zoekopdracht/?rubriek=" . $item['ID'] . "'>" . $item['naam'] . " (" . $item['aantal'] . ")</a></li>";
                 $html .= $this->createSubCategorie($items, $item['ID']);
                 $html .= "</ul>";
             }
@@ -55,24 +77,28 @@ class homeController extends Controller {
         return $html;
     }
 	
-	private function createUserVeilingen() {
-		require(PATH . '/model/homeModel.php');
+	private function createUserVeilingen($gebruikersnaam) {
+		require_once(PATH . '/model/homeModel.php');
         $homeModel = new homeModel();
 		
-		
+		$veilingenArray = $homeModel->getUserVeilingen($gebruikersnaam);
+		return $veilingenArray;
 	}
 	
-	private function createUserBoden() {
-		require(PATH . '/model/homeModel.php');
+	private function createUserBoden($gebruikersnaam) {
+		require_once(PATH . '/model/homeModel.php');
         $homeModel = new homeModel();
 		
-		$bodenArray = $homeModel->getUserBoden($_SESSION['gebruikersnaam']);
+		$bodenArray = $homeModel->getUserBoden($gebruikersnaam);
+		return $bodenArray;
+	}
+	
+	private function addUserBodenTitels($id) {
+		require_once(PATH . '/model/homeModel.php');
+        $homeModel = new homeModel();
 		
-		$html = "
-		<ul>
-			
-		</ul>
-		";
+		$titel = $homeModel->getTitel($id);
+		return $titel;
 	}
 }
 

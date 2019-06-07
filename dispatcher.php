@@ -1,6 +1,6 @@
 <?php
 
-class Dispatcher {
+class Dispatcher {//loads controller
     private $request;
 
     public function dispatch() {

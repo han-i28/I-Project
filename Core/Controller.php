@@ -50,41 +50,13 @@ class Controller {
     }
 
     function get_item_html($item){//parameter: item object
-        $html = '
-                <li class="uk-card uk-card-default uk-card-body">
-                <a href="' . SITEURL . 'veiling/weergave/?veiling=' . $item['voorwerpnummer'] . '">
-                    <h3 class="uk-text-truncate">' . $item['titel'] . '</h3>
-                    <img src="http://iproject28.icasites.nl/thumbnails/' . $item['pad'] . '" alt="afbeelding">
-                    <h3>' . $item['voorwerpnummer'] . '</h3>
-                </a>
-                </li>
-            ';
-        return $html;
-    }
-
-   function generate_searchresults($section_name, $items){
-            $item_html = '';
-            foreach($items as $item) {
-                $item_html.= $this->get_searchresults_html($item);
-            }
-
-            $html = '<div class="uk-grid-small uk-child-width-1-3@xl uk-child-width-1-3@l uk-child-width-1-3@m uk-child-width-1-2@s uk-text-center uk-grid uk-flex-top uk-flex-wrap-top" uk-grid="masonry: true" style="height: 394px;">
-                ' . $item_html . '
-            </div>
-            ';
-            return $html;
-        }
-
-        function get_searchresults_html($item){
-            $html = 
-            "<div style=\"transform: translateY(0px);\">
-                <a href='" . SITEURL . "veiling/weergave/?veiling=" . $item['voorwerpnummer']. "'>
-                <div class=\"uk-card uk-card-default uk-card-body\">
+        $html = "
+            <a href='" . SITEURL . 'veiling/weergave/?veiling=' . $item['voorwerpnummer'] . "'>
+                <li class=\"uk-card uk-card-default uk-card-body\">
                     <h4 class=\"uk-text-truncate\">" . $item['titel'] . "</h4>
-                    <div class=\"afbeeldingContainer\" style=\"background-image: url('http://iproject28.icasites.nl/thumbnails/" . $item['pad'] . " ');\"></div>
+                    <div class=\"afbeeldingContainer\" style=\"background-image: url('http://iproject28.icasites.nl/thumbnails/" . $item['pad'] . "');\"></div>
                     <h5>Hoogste bod: &euro;" . number_format($item['bod'], 2) . "</h5>
-                    <h5>Eindigt in:                                     
-                    </h5>
+                    <h5>Eindigt in:</h5>
                     <div class=\"uk-grid-small uk-child-width-auto uk-flex-around\" uk-grid uk-countdown=\"date: " . $item['looptijdEinde'] . "\">
                         <div>
                             <div class=\"uk-countdown-number uk-countdown-days\">dagen</div>
@@ -103,10 +75,56 @@ class Controller {
                             <div>seconden</div>
                         </div>
                     </div>
+                </li>
+            </a>
+            ";
+        return $html;
+    }
+
+    function generate_searchresults($section_name, $items){
+        $html = "";
+        if(empty($items)) {
+            $html .= "
+                <div class='uk-width-expand'>
+                    <div class=\"uk-card uk-card-default uk-card-body\">
+                        <p>Geen resultaten!</p>
+                    </div>
+                </div>
+                ";
+        } else {
+            foreach ($items as $value) {
+                $html .= "
+                <li class=\"uk-card uk-card-default uk-card-body\">
+                <a href='" . SITEURL . 'veiling/weergave/?veiling=' . $value['voorwerpnummer'] . "'>
+                 <h4 class=\"uk-text-truncate\">" . $value['titel'] . "</h4>
+                <div class=\"afbeeldingContainer\" style=\"background-image: url('http://iproject28.icasites.nl/thumbnails/" . $value['pad'] . "');\"></div>
+                <h5>Hoogste bod: &euro;" . number_format($value['bod'], 2) . "</h5>
+                <h5>Eindigt in:
+                </h5>
+                <div class=\"uk-grid-small uk-child-width-auto uk-flex-around\" uk-grid uk-countdown=\"date: " . $value['looptijdEinde'] . "\">
+                    <div>
+                        <div class=\"uk-countdown-number uk-countdown-days\">dagen</div>
+                        <div>dagen</div>
+                    </div>
+                    <div>
+                        <div class=\"uk-countdown-number uk-countdown-hours\">uren</div>
+                        <div>uren</div>
+                    </div>
+                    <div>
+                        <div class=\"uk-countdown-number uk-countdown-minutes\">minuten</div>
+                        <div>minuten</div>
+                    </div>
+                    <div>
+                        <div class=\"uk-countdown-number uk-countdown-seconds\"></div>
+                        <div>seconden</div>
+                    </div>
                 </div>
                 </a>
-            </div>";
-            return $html;
+                </li>
+            ";
+            }
         }
+        return $html;
+    }
 }
 ?>
