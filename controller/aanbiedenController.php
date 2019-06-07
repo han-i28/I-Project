@@ -62,12 +62,12 @@ class aanbiedenController extends Controller
 
     private function createVeiling($voorwerpnummer, $postcode, $plaatsnaam, $GBA_CODE, $looptijdBegin, $verkoper, $looptijdEinde){
         $aanbiedenModel = new aanbiedenModel();
-        $user_data = array($voorwerpnummer, $_POST['titel'], $_POST['beschrijving'], $_POST['startprijs'],
+        $veiling_data = array($voorwerpnummer, $_POST['titel'], $_POST['beschrijving'], $_POST['startprijs'],
             $_POST['betalingswijze'], $_POST['betalingsinstructie'], $postcode, $plaatsnaam, $GBA_CODE,
             $looptijdBegin, $_POST['verzendkosten'], $_POST['verzendinstructies'], $verkoper, $looptijdEinde, 0, $_POST['conditie']
         );
 
-        $aanbiedenModel->setVeiling($user_data);
+        $aanbiedenModel->setVeiling($veiling_data);
     }
 
     private function uploadAfbeeldingen($voorwerpnummer) {
