@@ -51,33 +51,32 @@ class Controller {
 
     function get_item_html($item){//parameter: item object
         $html = "
+            <a href='" . SITEURL . 'veiling/weergave/?veiling=' . $item['voorwerpnummer'] . "'>
                 <li class=\"uk-card uk-card-default uk-card-body\">
-                <a href='" . SITEURL . 'veiling/weergave/?veiling=' . $item['voorwerpnummer'] . "'>
-                 <h4 class=\"uk-text-truncate\">" . $item['titel'] . "</h4>
-                <div class=\"afbeeldingContainer\" style=\"background-image: url('http://iproject28.icasites.nl/thumbnails/" . $item['pad'] . "');\"></div>
-                <h5>Hoogste bod: &euro;" . number_format($item['bod'], 2) . "</h5>
-                <h5>Eindigt in:
-                </h5>
-                <div class=\"uk-grid-small uk-child-width-auto uk-flex-around\" uk-grid uk-countdown=\"date: " . $item['looptijdEinde'] . "\">
-                    <div>
-                        <div class=\"uk-countdown-number uk-countdown-days\">dagen</div>
-                        <div>dagen</div>
+                    <h4 class=\"uk-text-truncate\">" . $item['titel'] . "</h4>
+                    <div class=\"afbeeldingContainer\" style=\"background-image: url('http://iproject28.icasites.nl/thumbnails/" . $item['pad'] . "');\"></div>
+                    <h5>Hoogste bod: &euro;" . number_format($item['bod'], 2) . "</h5>
+                    <h5>Eindigt in:</h5>
+                    <div class=\"uk-grid-small uk-child-width-auto uk-flex-around\" uk-grid uk-countdown=\"date: " . $item['looptijdEinde'] . "\">
+                        <div>
+                            <div class=\"uk-countdown-number uk-countdown-days\">dagen</div>
+                            <div>dagen</div>
+                        </div>
+                        <div>
+                            <div class=\"uk-countdown-number uk-countdown-hours\">uren</div>
+                            <div>uren</div>
+                        </div>
+                        <div>
+                            <div class=\"uk-countdown-number uk-countdown-minutes\">minuten</div>
+                            <div>minuten</div>
+                        </div>
+                        <div>
+                            <div class=\"uk-countdown-number uk-countdown-seconds\"></div>
+                            <div>seconden</div>
+                        </div>
                     </div>
-                    <div>
-                        <div class=\"uk-countdown-number uk-countdown-hours\">uren</div>
-                        <div>uren</div>
-                    </div>
-                    <div>
-                        <div class=\"uk-countdown-number uk-countdown-minutes\">minuten</div>
-                        <div>minuten</div>
-                    </div>
-                    <div>
-                        <div class=\"uk-countdown-number uk-countdown-seconds\"></div>
-                        <div>seconden</div>
-                    </div>
-                </div>
-                </a>
                 </li>
+            </a>
             ";
         return $html;
     }
