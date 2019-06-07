@@ -4,7 +4,7 @@ class aanbiedenController extends Controller
 {
     function index()
     {
-        if (!isset($_SESSION['loggedIn'])) {//if logged in return exit registration
+        if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
             require(PATH . '/model/aanbiedenModel.php');
 
             if (isset($_POST['aanbieden_submit'])) {//when submitted
@@ -16,18 +16,12 @@ class aanbiedenController extends Controller
                     $aanbiedenModel = new aanbiedenModel();
 
                     $resultArrayVerkoper = $aanbiedenModel->getVerkoper($_SESSION['gebruikersnaam']);
-                    $resultArrayVoorwerp = $aanbiedenModel->getVoorwerpnummer();
 
                     if (empty($resultArrayVerkoper)) {
                         $data['error'] = "no_user_found";
-                        header("Location: ../aanbieden");
-                        exit();
-                    } elseif (empty($resultArrayVoorwerp)) {
-                        $data['error'] = "sql_error";
-                        header("Location: ../aanbieden");
+                        header("Location: ". SITEURL . "/aanbieden");
                         exit();
                     } else {
-                        $voorwerpnummer = $resultArrayVoorwerp['voorwerpnummer'] + 1;
                         $looptijdBegin = date("Y-m-d H:i:s");
                         $tempTijd = strtotime($looptijdBegin);
                         if ($_POST['looptijd'] == '3') {
@@ -38,19 +32,20 @@ class aanbiedenController extends Controller
                             $tempTijd = strtotime("+7 day", $tempTijd);
                         } else {
                             $data['error'] = "sql_error";
-                            header("Location: ../aanbieden");
+                            header("Location: ". SITEURL . "/aanbieden");
                             exit();
                         }
                         $looptijdEinde = date("Y-m-d H:i:s", $tempTijd);
 
-                        $this->createVeiling($voorwerpnummer, $resultArrayVerkoper['postcode'], $resultArrayVerkoper['plaatsnaam'], $resultArrayVerkoper['GBA_CODE'], $looptijdBegin, $resultArrayVerkoper['gebruikersnaam'], $looptijdEinde);
-                        $this->uploadAfbeeldingen($voorwerpnummer);
+                        $this->createVeiling($resultArrayVerkoper['postcode'], $resultArrayVerkoper['plaatsnaam'], $resultArrayVerkoper['GBA_CODE'], $looptijdBegin, $resultArrayVerkoper['gebruikersnaam'], $looptijdEinde);
+                        $voorwerpArray = $aanbiedenModel->getVoorwerpnummer();
+                        $this->uploadAfbeeldingen($voorwerpArray['voorwerpnummer']);
                     }
 
 
 
                 } else {
-                    header("location: " . SITEURL . "");
+                    header("location: " . SITEURL . "/aanbieden");
                 }
             }
             $data['title'] = "Eenmaal Andermaal - Aanbieden";
@@ -60,14 +55,14 @@ class aanbiedenController extends Controller
         }
     }
 
-    private function createVeiling($voorwerpnummer, $postcode, $plaatsnaam, $GBA_CODE, $looptijdBegin, $verkoper, $looptijdEinde){
+    private function createVeiling($postcode, $plaatsnaam, $GBA_CODE, $looptijdBegin, $verkoper, $looptijdEinde){
         $aanbiedenModel = new aanbiedenModel();
-        $user_data = array($voorwerpnummer, $_POST['titel'], $_POST['beschrijving'], $_POST['startprijs'],
+        $user_data = array($_POST['titel'], $_POST['beschrijving'], $_POST['startprijs'],
             $_POST['betalingswijze'], $_POST['betalingsinstructie'], $postcode, $plaatsnaam, $GBA_CODE,
             $looptijdBegin, $_POST['verzendkosten'], $_POST['verzendinstructies'], $verkoper, $looptijdEinde, 0, $_POST['conditie']
         );
 
-        $aanbiedenModel->setVeiling($user_data);
+        $aanbiedenModel->voegVeilingToe($user_data);
     }
 
     private function uploadAfbeeldingen($voorwerpnummer) {
@@ -91,41 +86,41 @@ class aanbiedenController extends Controller
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             // Check if image file is a actual image or fake image
 
-            if (isset($_POST["submit"])) {
-                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-                if ($check == false) {
-                    $data['afbeelding'] = "niet_een_afbeelding";
-                    $uploadOk = 0;
-                }
-                // Check if file already exists
-                if (file_exists($target_file)) {
-                    $data['afbeelding'] = "bestaat_al";
-                    $uploadOk = 0;
-                }
-                // Check filesize
-                if ($_FILES['fileToUpload']['size'] > 50000000) {
-                    $data['afbeelding'] = "grootte";
-                    $uploadOk = 0;
-                }
-                // Allow certain file formats
-                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                    && $imageFileType != "gif") {
-                    $data['afbeelding'] = "filetype";
-                    $uploadOk = 0;
-                }
-                //check if errors occurred
-                if ($uploadOk == 0) {
-                    $data['afbeelding'] = "niet geupload";
+
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if ($check == false) {
+                $data['afbeelding'] = "niet_een_afbeelding";
+                $uploadOk = 0;
+            }
+            // Check if file already exists
+            if (file_exists($target_file)) {
+                $data['afbeelding'] = "bestaat_al";
+                $uploadOk = 0;
+            }
+            // Check filesize
+            if ($_FILES['fileToUpload']['size'] > 50000000) {
+                $data['afbeelding'] = "grootte";
+                $uploadOk = 0;
+            }
+            // Allow certain file formats
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif") {
+                $data['afbeelding'] = "filetype";
+                $uploadOk = 0;
+            }
+            //check if errors occurred
+            if ($uploadOk == 0) {
+                $data['afbeelding'] = "niet geupload";
+            } else {
+                if (move_uploaded_file($tmp, $temp)) {
+                    $success += 1;
+                    $aanbiedenModel->setAfbeelding($tmp, $voorwerpnummer);
                 } else {
-                    if (move_uploaded_file($tmp, $temp)) {
-                        $success += 1;
-                        $aanbiedenModel->setAfbeelding($tmp, $voorwerpnummer);
-                    } else {
-                        $data['afbeelding'] = "error";
-                    }
+                    $data['afbeelding'] = "error";
                 }
             }
         }
+
 
         if ($success == $count && $success !== 0){
             $data['aanbieden'] = "success";
