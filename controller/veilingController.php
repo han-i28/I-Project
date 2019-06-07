@@ -142,10 +142,10 @@ class veilingController extends Controller {
 
         }
         if (isset($_GET['search'])) {
-            require(PATH . '/model/veilingModel.php');
-            $veilingModel = new veilingModel();
+            require(PATH . '/model/searchModel.php');
+            $searchModel = new searchModel();
             $data['searchInput'] = $_GET['search'];
-            $data['html'] =  $this->generate_searchresults("Zoekresultaten", $veilingModel->getVoorwerp($data['searchInput']));
+            $data['html'] =  $this->generate_searchresults("Zoekresultaten", $searchModel->getResults($data['searchInput']));
         }
 
         $data['title'] = "Eenmaal Andermaal - home";
