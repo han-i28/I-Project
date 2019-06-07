@@ -19,7 +19,6 @@ class aanbiedenController extends Controller
 
                     if (empty($resultArrayVerkoper)) {
                         $data['error'] = "no_user_found";
-                        header("Location: ". SITEURL . "/aanbieden");
                         exit();
                     } else {
                         $looptijdBegin = date("Y-m-d H:i:s");
@@ -32,7 +31,6 @@ class aanbiedenController extends Controller
                             $tempTijd = strtotime("+7 day", $tempTijd);
                         } else {
                             $data['error'] = "sql_error";
-                            header("Location: ". SITEURL . "/aanbieden");
                             exit();
                         }
                         $looptijdEinde = date("Y-m-d H:i:s", $tempTijd);
@@ -44,9 +42,7 @@ class aanbiedenController extends Controller
 
 
 
-                } else {
-                    header("location: " . SITEURL . "/aanbieden");
-                }
+                } 
             }
             $data['title'] = "Eenmaal Andermaal - Aanbieden";
             $data['page'] = "aanbieden";
