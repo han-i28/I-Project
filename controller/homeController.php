@@ -12,8 +12,6 @@ class homeController extends Controller {
         $data['html'] .=  $this->generate_section("Computers", $homeModel->getVoorwerp());
         $data['html'] .=  $this->generate_section("Consumentenelektronica", $homeModel->getVoorwerp());
         $data['html'] .=  $this->generate_section("Film en DVD", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Games en consoles", $homeModel->getVoorwerp());
-        $data['html'] .=  $this->generate_section("Gezondheid en verzorging", $homeModel->getVoorwerp());
 		
 		if (!isset($_SESSION)) {
 			session_start();
