@@ -24,7 +24,7 @@ class registrerenController extends Controller {
                     $data['error_input'] = "invalid_adresregel_1";
                 } elseif (!empty($_POST['adresregel_2'])&&!preg_match("/^[a-zA-Z]+\ +[0-9]+$/", $_POST['adresregel_2'])) { //			adres 2 pregmatch
                     $data['error_input'] = "invalid_adresregel_2";
-                } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['postcode'])) { //						postcode
+                } elseif (!preg_match("/^[a-zA-Z0-9 ]{6}$/", $_POST['postcode'])) { //						postcode
                     $data['error_input'] = "invalid_postcode";
                 } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['plaatsnaam'])) { //					plaatsnaam
                     $data['error_input'] = "invalid_plaatsnaam";
