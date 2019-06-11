@@ -17,7 +17,7 @@ if($this->vars['children'] !== null){
 if($this->vars['parent'] !== null){
     $parentHTML = '<div class="uk-container">
                     <h2>Parentrubriek:</h2>
-                    <a href=\"?rubriek="' . $this->vars['parent'][0]['ID'] . '"><p>' . $this->vars['parent'][0]['naam'] . '</p></a>';
+                    <a href="?rubriek=' . $this->vars['parent'][0]['ID'] . '"><p>' . $this->vars['parent'][0]['naam'] . '</p></a>';
     $changeParentHTML = '<h2>Verander parent:</h2>                
                             <form action="" method="POST">
                                 <label>Kies parent:</label>
